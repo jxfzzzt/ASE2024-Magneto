@@ -33,9 +33,7 @@ public class ClassUtil {
             JarEntry entry = entries.nextElement();
             if (entry.getName().endsWith(".class")) {
                 String className = entry.getName().replace("/", ".").replace(".class", "");
-                if (className.contains("org.springframework.validation")) {
-                    System.out.println("BindingResult");
-                }
+
                 Class<?> clazz = null;
                 try {
                     clazz = ClientProjectProperty.getInstrumentedFuzzLoader().loadClass(className);

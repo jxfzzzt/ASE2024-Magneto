@@ -1,0 +1,31 @@
+In the provided code snippet, <%s> function takes inputs of %s, and it calls <%s> function.
+The objective is to set the fields of the receiver object and the arguments for <%s> to ensure that
+<%s> function is invoked with
+%s by <RO>
+Note that %s and <RO> is just a list of symbol representing the arguments and receiver object of <%s>. You should use these symbols for code analysis.
+Only need to return a JSON body, which is a key-value mapping, representing the values corresponding to the fields or input parameters. the JSON body schema describe below:
+{
+  "FieldProperties": {
+    "${filed name}": ${state}
+    // Additional field properties as needed
+  },
+  "Arguments": {
+    "0": ${state},
+    // Additional argument as needed
+  }
+}.
+<FieldProperties> describe the conditions must be met by the fields of <%s>, and <Arguments> describe the conditions must be met by the inputs of the <%s> function.
+<FieldProperties> correspond to a JSON structure, ${field name} represents the name of a class field. "0" represents the zeroth argument of the function.
+ ${state} represents the value or a symbol of the corresponding field and function input, is in JSON format:
+ {
+     type: "${type}",
+     value: "${value}"
+ }.
+${type} would be primitive data type name or the fully qualified class name of a class.
+if the type is a primitive data type, such as int, char, ..., ${value} directly holds its value or symbol.
+If the type is a Map type, ${value} is in a JSON-formatted map, recording the key-value pair in map.
+If the type is a Reference type, ${value} is in JSON-formatted map format, the key of map recording field name, and the value of map recording the value of each field in the referenced object.
+If the type is an Array, Set or List type, ${value} corresponds to a JSON array.
+In <Arguments>, the keys are numbered starting from 0,1,...., representing the first parameter, second parameter, and so on.
+Their corresponding values in ${value} follow the defined type specifications from the <FieldProperties>.
+Ensure that the number and type of objects in "Arguments" match the parameters required by <%s> function. Especially notice to give me the correct type and don't forget any function parameters.

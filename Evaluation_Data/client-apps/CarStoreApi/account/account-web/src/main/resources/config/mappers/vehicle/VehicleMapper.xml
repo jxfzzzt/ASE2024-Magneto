@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.account.web.mapper.vehicle.VehicleMapper">
+
+    <select id="queryListByUser" resultType="com.car.account.web.model.vehicle.Vehicle">
+      SELECT
+            temp.*,
+            ( SELECT lable_desc FROM sys_dict WHERE uuid = temp.emission_levels ) AS emissionLevelsName,
+            ( SELECT lable_desc FROM sys_dict WHERE uuid = temp.displacement ) AS displacementName,
+            ( SELECT config_name FROM vehicle_config WHERE uuid = temp.vehicle_type ) AS vehicleTypeName,
+            ( SELECT config_name FROM vehicle_config WHERE uuid = temp.vehicle_brand ) AS vehicleBrandName,
+            ( SELECT config_name FROM vehicle_config WHERE uuid = temp.vehicle_model ) AS vehicleModelName,
+            ( SELECT lable_desc FROM sys_dict WHERE uuid = temp.fuel_type ) AS fuelTypeName
+        FROM
+            ( SELECT v.* FROM vehicle v WHERE v.vehicle_user_uuid = #{userUuid} AND sts = 0 ) temp
+        order by temp.created_time desc
+    </select>
+    
+    <select id="queryVehicleCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM vehicle WHERE sts = 0 AND vehicle_user_uuid = #{userUuid}
+    </select>
+</mapper>

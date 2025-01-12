@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.system.web.mapper.SysMenuMapper">
+    <select id="queryParentMenuListByUser" parameterType="Object" resultType="com.car.system.web.model.SysMenu">
+        SELECT
+        *
+        FROM
+        (
+        SELECT
+        CASE
+        WHEN parent_id = '-1' THEN
+        uuid
+        ELSE
+        parent_id
+        END AS menuUuid
+        FROM
+        (
+        SELECT
+        sm.*
+        FROM
+        sys_user_role sur
+        LEFT JOIN sys_role_menu_rel srmr ON sur.role_uuid = srmr.role_uuid
+        LEFT JOIN sys_role sr ON srmr.role_uuid = sr.uuid
+        AND sr. STATUS = 0
+        AND sr.sts = 0
+        LEFT JOIN sys_menu sm ON srmr.menu_uuid = sm.uuid
+        <if test="menuTerminal != null and menuTerminal !=''">
+            AND sm.menu_terminal = #{menuTerminal}
+        </if>
+        and sm.status = 0 and sm.sts = 0
+        <where>
+            <if test="userUuid != null and userUuid != ''">
+                sur.user_uuid = #{userUuid}
+            </if>
+        </where>
+        ) temp
+        GROUP BY
+        menuUuid
+        ) temp2
+        , sys_menu menu where menu.uuid = temp2.menuUuid
+        order by menu.menu_sort asc
+    </select>
+
+    <select id="querySonMenuListByUser" parameterType="Object" resultType="com.car.system.web.model.SysMenu">
+        SELECT
+        sm.*
+        FROM
+        sys_user_role sur
+        LEFT JOIN sys_role_menu_rel srmr ON sur.role_uuid = srmr.role_uuid
+        LEFT JOIN sys_role sr ON srmr.role_uuid = sr.uuid
+        AND sr. STATUS = 0
+        AND sr.sts = 0
+        LEFT JOIN sys_menu sm ON srmr.menu_uuid = sm.uuid
+        <if test="menuTerminal != null and menuTerminal !=''">
+            AND sm.menu_terminal = #{menuTerminal}
+        </if>
+        AND sm. STATUS = 0
+        AND sm.sts = 0
+        <where>
+            <if test="userUuid != null and userUuid != ''">
+                sur.user_uuid = #{userUuid}
+            </if>
+            <if test="menuUuid != null and menuUuid != ''">
+                AND sm.parent_id = #{menuUuid}
+            </if>
+        </where>
+        order by sm.menu_sort asc
+    </select>
+
+    <select id="queryParentMenuList" parameterType="Object" resultType="com.car.system.web.model.SysMenu">
+        SELECT
+        *
+        FROM
+        sys_menu
+        WHERE
+        parent_id = '-1'
+        AND STATUS = 0
+        AND sts = 0
+        <if test="menuTerminal != null and menuTerminal !=''">
+            AND menu_terminal = #{menuTerminal}
+        </if>
+        ORDER BY
+        menu_sort ASC
+    </select>
+
+    <select id="querySonMenuList" parameterType="Object" resultType="com.car.system.web.model.SysMenu">
+        SELECT
+        *
+        FROM
+        sys_menu
+        WHERE
+        parent_id = #{menuUuid}
+        AND STATUS = 0
+        AND sts = 0
+        <if test="menuTerminal != null and menuTerminal !=''">
+            AND menu_terminal = #{menuTerminal}
+        </if>
+        ORDER BY
+        menu_sort ASC
+    </select>
+
+
+    <select id="queryAllMenuList" parameterType="Object" resultType="com.car.system.web.model.SysMenu">
+        SELECT
+        *
+        FROM
+        sys_menu
+        WHERE
+        STATUS = 0
+        AND sts = 0
+        <if test="menuTerminal != null and menuTerminal !=''">
+            AND menu_terminal = #{menuTerminal}
+        </if>
+        ORDER BY
+        menu_sort ASC
+    </select>
+
+
+    <select id="queryMenuListByUuidList" parameterType="Object" resultType="com.car.system.web.model.dto.SysMenuDto">
+        SELECT
+        sm.*,
+        getMenuParentList ( sm.uuid ) parentList
+        FROM
+        sys_menu sm
+        WHERE
+        sm.sts = 0
+        AND sm.`status` = 0
+        <if test="menuIdList != null and menuIdList.size != 0">
+            and sm.uuid in
+            <foreach collection="menuIdList" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        ORDER BY
+        sm.menu_sort ASC
+    </select>
+
+
+</mapper>

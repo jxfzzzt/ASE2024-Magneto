@@ -1,0 +1,101 @@
+<!--
+  ~  Copyright (c) 2017-2022 AxonIQ B.V. and/or licensed to AxonIQ B.V.
+  ~  under one or more contributor license agreements.
+  ~
+  ~  Licensed under the AxonIQ Open Source License Agreement v1.0;
+  ~  you may not use this file except in compliance with the license.
+  ~
+  -->
+
+<script src="js/users.js"></script>
+<div id="users">
+    <section class="msg info" v-if="feedback !== ''">{{feedback}}</section>
+    <section>
+        <paginated-table :rows="users" name="users">
+            <template #header>
+                <th>Username</th>
+                <th v-if="isEnterprise()">Roles</th>
+                <th v-if="!isEnterprise()">Administrator</th>
+            </template>
+            <template #row="user">
+                <td>{{ user.userName }}</td>
+                <td v-if="isEnterprise()">
+                    <span v-for="role in user.roles">{{ role }}<br></span>
+                </td>
+                <td v-if="!isEnterprise()">
+                    {{ administrator(user) }}
+                </td>
+                <td v-if="admin">
+                    <span @click="deleteUser(user)" title="Delete"><i class="far fa-trash-alt"></i></span>
+                    <span @click="selectUser(user)" title="Edit"><i class="fas fa-pencil-alt"></i></span>
+                </td>
+            </template>
+        </paginated-table>
+    </section>
+
+    <section id="userDetails" v-if="admin">
+        <div class="column wide">
+            <form>
+                <ul>
+                    <li>
+                        <span class="narrow">Username</span>
+                        <input data-lpignore="true" v-model="user.userName"/>
+                    </li>
+                    <li>
+                        <span class="narrow">Password</span>
+                        <input data-lpignore="true" style="padding: 1px 2px" type="password"
+                               v-model="user.password"/>
+                    </li>
+                    <li>
+                        <span class="narrow">Password Verification</span>
+                        <input data-lpignore="true" style="padding: 1px 2px" type="password"
+                               v-model="user.password2"/>
+                    </li>
+                    <li v-if="!isEnterprise()">
+                        <span class="narrow">Administrator</span>
+                        <input type="checkbox" v-model="adminRole"/>
+                    </li>
+                    <li v-if="isEnterprise()">
+                        <span class="narrow">Roles</span>
+                        <span style="padding: 0;">
+                            <table class="nestedTable">
+                                <thead>
+                                <tr class="row">
+                                        <th class="contextColumn">Context</th>
+                                        <th class="roleColumn">Role</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="row" v-for="(user, idx) in user.workingRoles">
+                                        <td class="context">{{user.context}}</td>
+                                        <td class="role">{{user.role}}</td>
+                                        <td class="buttons"><span @click="deleteContextRole(idx)" title="Delete">
+                                            <i class="far fa-trash-alt"></i></span></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td class="context">
+                                            <select class="contextName" v-model="newRole.context">
+                                                <option v-for="r in contexts">{{r.context}}</option>
+                                            </select>
+                                        </td>
+                                        <td class="role">
+                                            <select class="roleName" v-model="newRole.role">
+                                                <option v-for="r in roles">{{r}}</option>
+                                            </select>
+                                        </td>
+                                        <td class="buttons"><span @click="addContextRole()" title="Add">
+                                            <i class="fas fa-plus"></i></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="narrow">&nbsp;</span>
+                        <span><button @click.prevent="save(user)" class="button">Save</button></span>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </section>
+</div>

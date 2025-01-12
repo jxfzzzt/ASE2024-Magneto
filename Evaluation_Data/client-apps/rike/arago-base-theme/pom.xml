@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>arago-base-theme</artifactId>
+    <packaging>war</packaging>
+    <name>${project.artifactId}</name>
+    <groupId>de.arago</groupId>
+    <version>5.3-SNAPSHOT</version>
+    
+    <build>
+        <finalName>arago-theme</finalName>
+
+        </build>
+  
+        <distributionManagement>
+            <repository>
+                <id>tabtab</id>
+                <uniqueVersion>false</uniqueVersion>
+                <name>repo</name>
+                <url>$REPO</url>
+            </repository>
+            <snapshotRepository>
+                <id>tabtab</id>
+                <uniqueVersion>false</uniqueVersion>
+                <name>repo</name>
+                <url>$REPO</url>
+            </snapshotRepository>
+        </distributionManagement>
+        
+    <dependencies>
+    </dependencies>
+    <properties>
+        <liferay.auto.deploy.dir>/opt/liferay-portal-current/deploy</liferay.auto.deploy.dir>
+        <liferay.theme.parent>_styled</liferay.theme.parent>
+        <liferay.theme.type>vm</liferay.theme.type>
+        <liferay.version>6.1.1</liferay.version>
+    </properties>
+</project>

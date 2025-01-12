@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.consult.ConsultImagesMapper">
+
+    <insert id="batchInsertConsultImages">
+        insert into consult_images(uuid,consult_uuid,img_url,img_type,sts,created_by,created_time)
+        values
+        <foreach collection="insertList" item="item" index="index" separator=",">
+            (
+            #{item.uuid},
+            #{item.consultUuid},
+            #{item.imgUrl},
+            #{item.imgType},
+            #{item.sts},
+            #{item.createdBy},
+            #{item.createdTime}
+            )
+        </foreach>
+    </insert>
+
+</mapper>

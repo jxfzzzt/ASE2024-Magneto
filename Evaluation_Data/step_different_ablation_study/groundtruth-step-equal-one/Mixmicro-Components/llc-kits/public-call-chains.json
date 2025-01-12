@@ -1,0 +1,11 @@
+[
+    {
+        "chain": [
+            "<xyz.vopen.mixmicro.kits.llc.impls.LlcSevenZCompress: java.util.List listFiles(java.io.File)>",
+            "<org.apache.commons.compress.archivers.sevenz.SevenZFile: void <init>(java.io.File)>"
+        ],
+        "vuls": [
+            "CVE-2021-35516"
+        ]
+    }
+]

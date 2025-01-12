@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.withdrawal.WithdrawalMapper">
+
+    <select id="queryWithdrawalList" resultType="com.car.account.client.response.withdrawal.QueryWithdrawalListRes">
+        select w.uuid,w.user_uuid,w.user_role,w.withdrawal_amount,
+               w.created_time,w.last_updated_time,
+               w.check_sts,w.user_name,w.mobile
+        FROM withdrawal w
+        where w.sts = 0
+        <if test="userName != null and userName !=''">
+            AND w.user_name LIKE CONCAT('%',#{userName},'%')
+        </if>
+        <if test="mobile != null and mobile !=''">
+            AND w.mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
+        <if test="userUuid != null and userUuid !=''">
+            AND w.user_uuid = #{userUuid}
+        </if>
+        <if test="startTime != null and startTime != ''">
+            <![CDATA[ AND w.created_time  >= #{startTime} ]]>
+        </if>
+        <if test="userRole != null and userRole !=''">
+            AND w.user_role = #{userRole}
+        </if>
+        <if test="checkSts != null and checkSts !=''">
+            AND w.check_sts = #{checkSts}
+        </if>
+        order by w.created_time desc
+    </select>
+
+    <select id="queryWithdrawalDetailByUuid" parameterType="java.lang.String" resultType="com.car.account.client.response.withdrawal.WithdrawalRes">
+        select w.uuid,w.user_uuid,w.user_role,w.withdrawal_amount,
+               w.balance_amount,w.total_amount,w.wait_amount,w.deposit_bank,
+               w.sub_branch_name,w.card_numbers,w.voucher_img_url,
+               w.check_sts,w.reject_detail,w.store_name,w.store_type_name,
+               w.user_name,w.mobile
+        FROM withdrawal w
+        where w.uuid = #{uuid} and w.sts = 0
+    </select>
+
+    <!--  <select id="queryStoreWithdrawalByUuid" parameterType="java.lang.String" resultType="com.car.account.client.response.withdrawal.WithdrawalRes">
+          select w.uuid,w.user_uuid,w.user_role,w.withdrawal_amount,
+                 w.balance_amount,w.total_amount,w.wait_amount,w.deposit_bank,
+                 w.sub_branch_name,w.card_numbers,w.voucher_img_url,
+                 w.check_sts,w.reject_detail,s.store_name,
+                 (SELECT lable_desc FROM sys_dict WHERE uuid = s.store_type ) as storeTypeName,
+                 (SELECT user_name FROM store_user WHERE uuid = w.user_uuid ) as user_name,
+                 (SELECT mobile FROM store_user WHERE uuid = w.user_uuid ) as mobile
+          FROM withdrawal w
+          LEFT JOIN store s on w.user_uuid = s.uuid and s.sts = 0
+          where w.uuid = #{uuid} and w.sts = 0
+      </select>
+
+      <select id="queryTechnicianWithdrawalByUuid" parameterType="java.lang.String" resultType="com.car.account.client.response.withdrawal.WithdrawalRes">
+          select w.uuid,w.user_uuid,w.user_role,w.withdrawal_amount,
+                 w.balance_amount,w.total_amount,w.wait_amount,w.deposit_bank,
+                 w.sub_branch_name,w.card_numbers,w.voucher_img_url,
+                 w.check_sts,w.reject_detail,t.user_name,t.mobile
+          FROM withdrawal w
+          LEFT JOIN technician t on w.user_uuid = t.uuid and t.sts = 0
+          where w.uuid = #{uuid} and w.sts = 0
+      </select>-->
+
+</mapper>

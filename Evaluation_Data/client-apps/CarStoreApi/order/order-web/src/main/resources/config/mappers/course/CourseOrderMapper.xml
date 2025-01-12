@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.course.CourseOrderMapper">
+
+    <select id="getById" resultType="com.car.order.client.response.course.QueryCourseOrderInfoRes">
+        select
+            co.*,
+            cod.course_intro,
+            cod.course_content,
+            cod.course_time,
+            cod.course_url
+        from
+            course_order co
+            left join course_order_detail cod on co.uuid = cod.order_uuid
+        where
+            co.sts = 0
+            and co.uuid = #{uuid}
+    </select>
+
+    <select id="list" resultType="com.car.order.client.response.course.QueryCourseOrderListRes">
+        select
+        co.*
+        from
+            course_order co
+            left join course_order_detail cod on cod.order_uuid = co.uuid
+        where co.sts = 0
+        <if test="req.courseLecturer != null and req.courseLecturer != ''">
+            and co.course_lecturer LIKE CONCAT('%',#{req.courseLecturer},'%')
+        </if>
+
+        <if test="req.orderSts != null">
+            and co.order_sts = #{req.orderSts}
+        </if>
+
+        <if test="req.startDate != null and req.startDate != ''">
+            <![CDATA[ AND co.created_time  >= #{req.startDate} ]]>
+        </if>
+
+        <if test="req.endDate != null and req.endDate != ''">
+            <![CDATA[ AND co.created_time  <= #{req.endDate} ]]>
+        </if>
+
+        <if test="userUuid != null and userUuid != ''">
+            and co.buyer_uuid = #{userUuid}
+        </if>
+        order by co.created_time desc
+    </select>
+
+    <select id="queryIsPurchase" resultType="java.lang.Integer">
+        select Count(1) from course_order where is_overdue = 0 and sts = 0 and course_uuid = #{courseUuid} and buyer_uuid = #{userUuid}
+    </select>
+
+</mapper>

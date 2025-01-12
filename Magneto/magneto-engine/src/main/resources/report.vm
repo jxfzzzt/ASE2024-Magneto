@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>$!{title}</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        .head-part {
+            text-align: center;
+        }
+
+        .dependency-part {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fuzz-part {
+        }
+
+        .title {
+            margin-bottom: 12px;
+            font-weight: bold;
+            color: #434141;
+        }
+
+        .title h3 {
+            font-size: 1.28em;
+        }
+
+        .dependency-list {
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    ##body's html container
+<div class="body-container">
+    ##    report's header
+    <div class="head-part">
+        <div class="title">
+            <h3 style="font-size: 1.8em;">Project Report</h3>
+            <h5 style="font-size: 0.9em">Project Path: $!{context.projectPath}</h5>
+            <h5 style="font-size: 0.75em">Time Spent: $!{context.totalTime}</h5>
+        </div>
+    </div>
+
+    <hr>
+
+    ##    dependency analysis
+    <div class="dependency-part">
+        <div class="dependency-list">
+            <div class="title">
+                <h3>Libraries Affected by Vulnerabilities: $!{context.vulDependencyList.size()}</h3>
+            </div>
+            <ul class="list-group">
+                #foreach($!{depName} in $!{context.vulDependencyList})
+                    <li class="list-group-item list-group-item-danger">$!{depName}</li>
+                #end
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    ##    fuzz part
+    <div class="fuzz-part">
+        <div class="fuzz-container">
+            <div class="title">
+                <h3>Vulnerable Function Call Chains: $!{context.fuzzChainList.size()}</h3>
+            </div>
+            #set($index=1)
+            #foreach($!{fuzzChainResultWrapper} in $!{context.fuzzChainList})
+                #foreach($!{resultMapEntry} in $!{fuzzChainResultWrapper.fuzzResultMap.entrySet()})
+                    <h4>$!{resultMapEntry.key}</h4>
+                    #set($fuzzChainResult=$resultMapEntry.value)
+                    <div style="width: 100%">
+                        <div class="title">
+                            <h3 style="font-size: 1.25em">Call Chain $!{index}</h3>
+                            #set($index=$index+1)
+                            <h5 style="font-size: 0.95em">Successful Exploit Steps: $!{fuzzChainResult.successStep}</h5>
+                        </div>
+                        <div class="chain-list">
+                            <ul class="list-group">
+                                #foreach($!{methodCall} in $!{fuzzChainResultWrapper.methodCallList})
+                                    #if($!{foreach.index} == $!{fuzzChainResultWrapper.methodCallList.size()} - 1)
+                                        <li class="list-group-item list-group-item-danger">$!{methodCall}</li>
+                                    #elseif($!{fuzzChainResultWrapper.methodCallList.size()} - $!{foreach.index} - 1 <= $!{fuzzChainResult.successStep})
+                                        <li class="list-group-item list-group-item-success">$!{methodCall}</li>
+                                    #else
+                                        <li class="list-group-item ">$!{methodCall}</li>
+                                    #end
+                                #end
+                            </ul>
+                        </div>
+
+                        <div class="trigger-input-part" style="margin-top: 15px;">
+                            #foreach($!{fuzzStepResult} in $!{fuzzChainResult.fuzzStepList})
+                                <div class="trigger-content" style="margin-bottom: 15px;">
+                                    <div class="title">
+                                        <span style="font-size: 1.15em">Vulnerability Exploited at Step ${foreach.count}</span>
+                                    </div>
+                                    ## Triggered Object Values
+                                    #if($!{fuzzStepResult.fieldMap})
+                                        <div class="input-fields panel panel-default" style="margin-bottom: 25px;">
+                                            <table class="table table-fixed">
+                                                <tbody>
+                                                <thead>
+                                                <tr>
+                                                    <td style="font-weight: bold;">Object Values: </td>
+                                                    <td></td>
+                                                </tr>
+                                                </thead>
+                                                    #foreach($!{entry} in $!{fuzzStepResult.fieldMap.entrySet()})
+                                                    <tr>
+                                                        <td style="width: 500px;">$!{entry.key}</td>
+                                                        <td>$!{entry.value}</td>
+                                                    </tr>
+                                                    #end
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    #end
+
+                                    ## Triggered vulnerability method parameter values
+                                    #if($!{fuzzStepResult.argsMapList.size()} > 0)
+                                        <div class="input-args panel panel-default">
+                                            <div class="panel-heading title">Arguments: </div>
+
+                                            #foreach($!{argsMap} in $!{fuzzStepResult.argsMapList})
+                                                <table class="table table-fixed">
+                                                    <tbody>
+                                                    <thead>
+                                                    <tr>
+                                                        <td style="font-weight: bold">Argument $!{foreach.count}</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    </thead>
+                                                        #foreach($!{entry} in $!{argsMap.entrySet()})
+                                                        <tr>
+                                                            <td style="width: 500px;">$!{entry.key}</td>
+                                                            <td>$!{entry.value}</td>
+                                                        </tr>
+                                                        #end
+                                                    </tbody>
+                                                </table>
+                                            #end
+                                        </div>
+                                    #end
+
+                                    ## Execution result display
+                                    <div class="input-args panel panel-default">
+                                        <table class="table table-fixed">
+                                            <tbody>
+                                            <thead>
+                                            <tr>
+                                                <td style="font-weight: bold">Result of Exploited Vulnerability Function</td>
+                                                <td></td>
+                                            </tr>
+                                            </thead>
+                                                #foreach($!{entry} in $!{fuzzStepResult.invokeResultMap.entrySet()})
+                                                <tr>
+                                                    <td style="width: 500px;">$!{entry.key}</td>
+                                                    <td>$!{entry.value}</td>
+                                                </tr>
+                                                #end
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            #end
+                        </div>
+                        <hr>
+                    </div>
+                #end
+            #end
+        </div>
+    </div>
+
+    ##    footer
+    <div class="footer-part">
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <p class="col-md-4 mb-0 text-body-secondary">2024</p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+{
+  "adu-test": [
+    "CVE-2020-13956",
+    "LANG-1385",
+    "LANG-1645"
+  ],
+  "wechat-ssm": [
+    "CVE-2020-13956",
+    "LANG-1385",
+    "LANG-1645"
+  ],
+  "adyen-api": [
+    "CVE-2020-13956"
+  ],
+  "kafka-keyvalue": [
+    "CVE-2020-13956"
+  ],
+  "archivefs": [
+    "CVE-2021-35516"
+  ],
+  "huntfiles": [
+    "CVE-2021-35516"
+  ],
+  "Mixmicro-Components": [
+    "CVE-2021-35516",
+    "CVE-2022-23596"
+  ],
+  "axon-server-se": [
+    "CVE-2023-1370"
+  ],
+  "JsonConfiguration": [
+    "CVE-2021-27568",
+    "CVE-2023-1370"
+  ],
+  "karate": [
+    "CVE-2023-1370"
+  ],
+  "Online_Train_Ticket_Reservation_System": [
+    "CVE-2021-27568",
+    "CVE-2023-1370"
+  ],
+  "rike": [
+    "CVE-2021-27568",
+    "CVE-2023-1370"
+  ],
+  "bean-query": [
+    "CVE-2019-10086"
+  ],
+  "commons-validator": [
+    "CVE-2019-10086"
+  ],
+  "QLExpress": [
+    "CVE-2019-10086"
+  ],
+  "CarStoreApi": [
+    "Zip4j-263"
+  ],
+  "ZingClient": [
+    "Zip4j-263"
+  ],
+  "db": [
+    "CVE-2022-45688"
+  ],
+  "base-starter": [
+    "CVE-2022-25845",
+    "CVE-2022-45688"
+  ],
+  "elasticsearch-maven-plugin": [
+    "CVE-2018-1002201"
+  ],
+  "neo": [
+    "CVE-2018-1002201",
+    "CVE-2021-29425",
+    "IO-611"
+  ],
+  "flow": [
+    "CVE-2023-43642"
+  ],
+  "geek-framework": [
+    "CVE-2020-5408",
+    "CVE-2022-25845"
+  ],
+  "jfinal": [
+    "CVE-2022-25845",
+    "CVE-2022-42004"
+  ],
+  "gerenciador-viagens": [
+    "CVE-2020-5408",
+    "CVE-2022-22976"
+  ],
+  "RuoYi-Vue-Multi-Tenant": [
+    "CVE-2020-5408",
+    "CVE-2022-22976"
+  ],
+  "idworker": [
+    "CVE-2022-42004"
+  ],
+  "roubsite": [
+    "CVE-2022-42004"
+  ],
+  "serritor": [
+    "CVE-2022-42004"
+  ],
+  "jerry-core": [
+    "CVE-2021-29425",
+    "IO-611"
+  ],
+  "ninja": [
+    "CVE-2021-29425",
+    "IO-611"
+  ],
+  "knetbuilder": [
+    "CVE-2021-43859",
+    "CVE-2022-41966"
+  ],
+  "PLMCodeTemplate": [
+    "CVE-2020-26217",
+    "CVE-2021-43859",
+    "CVE-2022-41966"
+  ],
+  "rpki-commons": [
+    "CVE-2017-7957",
+    "CVE-2020-26217",
+    "CVE-2021-43859",
+    "CVE-2022-41966"
+  ],
+  "twirl": [
+    "CVE-2017-7957",
+    "CVE-2020-26217",
+    "CVE-2021-43859",
+    "CVE-2022-41966"
+  ],
+  "weblaf": [
+    "CVE-2020-26217",
+    "CVE-2021-43859",
+    "CVE-2022-41966"
+  ],
+  "WxJava": [
+    "CVE-2020-26217",
+    "CVE-2021-43859",
+    "CVE-2022-29631",
+    "CVE-2022-41966"
+  ],
+  "mirage": [
+    "CVE-2018-15756"
+  ],
+  "OmegaTester": [
+    "CVE-2020-13973",
+    "CVE-2021-23899",
+    "CVE-2021-23900"
+  ],
+  "son-editor": [
+    "CVE-2020-13973",
+    "CVE-2021-23899",
+    "CVE-2021-23900"
+  ],
+  "PatentPublicData": [
+    "CVE-2018-1324"
+  ],
+  "reproducible-build-maven-plugin": [
+    "CVE-2018-1324"
+  ],
+  "pdf-converter": [
+    "CVE-2021-31812"
+  ],
+  "pdf-util": [
+    "CVE-2021-31812"
+  ],
+  "tcpser4j": [
+    "CVE-2018-1000632"
+  ],
+  "ucloud-java-sdk": [
+    "CVE-2022-29631"
+  ],
+  "wakatime-sync": [
+    "CVE-2022-29631"
+  ],
+  "UltraPlaytime": [
+    "CVE-2023-34453"
+  ],
+  "webbit": [
+    "CVE-2015-2156"
+  ]
+}

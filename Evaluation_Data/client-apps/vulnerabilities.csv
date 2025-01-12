@@ -1,0 +1,29 @@
+cve,library,class,method,line
+CVE-2015-2156,Netty,io.netty.handler.codec.http.CookieDecoder,decode(Ljava/lang/String;)Ljava/util/Set;,168
+CVE-2017-7957 ,Xstream,com.thoughtworks.xstream.converters.reflection.SunLimitedUnsafeReflectionProvider,newInstance(Ljava/lang/Class;)Ljava/lang/Object;,91
+CVE-2018-15756,Spring Web,org.springframework.http.HttpRange,getLengthFor(Lorg/springframework/core/io/Resource;)J,63
+CVE-2018-1000632,Dom4j,org.dom4j.QName,<init>(Ljava/lang/String;Lorg/dom4j/Namespace;Ljava/lang/String;)V<init>(Ljava/lang/String;Lorg/dom4j/Namespace;Ljava/lang/String;)V,81
+CVE-2018-1002201,Zt-zip,org.zeroturnaround.zip.ZipUtil$Unpacker,process(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V,1153
+CVE-2019-10086,Commons Beanutils,org.apache.commons.beanutils.PropertyUtilsBean,resetBeanIntrospectors()V,188
+CVE-2020-5408,Spring Security,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder,encode(Ljava/lang/CharSequence;)Ljava/lang/String;,102
+CVE-2020-13956,Httpcomponents-client,org.apache.http.client.utils.URIUtils,extractHost(Ljava/net/URI;)Lorg/apache/http/HttpHost;,424
+CVE-2020-13973,Json-sanitizer,com.google.json.JsonSanitizer,sanitizeString(II)V,554
+CVE-2020-26217,Xstream,com.thoughtworks.xstream.XStream,setupSecurity()V,646
+CVE-2021-23899,Json-sanitizer,com.google.json.JsonSanitizer,sanitizeString(II)V,565
+CVE-2021-23900,Json-sanitizer,com.google.json.JsonSanitizer,sanitizeString(II)V,565
+CVE-2021-27568,Json-smart,net.minidev.json.parser.JSONParserBase,extractFloat()Ljava/lang/Number;,142
+CVE-2021-31812,PDFbox,org.apache.pdfbox.pdfparser.BaseParser,parseCOSArray()Lorg/apache/pdfbox/cos/COSArray;,660
+CVE-2021-35516,Commons Compress,org.apache.commons.compress.archivers.sevenz.SevenZFile,readSubStreamsInfo(Ljava/nio/ByteBuffer;Lorg/apache/commons/compress/archivers/sevenz/Archive;)V,1025
+CVE-2021-43859,Xstream,com.thoughtworks.xstream.XStream,createObjectInputStream(Lcom/thoughtworks/xstream/io/HierarchicalStreamReader;Lcom/thoughtworks/xstream/converters/DataHolder;)Ljava/io/ObjectInputStream;,2064
+CVE-2022-22976,Spring Security,org.springframework.security.crypto.bcrypt.BCrypt,crypt_raw([B[BIZIZ)[B,545
+CVE-2022-23596,Junrar,com.github.junrar.Archive,readHeaders(J)V,452
+CVE-2022-25845,Fastjson,com.alibaba.fastjson.parser.ParserConfig,getGlobalInstance()Lcom/alibaba/fastjson/parser/ParserConfig;,354
+CVE-2022-29631,Jodd-http,io.netty.handler.codec.http.HttpRequest,path(Ljava/lang/String;)Ljodd/http/HttpRequest;,342
+CVE-2022-41966,Xstream,com.thoughtworks.xstream.XStream,unmarshal(Lcom/thoughtworks/xstream/io/HierarchicalStreamReader;Ljava/lang/Object;Lcom/thoughtworks/xstream/converters/DataHolder;)Ljava/lang/Object;,1422
+CVE-2022-42004,Jackson Databind,com.fasterxml.jackson.databind.deser.BeanDeserializer,_deserializeFromArray(Lcom/fasterxml/jackson/core/JsonParser;Lcom/fasterxml/jackson/databind/DeserializationContext;)Ljava/lang/Object;,631
+CVE-2023-1370,Json-smart,net.minidev.json.parser.JSONParserBase,readObject(Lnet/minidev/json/writer/JsonReaderI;)Ljava/lang/Object;,623
+CVE-2023-34453,Snappy-java,org.xerial.snappy.BitShuffle,shuffle([I)[B,108
+CVE-2023-43642,Snappy-java,org.xerial.snappy.SnappyInputStream,hasNextChunk()Z,426
+IO-611,Commons IO,org.apache.commons.io.FilenameUtils,normalize(Ljava/lang/String;)Ljava/lang/String;,1237
+LANG-1645,Commons Lang3,org.apache.commons.lang.math.NumberUtils,createNumber(Ljava/lang/String;)Ljava/lang/Number;,675
+Zip4j-263,Zip4j,net.lingala.zip4j.ZipFile,<init>(Ljava/io/File;[C)V,112

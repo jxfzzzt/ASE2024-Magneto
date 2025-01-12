@@ -1,0 +1,81 @@
+<skin xmlns="http://weblookandfeel.com/XmlSkin">
+
+    <!-- com.alee.laf.menu.WebMenu -->
+
+    <!-- Menu -->
+    <style type="menu">
+        <component>
+            <opaque>false</opaque>
+            <foreground>245,245,245</foreground>
+        </component>
+        <painter>
+            <decorations>
+                <decoration states="menubar">
+                    <WebShape round="0" />
+                    <MenuItemLayout padding="4,4,4,6" iconTextGap="6" textArrowGap="10">
+                        <ButtonIcon constraints="icon" />
+                        <ButtonText constraints="text" />
+                    </MenuItemLayout>
+                </decoration>
+                <decoration states="menubar,enabled,hover">
+                    <GradientBackground>
+                        <color>55,55,55,96</color>
+                        <color>25,25,25,96</color>
+                    </GradientBackground>
+                </decoration>
+                <decoration states="popupmenu">
+                    <WebShape round="0" />
+                    <MenuItemLayout padding="5,10,5,6" iconTextGap="6" textArrowGap="10">
+                        <ButtonIcon constraints="icon" />
+                        <ButtonText constraints="text" />
+                        <SetIcon id="arrow" constraints="arrow" icon="right" />
+                    </MenuItemLayout>
+                </decoration>
+                <decoration states="popupmenu,rtl">
+                    <MenuItemLayout>
+                        <SetIcon id="arrow" icon="left" />
+                    </MenuItemLayout>
+                </decoration>
+                <decoration states="selected">
+                    <GradientBackground>
+                        <color>72,72,72</color>
+                        <color>60,60,60</color>
+                    </GradientBackground>
+                </decoration>
+                <decoration states="disabled">
+                    <MenuItemLayout>
+                        <ButtonText color="180,180,180" ignoreCustomColor="true" />
+                    </MenuItemLayout>
+                </decoration>
+            </decorations>
+        </painter>
+
+        <!-- Popup menu style -->
+        <style type="popupmenu" id="popupmenu" />
+
+    </style>
+
+    <!-- Menu supporting styled text -->
+    <style type="menu" id="styled">
+        <painter>
+            <decorations>
+                <decoration states="menubar">
+                    <MenuItemLayout>
+                        <StyledButtonText constraints="text" />
+                    </MenuItemLayout>
+                </decoration>
+                <decoration states="popupmenu">
+                    <MenuItemLayout>
+                        <StyledButtonText constraints="text" />
+                    </MenuItemLayout>
+                </decoration>
+                <decoration states="disabled">
+                    <MenuItemLayout>
+                        <StyledButtonText color="180,180,180" ignoreCustomColor="true" ignoreStyleColors="true" />
+                    </MenuItemLayout>
+                </decoration>
+            </decorations>
+        </painter>
+    </style>
+
+</skin>

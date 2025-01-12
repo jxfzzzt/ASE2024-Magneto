@@ -1,0 +1,3 @@
+inicio uft8 sin bom:
+el niño ñoño tiene un camión
+fin.

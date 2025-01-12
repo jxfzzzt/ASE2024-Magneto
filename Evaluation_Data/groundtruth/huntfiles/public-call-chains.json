@@ -1,0 +1,26 @@
+[
+  {
+    "chain": [
+      "<org.bcjj.huntfiles.gui.HuntFilesMainWindow: void preview(org.bcjj.huntfiles.FileInfo)>",
+      "<org.bcjj.huntfiles.FileInfo: org.bcjj.huntfiles.CloseableInputStream$PreCloseableInputStream getPreCloseableInputStream()>",
+      "<org.apache.commons.compress.archivers.sevenz.SevenZFile: void <init>(java.io.File)>"
+    ],
+    "vuls": [
+      "CVE-2021-35516"
+    ]
+  },
+  {
+    "chain": [
+      "<HuntFiles: void main(java.lang.String[])>",
+      "<org.bcjj.huntfiles.HuntFiles: void main(java.lang.String[])>",
+      "<org.bcjj.huntfiles.HuntFiles: java.lang.String search()>",
+      "<org.bcjj.huntfiles.HuntFiles: void initSearchInDirOrFile(java.io.File)>",
+      "<org.bcjj.huntfiles.HuntFiles: void searchInFile(java.io.File,java.io.File)>",
+      "<org.bcjj.huntfiles.HuntFiles: void searchIn7Z(java.io.File)>",
+      "<org.apache.commons.compress.archivers.sevenz.SevenZFile: void <init>(java.io.File)>"
+    ],
+    "vuls": [
+      "CVE-2021-35516"
+    ]
+  }
+]

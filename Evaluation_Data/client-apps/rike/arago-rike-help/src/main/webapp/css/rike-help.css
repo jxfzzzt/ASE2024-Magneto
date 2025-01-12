@@ -1,0 +1,20 @@
+/* rike-help overlay */
+
+.markdown-body {
+	margin-top:1em;
+	}
+	
+/* sidebar */
+.content {
+	padding:0.5em 0;
+	overflow:hidden;
+	}
+.sidebar {
+	line-height:2em;
+	padding:0.5em 0;
+	float:left; 
+	width:15%;
+	min-width:110px;
+	 }
+.sidebar ul {
+	}

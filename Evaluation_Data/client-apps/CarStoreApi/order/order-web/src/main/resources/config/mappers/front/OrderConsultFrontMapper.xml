@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.consult.OrderConsultFrontMapper">
+
+    <select id="queryContentList" resultType="com.car.order.client.response.order.consult.OrderConsultFrontListRes">
+        SELECT co.uuid, co.order_num, co.created_time, ct.title, CONCAT(left(cd.consult_desc, 50),"...") as consultDesc, co.order_sts, co.order_type, co.order_amount,
+                co.pay_type, ct.answer_sts
+        FROM consult_order co
+        LEFT JOIN consult ct ON co.consult_uuid = ct.uuid
+        LEFT JOIN consult_detail cd ON co.consult_uuid = cd.consult_uuid
+        where co.sts = 0
+        <if test="orderConsultDto.carOwnerUuid != null and orderConsultDto.carOwnerUuid != ''">
+            AND co.car_owner_uuid = #{orderConsultDto.carOwnerUuid}
+        </if>
+        <if test="orderConsultDto.technicianUuid != null and orderConsultDto.technicianUuid != ''">
+            AND ct.technician_uuid = #{orderConsultDto.technicianUuid}
+        </if>
+        <if test="orderConsultDto.orderSts != null">
+            AND co.order_sts = #{orderConsultDto.orderSts}
+        </if>
+
+        <if test="orderConsultDto.orderStsList != null and orderConsultDto.orderStsList.size() > 0">
+            AND co.order_sts in
+            <foreach collection="orderConsultDto.orderStsList" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+
+        <if test="orderConsultDto.serviceSts != null">
+            AND co.service_sts  = #{orderConsultDto.serviceSts}
+        </if>
+
+        <if test="orderConsultDto.evaluateSts != null">
+            AND co.evaluate_sts  = #{orderConsultDto.evaluateSts}
+        </if>
+
+        order by co.created_time desc
+    </select>
+
+    <select id="queryContentDetail" resultType="com.car.order.client.response.order.consult.ConsultOrderFrontRes" >
+        SELECT
+            co.uuid,
+            co.order_num,
+            co.consult_uuid,
+            co.order_sts,
+            c.title,
+            c.answer_sts,
+            c.answer_time,
+            cd.consult_desc,
+            cd.answer_desc,
+            co.order_amount,
+            co.order_type,
+            c.technician_uuid,
+            c.technician_name,
+            c.technician_mobile,
+            c.technician_img_url
+        FROM consult_order co
+        LEFT JOIN consult c ON c.uuid = co.consult_uuid
+        LEFT JOIN consult_detail cd ON c.uuid = cd.consult_uuid
+        where co.sts = 0 and co.uuid = #{uuid}
+    </select>
+
+    <select id="queryOrderStsNum" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM consult_order co left join consult ct on co.consult_uuid = ct.uuid
+        WHERE co.sts = 0
+        <if test="userUuid != null and userUuid != ''">
+            AND co.car_owner_uuid = #{userUuid}
+        </if>
+        <if test="technicianUuid != null and technicianUuid != ''">
+            AND ct.technician_uuid = #{technicianUuid}
+        </if>
+        <if test="orderSts != null">
+            AND co.order_sts = #{orderSts}
+        </if>
+        <if test="serviceSts != null">
+            AND co.service_sts = #{serviceSts}
+        </if>
+    </select>
+
+
+</mapper>

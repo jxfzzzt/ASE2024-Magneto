@@ -1,0 +1,57 @@
+[
+  {
+    "chain": [
+      "<com.sangupta.jerry.util.FileUtils: java.io.File resolveToFile(java.lang.String)>",
+      "<org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2021-29425",
+      "IO-611"
+    ]
+  },
+  {
+    "chain": [
+      "<com.sangupta.jerry.util.FileUtils: boolean isAbsolutePath(java.lang.String)>",
+      "<org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2021-29425",
+      "IO-611"
+    ]
+  },
+  {
+    "chain": [
+      "<com.sangupta.jerry.util.FileUtils: java.util.List listFiles(java.io.File,java.lang.String,boolean,org.apache.commons.io.filefilter.IOFileFilter[])>",
+      "<com.sangupta.jerry.util.FileUtils: java.util.List listFiles(java.io.File,java.lang.String,boolean,java.util.List)>",
+      "<org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2021-29425",
+      "IO-611"
+    ]
+  },
+  {
+    "chain": [
+      "<com.sangupta.jerry.util.FileUtils: java.util.List listFiles(java.lang.String,boolean)>",
+      "<com.sangupta.jerry.util.FileUtils: java.util.List listFiles(java.io.File,java.lang.String,boolean)>",
+      "<com.sangupta.jerry.util.FileUtils: java.util.List listFiles(java.io.File,java.lang.String,boolean,java.util.List)>",
+      "<org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2021-29425",
+      "IO-611"
+    ]
+  },
+  {
+    "chain": [
+      "<com.sangupta.jerry.util.FileUtils: java.util.List listFiles(java.lang.String)>",
+      "<com.sangupta.jerry.util.FileUtils: java.util.List listFiles(java.io.File,java.lang.String,boolean)>",
+      "<com.sangupta.jerry.util.FileUtils: java.util.List listFiles(java.io.File,java.lang.String,boolean,java.util.List)>",
+      "<org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2021-29425",
+      "IO-611"
+    ]
+  }
+]

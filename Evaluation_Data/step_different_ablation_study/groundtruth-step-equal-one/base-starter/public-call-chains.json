@@ -1,0 +1,11 @@
+[
+    {
+        "chain": [
+            "<live.lumia.utils.XMLUtil: java.lang.String xml2json(java.lang.String)>",
+            "<org.json.XML: org.json.JSONObject toJSONObject(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2022-45688"
+        ]
+    }
+]

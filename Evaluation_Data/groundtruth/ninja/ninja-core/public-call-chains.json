@@ -1,0 +1,12 @@
+[
+  {
+    "chain": [
+      "<ninja.AssetsControllerHelper: java.lang.String normalizePathWithoutLeadingSlash(java.lang.String,boolean)>",
+      "<org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2021-29425",
+      "IO-611"
+    ]
+  }
+]

@@ -1,0 +1,79 @@
+/*
+ * Copyright 2015 Lithium Technologies, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.lithium.flow.util;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+/**
+ * @author Matt Ayres
+ */
+public class TimeUtils {
+	public static long getMillisValue(@Nullable String value) {
+		if (value == null) {
+			throw new NumberFormatException("value is null");
+		}
+		if (value.length() == 0) {
+			throw new NumberFormatException("value is empty");
+		}
+
+		char c = value.charAt(value.length() - 1);
+		if (Character.isLetter(c) && value.length() > 1) {
+			long millis = Long.parseLong(value.substring(0, value.length() - 1));
+			switch (c) {
+				case 'y':
+					return millis * 1000 * 60 * 60 * 24 * 365;
+				case 'M':
+					return millis * 1000 * 60 * 60 * 24 * 30;
+				case 'w':
+					return millis * 1000 * 60 * 60 * 24 * 7;
+				case 'd':
+					return millis * 1000 * 60 * 60 * 24;
+				case 'h':
+					return millis * 1000 * 60 * 60;
+				case 'm':
+					return millis * 1000 * 60;
+				case 's':
+					return millis * 1000;
+				default:
+					return millis;
+			}
+		} else {
+			return Long.parseLong(value);
+		}
+	}
+
+	public static long getTime(@Nonnull String format, @Nonnull String date, @Nonnull String tz) {
+		checkNotNull(format);
+		checkNotNull(date);
+		checkNotNull(tz);
+		try {
+			DateFormat dateFormat = new SimpleDateFormat(format);
+			dateFormat.setTimeZone(TimeZone.getTimeZone(tz));
+			return dateFormat.parse(date).getTime();
+		} catch (ParseException e) {
+			throw new RuntimeException(e);
+		}
+	}
+}

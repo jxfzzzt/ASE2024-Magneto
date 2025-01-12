@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.instance.OrderCaseMapper">
+
+
+    <select id="queryOrderCaseInfoList" resultType="com.car.order.client.response.order.instance.OrderCaseInfoListRes">
+        select oc.uuid,oc.order_num,oc.created_time,oc.technician_name,oc.technician_mobile,oc.order_amount,
+               oc.car_owner_name,oc.car_owner_mobile,oc.pay_type,oc.order_sts,
+               ocd.case_name,ocd.case_num,ocd.case_img_url,ocd.materials_expenses
+        from order_case oc
+        left join order_case_detail ocd on oc.uuid = ocd.order_uuid
+        where oc.sts = 0
+
+        <if test="caseName != null and caseName !=''">
+            AND ocd.case_name LIKE CONCAT('%',#{caseName},'%')
+        </if>
+
+        <if test="orderNum != null and orderNum !=''">
+            AND oc.order_num LIKE CONCAT('%',#{orderNum},'%')
+        </if>
+
+        <if test="startDate != null and startDate != ''">
+            <![CDATA[ AND oc.created_time  >= #{startDate} ]]>
+        </if>
+
+        <if test="endDate != null and endDate != ''">
+            <![CDATA[ AND oc.created_time  <= #{endDate} ]]>
+        </if>
+
+        <if test="orderSts != null">
+            AND oc.order_sts  = #{orderSts}
+        </if>
+
+        <if test="evaluateSts != null">
+            AND oc.evaluate_sts  = #{evaluateSts}
+        </if>
+
+        <if test="carOwnerName != null and carOwnerName !=''">
+            AND oc.car_owner_name LIKE CONCAT('%',#{carOwnerName},'%')
+        </if>
+
+        <if test="carOwnerMobile != null and carOwnerMobile !=''">
+            AND oc.car_owner_mobile LIKE CONCAT('%',#{carOwnerMobile},'%')
+        </if>
+
+        <if test="technicianName != null and technicianName !=''">
+            AND oc.technician_name LIKE CONCAT('%',#{technicianName},'%')
+        </if>
+
+        <if test="technicianMobile != null and technicianMobile !=''">
+            AND oc.technician_mobile LIKE CONCAT('%',#{technicianMobile},'%')
+        </if>
+
+        order by oc.created_time desc
+    </select>
+
+    <select id="queryOrderCaseDetail" resultMap="queryOrderCase">
+        select * from order_case where sts = 0 and uuid = #{uuid}
+    </select>
+
+    <resultMap id="queryOrderCase" type="com.car.order.web.dto.OrderCaseDto">
+        <id column="uuid" property="uuid"/>
+        <collection property="afterSaleImgList" column="uuid" select="queryAfterSaleImgList" />
+        <collection property="caseInfoListRes" column="uuid" select="queryCaseInfoList" />
+    </resultMap>
+
+    <select id="queryAfterSaleImgList" resultType="java.lang.String">
+        select asi.img_url from after_sale_images asi
+        where asi.order_uuid = #{uuid} and asi.sts = 0
+        order by asi.created_time desc
+    </select>
+
+    <select id="queryCaseInfoList" resultType="com.car.order.client.response.order.instance.CaseInfoRes">
+        select ocd.uuid,ocd.case_uuid,ocd.order_uuid,ocd.case_img_url,
+               ocd.case_name,ocd.case_num,ocd.materials_expenses
+              from order_case_detail ocd
+        where ocd.order_uuid = #{uuid} and ocd.sts = 0
+        order by ocd.created_time desc
+    </select>
+
+    <select id="queryCaseCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM order_case WHERE sts = 0 AND car_owner_uuid = #{userUuid}
+    </select>
+</mapper>

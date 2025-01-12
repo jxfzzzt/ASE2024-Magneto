@@ -1,0 +1,11 @@
+[
+  {
+    "chain": [
+      "<com.github.peterbencze.serritor.api.helper.JsonReaderWriter: java.lang.Object readJsonMessage(java.lang.String,java.lang.Class)>",
+      "<com.fasterxml.jackson.databind.ObjectMapper: java.lang.Object readValue(java.lang.String,java.lang.Class)>"
+    ],
+    "vuls": [
+       "CVE-2022-42004"
+    ]
+  }
+]

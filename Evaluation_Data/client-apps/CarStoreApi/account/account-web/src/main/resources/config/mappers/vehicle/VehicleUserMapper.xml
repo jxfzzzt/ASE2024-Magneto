@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.account.web.mapper.vehicle.VehicleUserMapper">
+
+    <select id="queryList" resultType="com.car.account.web.model.vehicle.VehicleUser"
+            parameterType="com.car.account.client.request.vehicle.VehicleUserListReq">
+      SELECT
+        vu.*,
+        ( SELECT lable_desc FROM sys_dict WHERE uuid = vu.certificate_type ) AS certificateTypeName,
+        ( SELECT area_name FROM sys_area WHERE uuid = vu.address_province ) AS addressProvinceName,
+        ( SELECT area_name FROM sys_area WHERE uuid = vu.address_city ) AS addressCityName
+    FROM
+        vehicle_user vu
+    WHERE
+        vu.sts = 0
+        <if test="userName != null and userName != ''">
+            and  vu.user_name LIKE CONCAT('%',#{userName},'%')
+        </if>
+        <if test="mobile != null and mobile != ''">
+            and vu.mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
+        <if test="provinceUuid != null and provinceUuid != ''">
+            and  vu.address_province LIKE CONCAT('%',#{provinceUuid},'%')
+        </if>
+        <if test="cityUuid != null and cityUuid != ''">
+            and  vu.address_city LIKE CONCAT('%',#{cityUuid},'%')
+        </if>
+    ORDER BY
+        vu.created_time DESC
+    </select>
+</mapper>

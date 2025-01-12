@@ -1,0 +1,90 @@
+<!--
+  ~ Copyright (c) 2017-2019 AxonIQ B.V. and/or licensed to AxonIQ B.V.
+  ~ under one or more contributor license agreements.
+  ~
+  ~  Licensed under the AxonIQ Open Source License Agreement v1.0;
+  ~  you may not use this file except in compliance with the license.
+  ~
+  -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>AxonDashboard: Login</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico"/>
+    <script src="js/fontawesome-all.js"></script>
+    <style>
+        .externalLogin a {
+            color: #21252b;
+            text-decoration: none;
+            background-color: #f5f5f5;
+            margin: 5px;
+            border: 1px solid #cccccc;
+            padding: 10px;
+            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+            border-radius: 4px;
+        }
+
+        .externalLogin {
+            display: inline-block;
+            float: left;
+            margin-top: 20px;
+        }
+
+        .externalLoginSection {
+            border-top: 1px solid #cccccc;
+            padding-left: 27px;
+        }
+    </style>
+
+</head>
+<body>
+<article>
+    <header>
+        <h1>AxonDashboard</h1>
+    </header>
+
+    <div th:if="${error}" class="msg warning" th:text="${error}"/>
+
+    <div th:if="${logout}" class="msg warning" th:text="${logout}"/>
+
+    <form action="login" method="post">
+        <div class="column configuration">
+            <section class="login">
+                <ul>
+                    <li>
+                        <span>User Name</span>
+                        <span><input type="text" name="username" autocomplete="username"/></span>
+                    </li>
+                    <li>
+                        <span>Password</span>
+                        <span><input type="password" name="password" autocomplete="current-password"/></span>
+                    </li>
+                    <li>
+                        <span>&nbsp;</span>
+                        <span><button type="submit" class="button">Sign In</button></span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <section th:if="${!#lists.isEmpty(externalLogins)}" class="externalLoginSection">
+
+            <div th:each="externalLogin: ${externalLogins}" class="externalLogin">
+                <a th:href="@{${externalLogin.url}}">
+                    <i th:class="${externalLogin.image}"></i>
+                    Sign in with <span th:text="${externalLogin.name}"></span>
+                </a>
+            </div>
+        </section>
+    </form>
+</article>
+
+<footer>
+    <p><span th:text="${product}"></span> <span th:text="${asVersion}"></span> by <span class="logo">AxonIQ</span></p>
+</footer>
+
+</body>
+</html>

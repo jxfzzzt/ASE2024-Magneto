@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.goods.GoodsImagesMapper">
+
+    <insert id="batchInsertGoodsImages">
+        insert into goods_images(uuid,goods_uuid,img_type,img_path,sts,created_by,created_time)
+        values
+        <foreach collection="insertList" item="item" index="index" separator=",">
+            (
+            #{item.uuid},
+            #{item.goodsUuid},
+            #{item.imgType},
+            #{item.imgPath},
+            #{item.sts},
+            #{item.createdBy},
+            #{item.createdTime}
+            )
+        </foreach>
+    </insert>
+
+    <update id="deleteGoodsImages" parameterType="java.lang.String">
+        UPDATE goods_images SET sts = 1,last_updated_by = #{userId},last_updated_time = NOW() where goods_uuid = #{goodsUuid} and sts = 0
+
+    </update>
+
+
+    <select id="selectImgList" parameterType ="com.car.account.web.model.goods.GoodsImages" resultType="com.car.account.web.model.goods.GoodsImages">
+        select  * from  goods_images where   goods_uuid = #{goodsImages.goodsUuid} and sts = #{goodsImages.sts} order by img_type
+
+    </select>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.course.CourseContentMapper">
+
+    <update id="updateCourseContent">
+        update course_content
+        <set>
+            <if test="courseContent.courseIntro != null and courseContent.courseIntro != ''">
+                course_intro = #{courseContent.courseIntro},
+            </if>
+
+            <if test="courseContent.courseContent != null and courseContent.courseContent != ''">
+                course_content = #{courseContent.courseContent},
+            </if>
+
+            <if test="courseContent.courseTime != null">
+                course_time = #{courseContent.courseTime},
+            </if>
+
+            <if test="courseContent.courseUrl != null and courseContent.courseUrl != ''">
+                course_url = #{courseContent.courseUrl},
+            </if>
+            last_updated_time = now(),
+            last_updated_by = #{courseContent.lastUpdatedBy}
+        </set>
+        WHERE course_uuid = #{courseContent.courseUuid}
+    </update>
+
+    <update id="deleteCourseContent">
+        update
+            course_content
+        set
+            sts = 1,
+            last_updated_time = now(),
+            last_updated_by = #{userName}
+        WHERE course_uuid = #{courseUuid}
+    </update>
+
+</mapper>

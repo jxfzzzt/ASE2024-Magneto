@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.arago</groupId>
+  <artifactId>rike-parent</artifactId>
+  <packaging>pom</packaging>
+  <version>5.3-SNAPSHOT</version>
+  <name>${project.artifactId}</name>
+
+  <modules>
+    <module>arago-base-layout</module>
+    <module>arago-base-theme</module>
+    <module>arago-data</module>
+    <module>arago-data-util</module>
+    <module>arago-debug-util</module>
+    <module>arago-portlet-util</module>
+    <module>arago-rike</module>
+    <module>arago-rike-rest-api</module>
+    <module>arago-lucene</module>
+    <module>arago-rike-commons</module>
+    <module>arago-rike-help</module>
+  </modules>
+
+  <build>
+    <plugins>
+      <plugin> 
+        <artifactId>maven-deploy-plugin</artifactId> 
+        <version>2.5</version> 
+        <dependencies> 
+          <dependency> 
+            <groupId>org.apache.maven.wagon</groupId> 
+            <artifactId>wagon-ssh</artifactId> 
+            <version>1.0-beta-7</version> 
+          </dependency> 
+        </dependencies> 
+      </plugin>
+    </plugins>
+  </build>
+  
+  <distributionManagement>
+    <repository>
+      <id>tabtab</id>
+      <uniqueVersion>false</uniqueVersion>
+      <name>repo</name>
+      <url>$REPO</url>
+    </repository>
+    <snapshotRepository>
+      <id>tabtab</id>
+      <uniqueVersion>false</uniqueVersion>
+      <name>repo</name>
+      <url>$REPO</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+</project>

@@ -1,0 +1,23 @@
+Rewards:
+    1:
+      requirement: 100
+      display_name: ""
+      messages:
+          - ""
+      sound: ""
+      title:
+          upperTitle: ""
+          subTitle: ""
+      commands:
+          - "give {player} diamond 1"
+    2:
+      requirement: 1000
+      display_name: ""
+      messages:
+        - ""
+      sound: ""
+      title:
+        upperTitle: ""
+        subTitle: ""
+      commands:
+        - "give {player} diamond 1"

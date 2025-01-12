@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.withdrawal.WithdrawalDetailMapper">
+
+
+    <insert id="batchInsertWithdrawalDetail">
+        insert into withdrawal_detail(uuid,withdrawal_uuid,withdrawal_type,driving_amount,service_amount,
+        support_amount,qa_amount,sts,created_by,created_time)
+        values
+        <foreach collection="insertList" item="item" index="index" separator=",">
+            (
+            #{item.uuid},
+            #{item.withdrawalUuid},
+            #{item.withdrawalType},
+            #{item.drivingAmount},
+            #{item.serviceAmount},
+            #{item.supportAmount},
+            #{item.qaAmount},
+            #{item.sts},
+            #{item.createdBy},
+            #{item.createdTime}
+            )
+        </foreach>
+    </insert>
+
+    <select id="queryWithdrawalDetailByWithdrawalUuid" parameterType="java.lang.String"
+            resultType="com.car.account.client.response.withdrawal.WithdrawalDetailRes">
+        select uuid,withdrawal_uuid,withdrawal_type,driving_amount,service_amount,support_amount,qa_amount
+        from withdrawal_detail where withdrawal_uuid = #{withdrawalUuid} and sts = 0
+    </select>
+
+    <update id="deleteWithdrawalDetail" parameterType="java.lang.String">
+        update withdrawal_detail set sts = 1 where withdrawal_uuid = #{withdrawalUuid} and sts = 0
+    </update>
+</mapper>

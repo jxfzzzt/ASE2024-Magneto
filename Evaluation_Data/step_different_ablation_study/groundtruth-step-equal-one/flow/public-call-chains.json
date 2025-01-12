@@ -1,0 +1,11 @@
+[
+    {
+        "chain": [
+            "<com.lithium.flow.compress.SnappyCoder: java.io.OutputStream wrapOut(java.io.OutputStream,int)>",
+            "<org.xerial.snappy.SnappyOutputStream: void <init>(java.io.OutputStream,int)>"
+        ],
+        "vuls": [
+            "CVE-2023-43642"
+        ]
+    }
+]

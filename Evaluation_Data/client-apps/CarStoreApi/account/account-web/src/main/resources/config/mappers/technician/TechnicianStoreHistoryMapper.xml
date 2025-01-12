@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.account.web.mapper.technician.TechnicianStoreHistoryMapper">
+    <select id="queryStoreHistory" resultType="com.car.account.client.response.storehistory.QueryStoreHistoryRes">
+      SELECT
+            tsh.uuid,
+            tsh.store_uuid as storeUuid,
+            s.store_name as storeName
+        FROM
+            technician_store_history tsh
+            LEFT JOIN store s ON tsh.store_uuid = s.uuid
+        WHERE
+            tsh.sts = 0
+            <if test="technicianUuid != null and technicianUuid != ''">
+                and tsh.technician_uuid = #{technicianUuid}
+            </if>
+    </select>
+
+</mapper>

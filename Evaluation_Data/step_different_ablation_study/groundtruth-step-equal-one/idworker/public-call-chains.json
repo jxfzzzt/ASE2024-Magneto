@@ -1,0 +1,11 @@
+[
+    {
+        "chain": [
+            "<com.imadcn.framework.idworker.serialize.json.JacksonSerializer: java.lang.Object parseObject(java.lang.String,java.lang.Class)>",
+            "<com.fasterxml.jackson.databind.ObjectMapper: java.lang.Object readValue(java.lang.String,java.lang.Class)>"
+        ],
+        "vuls": [
+            "CVE-2022-42004"
+        ]
+    }
+]

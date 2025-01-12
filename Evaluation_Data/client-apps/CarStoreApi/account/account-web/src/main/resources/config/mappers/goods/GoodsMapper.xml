@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.goods.GoodsMapper">
+    <select id="queryGoodsList" parameterType="com.car.account.client.request.goods.QueryGoodsListReq" resultType="com.car.account.client.response.goods.GoodsRes">
+        select g.uuid,
+               g.goods_name as goodsName,
+               g.man_hour_cost as manHourCost,
+               g.materials_expenses as materialsExpenses,
+               g.surplus_num as surplusNum,
+               g.sales_num as salesNum,
+               g.sell_sts as sellSts,
+               g.created_time as createdTime,
+               g.amt as amt,
+               s.store_name as storeName,
+               s.uuid as storeUuid,
+              (select ifnull(convert(AVG(score_star),DECIMAL(10,2)),0.0) as avgScore from score_info where sts = 0 and relation_uuid = g.uuid) as score,
+              (SELECT COUNT(1) FROM comment_info WHERE sts = 0 AND check_sts = 1 AND relation_uuid = g.uuid) as commentNum
+        from goods g  left join store s on g.store_uuid = s.uuid
+        where g.sts = 0
+        <if test="goodsName != null and goodsName !=''">
+            AND g.goods_name LIKE CONCAT('%',#{goodsName},'%')
+        </if>
+        <if test="goodsType != null and goodsType !=''">
+            AND g.goods_type = #{goodsType}
+        </if>
+        <if test="levelOne != null and levelOne != ''">
+            AND (g.`parent_type` = #{levelOne} OR g.parent_type in ( SELECT s.`uuid` FROM `goods_parent` s WHERE s.sts = 0 AND s.`parent_id` = #{levelOne} ))
+        </if>
+        <if test="levelTwo != null and levelTwo != ''">
+            AND (g.`parent_type` = #{levelTwo} OR g.parent_type in ( SELECT s.`uuid` FROM `goods_parent` s WHERE s.sts = 0 AND s.`parent_id` = #{levelTwo} ))
+        </if>
+        <if test="storeType != null and storeType !=''">
+            AND s.store_type = #{storeType}
+        </if>
+        <if test="storeName != null and storeName !=''">
+            AND s.store_name LIKE CONCAT('%',#{storeName},'%')
+        </if>
+        <if test="null != sellSts">
+            AND g.sell_sts = #{sellSts}
+        </if>
+        <if test="storeUuid != null and storeUuid !=''">
+            AND s.uuid = #{storeUuid}
+        </if>
+        <if test="maxSalesNum != null and maxSalesNum !=''">
+            <![CDATA[  AND g.sales_num <= #{maxSalesNum} ]]>
+        </if>
+        <if test="minSalesNum != null and minSalesNum !=''">
+            <![CDATA[  AND g.sales_num >= #{minSalesNum} ]]>
+        </if>
+        <if test="maxPrice != null and maxPrice !=''">
+            <![CDATA[  AND g.materials_expenses <= #{maxPrice} ]]>
+        </if>
+        <if test="minPrice != null and minPrice !=''">
+            <![CDATA[  AND g.materials_expenses >= #{minPrice} ]]>
+        </if>
+        order by g.created_time desc
+    </select>
+
+    <select id="queryGoodsClassify" parameterType="com.car.account.client.request.goods.QueryGoodsClassifyReq" resultType="com.car.account.web.model.goods.Goods">
+        SELECT * FROM `goods` G WHERE G.`sts` = 0
+        <if test="null != areaUuid and areaUuid != ''">
+            AND G.`store_uuid` IN (
+              SELECT S.`uuid` FROM store S WHERE S.`sts` = 0 AND S.company_address_city = #{areaUuid}
+            )
+        </if>
+        <if test="null != brandUuid and brandUuid != ''">
+            AND G.`store_uuid` IN (
+              SELECT S.`uuid` FROM store S WHERE S.`sts` = 0 AND S.`brand` = #{brandUuid}
+            )
+        </if>
+        <if test="null != levelOneUuid and levelOneUuid != ''">
+            AND G.parent_type = #{levelOneUuid}
+        </if>
+        <if test="null != levelTwoUuid and levelTwoUuid != ''">
+            AND G.sub_type = #{levelTwoUuid}
+        </if>
+        <if test="null != storeUuid and storeUuid != ''">
+            and G.store_uuid = #{storeUuid}
+        </if>
+    </select>
+
+    <select id="selectClassifyByStoreUuid" resultType="java.lang.String">
+        SELECT DISTINCT g.`parent_type` as parentType FROM `goods` g WHERE g.sts = 0 AND g.`store_uuid` = #{storeUuid}
+    </select>
+</mapper>

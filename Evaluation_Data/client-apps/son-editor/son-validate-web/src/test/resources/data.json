@@ -1,0 +1,335 @@
+{
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Package Descriptor Schema",
+    "version": 1,
+    "description": "The package descriptor schema specifies the structure\nof the package descriptor. It makes sure the relevant\ninformation is provided to parse the package in a\nmeaningful way.\n",
+    "definitions": {
+      "credentials": {
+        "username_and_password": {
+          "description": "Basic authentication credentials using username and password.",
+          "type": "object",
+          "properties": {
+            "username": {
+              "description": "A username for authentication.",
+              "type": "string"
+            },
+            "password": {
+              "description": "A password for authentication.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "username",
+            "password"
+          ],
+          "additionalProperties": false
+        },
+        "public_private_key": {
+          "description": "Authentication based on a public-private key approach.",
+          "type": "object",
+          "properties": {
+            "private_key": {
+              "description": "A private key for authentication.",
+              "type": "string"
+            },
+            "password": {
+              "description": "An optional password for the private key.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "private_key"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "type": "object",
+    "properties": {
+      "schema": {
+        "description": "An optional reference to this package descriptor schema.",
+        "type": "string"
+      },
+      "descriptor_version": {
+        "description": "The version of the descriptor schema used.",
+        "type": "string",
+        "pattern": "^[A-Za-z0-9\\-_.]+$"
+      },
+      "package_group": {
+        "description": "The group id will identify the package uniquely across all package.",
+        "type": "string",
+        "pattern": "^[a-z0-9\\-_.]+$"
+      },
+      "package_name": {
+        "description": "The package name identifies the package without its version.",
+        "type": "string",
+        "pattern": "^[a-z0-9\\-_.]+$"
+      },
+      "package_version": {
+        "description": "The version allows to distinguish the same package at different times.",
+        "type": "string",
+        "pattern": "^[0-9\\-_.]+$"
+      },
+      "package_maintainer": {
+        "description": "The person or organization that created the package.",
+        "type": "string"
+      },
+      "package_description": {
+        "description": "An arbitrary description of the package.",
+        "type": "string"
+      },
+      "package_md5": {
+        "description": "An MD5 hash over the package content, i.e. all files contained in the package \nEXCEPT the package descriptor, i.e. /META-INF/MANIFEST.MF, as this file\ncontains this hash.\n",
+        "type": "string",
+        "pattern": "^[A-Fa-f0-9]{32}$"
+      },
+      "package_signature": {
+        "description": "A signature over the package content, i.e. all files contained in the package \nEXCEPT the package descriptor, i.e. /META-INF/MANIFEST.MF, as this file\ncontains this hash.\n",
+        "type": "string"
+      },
+      "entry_service_template": {
+        "description": "The service descriptor that defines THE service of the package.",
+        "type": "string",
+        "pattern": "^[A-Za-z0-9\\-_./]+$"
+      },
+      "sealed": {
+        "description": "Sets the default 'sealed' status that states whether the package is self-contained or not.",
+        "type": "boolean",
+        "default": false
+      },
+      "package_content": {
+        "description": "An array of artifacts contained in the package.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "The name of the artifact similar to the absolute path of the artifact in the package.",
+              "type": "string",
+              "pattern": "^[A-Za-z0-9\\-_./]+$"
+            },
+            "content-type": {
+              "description": "The type of content of the artifact.",
+              "type": "string",
+              "pattern": "^[A-Za-z0-9\\-_./]+$"
+            },
+            "md5": {
+              "description": "An MD5 hash of the artifact.",
+              "type": "string",
+              "pattern": "^[A-Fa-f0-9]{32}$"
+            },
+            "sealed": {
+              "description": "Overrides the default 'sealed' status that states whether this artifact is contained or not.",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "name",
+            "content-type"
+          ],
+          "additionalProperties": false
+        },
+        "uniqueItems": true
+      },
+      "package_resolvers": {
+        "description": "An array of artifacts contained in the package.",
+        "type": "array",
+        "items": {
+          "description": "The different package resolvers, i.e. catatalogs, where packages can be retrieved from.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "The resolver name.",
+              "type": "string",
+              "pattern": "^[A-Za-z0-9\\-_./:]+$"
+            },
+            "credentials": {
+              "description": "The credentials needed to access the resolver.",
+              "type": "object",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/credentials/username_and_password"
+                },
+                {
+                  "$ref": "#/definitions/credentials/public_private_key"
+                }
+              ]
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "uniqueItems": true
+      },
+      "package_dependencies": {
+        "description": "Other SONATA packages this package depends on.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "group": {
+              "description": "The group id that identifies the opther package uniquely across all package.",
+              "type": "string",
+              "pattern": "^[a-z0-9\\-_.]+$"
+            },
+            "name": {
+              "description": "The package name that identifies the other package without its version.",
+              "type": "string",
+              "pattern": "^[a-z0-9\\-_.]+$"
+            },
+            "version": {
+              "description": "The version that allows to distinguish the other package at different times.",
+              "type": "string",
+              "pattern": "^[0-9\\-_.]+$"
+            },
+            "credentials": {
+              "description": "Credentials needed to run the other package.",
+              "type": "string"
+            },
+            "verification_key": {
+              "description": "A public key used to verify the signature of the other package.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "group",
+            "name",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "uniqueItems": true
+      },
+      "artifact_dependencies": {
+        "description": "Artifacts, such as VM images, that are not part of this package, but have to be downloaded.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "The name of the artifact.",
+              "type": "string",
+              "pattern": "^[A-Za-z0-9\\-_./]+$"
+            },
+            "url": {
+              "description": "The URL where the artifact can be downloaded from.",
+              "type": "string",
+              "pattern": "^[A-Za-z0-9\\-_./:]+$"
+            },
+            "md5": {
+              "description": "An MD5 hash of the artifact.",
+              "type": "string",
+              "pattern": "^[A-Fa-f0-9]{32}$"
+            },
+            "credentials": {
+              "description": "Credentials needed to download the artifact.",
+              "type": "object",
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/credentials/username_and_password"
+                },
+                {
+                  "$ref": "#/definitions/credentials/public_private_key"
+                }
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "url"
+          ],
+          "additionalProperties": false
+        },
+        "uniqueItems": true
+      }
+    },
+    "required": [
+      "descriptor_version",
+      "package_group",
+      "package_name",
+      "package_version"
+    ],
+    "additionalProperties": false
+  },
+  "file": {
+    "descriptor_version": "1.0",
+    "package_group": "eu.sonata-nfv.package",
+    "package_name": "sonata-demo",
+    "package_version": "0.1.1",
+    "package_maintainer": "Michael Bredel, NEC Labs Europe",
+    "package_description": "\"The package descriptor for the SONATA demo package that  comprises the descritors of the demo network service,\n the related VNFs, as well as the virtual machine\n images (or docker files) to instantiate the service.\"\n",
+    "entry_service_template": "/service_descriptors/sonata-demo.yml",
+    "sealed": true,
+    "package_content": [
+      {
+        "name": "/service_descriptors/sonata-demo.yml",
+        "content-type": "application/sonata.service_descriptor",
+        "md5": "a16ce1b66bd6d6916c8f994efca0d778"
+      },
+      {
+        "name": "/function_descriptors/iperf-vnfd.yml",
+        "content-type": "application/sonata.function_descriptor",
+        "md5": "f99cb6eaf0cd0e4215a724893b55cf5c"
+      },
+      {
+        "name": "/function_descriptors/firewall-vnfd.yml",
+        "content-type": "application/sonata.function_descriptor",
+        "md5": "7cd0c818ddc43b39c55cb54c88fa1631"
+      },
+      {
+        "name": "/function_descriptors/tcpdump-vnfd.yml",
+        "content-type": "application/sonata.function_descriptor",
+        "md5": "d895ddbc59802cdddd184e3ed2d87a37"
+      },
+      {
+        "name": "/docker_files/iperf/Dockerfile",
+        "content-type": "application/sonata.docker_files",
+        "md5": "5bea7b1f2f73803946674adecaaa9246"
+      },
+      {
+        "name": "/docker_files/iperf/start.sh",
+        "content-type": "application/x-sh",
+        "md5": "5db937fdadb488559eb765b64efcf8c4"
+      },
+      {
+        "name": "/docker_files/firewall/Dockerfile",
+        "content-type": "application/sonata.docker_files",
+        "md5": "fed89e35d173e6aeaf313e1a9ab3f552"
+      },
+      {
+        "name": "/docker_files/firewall/start.sh",
+        "content-type": "application/x-sh",
+        "md5": "17d604d460b8768ac7277ba8ae65be4b"
+      },
+      {
+        "name": "/docker_files/tcpdump/Dockerfile",
+        "content-type": "application/sonata.docker_files",
+        "md5": "e0d2bb965744161ffb0f8af459a589e3"
+      },
+      {
+        "name": "/docker_files/tcpdump/start.sh",
+        "content-type": "application/x-sh",
+        "md5": "95fd94539c7ceb2fbcce8e24dc30b6ba"
+      }
+    ],
+    "artifact_dependencies": [
+      {
+        "name": "my-vm-image",
+        "url": "http://www.bredel-it.de/path/to/vm-image",
+        "md5": "00236a2ae558018ed13b5222ef1bd9f3",
+        "credentials": {
+          "username": "username",
+          "password": "password"
+        }
+      }
+    ]
+  },
+  "options": {
+    "skip-schema-check": false,
+    "skip-schema-key": true,
+    "schema-key": "$schema"
+  }
+}

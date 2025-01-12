@@ -1,0 +1,1089 @@
+﻿CVE-2021-44832,patch,trigger_status,version_status,reason,affected_ga,vulnerable_version,patched_version,patch_branch,备注
+CVE-2022-25647,"https://github.com/google/gson/commit/e6fae590cf2a758c47cd5a17f9bf3780ce62c986
+https://github.com/google/gson/pull/1991",pending,testcase运行成功了，但是好像这个testcase不起什么作用,,,,,,
+,,,,,,,,,
+CVE-2019-15534,https://github.com/folio-org/raml-module-builder/pull/501,pending,,,,,,,,
+CVE-2021-32700,https://github.com/ballerina-platform/ballerina-lang/commit/4609ffee1744ecd16aac09303b1783bf0a525816,pending,sanitizer,,,,,,,
+CVE-2019-10431,https://github.com/jenkinsci/script-security-plugin/commit/415b6e2f3fa0c2e4bd2f9c4a589a9e1fc9cbac8b,no,,依赖太复杂,,,,,,
+CVE-2019-10181,https://github.com/AdoptOpenJDK/IcedTea-Web/pull/344,no,,artifact找不到,,,,,,
+CVE-2022-29599,https://github.com/apache/maven-shared-utils/commit/f751e614c09df8de1a080dc1153931f3f68991c9,yes,tagged,,,,,,,
+CVE-2022-22976,"https://github.com/spring-projects/spring-security/commit/a40f73521c0dd88b879ff6165d280e78bdf8154f
+https://github.com/spring-projects/spring-security/commit/0bd7daf899305eac4b2b0a070db8f9536ac384c5",yes,tagged,,,,,,,
+CVE-2022-23618,https://github.com/xwiki/xwiki-platform/commit/5251c02080466bf9fb55288f04a37671108f8096,no,,maven2找不到Xwiki-platform jar 包,,,,,,
+CVE-2022-30947,"https://github.com/jenkinsci/git-plugin/pull/1272
+https://github.com/jenkinsci/git-plugin/commit/b295606e0b865c298fde27bea14f9b7535a976e6",no,,maven 中心仓 jar 包版本不完整，patch 领先于最新 jar 包版本,,,,,,
+CVE-2018-8039,"https://github.com/apache/cxf/commit/8ed6208f987ff72e4c4d2cf8a6b1ec9b27575d4b
+https://github.com/apache/cxf/commit/fae6fabf9bd7647f5e9cb68897a7d72b545b741b",no,,,,,,,,
+CVE-2020-36320,https://github.com/vaadin/framework/pull/12104,yes,,,,,,,,
+CVE-2020-36321,https://github.com/vaadin/flow/pull/9392,no,,依赖太复杂,,,,,,
+CVE-2019-1003049,https://github.com/jenkinsci/jenkins/commit/0eeaa087aac192fb39f52928be5a5bbf16627ea6,no,,,,,,,,
+CVE-2019-10219,"https://github.com/hibernate/hibernate-validator/commit/124b7dd6d9a4ad24d4d49f74701f05a13e56ceee
+https://github.com/hibernate/hibernate-validator/commit/20d729548511ac5cff6fd459f93de137195420fe",yes,,,,,,,,
+CVE-2019-10755,https://github.com/pac4j/pac4j/commit/34d5b1028a2db201ee81ec51b52a782fe073f609,yes,tagged,,,,,,,
+CVE-2017-15095,https://github.com/FasterXML/jackson-databind/commit/ddfddfba,pending,,测试集本身依赖了另一个单元测试集，且新增的测试集并不是用自动测试框架写的,,,,,,
+CVE-2017-4994,https://github.com/cloudfoundry/uaa/commit/f40eb20950d285be7a50bc79f0587e8f303df2d9,pending,,,,,,,,
+CVE-2017-1000487,https://github.com/codehaus-plexus/plexus-utils/commit/b38a1b3a4352303e4312b2bb601a0d7ec6e28f41,yes,tagged,,,,,,,
+CVE-2021-36774,"https://github.com/apache/kylin/pull/1694
+https://github.com/apache/kylin/commit/c5599678f56e629b2243a9f48ad7617afb06e270
+https://github.com/apache/kylin/pull/1694/commits/356533da4f83d4a4edab469ffe89f54bfd6dbb14",pending,,多组件,,,,,,
+CVE-2022-22947,https://github.com/spring-cloud/spring-cloud-gateway/commit/1b868d2159e8fb71c22d583e424ae699f90532e3,pending,,依赖过多,,,,,,
+CVE-2021-45456,"https://github.com/apache/kylin/pull/1781
+https://github.com/apache/kylin/pull/1781/commits/21be8fc14307da280db62c0127c423bf92d0faed
+https://github.com/apache/kylin/commit/f4daf14dde99b934c92ce2c832509f24342bc845",pending,,多组件,,,,,,
+CVE-2019-17573,"https://github.com/apache/cxf/commit/a02e96ba1095596bef481919f16a90c5e80a92c8
+https://github.com/apache/cxf/commit/4ca5f7b92175edab46d1f1ea4e829a3ac4e9c7f2
+https://github.com/apache/cxf/commit/ffee603ae648c25f6ce5aa01b92c3aa57ebd5681",no,,,,,,,,
+CVE-2012-2098,"https://github.com/apache/commons-compress/commit/fdd7459bc5470e90024dbe762249166481cce769
+https://github.com/apache/commons-compress/commit/0600296ab8f8a0bbdfedd483f51b38005eb8e34e",pending,,testcase 无法运行,,,,,,
+CVE-2020-25633,https://github.com/resteasy/Resteasy/pull/2665/commits/13c808b5967242eec1e877edbc0014a84dcd6eb0,no,,文件过多,,,,,,
+CVE-2019-3875,https://github.com/keycloak/keycloak/commit/5f9feee3f86e3d856063c8b6d355e30c962258f7,no,testcase 复杂,,,,,,,
+CVE-2022-22969,"https://github.com/spring-projects/spring-security-oauth/commit/3379a36e64c13e4118c7e179f3a874a64de5f5a2
+https://github.com/spring-projects/spring-security-oauth/commit/2b58aafecac336e82f20ea43da9b208b0a4a40dd",yes,tagged,,,,,,,
+CVE-2020-13445,https://github.com/community-security-team/liferay-portal/commit/064e6b01afa1e087e4c6bbaf7f71c97ee33f3ee9,no,,文件过多,,,,,,
+CVE-2017-15089,https://github.com/infinispan/infinispan/pull/5639,no,,测试框架不是 junit,,,,,,
+CVE-2021-22113,https://github.com/spring-cloud/spring-cloud-netflix/commit/8ecb3dca511c3ce0454e42ac31ee2331d7318c07,no,,testcase 依赖复杂,,,,,,
+CVE-2019-20445,"https://github.com/netty/netty/commit/8494b046ec7e4f28dbd44bc699cc4c4c92251729
+https://github.com/netty/netty/pull/9865",yes,tagged,测试请求头是否合理，如果恶意构造的请求头被成功构造，则断言失败,,,,,,
+,,,,,,,,,,
+CVE-2022-23305,https://github.com/qos-ch/reload4j/commit/e845f28e7fb0ecbc0fcce383b11179f2650a51a2,no,,testcase 依赖复杂,,,,,,
+CVE-2022-25180,https://github.com/jenkinsci/workflow-cps-plugin/commit/886676efdd711e126307ec70a539f2fe613151f9,no,,maven 中心仓 jar 包版本不完整，patch 领先于最新 jar 包版本,,,,,,
+CVE-2021-37578,https://github.com/apache/juddi/commit/dd880ffe7694a70cee75efeee79c9197d261866f,no,,patch 不纯净,,,,,,
+CVE-2017-2599,https://github.com/jenkinsci/jenkins/commit/4ed5c850b6855ab064a66d02fb338f366853ce89,no,,maven jar 缺失,,,,,,
+CVE-2020-5245,https://github.com/dropwizard/dropwizard/commit/d87d1e4f8e20f6494c0232bf8560c961b46db634,yes,tagged,,,,,,,
+CVE-2019-11938,"https://github.com/facebook/fbthrift/commit/71c97ffdcb61cccf1f8267774e873e21ebd3ebd3
+https://github.com/facebook/fbthrift/commit/08c2d412adb214c40bb03be7587057b25d053030",no,,maven jar 缺失,,,,,,
+CVE-2018-1000068,https://github.com/jenkinsci/jenkins/commit/8830d68f5fe21f344be3496984bc4470bfcd0564,no,,maven2 缺失 jar,,,,,,
+CVE-2020-13692,https://github.com/pgjdbc/pgjdbc/commit/14b62aca4764d496813f55a43d050b017e01eb65,yes,tagged,,,,,,,
+CVE-2015-2156,"https://github.com/netty/netty/commit/31815598a2af37f0b71ea94eada70d6659c23752
+https://github.com/netty/netty/commit/2caa38a2795fe1f1ae6ceda4d69e826ed7c55e55
+https://github.com/netty/netty/pull/3748
+https://github.com/netty/netty/commit/97d871a7553a01384b43df855dccdda5205ae77a
+https://github.com/netty/netty/pull/3754
+https://github.com/netty/netty/pull/3748/commits/4ac519f534493bb0ca7a77e1c779138a54faa7b9
+https://github.com/netty/netty/commit/d98b21be045a315ced88ada84000e4757cfb9892",yes,tagged,,io.netty:netty,,,,,
+CVE-2018-1000601,https://github.com/jenkinsci/ssh-credentials-plugin/commit/18b3121fa94a174064447d637dc11539e33b3a76,no,,,,,,,,
+CVE-2022-20613,https://github.com/jenkinsci/mailer-plugin/commit/5e6051fae61a43564e22aa89cb24ed8a42a26052,no,,依赖复杂,,,,,,
+CVE-2012-6612,https://github.com/apache/lucene-solr/commit/f230486ce6707762c1a6e81655d0fac52887906d,pending,,依赖缺失,,,,,,
+CVE-2020-8929,https://github.com/google/tink/commit/93d839a5865b9d950dffdc9d0bc99b71280a8899,yes,tagged,,,,,,,
+CVE-2022-29567,https://github.com/vaadin/flow-components/commit/ac9854f2edd7031ab5870e55044ebd126087bd10,yes,tagged,,,,,,,
+CVE-2016-1000338,https://github.com/bcgit/bc-java/commit/44f1ea41be8f0ea309724f35d687c1be13a845eb,yes,tagged,,,,,,,
+CVE-2020-1695,https://github.com/resteasy/Resteasy/commit/88ba8537f2e8d465c7031d352bf9bb25526ce475,pending,,testcase 不明确,,,,,,
+CVE-2018-1000632,"https://github.com/dom4j/dom4j/commit/c2a99d7dee8ce7a4e5bef134bb781a6672bd8a0f
+https://github.com/dom4j/dom4j/commit/e598eb43d418744c4dbf62f647dd2381c9ce9387",yes,tagged,,,,,,,
+CVE-2021-40525,"https://github.com/apache/james-project/pull/636/commits/895fcca2036fef71aef57cbda0b9bd2df22afe1e
+https://github.com/apache/james-project/pull/636
+https://github.com/apache/james-project/commit/c019c349f9cb2dc6e767e71ea26cb1789ec482f9
+https://github.com/apache/james-project/pull/636/commits/2df1c57894e2144775782bf800265ef3927b0164",pending,,依赖太多,,,,,,
+CVE-2018-1000013,https://github.com/jenkinsci/release-plugin/commit/fe1660a5ebff2377b6a64214c6012e8615b3f81f,no,,maven2 缺失 jar,,,,,,
+CVE-2018-20000,"https://github.com/Bedework/bw-webdav/commit/ccb87c2757bab531c53faf0637ee342a378caa7f
+https://github.com/Bedework/bw-webdav/pull/1",yes,tagged,,,,,,,
+CVE-2021-42767,"https://github.com/neo4j-contrib/neo4j-apoc-procedures/commit/5d363878db4f77d05159f8350f8347af80f081ed
+https://github.com/neo4j-contrib/neo4j-apoc-procedures/commit/1b75fd88b9eed8d4674be1d95ad55078be25da06
+https://github.com/neo4j-contrib/neo4j-apoc-procedures/commit/3de6b0002e2dc26e9f5064c980caf5d27e454acd
+https://github.com/neo4j-contrib/neo4j-apoc-procedures/commit/f6bdd14c78b40009f97a62c85a86d6a7815bd0a3",pass,,,,,,,,
+CVE-2019-17556,https://github.com/apache/olingo-odata4/pull/60/files,no,,依赖太多,,,,,,
+CVE-2018-1000111,https://github.com/jenkinsci/subversion-plugin/commit/25f6afbb02a5863f363b0a2f664ac717ace743b4,no,,maven jar 缺失,,,,,,
+CVE-2022-34298,https://github.com/OpenIdentityPlatform/OpenAM/pull/514,pending,,找不到依赖 org.openidentityplatform.external.com.sun.web.ui:cc:jar:2008-08-08，找不到符号 dataProvider,,,,,,
+CVE-2018-1190,https://github.com/cloudfoundry/uaa/commit/96fe26711f8f8855d2994a531447f730afd61844,pending,,找不到源代码 DefaultConfigurationTestSuite（java: 找不到符号  符号:位置：）,,,,,,
+CVE-2017-2604,https://github.com/jenkinsci/jenkins/commit/6efcf6c2ac39bc5c59ac7251822be8ddf67ceaf8,no,,maven2 缺失 jar,,,,,,
+CVE-2016-1594,https://github.com/spring-projects/spring-framework/commit/8028eae786ff36ea58df9a385319bf045795fa77,pending,,patch 不正确,,,,,,
+CVE-2022-28367,https://github.com/nahsra/antisamy/commit/0199e7e194dba5e7d7197703f43ebe22401e61ae,pending,,存在 protected,,,,,,
+CVE-2019-10247,https://github.com/eclipse/jetty.project/commit/04c994712c0b29824633598cfe0bf709f3b96f09,pending,,,,,,,,
+CVE-2021-44548,"https://github.com/apache/lucene-solr/commit/aa95d5440d3eef11fe20ffddd34ef7385cbefbb2
+https://github.com/apache/solr/pull/439/commits/151396ac34ea7331761d583d21c8b610bac6e9ab
+https://github.com/apache/solr/pull/439
+https://github.com/apache/lucene-solr/pull/2622",pass,,,,,,,,
+CVE-2020-28491,https://github.com/FasterXML/jackson-dataformats-binary/commit/de072d314af8f5f269c8abec6930652af67bc8e6,no,,,,,,,,
+CVE-2021-21369,"https://github.com/hyperledger/besu/pull/1144
+https://github.com/hyperledger/besu/commit/06e35a58c07a30c0fbdc0aae45a3e8b06b53c022",pass,,,,,,,,
+CVE-2021-36163,https://github.com/apache/dubbo/pull/8238,pass,,,,,,,,
+CVE-2018-25007,https://github.com/vaadin/flow/pull/4774,pass,,,,,,,,
+CVE-2021-45029,https://github.com/apache/incubator-shenyu/commit/725b906d5b4c3410a3ccade10da28abc7dd1c3bc,no,,patch 方式是重构,,,,,,
+CVE-2017-2601,https://github.com/jenkinsci/jenkins/commit/fd2e081b947124c90bcd97bfc55e1a7f2ef41a74,no,,maven2 缺失 jar,,,,,,
+CVE-2018-16521,https://github.com/openmrs/openmrs-module-htmlformentry/pull/138,no,,maven jar 缺失,,,,,,
+CVE-2017-17532,https://github.com/aws/aws-dynamodb-encryption-java/commit/7de5f5a5929271ab25bce685089eb7ec564dac4b,pass,,,,,,,,
+CVE-2019-10158,"https://github.com/infinispan/infinispan/commit/debdf5447da3626d2f970050ca79cdf98bf87661
+https://github.com/infinispan/infinispan/pull/6960
+https://github.com/infinispan/infinispan/commit/245a0d0b169001e5a22c0ec9903942e617c0743f
+https://github.com/infinispan/infinispan/commit/4b381c5910265972ccaabefbdbd16a2b929f6b72
+https://github.com/infinispan/infinispan/commit/7341da552a13cb9e8a44cd13c984d1f46310653e
+https://github.com/infinispan/infinispan/pull/7025",no,,测试框架不是 junit,,,,,,
+CVE-2018-1000202,https://github.com/jenkinsci/groovy-postbuild-plugin/commit/f846d5cecad936b11735649e05b93681d60f3630,no,,,,,,,,
+CVE-2021-26919,https://github.com/apache/druid/commit/48953e3508967f5156c69676432b5d4dd25ea678,pass,,,,,,,,
+CVE-2022-23082,https://github.com/whitesource/CureKit/commit/af35e870ed09411d2f1fae6db1b04598cd1a31b6,yes,tagged,,,,,,,
+CVE-2021-4104,"https://github.com/apache/logging-log4j2/pull/608#issuecomment-991723301
+https://github.com/apache/logging-log4j2/pull/608#issuecomment-990494126
+https://github.com/apache/logging-log4j2/pull/608",no,,patch 不正确,,,,,,
+CVE-2020-35217,https://github.com/vert-x3/vertx-web/pull/1613,pass,,,,,,,,
+CVE-2021-44145,"https://github.com/apache/nifi/commit/200538a2903be98567ecfa1981967e714920d8cd
+https://github.com/apache/nifi/pull/5542",no,,依赖缺失,,,,,,
+CVE-2019-12741,"https://github.com/hapifhir/hapi-fhir/commit/8f41159eb147eeb964cad68b28eff97acac6ea9a
+https://github.com/jamesagnew/hapi-fhir/commit/8f41159eb147eeb964cad68b28eff97acac6ea9a",no,,没有 testcase,,,,,,
+CVE-2021-32053,https://github.com/hapifhir/hapi-fhir/pull/2642,pass,,,,,,,,
+CVE-2021-39181,https://github.com/OpenOLAT/OpenOLAT/commit/3f219ac457afde82e3be57bc614352ab92c05684,pass,,,,,,,,
+CVE-2021-32732,https://github.com/xwiki/xwiki-platform/commit/f0440dfcbba705e03f7565cd88893dde57ca3fa8,no,no,,,,,,,
+CVE-2022-30949,https://github.com/jenkinsci/repo-plugin/commit/8c9cbb88baffc64d1b63183235eb86c773108235,pass,,,,,,,,
+CVE-2021-39209,https://github.com/apache/poi/commit/7f9f8e9afa8160ef401ec8b3416d36428e928e2f,no,,patch 不正确,,,,,,
+CVE-2020-14326,https://github.com/resteasy/Resteasy/commit/dd255d654f15b5b270a166d695f8813dc08675d4,yes,tagged,,,,,,,
+CVE-2021-43290,"https://github.com/gocd/gocd/commit/4c4bb4780eb0d3fc4cacfc4cfcc0b07e2eaf0595
+https://github.com/gocd/gocd/commit/c22e0428164af25d3e91baabd3f538a41cadc82f",pass,,,,,,,,
+CVE-2021-39236,https://github.com/apache/ozone/pull/1871,pass,,,,,,,,
+CVE-2021-25929,"https://github.com/OpenNMS/opennms/commit/66c1f626bf38a7d1a9530b4d68598269ee5245a2
+https://github.com/OpenNMS/opennms/commit/eb08b5ed4c5548f3e941a1f0d0363ae4439fa98c",no,,,,,,,,
+CVE-2022-25183,https://github.com/jenkinsci/workflow-cps-global-lib-plugin/commit/d9adda35f647fe036900e93ae9bd3b681676ebf6,no,,,,,,,,
+CVE-2022-25176,https://github.com/jenkinsci/workflow-cps-plugin/commit/f7ae7b75a457976853539bff1db52373b85fdb85,no,,patch 版本模糊,,,,,,
+,,,,,,,,,,
+CVE-2023-51074,https://github.com/jenkinsci/parameterized-trigger-plugin/commit/6b7cd2272cbd9f97416bff7ea19132b9aad0898d,no,,,,,,,,
+CVE-2017-7957,https://github.com/x-stream/xstream/commit/b3570be2f39234e61f99f9a20640756ea71b1b4,yes,tagged,,,,,,,
+,https://github.com/x-stream/xstream/commit/6e546ec366419158b1e393211be6d78ab9604ab,,,,,,,,,
+,"https://github.com/x-stream/xstream/commit/8542d02d9ac5d384c85f4b33d6c1888c53bd55d
+",,,,,,,,,
+,https://github.com/x-stream/xstream/commit/b3570be2f39234e61f99f9a20640756ea71b1b40,,,,,,,,,
+CVE-2022-20614,https://github.com/jenkinsci/mailer-plugin/commit/b6d6a3bbeea8666f820d1620e757c72cb801604d,,,,,,,,,
+CVE-2020-13973,https://github.com/OWASP/json-sanitizer/commit/f3512bab078af3f5c533dacc2d410add8c0c1124,yes,tagged,,,,,,,
+CVE-2016-0750,https://github.com/infinispan/infinispan/commit/f2989a9b7b5ef2d3be690250d9d1bc7b2fa045d7,no,测试框架不是 junit,,,,,,,
+CVE-2018-1000134,"https://github.com/pingidentity/ldapsdk/commit/8471904a02438c03965d21367890276bc25fa5a6
+https://github.com/pingidentity/ldapsdk/commit/8471904a02438c03965d21367890276bc25fa5a6#diff-f6cb23b459be1ec17df1da33760087fd
+https://github.com/pingidentity/ldapsdk/commit/801111d8b5c732266a5dbd4b3bb0b6c7b94d7afb",no,漏洞函数 protected,,,,,,,
+CVE-2022-23107,https://github.com/jenkinsci/warnings-ng-plugin/commit/3a4d44156874afcb925988891a7131296b752442,no,,,,,,,,
+CVE-2022-23108,https://github.com/jenkinsci/badge-plugin/commit/468a59527a9b906f1790486674b3b6475bf2f4a3,no,,,,,,,,
+CVE-2018-1000195,https://github.com/jenkinsci/jenkins/commit/6eea1e97840b5623829b2c1fd2e363c045bdc230,no,,maven2 缺失 jar,,,,,,
+CVE-2019-10754,https://github.com/apereo/cas/commit/40bf278e66786544411c471de5123e7a71826b9f,pass,,,,,,,,
+CVE-2021-45457,"https://github.com/apache/kylin/pull/1782/commits/c6525128fd9f0222e3049800c8d215f374e5caaa
+https://github.com/apache/kylin/pull/1782
+https://github.com/apache/kylin/pull/1781",pass,,,,,,,,
+CVE-2022-25178,https://github.com/jenkinsci/workflow-cps-global-lib-plugin/commit/ace0de3c2d691662021ea10306eeb407da6b6365,no,,,,,,,,
+CVE-2022-23596,https://github.com/junrar/junrar/commit/7b16b3d90b91445fd6af0adfed22c07413d4fab7,yes,tagged,,,,,,,
+CVE-2007-2616,https://github.com/apache/httpcomponents-client/commit/0554271750599756d4946c0d7ba43d04b1a7b220,no,,,,,,,,
+CVE-2021-36372,https://github.com/apache/ozone/pull/2329,pass,,,,,,,,
+CVE-2021-27807,https://github.com/apache/pdfbox/commit/5c5a837140fbb4ef78bb5ef9f29ad537c872c83e,yes,tagged,protected,,,,,,
+CVE-2017-5929,https://github.com/qos-ch/logback/commit/f46044b805bca91efe5fd6afe52257cd02f775f8,no,,修复方式依赖新加类,,,,,,
+CVE-2021-35043,https://github.com/nahsra/antisamy/commit/be6a42b2a3e2600c774d91f9fb830c44bfc217fc,yes,tagged,存在 protected,,,,,,
+CVE-2019-10080,https://github.com/apache/nifi/pull/3507,no,,依赖问题,,,,,,
+CVE-2012-5633,"https://github.com/apache/cxf/commit/1a6b532d53a7b98018871982049e4b0c80dc837c
+https://github.com/apache/cxf/commit/94a98b3fe9c79e2cf3941acbbad216ba54999bc0",no,,,,,,,,
+CVE-2016-1000344,https://github.com/bcgit/bc-java/commit/9385b0ebd277724b167fe1d1456e3c112112be1f,no,,testcase 不是攻击vulnerable的,,,,,,
+CVE-2018-1271,"https://github.com/spring-projects/spring-framework/commit/b9ebdaaf3710db473a2e1fec8641c316483a22aa
+https://github.com/spring-projects/spring-framework/commit/0e28bee0f155b9bf240b4bafc4646e4810cb23f8",pending,,需要 Win 测试,,,,,,
+CVE-2020-7647,https://github.com/jooby-project/jooby/commit/34f526028e6cd0652125baa33936ffb6a8a4a009,no,,protected,,,,,,
+CVE-2020-25689,"https://github.com/wildfly/wildfly-core/commit/5a8a65c2e3310fe0c0143581c677855516148215
+https://github.com/wildfly/wildfly-core/pull/4308",pass,,,,,,,,
+CVE-2017-4322,https://github.com/FasterXML/jackson-core/commit/96642978dcf1b69cba68ec72cb2f652d59a8b5be,pending,,成功触发，但是这个CVE在NVD官网已经被REJECT了,,,,,,
+CVE-2013-0158,"https://github.com/jenkinsci/jenkins/commit/a9aff088f327278a8873aef47fa8f80d3c5932fd
+https://github.com/jenkinsci/jenkins/commit/4895eaafca468b7f0f1a3166b2fca7414f0d5da5
+https://github.com/jenkinsci/jenkins/commit/94a8789b699132dd706021a6be1b78bc47f19602",no,,maven2 缺失 jar,,,,,,
+CVE-2022-23945,"https://github.com/apache/incubator-shenyu/commit/9a02215013037e1cc8cd41f216164628a9e9e28f
+https://github.com/apache/incubator-shenyu/pull/2723",pass,,,,,,,,
+CVE-2017-2608,https://github.com/jenkinsci/jenkins/commit/a814154695e23dc37542af7d40cacc129cf70722,no,,maven2 缺失 jar,,,,,,
+CVE-2022-24861,"https://github.com/vran-dev/databasir/commit/ca22a8fef7a31c0235b0b2951260a7819b89993b
+https://github.com/vran-dev/databasir/pull/103",pass,,,,,,,,
+CVE-2020-11612,https://github.com/netty/netty/pull/9924,pending,,漏洞是内存爆炸，但是testcase测试的是sanitizer是否生效，不算PoC？,,,,,,
+CVE-2021-43797,https://github.com/netty/netty/commit/07aa6b5938a8b6ed7a6586e066400e2643897323,yes,tagged,,,,,,,
+CVE-2014-2058,https://github.com/jenkinsci/jenkins/commit/b6b2a367a7976be80a799c6a49fa6c58d778b50e,no,,,,,,,,
+CVE-2021-44228,"https://github.com/apache/logging-log4j2/commit/f819c83804152cb6ed94cb408302e36b21b65053
+https://github.com/apache/logging-log4j2/commit/70edc233343815d5efa043b54294a6fb065aa1c5
+https://github.com/apache/logging-log4j2/pull/608#issuecomment-990494126
+https://github.com/apache/logging-log4j2/pull/608",yes,tagged,,,,,,,
+CVE-2021-41973,https://github.com/apache/mina/commit/3bca0bcc3e4615ea234879350c08fd4c4c3fbd20,yes,tagged,,,,,,,
+CVE-2017-4974,"https://github.com/cloudfoundry/uaa/commit/b6d6526cb89120043d390bf0274cd062e9fc452
+https://github.com/cloudfoundry/uaa/commit/74b9b270787aa602196d59d58893c3a6e09816f9
+https://github.com/cloudfoundry/uaa/commit/01edea6337c8ddb2ab80906aa1254d3c1dc02fbd",pending,,组件定位困难,,,,,,
+CVE-2017-1000427,https://github.com/hazelcast/hazelcast/pull/17722,no,,Patch 错误,,,,,,
+CVE-2021-37580,"https://github.com/apache/incubator-shenyu/pull/2357
+https://github.com/apache/incubator-shenyu/pull/2357/commits/c07f247efe54ac2139a6e196f844d12dd6caa8c2",pass,,,,,,,,
+CVE-2021-33605,"https://github.com/vaadin/flow-components/pull/1903
+https://github.com/vaadin/flow-components/commit/eaf6e7afac5d9744e2a8b6797d3386858c95a4a0",no,,testcase 涉及到与外部浏览器交互,,,,,,
+CVE-2019-11282,https://github.com/cloudfoundry/uaa/commit/bf2a336b37c43c190fabb8c0756a4566034f3c14,no,,组件定位困难,,,,,,
+CVE-2016-6809,https://github.com/tballison/jmatio/commit/0d6294332e481180c951b648d37607ad5754d331,no,,Patch 错误,,,,,,
+CVE-2021-22573,"https://github.com/googleapis/google-oauth-java-client/commit/22419d60579ef4c1a8a256a90e6ca7bc58f09aa1
+https://github.com/googleapis/google-oauth-java-client/pull/861",pass,,,,,,,,
+CVE-2020-10734,"https://github.com/keycloak/keycloak/commit/aacae9b9acb0fbedc49d4f88c9fbd7aa11922dce
+https://github.com/keycloak/keycloak/pull/11009",pass,,,,,,,,
+CVE-2015-7940,https://github.com/bcgit/bc-java/commit/5cb2f05,no,,testcase 太复杂,,,,,,
+CVE-2019-17555,https://github.com/apache/olingo-odata4/pull/61,no,,protected,,,,,,
+CVE-2014-2061,https://github.com/jenkinsci/jenkins/commit/bf539198564a1108b7b71a973bf7de963a6213ef,no,,,,,,,,
+CVE-2021-32623,https://github.com/opencast/opencast/commit/16b0d641713fe31b8518fcf14fc5e4e815d81206,no,,,,,,,,
+CVE-2018-8088,"https://github.com/qos-ch/slf4j/commit/918a055bdf87867f69693cf82727fa435c489e25
+https://github.com/qos-ch/slf4j/commit/c15d3c1dab0c3398011dec3a16ad3e45b75ae70d",no,,no testcase,,,,,,
+CVE-2016-4999,https://github.com/dashbuilder/dashbuilder/commit/8574899e3b6455547b534f570b2330ff772e524b,no,,依赖复杂,,,,,,
+CVE-2009-3462,https://github.com/undertow-io/undertow/commit/db0f5be43f8e2a4b88fbedd2eb6d5a95a29ceaa8,pass,,,,,,,,
+CVE-2017-2598,https://github.com/jenkinsci/jenkins/commit/e6aa166246d1734f4798a9e31f78842f4c85c28b,no,,,,,,,,
+CVE-2017-2606,https://github.com/jenkinsci/jenkins/commit/09cfbc9cd5c9df7c763bc976b7f5c51266b63719,no,,,,,,,,
+CVE-2019-18394,https://github.com/igniterealtime/Openfire/pull/1497,no,,maven 版本缺失,,,,,,
+CVE-2020-26883,https://github.com/playframework/playframework/pull/10495,pass,,,,,,,,
+CVE-2017-12624,"https://github.com/apache/cxf/commit/896bd961cbbb6b8569700e5b70229f78f94ad9dd
+https://github.com/apache/cxf/commit/8bd915bfd7735c248ad660059c6b6ad26cdbcdf6
+https://github.com/apache/cxf/commit/a2ce435cf0eedc8158d118d6d275114408d2a376",pass,,,,,,,,
+CVE-2020-9149,https://github.com/apache/commons-codec/commit/48b615756d1d770091ea3322eefc08011ee8b113,no,,Patch 错误,,,,,,
+CVE-2013-6430,"https://github.com/spring-projects/spring-framework/commit/7a7df6637478607bef0277bf52a4e0a03e20a248
+https://github.com/spring-projects/spring-framework/commit/f5c9fe69a444607af667911bd4c5074b5b073e7b",yes,tagged,,,,,,,
+CVE-2022-29183,https://github.com/gocd/gocd/pull/9829/commits/bda81084c0401234b168437cf35a63390e3064d1,no,,maven jar 缺失,,,,,,
+CVE-2022-30954,https://github.com/jenkinsci/blueocean-plugin/commit/9f44b895d018c514d5dccc1f2190a2a029e58259,no,,,,,,,,
+CVE-2017-1000401,https://github.com/jenkinsci/jenkins/commit/09d60462b9edf775f08568601bb3e2cfd8075368,no,,,,,,,,
+CVE-2013-2055,https://github.com/apache/wicket/commit/4c437fef16e9c8705cd79246eae67993077490f4,yes,tagged,,,,,,,
+CVE-2022-29546,https://github.com/HtmlUnit/htmlunit-neko/commit/9d2aecd69223469e40c12ca3edddda09009110cc,yes,tagged,,,,,,,
+CVE-2021-32634,https://github.com/NationalSecurityAgency/emissary/commit/40260b1ec1f76cc92361702cc14fa1e4388e19d7,pass,,,,,,,,
+CVE-2019-9843,https://github.com/diffplug/spotless/pull/369,no,,maven jar 缺失,,,,,,
+CVE-2012-6119,https://github.com/candlepin/candlepin/commit/f4d93230e58b969c506b4c9778e04482a059b08c,no,,maven jar 缺失,,,,,,
+CVE-2003-0602,https://github.com/keycloak/keycloak/commit/ac79fd0c23c6947a04073afc61e30d341498438e,pass,,,,,,,,
+CVE-2016-1000352,https://github.com/bcgit/bc-java/commit/9385b0ebd277724b167fe1d1456e3c112112be1f,no,,,,,,,,
+CVE-2022-25175,https://github.com/jenkinsci/workflow-multibranch-plugin/commit/71c3f0a6ccdb2ba43f43686826b0d62160df85e8,no,,,,,,,,
+CVE-2021-38296,https://github.com/apache/spark/commit/1cb0f7db88a4aea20ab95cb07825d13f8e0f25aa,pass,,,,,,,,
+CVE-2022-22968,https://github.com/spring-projects/spring-framework/commit/833e750175349ab4fd502109a8b41af77e25cdea,yes,tagged,,,,,,,
+CVE-2015-7549,https://github.com/apache/ignite/pull/9610,no,,patch 不正确,,,,,,
+CVE-2021-22051,https://github.com/spring-cloud/spring-cloud-gateway/commit/3ebb6aa5c89e8ee9e7052e168d596d4f28eca86c,pass,,,,,,,,
+CVE-2007-3854,https://github.com/bcgit/bc-java/commit/7b66244e14488c5c981415b02ff71837ff3d2d50,no,,testcase 不是攻击vulnerable的,,,,,,
+CVE-2021-42392,https://github.com/h2database/h2database/commit/b24aa46f48904ce64443f8f4353d70a2eed09037,yes,tagged,,,,,,,
+CVE-2022-25182,https://github.com/jenkinsci/workflow-cps-global-lib-plugin/commit/ace0de3c2d691662021ea10306eeb407da6b6365,no,,,,,,,,
+CVE-2017-9795,https://github.com/apache/geode/pull/837,pass,,,,,,,,
+CVE-2012-4947,https://github.com/FasterXML/woodstox/commit/7937f97c638ef8afd385ebf4a675a9b096ccdd57,pass,,,,,,,,
+CVE-2022-0538,https://github.com/jenkinsci/jenkins/commit/8276aef4cc3dd81810fe6bdf6fa48141632c4636,no,,,,,,,,
+CVE-2020-17532,"https://github.com/apache/servicecomb-java-chassis/commit/839a52e27c754cb5ce14f20063902f21065bd26c
+https://github.com/apache/servicecomb-java-chassis/commit/ba4fb37b6ab8bd3a6c3d0693f295d99a94879838",pending,,testcase 问题,,,,,,
+CVE-2020-28052,https://github.com/bcgit/bc-java/commit/2a6e67d5b1e4e06dbd6f17d834af4c57a92fd34a,yes,tagged,,,,,,,
+CVE-2021-38542,"https://github.com/apache/james-project/commit/fad40c4eb9cbc16f4879928485f3817548987b76
+https://github.com/apache/james-project/commit/6263d87f10fd733fc4d7933a24ca7fe21cea7ff6
+https://github.com/apache/james-project/commit/02a7ed443aadb4c4d1ae8ac235e3c196760895b1
+https://github.com/apache/james-project/pull/589",pass,,,,,,,,
+CVE-2012-0818,https://github.com/resteasy/resteasy/commit/71ace879cf92d323bfa4d3e88db0c3059109bbf6,no,,tesecase 涉及依赖外部服务器,,,,,,
+CVE-2022-26612,"https://github.com/apache/hadoop/commit/580ee613834398a9bc94bd0acf12cf999740e5e2
+https://github.com/apache/hadoop/pull/4063
+https://github.com/apache/hadoop/commit/08e6d0ce608647d57da647c71ceb216243ff16d9
+https://github.com/apache/hadoop/commit/1397cf24966cd98a74a94d37aaa9a09ba2aa7967
+https://github.com/apache/hadoop/commit/fd96d5c2d5278aa6e7d527efa80761384c87bc26",pending,,,,,,,,
+CVE-2021-33813,https://github.com/hunterhacker/jdom/commit/2a25ee409d09fb3eed75a4272ab8540c5261f960,yes,tagged,,,,,,,
+CVE-2020-11612,,no,,,,,,,,
+CVE-2014-8122,https://github.com/weld/core/commit/29fd1107fd30579ad9bb23fae4dc3ba464205745,pass,,,,,,,,
+CVE-2019-16771,https://github.com/line/armeria/commit/b597f7a865a527a84ee3d6937075cfbb4470ed20,yes,tagged,,,,,,,
+CVE-2020-11988,https://github.com/apache/xmlgraphics-commons/commit/57393912eb87b994c7fed39ddf30fb778a275183,yes,tagged,,,,,,,
+CVE-2021-43288,https://github.com/gocd/gocd/commit/f5c1d2aa9ab302a97898a6e4b16218e64fe8e9e4,no,,maven jar 缺失,,,,,,
+CVE-2019-10185,https://github.com/AdoptOpenJDK/IcedTea-Web/pull/344,no,,artifact找不到,,,,,,
+CVE-2014-8125,https://github.com/droolsjbpm/jbpm/commit/713e8073ecf45623cfc5c918c5cbf700203f46e5,pass,,,,,,,,
+CVE-2016-1000342,https://github.com/bcgit/bc-java/commit/b2880ac036393776c954ffd61a9b0137e1dce0e0,yes,tagged,,,,,,,
+CVE-2021-21672,https://github.com/jenkinsci/seleniumhtmlreport-plugin/commit/5ca59b8c7d23af4450dc7f19c1b4107d59063ae1,no,,,,,,,,
+CVE-2022-0673,"https://github.com/eclipse/lemminx/pull/1171
+https://github.com/eclipse/lemminx/commit/48f23ab4dae19268027ede6c923d12e0b5e8d1fe",no,,maven2 缺失 jar,,,,,,
+CVE-2019-10182,https://github.com/AdoptOpenJDK/IcedTea-Web/pull/344,no,,artifact找不到,,,,,,
+CVE-2021-21248,https://github.com/theonedev/onedev/commit/39d95ab8122c5d9ed18e69dc024870cae08d2d60,no,,没有 testcase,,,,,,
+CVE-2018-1000613,https://github.com/bcgit/bc-java/commit/4092ede58da51af9a21e4825fbad0d9a3ef5a223,no,,失败,,,,,,
+CVE-2020-13654,https://github.com/xwiki/xwiki-platform/pull/1315,no,,maven jar 缺失,,,,,,
+CVE-2021-21234,"https://github.com/lukashinsch/spring-boot-actuator-logview/commit/760acbb939a8d1f7d1a7dfcd51ca848eea04e772
+https://github.com/lukashinsch/spring-boot-actuator-logview/commit/1c76e1ec3588c9f39e1a94bf27b5ff56eb8b17d6",yes,tagged,,,,,,,
+CVE-2020-1947,https://github.com/apache/shardingsphere/commit/7065af6ac03aebfdb81150f10dd1c2fc7798cff8,pass,,,,,,,,
+CVE-2021-44832,https://github.com/apache/logging-log4j2/commit/bf8ba18f63ab9f9ffd54387c5c527ecc7a681037,yes,tagged,,,,,,,
+CVE-2014-0193,"https://github.com/netty/netty/commit/48edb7802b42b0e2eb5a55d8eca390e0c9066783
+",pending,,testcase是测试sanitizer是否存在的，WebSocketFrameAggregator之前的是否都是受到影响的?,,,,,,
+,"https://github.com/netty/netty/commit/cab1fa22ff43f604cc11631d5fccfa3e9231399a
+",,,,,,,,,
+,"https://github.com/netty/netty/commit/73b26b7c2598f36196b760ec590eefd37c8db62a
+",,,,,,,,,
+,https://github.com/netty/netty/commit/dfbd8e881980677bc21b5a53b80c8555061ffa84,,,,,,,,,
+CVE-2011-4358,https://github.com/jboss/mojarra/commit/df7b4cb4aacb4f4582bcf0ef73abaf21693f7201#diff-de1abcbde11c05a3cfa15ccda67328784d036566981e0bf27e20f758779ed1be,pending,,,,,,,,
+CVE-2022-22978,"https://github.com/spring-projects/spring-security/commit/c6461d61babfcf92febfd0a85785623e53190a8f
+https://github.com/spring-projects/spring-security/commit/70863952aeb9733499027714d38821db05654856",yes,tagged,,,,,,,
+CVE-2022-24197,https://github.com/itext/itext7/commit/88c9cb7ec7befa096d83206419506ec5c7664912,yes,tagged,受影响 抛异常，造成，拒绝服务,,,,,,
+CVE-2020-11002,https://github.com/dropwizard/dropwizard/commit/d5a512f7abf965275f2a6b913ac4fe778e424242,yes,tagged,,,,,,,
+CVE-2022-26650,https://github.com/apache/incubator-shenyu/pull/2975,no,,没有 testcase,,,,,,
+CVE-2021-20195,https://github.com/keycloak/keycloak/commit/717d9515fa131e3d8c8936e41b2e52270fdec976,pass,,,,,,,,
+CVE-2019-11343,https://github.com/xjodoin/torpedoquery/commit/3c20b874fba9cc2a78b9ace10208de1602b56c3f,yes,tagged,,,,,,,
+CVE-2014-0168,https://github.com/rhuss/jolokia/commit/2d9b168cfbbf5a6d16fa6e8a5b34503e3dc42364,pass,,,,,,,,
+CVE-2021-43289,"https://github.com/gocd/gocd/commit/4c4bb4780eb0d3fc4cacfc4cfcc0b07e2eaf0595
+https://github.com/gocd/gocd/commit/c22e0428164af25d3e91baabd3f538a41cadc82f",no,,maven jar 缺失,,,,,,
+CVE-2019-0193,https://github.com/apache/lucene-solr/commit/02c693f3713add1b4891cbaa87127de3a55c10f7,no,,无法定位 jar,,,,,,
+CVE-2021-22119,https://github.com/spring-projects/spring-security/pull/9513,pass,,,,,,,,
+CVE-2018-1000014,https://github.com/jenkinsci/translation-plugin/commit/1287c8ead6adc891210b8b9fbc33f07adebf720d,no,,,,,,,,
+CVE-2020-13940,https://github.com/apache/nifi/commit/7f0416ee8bdcee95e28409cc6fae9c1394c2a798,pass,,,,,,,,
+CVE-2020-15170,https://github.com/ctripcorp/apollo/pull/3233/commits/ae9ba6cfd32ed80469f162e5e3583e2477862ddf,pass,,,,,,,,
+CVE-2016-6556,https://github.com/OpenNMS/opennms/pull/1019,no,,maven jar 缺失,,,,,,
+CVE-2021-21364,https://github.com/swagger-api/swagger-codegen/commit/35adbd552d5f99b3ff1e0e59da228becc85190f2,pass,,,,,,,,
+CVE-2022-27772,https://github.com/spring-projects/spring-boot/commit/667ccdae84822072f9ea1a27ed5c77964c71002d,pending,,测试依赖于外部文件系统,,,,,,
+CVE-2017-12648,https://github.com/brianchandotcom/liferay-portal/pull/47888,no,,,,,,,,
+CVE-2021-29428,"https://github.com/gradle/gradle/pull/15654
+https://github.com/gradle/gradle/pull/15240",pass,,,,,,,,
+CVE-2021-25935,https://github.com/OpenNMS/opennms/commit/eb08b5ed4c5548f3e941a1f0d0363ae4439fa98c,no,,maven 中心仓 jar 缺失,,,,,,
+CVE-2017-2603,https://github.com/jenkinsci/jenkins/commit/3cd946cbef82c6da5ccccf3890d0ae4e091c4265,no,,,,,,,,
+CVE-2015-6748,"https://github.com/jhy/jsoup/commit/4edb78991f8d0bf87dafde5e01ccd8922065c9b2
+https://github.com/jhy/jsoup/pull/582
+https://github.com/jhy/jsoup/commit/b86beca8feb26f9a3181e87fe36382f8ab4bdb98",yes,tagged,,,,,,,
+CVE-2022-25173,https://github.com/jenkinsci/workflow-cps-plugin/commit/f7ae7b75a457976853539bff1db52373b85fdb85,no,,patch 版本模糊,,,,,,
+CVE-2019-10184,"https://github.com/undertow-io/undertow/commit/d2715e3afa13f50deaa19643676816ce391551e9
+https://github.com/undertow-io/undertow/commit/5fa7ac68c0e4251c93056d9982db5e794e04ebfa
+https://github.com/undertow-io/undertow/pull/794",pass,,,,,,,,
+CVE-2018-1000176,https://github.com/jenkinsci/email-ext-plugin/commit/a6452006ac57d875b8a19e79675e27c85623d504,no,,,,,,,,
+CVE-2020-4242,https://github.com/bcgit/bc-java/commit/7b66244e14488c5c981415b02ff71837ff3d2d50,no,,testcase 不是攻击vulnerable的,,,,,,
+CVE-2017-1000355,https://github.com/jenkinsci/jenkins/commit/701ea95a52afe53bee28f76a3f96eb0e578852e9,no,,,,,,,,
+CVE-2022-24897,"https://github.com/xwiki/xwiki-commons/pull/127
+https://github.com/xwiki/xwiki-commons/commit/d6dc35da44c32f582d76fa0bbf096c8d0e1313d4
+https://github.com/xwiki/xwiki-commons/commit/215951cfb0f808d0bf5b1097c9e7d1e503449ab8",yes,tagged,,,,,,,
+CVE-2021-31805,https://github.com/apache/struts/commit/b2bfdc5c88a13e82d647e7ae836089a12ce001fe,pass,,,,,,,,
+CVE-2020-11974,"https://github.com/apache/dolphinscheduler/commit/86f4276f0fd8d3d42ce9bcc13463eb015232b56f
+https://github.com/apache/incubator-dolphinscheduler/pull/2728",yes,,受影响版本：1.2.0，1.2.1。1.3.0组件从dolphinscheduler-common更新成了dolphinscheduler-dao，并且打了补丁，不受影响,,,,,,
+CVE-2017-1000354,https://github.com/jenkinsci/jenkins/commit/02d24053bdfeb219d2387a19885a60bdab510479,no,,,,,,,,
+CVE-2017-2638,"https://github.com/infinispan/infinispan/pull/4936/commits
+https://github.com/infinispan/infinispan/commit/f2d54c4ecb75c7264d4160ca7c461135712201a9",no,,过于复杂,,,,,,
+CVE-2019-17572,https://github.com/apache/rocketmq/commit/f8f6fbe4aa7f5dee937e688322628c366b12a552,pass,,,,,,,,
+CVE-2019-10648,"https://github.com/robo-code/robocode/commit/836c84635e982e74f2f2771b2c8640c3a34221bd
+https://github.com/robo-code/robocode/commit/836c84635e982e74f2f2771b2c8640c3a34221bd#diff-0296a8f9d4a509789f4dc4f052d9c36f",no,,maven jar 缺失,,,,,,
+CVE-2022-22970,"https://github.com/spring-projects/spring-framework/commit/83186b689f11f5e6efe7ccc08fdeb92f66fcd583
+https://github.com/spring-projects/spring-framework/commit/50177b1ad3485bd44239b1756f6c14607476fcf2",yes,tagged,,,,,,,
+CVE-2022-31267,https://github.com/gitblit/gitblit/commit/9b4afad6f4be212474809533ec2c280cce86501a,no,,maven 中心仓 jar 缺失,,,,,,
+CVE-2022-24721,https://github.com/cometd/cometd/commit/bb445a143fbf320f17c62e340455cd74acfb5929,pass,,,,,,,,
+CVE-2020-9486,https://github.com/apache/nifi/commit/148537d64a017b73160b0d49943183c18f883ab0,pass,,,,,,,,
+CVE-2020-5289,"https://github.com/yahoo/elide/pull/1236/commits/a985f0f9c448aabe70bc904337096399de4576dc
+https://github.com/yahoo/elide/pull/1236",pass,,,,,,,,
+CVE-2022-20617,https://github.com/jenkinsci/docker-commons-plugin/commit/c069b79c31c5aa80a01b0c462f0dc6b41751f059,no,,,,,,,,
+CVE-2019-15569,https://github.com/hmcts/ccd-data-store-api/pull/394,no,,testcase 针对新增 Class,,,,,,
+CVE-2021-41189,https://github.com/DSpace/DSpace/commit/c3bea16ab911606e15ae96c97a1575e1ffb14f8a,pass,,,,,,,,
+CVE-2021-43286,"https://github.com/gocd/gocd/commit/6fa9fb7a7c91e760f1adc2593acdd50f2d78676b
+https://github.com/gocd/gocd/commit/2b77b533abcbb79c8fc758dec9984305dc1ade42",no,,maven jar 缺失,,,,,,
+CVE-2018-1000850,"https://github.com/square/retrofit/commit/b9a7f6ad72073ddd40254c0058710e87a073047d#diff-943ec7ed35e68201824904d1dc0ec982
+https://github.com/square/retrofit/commit/b9a7f6ad72073ddd40254c0058710e87a073047d",no,,未知编译错误,,,,,,
+CVE-2020-5529,https://github.com/HtmlUnit/htmlunit/commit/bc1f58d483cc8854a9c4c1739abd5e04a2eb0367,no,,maven jar 缺失,,,,,,
+CVE-2022-0671,"https://github.com/eclipse/lemminx/pull/1170
+https://github.com/eclipse/lemminx/commit/b46cb1f283c70b85c22221b30a4aff62be495237",no,,maven jar 缺失,,,,,,
+CVE-2022-30948,https://github.com/jenkinsci/mercurial-plugin/commit/b995436e560b01818f5d9e9920990370cc575341,no,,,,,,,,
+CVE-2014-0097,"https://github.com/spring-projects/spring-security/commit/7dbb8e777ece8675f3333a1ef1cb4d6b9be80395
+https://github.com/spring-projects/spring-security/commit/a7005bd74241ac8e2e7b38ae31bc4b0f641ef973
+https://github.com/spring-projects/spring-security/commit/88559882e967085c47a7e1dcbc4dc32c2c796868",yes,tagged,,,,,,,
+CVE-2020-15250,https://github.com/junit-team/junit4/commit/610155b8c22138329f0723eec22521627dbc52ae,yes,tagged,,,,,,,
+CVE-2020-11979,https://github.com/apache/ant/commit/87ac51d3c22bcf7cfd0dc07cb0bd04a496e0d428,no,,maven jar 缺失,,,,,,
+CVE-2022-26597,https://github.com/liferay/liferay-portal/commit/fd7fc6e186b36944b045e0fdf368e588889c3f02,no,,,,,,,,
+CVE-2022-20619,https://github.com/jenkinsci/bitbucket-branch-source-plugin/commit/a596f651a4b3bfe31a087c4d392e81c0167ab551,no,,,,,,,,
+CVE-2022-29265,https://github.com/apache/nifi/commit/5d94e7f7d594e600d8eb00329bb38b99d46ec66b,pass,,,,,,,,
+CVE-2019-10406,https://github.com/jenkinsci/jenkins/commit/e2c596c049e5e09e7254ff000802709c2e01af2a,no,,,,,,,,
+CVE-2021-44549,https://github.com/apache/sling-org-apache-sling-commons-messaging-mail/commit/aa0a1d3cfe042d76a82b543ed0042e85c87973bf,no,commit里面没有新增的testcase,,,,,,,
+CVE-2022-24816,,yes,tagged,成功触发,,,,,,
+CVE-2020-5413,https://github.com/spring-projects/spring-integration/commit/6a02b5abe97fabab6003d51b98dd45ab009a6e05,pass,,,,,,,,
+CVE-2018-18928,https://github.com/unicode-org/icu/commit/53d8c8f3d181d87a6aa925b449b51c4a2c922a51,no,,涉及 C++,,,,,,
+CVE-2020-15232,"https://github.com/mapfish/mapfish-print/pull/1397/commits/e1d0527d13db06b2b62ca7d6afb9e97dacd67a0e
+https://github.com/mapfish/mapfish-print/pull/1397",pass,,,,,,,,
+CVE-2021-38388,"https://github.com/line/centraldogma/commit/b6749e86505735ec16e8bb8fa4d3243d32d9284b#diff-caa471946a0afa4ce04c6ccc6e33f8a27dc3973f05a63d84b37eb9cfd2a7e912
+https://github.com/line/centraldogma/pull/621",no,,复杂多组件,,,,,,
+CVE-2022-22980,"https://github.com/spring-projects/spring-data-mongodb/commit/5e241c6ea55939c9587fad5058a07d7b3f0ccbd3
+https://github.com/spring-projects/spring-data-mongodb/commit/7c5ac764b343d45e5d0abbaba4e82395b471b4c4",yes,tagged,,,,,,,
+CVE-2021-41532,"https://github.com/apache/ozone/commit/fc61be54b837006aae8c2127d9dd88d69aa52b6e
+https://github.com/apache/ozone/pull/2638",pass,,,,,,,,
+CVE-2015-5377,https://github.com/elastic/elasticsearch/commit/bf3052d14c874aead7da8855c5fcadf5428a43f2,yes,,,,,,,,
+CVE-2021-43795,"https://github.com/line/armeria/pull/3855
+https://github.com/line/armeria/commit/e2697a575e9df6692b423e02d731f293c1313284",yes,tagged,,,,,,,
+CVE-2022-24820,"https://github.com/xwiki/xwiki-platform/commit/a364a0787d62bec0a218030bbe2d568ef0524505
+https://github.com/xwiki/xwiki-platform/pull/1696",pass,,,,,,,,
+CVE-2021-43859,https://github.com/x-stream/xstream/commit/e8e88621ba1c85ac3b8620337dd672e0c0c3a846,yes,tagged,,,,,,,
+CVE-2022-29184,https://github.com/gocd/gocd/commit/37d35115db2ada2190173f9413cfe1bc6c295ecb,no,,maven jar 缺失,,,,,,
+CVE-2021-43971,https://github.com/netty/netty/commit/07aa6b5938a8b6ed7a6586e066400e2643897323,no,,patch 不正确,,,,,,
+CVE-2021-31522,"https://github.com/apache/kylin/pull/1763
+https://github.com/apache/kylin/pull/1695
+https://github.com/apache/kylin/pull/1695/commits/56be272698c7419ab6cd1ee7b96b17efd4e9dce4",pass,,,,,,,,
+CVE-2018-1000844,"https://github.com/square/retrofit/pull/2735
+https://github.com/square/retrofit/commit/4a693c5aeeef2be6c7ecf80e7b5ec79f6ab59437",yes,tagged,,,,,,,
+CVE-2019-19135,https://github.com/eclipse/milo/commit/cac0e710bf2b8bed9c602fc597e9de1d8903abed,pass,,,,,,,,
+CVE-2022-24848,"https://github.com/dhis2/dhis2-core/commit/ef04483a9b177d62e48dcf4e498b302a11f95e7d
+https://github.com/dhis2/dhis2-core/pull/10953
+https://github.com/dhis2/dhis2-core/commit/3b245d04a58b78f0dc9bae8559f36ee4ca36dfac",no,,maven jar 缺失,,,,,,
+CVE-2022-25177,https://github.com/jenkinsci/workflow-cps-global-lib-plugin/commit/ace0de3c2d691662021ea10306eeb407da6b6365,no,,,,,,,,
+CVE-2017-1000393,"https://github.com/jenkinsci/jenkins/commit/67f68c181033cbabf2075769e0f846f58c226c08
+https://github.com/jenkinsci/jenkins/commit/d7ea3f40efedd50541a57b943d5f7bbed046d091",no,,,,,,,,
+CVE-2016-2510,https://github.com/beanshell/beanshell/commit/1ccc66bb693d4e46a34a904db8eeff07808d2ced,no,,没有 testcase,,,,,,
+CVE-2021-27568,"https://github.com/netplex/json-smart-v2/commit/c8133d2d1cdeddd602b5c25b89dea2db9d8a1a5f
+https://github.com/netplex/json-smart-v2/pull/72
+https://github.com/netplex/json-smart-v2/c8133d2d1cdeddd602b5c25b89dea2db9d8a1a5f",yes,tagged,,,,,,,
+CVE-2020-9491,https://github.com/apache/nifi/commit/441781cec50f77d9f1e65093f55bbd614b8c5ec6,pass,,,,,,,,
+CVE-2021-44878,"https://github.com/pac4j/pac4j/commit/22b82ffd702a132d9f09da60362fc6264fc281ae
+https://github.com/pac4j/pac4j/commit/9c87bbc536ed5d05f940ae015403120df2935589",no,,需要启动一个Web服务才能进行触发,,,,,,
+CVE-2022-22931,"https://github.com/apache/james-project/pull/877
+https://github.com/apache/james-project/pull/877/commits/b1e891a9e5eeadfa1d779ae50f21c73efe4d2fc7
+https://github.com/apache/james-project/commit/8f9512637d374ccdf84d61617a2878557bf07532",no,,依赖复杂,,,,,,
+CVE-2021-21295,"https://github.com/netty/netty/commit/89c241e3b1795ff257af4ad6eadc616cb2fb3dc4
+",no,,testcase过于复杂,,,,,,
+,https://github.com/Netflix/zuul/pull/980,no,,,,,,,,
+CVE-2022-24289,https://github.com/apache/cayenne/commit/3e57de7da4548d0a4a31970162a6d6d73ce72de0#diff-4f10967fe4cddc68e0d3f20e0090812bb089a52c0884fb5289d66c4ea6d6ad81,pass,,,,,,,,
+CVE-2019-18212,https://github.com/angelozerr/lsp4xml/pull/567,no,,maven 中心仓 jar 缺失,,,,,,
+CVE-2018-1000194,https://github.com/jenkinsci/jenkins/commit/5cf0a77d44310523b763698f67d645c1f2427f30,no,,,,,,,,
+CVE-2019-1003000,https://github.com/jenkinsci/script-security-plugin/commit/2c5122e50742dd16492f9424992deb21cc07837c,no,,,,,,,,
+CVE-2014-7839,"https://github.com/resteasy/resteasy/pull/611/commits/3ab999c899c455a0b0a00bf5e455ed3e8d9ae347
+https://github.com/resteasy/resteasy/pull/611/commits/8b5d8cfc963794a74636d9a840e899408ec8fdc6",no,,需要启动一个Web服务才能进行触发,,,,,,
+CVE-2019-10086,"https://github.com/apache/commons-beanutils/commit/dd48f4e589462a8cdb1f29bbbccb35d6b0291d58
+https://github.com/apache/commons-beanutils/commit/62e82ad92cf4818709d6044aaf257b73d42659a4",yes,tagged,,,,,,,
+CVE-2017-12629,https://github.com/apache/lucene-solr/commit/3bba91131b5257e64b9d0a2193e1e32a145b2a23,no,,依赖复杂,,,,,,
+CVE-2022-24196,https://github.com/itext/itext7/commit/321336392695ead6f071cb60240956282d254782,pending,,,,,,,,
+CVE-2021-31407,"https://github.com/vaadin/flow/pull/10229
+https://github.com/vaadin/flow/pull/10269",pass,,,,,,,,
+CVE-2018-1002201,https://github.com/zeroturnaround/zt-zip/commit/759b72f33bc8f4d69f84f09fcb7f010ad45d6fff,yes,tagged,,,,,,,
+CVE-2022-25174,https://github.com/jenkinsci/workflow-cps-global-lib-plugin/commit/ace0de3c2d691662021ea10306eeb407da6b6365,pass,,,,,,,,
+CVE-2022-0839,"https://github.com/liquibase/liquibase/pull/2384/commits/b90ca28c9b61ec450d49eff89bb1f8c0cdf8fbca
+https://github.com/liquibase/liquibase/pull/2384
+https://github.com/liquibase/liquibase/commit/d60de3f18acba5423b60d09ee40df44103a07295",no,,没有 testcase,,,,,,
+CVE-2018-1048,https://github.com/undertow-io/undertow/commit/1bc0c275aadf5835abfbd3835d5d78095c2f1cf5,pass,,,,,,,,
+CVE-2022-24823,https://github.com/netty/netty/commit/c735357bf29d07856ad171c6611a2e1a0e0000ec,no,,使用了PlatformDependent防止了testcase中生成的临时文件赋予较高权限，其实没有testcase,,,,,,
+CVE-2017-4972,https://github.com/cloudfoundry/uaa/commit/24bc5ade80560cedb9300940d2b398163ab0dc6a,pass,,,,,,,,
+CVE-2022-20621,https://github.com/jenkinsci/metrics-plugin/commit/9810480370d4c5e04a2b710934db5461bde0d1b6,pass,,,,,,,,
+CVE-2021-31409,https://github.com/vaadin/framework/pull/12241,no,,testcase 无效,,,,,,
+CVE-2016-4993,https://github.com/undertow-io/undertow/commit/834496fb74ddda2af197940c70d08bab419fdf12,no,,依赖问题,,,,,,
+CVE-2022-31197,https://github.com/pgjdbc/pgjdbc/commit/739e599d52ad80f8dcd6efedc6157859b1a9d637,yes,tagged,,,,,,,
+CVE-2018-19859,https://github.com/OpenRefine/OpenRefine/pull/1901,no,,存在漏洞的版本在maven上已经不存在了,,,,,,
+CVE-2022-25179,https://github.com/jenkinsci/workflow-multibranch-plugin/commit/71c3f0a6ccdb2ba43f43686826b0d62160df85e8,no,,,,,,,,
+CVE-2021-43821,https://github.com/opencast/opencast/commit/65c46b9d3e8f045c544881059923134571897764,pass,,,,,,,,
+CVE-2014-1904,"https://github.com/spring-projects/spring-framework/commit/75e08695a04980dbceae6789364717e9d8764d58#diff-5c29d6685335045274d9908c5cd45e45
+https://github.com/spring-projects/spring-framework/commit/741b4b229ae032bd17175b46f98673ce0bd2d485",pass,,,,,,,,
+CVE-2021-41571,"https://github.com/zhanghaou/pulsar/commit/5b35bb81c31f1bc2ad98c9fde5b39ec68110ca52
+https://github.com/apache/pulsar/pull/11912
+https://github.com/apache/pulsar/pull/11913
+https://github.com/apache/pulsar/commit/5b35bb81c31f1bc2ad98c9fde5b39ec68110ca52
+https://github.com/apache/pulsar/pull/11852",no,,maven jar 缺失,,,,,,
+CVE-2018-12418,"https://github.com/junrar/junrar/commit/ad8d0ba8e155630da8a1215cee3f253e0af45817
+https://github.com/junrar/junrar/pull/8",no,,,,,,,,
+CVE-2022-22963,https://github.com/spring-cloud/spring-cloud-function/commit/0e89ee27b2e76138c16bcba6f4bca906c4f3744f,pass,,,,,,,,
+CVE-2021-33900,"https://github.com/apache/directory-studio/commit/b53667ab3b87afcfcd6f1b1df90d733636cfc888
+https://github.com/apache/directory-studio/commit/18ad16e89deb2998ee0fef0f16a9a85a0df1ddd2",pass,,,,,,,,
+CVE-2018-1000193,https://github.com/jenkinsci/jenkins/commit/de7aaab441151fb1760855fec83681c6a8756a45,no,,,,,,,,
+CVE-2021-23899,"https://github.com/OWASP/json-sanitizer/commit/64dd9502708c25782abc54f1941b21bac711d3da
+https://github.com/OWASP/json-sanitizer/commit/a37f594f7378a1c76b3283e0dab9e1ab1dc0247e",yes,tagged,成功触发,,,,,,
+CVE-2016-1000339,https://github.com/bcgit/bc-java/commit/413b42f4d770456508585c830cfcde95f9b0e93b#diff-54656f860db94b867ba7542430cd2ef0,no,,testcase 太复杂,,,,,,
+CVE-2022-23059,https://github.com/shopizer-ecommerce/shopizer/commit/6b9f1ecd303b3b724d96bd08095c1a751dcc287e,pass,,,,,,,,
+CVE-2021-25931,"https://github.com/OpenNMS/opennms/commit/607151ea8f90212a3fb37c977fa57c7d58d26a84
+https://github.com/OpenNMS/opennms/commit/eb08b5ed4c5548f3e941a1f0d0363ae4439fa98c",pass,,,,,,,,
+CVE-2018-1000175,https://github.com/jenkinsci/htmlpublisher-plugin/commit/9d6cafd3690ddd6a9d4eced06dfb9a2916649a09,no,,,,,,,,
+CVE-2021-3637,https://github.com/keycloak/keycloak/pull/8090,pass,,,,,,,,
+CVE-2021-2322,https://github.com/oracle/opengrok/pull/3528,no,,maven jar 缺失,,,,,,
+CVE-2021-3424,https://github.com/keycloak/keycloak/commit/ac79fd0c23c6947a04073afc61e30d341498438e,pass,,,,,,,,
+CVE-2018-9159,"https://github.com/perwendel/spark/commit/a221a864db28eb736d36041df2fa6eb8839fc5cd
+https://github.com/perwendel/spark/commit/030e9d00125cbd1ad759668f85488aba1019c668",no,,不是 Java,,,,,,
+CVE-2021-38705,https://github.com/spring-projects/spring-boot/commit/d09aafacda0db25c1147a0f3e2c4931533881d5c,pass,,,,,,,,
+CVE-2022-24832,https://github.com/gocd/gocd-ldap-authentication-plugin/commit/87fa7dac5d899b3960ab48e151881da4793cfcc3,no,,maven jar 缺失,,,,,,
+CVE-2016-6652,"https://github.com/spring-projects/spring-data-jpa/commit/edd497b9c93b4f364ffc78ca302a05938d499271
+https://github.com/spring-projects/spring-data-jpa/commit/e9bd83f820b98c54d0b5a2ec0f3f1767332a862c
+https://github.com/spring-projects/spring-data-jpa/commit/b8e7fe
+https://github.com/spring-projects/spring-data-jpa/commit/a22c17fc12f7063716cb40c11d1ff4e265ef8556
+https://github.com/spring-projects/spring-data-jpa/commit/b8e7fecccc7dc8edcabb4704656a7abe6352c08f",yes,tagged,,,,,,,
+CVE-2016-6555,https://github.com/OpenNMS/opennms/pull/1019,no,,maven jar 缺失,,,,,,
+CVE-2021-32621,https://github.com/xwiki/xwiki-platform/commit/bb7068bd911f91e5511f3cfb03276c7ac81100bc,no,,maven jar 缺失,,,,,,
+CVE-2020-5421,https://github.com/spring-projects/spring-framework/commit/dd011c991ce801660ec2be7979f3fc6462f29289,yes,tagged,,,,,,,
+CVE-2020-9492,https://github.com/apache/hadoop/commit/ca65409836d2949e9a9408d40bec0177b414cd5d,pass,,,,,,,,
+CVE-2020-11971,"https://github.com/apache/camel/commit/36b55f9cfa50a2056c70f98d66c29a95ddc724e1
+https://github.com/apache/camel/commit/b954402272ddcfbb45dc1495520f920e70cc041c",pass,,,,,,,,
+CVE-2016-1000340,"https://github.com/bcgit/bc-java/commit/1b31ec6f2aa6b7199f03feb33d5be6c942fdf724
+https://github.com/bcgit/bc-java/commit/790642084c4e0cadd47352054f868cc8397e2c00",yes,tagged,,,,,,,
+CVE-2021-27736,https://github.com/FusionAuth/fusionauth-samlv2/commit/c66fb689d50010662f705d5b585c6388ce555dbd,no,,maven jar 缺失,,,,,,
+CVE-2022-29631,"https://github.com/oblac/jodd-http/pull/8
+https://github.com/oblac/jodd-http/commit/e50f573c8f6a39212ade68c6eb1256b2889fa8a6",yes,tagged,,,,,,,
+CVE-2018-8009,"https://github.com/apache/hadoop/commit/65e55097da2bb3f2fbdf9ba1946da25fe58bec9
+https://github.com/apache/hadoop/commit/12258c7cff8d32710fbd8b9088a930e3ce27432
+https://github.com/apache/hadoop/commit/11a425d11a329010d0ff8255ecbcd1eb51b642e
+https://github.com/apache/hadoop/commit/bd98d4e77cf9f7b2f4b1afb4d5e5bad0f6b2fde
+https://github.com/apache/hadoop/commit/1373e3d8ad60e4da721a292912cb69243bfdf47
+https://github.com/apache/hadoop/commit/fc4c20fc3469674cb584a4fb98bac7e3c2277c9
+https://github.com/apache/hadoop/commit/eaa2b8035b584dfcf7c79a33484eb2dffd3fdb1
+https://github.com/apache/hadoop/commit/6a4ae6f6eeed1392a4828a5721fa1499f65bdde
+https://github.com/apache/hadoop/commit/cedc28d4ab2a27ba47e15ab2711218d96ec88d2
+https://github.com/apache/hadoop/commit/e3236a9680709de7a95ffbc11b20e1bdc95a860
+https://github.com/apache/hadoop/commit/45a1c680c276c4501402f7bc4cebcf85a6fbc7f
+https://github.com/apache/hadoop/commit/745f203e577bacb35b042206db94615141fa5e6f
+https://github.com/apache/hadoop/commit/6d7d192e4799b51931e55217e02baec14d49607
+https://github.com/apache/hadoop/commit/745f203e577bacb35b042206db94615141fa5e6",yes,tagged,,,,,,,
+CVE-2019-10174,https://github.com/infinispan/infinispan/commit/7bdc2822ccf79127a488130239c49a5e944e3ca2,no,,测试框架不是 junit,,,,,,
+CVE-2022-1848,https://github.com/erudika/para/commit/fa677c629842df60099daa9c23bd802bc41b48d1,yes,tagged,,,,,,,
+CVE-2022-20612,https://github.com/jenkinsci/jenkins/commit/b5c3764681f3b4ce83d0e78f6a9327925640d57e,no,,,,,,,,
+CVE-2017-2602,https://github.com/jenkinsci/jenkins/commit/414ff7e30aba66bed18c4ee8a8660fb36fc8c655,no,,,,,,,,
+CVE-2021-22047,"https://github.com/spring-projects/spring-data-rest/commit/46dc6e03fcd13cadfafeab22ba813c12a8dc9688
+https://github.com/spring-projects/spring-data-rest/commit/5f4e24b912ff31c9507a42aee95b052d38097fe0",pass,,,,,,,,
+CVE-2021-21290,https://github.com/netty/netty/commit/c735357bf29d07856ad171c6611a2e1a0e0000ec,no,,使用了PlatformDependent防止了testcase中生成的临时文件赋予较高权限，其实没有testcase,,,,,,
+CVE-2017-4991,https://github.com/cloudfoundry/uaa/commit/eb3f86054489039e11eabd54a8ec9a46c22abfc8,pass,,,,,,,,
+CVE-2018-20735,https://github.com/spring-projects/spring-framework/commit/f4a2282d9d9f6e58029022c58311a1db07f7defc,no,,patch 不正确,,,,,,
+CVE-2011-5245,https://github.com/resteasy/resteasy/pull/34,no,,testcase 涉及到外部服务器启动,,,,,,
+CVE-2020-7780,https://github.com/softwaremill/akka-http-session/commit/57f11663eecb84be03383d164f655b9c5f953b41,pass,,,,,,,,
+CVE-2019-17558,https://github.com/apache/lucene-solr/pull/1156,no,,,,,,,,
+CVE-2018-17202,https://github.com/apache/commons-imaging/commit/f5574bfe285edd79207fe8c30f53cb0af06e26bb,no,,patch 不正确,,,,,,
+CVE-2021-25932,https://github.com/OpenNMS/opennms/commit/eb08b5ed4c5548f3e941a1f0d0363ae4439fa98c,no,,maven jar 缺失,,,,,,
+CVE-2019-14837,https://github.com/keycloak/keycloak/commit/9a7c1a91a59ab85e7f8889a505be04a71580777f,no,,依赖复杂,,,,,,
+CVE-2022-30953,https://github.com/jenkinsci/blueocean-plugin/commit/9f44b895d018c514d5dccc1f2190a2a029e58259,no,,,,,,,,
+CVE-2020-1958,"https://github.com/apache/druid/pull/9600#issuecomment-607497875
+https://github.com/apache/druid/commit/dbaabdd24710fef726c5730c609937706f456a44#diff-fab6b7a8a160a405e787690201aade5462961550c97715ab18de6ad07a3edf7e",no,,测试新增,,,,,,
+CVE-2021-31412,https://github.com/vaadin/flow/commit/16a5f20a80a3c271270d522198779046fd27f201,yes,tagged,,,,,,,
+CVE-2018-8038,"https://github.com/apache/cxf-fediz/commit/b6ed9865d0614332fa419fe4b6d0fe81bc2e660d
+https://github.com/apache/cxf-fediz/commit/4c396acb42439e61cc63b0452dd22442d720b61b",no,,需启动服务,,,,,,
+CVE-2017-2600,https://github.com/jenkinsci/jenkins/commit/0f92cd08a19207de2cceb6a2f4e3e9f92fdc0899,no,,,,,,,,
+CVE-2021-39235,https://github.com/apache/ozone/pull/1672,no,,maven jar 缺失,,,,,,
+CVE-2017-1000353,"https://github.com/jenkinsci/jenkins/commit/36b8285a41eb28333549e8d851f81fd80a184076
+https://github.com/jenkinsci/jenkins/commit/f237601afd750a0eaaf961e8120b08de238f2c3f",no,,,,,,,,
+CVE-2022-24818,"https://github.com/geotools/geotools/commit/4f70fa3234391dd0cda883a20ab0ec75688cba49
+https://github.com/geotools/geotools/commit/bbf32a90829ea09cf2c8d692f3bc7b9e7ab6ee9a",no,,maven jar 缺失,,,,,,
+CVE-2018-1000056,https://github.com/jenkinsci/junit-plugin/commit/15f39fc49d9f25bca872badb48e708a8bb815ea7,no,,,,,,,,
+CVE-2022-23061,https://github.com/shopizer-ecommerce/shopizer/commit/6b9f1ecd303b3b724d96bd08095c1a751dcc287e,pass,,,,,,,,
+CVE-2017-1000387,https://github.com/jenkinsci/build-publisher-plugin/commit/7f80f0d7c9cd96a2d660eeb8b695297bef064059,no,,,,,,,,
+CVE-2020-7238,https://github.com/netty/netty/commit/ac76a24ff6d3cd0f59a2833c2f83eb82184ecaeb,yes,tagged,自动化比较繁琐，人工确认版本,,,,,,
+CVE-2021-40111,"https://github.com/apache/james-project/commit/3cd79b23ed190ac2d51dd88fc0ce419f0daa4ac8
+https://github.com/apache/james-project/commit/9b07160f6c54a3797412a1c767374f567046ca8f
+https://github.com/apache/james-project/commit/acc2ce90fd1de47c64e853e3c9762a6673a82969",yes,tagged,,,,,,,
+CVE-2017-15703,https://github.com/apache/nifi/commit/9e2c7be7d3c6a380c5f61074d9a5a690b617c3dc,pass,,,,,,,,
+CVE-2008-5130,https://github.com/ls1intum/Ares/commit/af4f28a56e2fe600d8750b3b415352a0a3217392,pass,,,,,,,,
+CVE-2021-33604,https://github.com/vaadin/flow/pull/11099,no,,依赖复杂,,,,,,
+CVE-2017-4963,"https://github.com/cloudfoundry/uaa/commit/4de68d621c7b7542f85d78c1c0d7d8dc002d19fc
+https://github.com/cloudfoundry/uaa/commit/be86416f244dd49f5f0079d2a1d56b2b59cc5a88
+https://github.com/cloudfoundry/uaa/commit/f87f339745b5fd2e7714396173548c5ad6f92669",pass,,,,,,,,
+CVE-2022-25167,https://github.com/apache/flume/commit/dafb26ccb172141c6e14e95447e1b6ae38e9a7d0,no,,依赖太复杂,,,,,,
+CVE-2021-41561,https://github.com/apache/parquet-mr/pull/933,pass,,,,,,,,
+CVE-2014-4172,https://github.com/apereo/java-cas-client/commit/ae37092100c8eaec610dab6d83e5e05a8ee58814,yes,tagged,final protected,,,,,,
+CVE-2021-39180,"https://github.com/OpenOLAT/OpenOLAT/commit/5668a41ab3f1753102a89757be013487544279d5
+https://github.com/OpenOLAT/OpenOLAT/commit/699490be8e931af0ef1f135c55384db1f4232637
+https://github.com/OpenOLAT/OpenOLAT/commit/2cf73c972e23ccd69cc1e103e43c2c8253571d3e",pass,,,,,,,,
+CVE-2014-0114,https://github.com/apache/commons-beanutils/commit/62e82ad92cf4818709d6044aaf257b73d42659a4,yes,tagged,,,,,,,
+CVE-2022-20618,"https://github.com/jenkinsci/bitbucket-branch-source-plugin/commit/467ed6c94af8735c4755d53145a54325ae82d073
+https://github.com/jenkinsci/bitbucket-branch-source-plugin/commit/95d57661797e811c1aab7e758b45d1fe69eb1448",no,,,,,,,,
+CVE-2016-1000345,https://github.com/bcgit/bc-java/commit/21dcb3d9744c83dcf2ff8fcee06dbca7bfa4ef35,pending,,,,,,,,
+CVE-2021-31403,https://github.com/vaadin/framework/pull/12188,pass,,,,,,,,
+CVE-2013-0108,https://github.com/FasterXML/woodstox/commit/7937f97c638ef8afd385ebf4a675a9b096ccdd57,pass,,,,,,,,
+CVE-2019-12145,https://github.com/jpmml/jpmml-model/commit/494f821ee55e6b1f2949c78781c1d0fa8517867e#diff-322a783849e2119b37122dd21b0f48f2,no,,依赖复杂,,,,,,
+CVE-2019-12421,https://github.com/apache/nifi/pull/3362,pass,,,,,,,,
+CVE-2022-23619,https://github.com/xwiki/xwiki-platform/commit/d8a3cce48e0ac1a0f4a3cea7a19747382d9c9494,pass,,,,,,,,
+CVE-2022-23913,"https://github.com/apache/activemq-artemis/commit/6af80fa33058a755d02daa4d3ccf168646880b37
+https://github.com/apache/activemq-artemis/pull/3862
+https://github.com/apache/activemq-artemis/pull/3871
+https://github.com/apache/activemq-artemis/pull/3871/commits/153d2e9a979aead8dff95fbc91d659ecc7d0fb82
+https://github.com/apache/activemq-artemis/pull/3862/commits/1f92368240229b8f5db92a92a72c703faf83e9b7",pass,,,,,,,,
+CVE-2021-40822,"https://github.com/geoserver/geoserver/pull/5847
+https://github.com/geoserver/geoserver/pull/5848",no,,maven jar 缺失,,,,,,
+CVE-2021-32731,https://github.com/pgjdbc/pgjdbc/commit/f6d47034a4ce292e1a659fa00963f6f713117064,no,,testcase 删除,,,,,,
+CVE-2022-26520,,pending,,patch remove testcase,,,,,,
+CVE-2020-36518,"https://github.com/FasterXML/jackson-databind/commit/fcfc4998ec23f0b1f7f8a9521c2b317b6c25892b
+https://github.com/FasterXML/jackson-databind/pull/3416",pass,,,,,,,,
+CVE-2011-4461,https://github.com/eclipse/jetty.project/commit/085c79d7d6cfbccc02821ffdb64968593df3e0bf,no,,testcase 未提供关键的 key,,,,,,
+CVE-2022-23307,https://github.com/qos-ch/reload4j/commit/64902fe18ce5a5dd40487051a2f6231d9fbbe9b0,no,,testcase 无法确认,,,,,,
+CVE-2020-7226,"https://github.com/vt-middleware/cryptacular/commit/311baf12252abf21947afd07bf0a0291ec3ec796
+https://github.com/vt-middleware/cryptacular/pull/56
+https://github.com/vt-middleware/cryptacular/commit/ec2fb65f2455c479376695e3d75d30c7f6884b3f",pass,,,,,,,,
+CVE-2018-1000129,"https://github.com/rhuss/jolokia/commit/5895d5c137c335e6b473e9dcb9baf748851bbc5f#diff-f19898247eddb55de6400489bff748ad
+https://github.com/rhuss/jolokia/commit/5895d5c137c335e6b473e9dcb9baf748851bbc5f",pass,,,,,,,,
+CVE-2014-4651,https://github.com/jclouds/jclouds/pull/420,no,,testcase 不适用,,,,,,
+CVE-2021-39231,"https://github.com/apache/ozone/pull/1636
+https://github.com/apache/ozone/pull/1912
+https://github.com/apache/ozone/pull/1801
+https://github.com/apache/ozone/pull/1887
+https://github.com/apache/ozone/commit/24ee2062cd46400a8656ffbc7d6fccbc75fc516f",no,,maven jar 缺失,,,,,,
+CVE-2021-28170,https://github.com/eclipse-ee4j/el-ri/pull/160/commits/b6a3943ac5fba71cbc6719f092e319caa747855b,no,,maven jar 缺失,,,,,,
+CVE-2020-15231,"https://github.com/mapfish/mapfish-print/commit/89155f2506b9cee822e15ce60ccae390a1419d5e
+https://github.com/mapfish/mapfish-print/pull/1397/commits/89155f2506b9cee822e15ce60ccae390a1419d5e",pass,,,,,,,,
+CVE-2022-24847,"https://github.com/geoserver/geoserver/commit/b94a69943992df999d627b21a4ed056fad4569f8
+https://github.com/geoserver/geoserver/commit/f3028095d6881d3b2f500a20901de4baf1085811",pass,,,,,,,,
+CVE-2022-26850,"https://github.com/apache/nifi/pull/5856
+https://github.com/apache/nifi/commit/859d5fe",pass,,,,,,,,
+CVE-2022-32549,"https://github.com/apache/sling-org-apache-sling-api/commit/8754cd20cb047498e1cf53fde1e5c0357232e6b9
+https://github.com/apache/sling-org-apache-sling-commons-log/commit/6b1e8372cc0ecfc4bec8b8749dc317533aeb2b2f",yes,tagged,,,,,,,
+CVE-2018-1000169,https://github.com/jenkinsci/jenkins/commit/69a784bb8d2c5a021d225eda2d392fb081c1169e,no,,,,,,,,
+CVE-2021-23265,https://github.com/craftercms/core/commit/4800c18588433ec2e138bad30279140b38d713fa,pass,,,,,,,,
+CVE-2018-12537,"https://github.com/eclipse/vert.x/commit/1bb6445226c39a95e7d07ce3caaf56828e8aab72
+https://github.com/eclipse-vertx/vert.x/commit/1bb6445226c39a95e7d07ce3caaf56828e8aab72
+https://github.com/eclipse-vertx/vert.x/commit/3a6512695a9d610687081eb13d2a1681151fd7fb",pass,,,,,,,,
+CVE-2017-12622,https://github.com/apache/geode/commit/db4a493efc09600bf0a9778d5274c09b23b16644,pass,,,,,,,,
+CVE-2020-27826,https://github.com/keycloak/keycloak/commit/dae4a3eaf26590b8d441b8e4bec3b700ee303b72,pass,,,,,,,,
+CVE-2022-30956,https://github.com/jenkinsci/rundeck-plugin/commit/2f3e02dae4e5376dca63bed09cd59318edbdccf3,no,,,,,,,,
+CVE-2019-10355,https://github.com/jenkinsci/script-security-plugin/commit/5dc2e2465f309c772237a4b2de9caf61ba9b585b,no,,,,,,,,
+CVE-2021-41242,https://github.com/OpenOLAT/OpenOLAT/commit/c450df7d7ffe6afde39ebca6da9136f1caa16ec4,pass,,,,,,,,
+CVE-2021-22095,"https://github.com/spring-projects/spring-amqp/commit/bde294d62a8b7f3f1d5a9f50f862c6f0782efb9d
+https://github.com/spring-projects/spring-amqp/commit/b881b65155a1d7e1fe92a551eb63ef235625a733",yes,tagged,,,,,,,
+CVE-2021-32620,https://github.com/xwiki/xwiki-platform/commit/f9a677408ffb06f309be46ef9d8df1915d9099a4,no,,maven 中心仓 jar 缺失,,,,,,
+CVE-2007-1940,https://github.com/personnummer/java/commit/3bad4e3354503d7cfd443257c94c41f57b3d1621,no,,patch 不正确,,,,,,
+CVE-2019-9658,"https://github.com/checkstyle/checkstyle/pull/6476
+https://github.com/checkstyle/checkstyle/commit/180b4fe37a2249d4489d584505f2b7b3ab162ec6",pass,,,,,,,,
+CVE-2021-21409,"https://github.com/netty/netty/commit/b0fa4d5aab4215f3c22ce6123dd8dd5f38dc0432
+https://github.com/netty/netty/commit/89c241e3b1795ff257af4ad6eadc616cb2fb3dc4
+https://github.com/Netflix/zuul/pull/980",no,,testcase过于复杂,,,,,,
+CVE-2018-1000406,https://github.com/jenkinsci/jenkins/commit/c3351d2e7c3edfee82b9470e9aa1168982296072,no,,,,,,,,
+CVE-2022-25845,"https://github.com/alibaba/fastjson/commit/8f3410f81cbd437f7c459f8868445d50ad301f15
+https://github.com/alibaba/fastjson/commit/35db4adad70c32089542f23c272def1ad920a60d",yes,tagged,,,,,,,
+CVE-2020-1942,https://github.com/apache/nifi/commit/95746d346cddbd6134c4b28fdc39d5813a626f97,pass,,,,,,,,
+CVE-2016-10750,"https://github.com/hazelcast/hazelcast/commit/5a47697519018eb4918df33a21faae811e85f01a
+https://github.com/hazelcast/hazelcast/pull/12230",pass,,,,,,,,
+CVE-2016-1000343,"https://github.com/bcgit/bc-java/commit/706c05786e28eb47aee71391d724e3b1d0a88116
+https://github.com/bcgit/bc-java/commit/50a53068c094d6cff37659da33c9b4505becd389",yes,tagged,,,,,,,
+CVE-2014-1202,https://github.com/SmartBear/soapui/commit/6373165649ad74257493c69dbc0569caa7e6b4a6,no,,maven jar 缺失,,,,,,
+CVE-2019-5442,https://github.com/pippo-java/pippo/commit/818411f6639499afc552a519a06626c0a0c16911,no,,testcase 测试新增,,,,,,
+CVE-2017-1000400,https://github.com/jenkinsci/jenkins/commit/b2083a387a5bdb6f7ee7f7c81a1f6312aca2a558,no,,,,,,,,
+CVE-2008-3843,"https://github.com/hazelcast/hazelcast/commit/f029f9f2b91da75de5ed3d8bdd52ac29d5c8a1c1
+https://github.com/hazelcast/hazelcast/pull/15358
+https://github.com/hazelcast/hazelcast/commit/b7f2c159c745d0043abadf806ef9a0c567641ffb",pass,,,,,,,,
+CVE-2019-17640,https://github.com/vert-x3/vertx-web/commit/b12f7c4c6576a8adc3f683b2899de4b0e7d099e4,no,,依赖复杂,,,,,,
+CVE-2021-42550,https://github.com/qos-ch/logback/commit/87291079a1de9369ac67e20dc70a8fdc7cc4359c,no,,patch方式是删除,,,,,,
+CVE-2019-20444,"https://github.com/netty/netty/commit/745814b382e828c344aeff2ab4fd9530fbb7cdfe
+https://github.com/netty/netty/pull/9871
+https://github.com/netty/netty/commit/a7c18d44b46e02dadfe3da225a06e5091f5f328e",yes,tagged,testcase过于复杂,,,,,,
+CVE-2021-40110,"https://github.com/apache/james-project/pull/612
+https://github.com/apache/james-project/commit/90ec73f3138e272896d110575eeb063f6eef1d9c
+https://github.com/apache/james-project/commit/55508d298247dbbebf230f77eacd0222d248dcba",yes,tagged,,,,,,,
+CVE-2019-10345,https://github.com/jenkinsci/configuration-as-code-plugin/commit/73afe3cb10a723cb06e29c2e5499206aadae3a0d,no,,,,,,,,
+CVE-2017-7686,https://github.com/apache/ignite/commit/b7d8d1b3f1376c6f83a60f73a90d47817cb159cc,pass,,,,,,,,
+CVE-2022-26336,https://github.com/apache/poi/commit/6622d9badb3590cb6190d912730548635a359dc0,yes,tagged,,,,,,,
+CVE-2017-4952,"https://github.com/vmware/xenon/commit/7a747d82b80cd38d2c11a0d9cdedb71c722a2c75
+https://github.com/vmware/xenon/commit/06b9947cf603ba40fd8b03bfeb2e84528a7ab592
+https://github.com/vmware/xenon/commit/30ae41bccf418d88b52b35a81efb3c1304b798f8
+https://github.com/vmware/xenon/commit/ec30db9afada9cb52852082ce4d7d0095524f3b3
+https://github.com/vmware-archive/xenon/commit/b1fd306047ecdac82661d636ebee801a7f2b3a0a
+https://github.com/vmware/xenon/commit/5682ef8d40569afd00fb9a5933e7706bb5b66713
+https://github.com/vmware-archive/xenon/commit/c23964eb57e846126daef98ef7ed15400313e977
+https://github.com/vmware-archive/xenon/commit/5682ef8d40569afd00fb9a5933e7706bb5b66713
+https://github.com/vmware/xenon/commit/b1fd306047ecdac82661d636ebee801a7f2b3a0a
+https://github.com/vmware/xenon/commit/055ae13603f0cc3cd7cf59f20ce314bf8db583e1
+https://github.com/vmware/xenon/commit/756d893573414eec8635c2aba2345c4dcf10b21c
+https://github.com/vmware-archive/xenon/commit/aac1921a1e5480addb1101a513d93dc25de71b50
+https://github.com/vmware-archive/xenon/commit/30ae41bccf418d88b52b35a81efb3c1304b798f8
+https://github.com/vmware-archive/xenon/commit/756d893573414eec8635c2aba2345c4dcf10b21c
+https://github.com/vmware/xenon/commit/c23964eb57e846126daef98ef7ed15400313e977
+https://github.com/vmware-archive/xenon/commit/7a747d82b80cd38d2c11a0d9cdedb71c722a2c75
+https://github.com/vmware-archive/xenon/commit/ec30db9afada9cb52852082ce4d7d0095524f3b3
+https://github.com/vmware-archive/xenon/commit/06b9947cf603ba40fd8b03bfeb2e84528a7ab592
+https://github.com/vmware-archive/xenon/commit/1a35836973a695157749b0bbbf45b8b2fdcecbd3",pass,,,,,,,,
+CVE-2022-23223,https://github.com/apache/incubator-shenyu/commit/9a02215013037e1cc8cd41f216164628a9e9e28f,pass,,,,,,,,
+CVE-2017-2613,https://github.com/jenkinsci/jenkins/commit/b88b20ec473200db35d0a0d29dcf192069106601,no,,,,,,,,
+CVE-2021-22732,https://github.com/spring-projects/spring-framework/commit/09d9450154be796349dabdc606ade57beae08724,no,,patch 不正确,,,,,,
+CVE-2018-8857,https://github.com/ls1intum/Ares/commit/af4f28a56e2fe600d8750b3b415352a0a3217392,pass,,,,,,,,
+CVE-2021-33036,"https://github.com/apache/hadoop/commit/45801fba8b00257ab32c02a7d1a05948ba687a49
+https://github.com/apache/hadoop/commit/ba041fe6d34215f075e0a7b2078d7273147e14b7",no,,依赖复杂,,,,,,
+CVE-2020-13949,https://github.com/apache/hbase/commit/cb3b06d773a83f007abec55173185402cafa5648,pass,,,,,,,,
+CVE-2022-21724,"https://github.com/pgjdbc/pgjdbc/commit/8a363a7c0989ef8a8f45bb055b4003f758ceabd5
+https://github.com/pgjdbc/pgjdbc/commit/f4d0ed69c0b3aae8531d83d6af4c57f22312c813",no,,testcase 不适用旧版本，适配困难,,,,,,
+CVE-2017-2612,https://github.com/jenkinsci/jenkins/commit/a814154695e23dc37542af7d40cacc129cf70722,no,,,,,,,,
+CVE-2022-33140,https://github.com/apache/nifi/pull/6122/commits/1cde05f07f5565e435ddeb2f43ea7294eecdcd72,pass,,,,,,,,
+CVE-2022-23617,https://github.com/xwiki/xwiki-platform/commit/30c52b01559b8ef5ed1035dac7c34aaf805764d5,no,,maven 中心仓 jar 缺失,,,,,,
+CVE-2019-1003050,"https://github.com/jenkinsci/jenkins/commit/d393c7e9ba3ec44953ef1f8b11839421e2649ee7
+https://github.com/jenkinsci/jenkins/commit/8eb632dda219ec8796420ce58d9564cddf8f8f93",no,,,,,,,,
+CVE-2018-18893,"https://github.com/HubSpot/jinjava/pull/230
+https://github.com/HubSpot/jinjava/commit/c13927db0fb7bb3b567469f125be8000f8cbf601",pending,,testcase 不适用大量旧版本,,,,,,
+CVE-2017-1000391,https://github.com/jenkinsci/jenkins/commit/566a8ddb885f0bef9bc848e60455c0aabbf0c1d3,no,,,,,,,,
+CVE-2022-23974,"https://github.com/apache/pinot/pull/7969
+https://github.com/apache/pinot/pull/7961
+https://github.com/apache/pinot/pull/7961/commits/46c8c277ea1ba20f191f716406f88a85caf2e1b9",pass,,,,,,,,
+CVE-2020-10990,https://github.com/Accenture/mercury/commit/f647a01347485d2afe3a0b735eab3d0121d61f46,no,,testcase 测试新增,,,,,,
+CVE-2021-23900,"https://github.com/OWASP/json-sanitizer/commit/64dd9502708c25782abc54f1941b21bac711d3da
+https://github.com/OWASP/json-sanitizer/commit/a37f594f7378a1c76b3283e0dab9e1ab1dc0247e",yes,tagged,成功触发，这个补丁与CVE-2021-23899一样，一个补丁同时修复了两个CVE,,,,,,
+CVE-2003-0992,https://github.com/keycloak/keycloak/commit/315b9e3c2970145e03dfaaddc364d588c9ebf060,pass,,,,,,,,
+CVE-2021-36696,https://github.com/spring-projects/spring-boot/commit/d09aafacda0db25c1147a0f3e2c4931533881d5c,pass,,,,,,,,
+CVE-2022-23060,https://github.com/shopizer-ecommerce/shopizer/commit/6b9f1ecd303b3b724d96bd08095c1a751dcc287e,pass,,,,,,,,
+CVE-2018-20227,"https://github.com/eclipse/rdf4j/commit/df15a4d7a8f2789c043b27c9eafe1b30316cfa79
+https://github.com/eclipse/rdf4j/commit/099482e52f070a3d74e5ad368cff59c91e9b4f8a
+https://github.com/eclipse/rdf4j/pull/1211/commits/df15a4d7a8f2789c043b27c9eafe1b30316cfa79",yes,tagged,,,,,,,
+CVE-2017-1000399,https://github.com/jenkinsci/jenkins/commit/3ff432ace14d8f4544c88a179a2f7a962eb98ba6,no,,,,,,,,
+CVE-2020-15813,https://github.com/Graylog2/graylog2-server/pull/8569,pass,,,,,,,,
+CVE-2021-25930,"https://github.com/OpenNMS/opennms/commit/607151ea8f90212a3fb37c977fa57c7d58d26a84
+https://github.com/OpenNMS/opennms/commit/eb08b5ed4c5548f3e941a1f0d0363ae4439fa98c",no,,maven jar 缺失,,,,,,
+CVE-2018-1000407,https://github.com/jenkinsci/jenkins/commit/df87e12ddcfeafdba6e0de0e07b3e21f8473ece6,no,,,,,,,,
+CVE-2022-29577,https://github.com/nahsra/antisamy/commit/32e273507da0e964b58c50fd8a4c94c9d9363af0,pending,存在 protected,,,,,,,
+CVE-2022-25867,"https://github.com/socketio/socket.io-client-java/commit/e8ffe9d1383736f6a21090ab959a2f4fa5a41284
+https://github.com/socketio/socket.io-client-java/commit/8664499b6f31154f49783531f778dac5387b766b",yes,tagged,,,,,,,
+CVE-2010-1397,https://github.com/apache/hadoop/commit/c3b7425bf108a600889a4d59ae947b6f7523dcca,pass,,,,,,,,
+CVE-2018-1000110,https://github.com/jenkinsci/git-plugin/commit/a3d3a7eb7f75bfe97a0291e3b6d074aafafa86c9,no,,,,,,,,
+CVE-2014-3490,"https://github.com/ronsigal/Resteasy/commit/9b7d0f574cafdcf3bea5428f3145ab4908fc6d83
+https://github.com/resteasy/Resteasy/pull/521",no,,需要启动一个Web服务才能进行触发,,,,,,
+CVE-2020-7692,https://github.com/googleapis/google-oauth-java-client/commit/13433cd7dd06267fc261f0b1d4764f8e3432c824,no,,maven jar 缺失,,,,,,
+CVE-2022-24819,"https://github.com/xwiki/xwiki-platform/commit/60ed72d56eb22e24243428a0455cccbed8dbb406
+https://github.com/xwiki/xwiki-platform/pull/1692",no,,maven 中心仓 jar 缺失,,,,,,
+CVE-2020-9487,https://github.com/apache/nifi/commit/01e42dfb3291c3a3549023edadafd2d8023f3042,pass,,,,,,,,
+CVE-2014-3625,"https://github.com/spring-projects/spring-framework/commit/3f68cd633f03370d33c2603a6496e81273782601
+https://github.com/spring-projects/spring-framework/commit/9beae9ae4226c45cd428035dae81214439324676
+https://github.com/spring-projects/spring-framework/commit/9cef8e3001ddd61c734281a7556efd84b6cc2755",yes,tagged,,,,,,,
+CVE-2019-0657,https://github.com/keycloak/keycloak/commit/44000caaf5051d7f218d1ad79573bd3d175cad0d,pass,,,,,,,,
+CVE-2021-28168,https://github.com/eclipse-ee4j/jersey/pull/4712,no,,tescase 不是针对漏洞,,,,,,
+CVE-2022-24898,"https://github.com/xwiki/xwiki-commons/commit/abe79aaa31d4e8d8caaadfb7454227fb92ed7b18
+https://github.com/xwiki/xwiki-commons/commit/947e8921ebd95462d5a7928f397dd1b64f77c7d5",yes,tagged,,,,,,,
+CVE-2021-44667,"https://github.com/alibaba/nacos/commit/cd6d7e33b94f24814701f3faf8b632e5e85444c5
+https://github.com/alibaba/nacos/commit/5c0219d7c369e3a293b9ba5cf19c72a51ae93015
+https://github.com/alibaba/nacos/pull/7364",no,,testcase 测试新增,,,,,,
+CVE-2016-1000341,"https://github.com/bcgit/bc-java/commit/acaac81f96fec91ab45bd0412beaf9c3acd8defa
+https://github.com/bcgit/bc-java/commit/acaac81f96fec91ab45bd0412beaf9c3acd8defa#diff-e75226a9ca49217a7276b29242ec59ce",no,,,,,,,,
+CVE-2021-45458,"https://github.com/apache/kylin/pull/1782/commits/c6525128fd9f0222e3049800c8d215f374e5caaa
+https://github.com/apache/kylin/pull/1781/commits/21be8fc14307da280db62c0127c423bf92d0faed
+https://github.com/apache/kylin/pull/1782
+https://github.com/apache/kylin/pull/1781",pass,,,,,,,,
+CVE-2020-36282,https://github.com/rabbitmq/rabbitmq-jms-client/pull/136/commits/f647e5dbfe055a2ca8cbb16dd70f9d50d888b638,pass,,,,,,,,
+CVE-2014-8114,https://github.com/uberfire/uberfire/commit/21ec50eb15,pass,,,,,,,,
+CVE-2022-0672,"https://github.com/eclipse/lemminx/pull/1174
+https://github.com/eclipse/lemminx/commit/076b88052c2a63f60a98ef4b45e3e38c217b70ae",no,,maven jar 缺失,,,,,,
+CVE-2017-1000398,https://github.com/jenkinsci/jenkins/commit/da06fd471cea79123821c778228eeb08e1cedcc7,no,,,,,,,,
+CVE-2021-31408,https://github.com/vaadin/flow/pull/10577,no,,依赖复杂,,,,,,
+CVE-2019-17638,https://github.com/eclipse/jetty.project/commit/ff8ae56fa939c3477a0cdd1ff56ce3d902f08fba,pending,,依赖复杂,,,,,,
+CVE-2019-13990,"https://github.com/quartz-scheduler/quartz/commit/13c1d45aa1db15d0fa0e4997139c99ba219be551
+https://github.com/quartz-scheduler/quartz/pull/501",no,,maven jar 缺失,,,,,,
+CVE-2021-41269,"https://github.com/jmrozanec/cron-utils/pull/494/commits/9c93c17b8107e58073443a045e22274467b88aae
+https://github.com/jmrozanec/cron-utils/commit/cfd2880f80e62ea74b92fa83474c2aabdb9899da
+https://github.com/jmrozanec/cron-utils/pull/494",no,,,,,,,,
+CVE-2020-13942,https://github.com/apache/unomi/commit/0b81ba35dd3c3c2e0a92ce06592b3df90571eced,pass,,,,,,,,
+CVE-2021-20222,https://github.com/keycloak/keycloak/commit/3b80eee5bfdf2b80c47465c0f2eaf70074808741,no,,,,,,,,
+CVE-2018-4984,https://github.com/FasterXML/jackson-databind/commit/3ccde7d938fea547e598fdefe9a82cff37fed5cb,no,,没有 testcase,,,,,,
+CVE-2020-1956,https://github.com/apache/kylin/commit/58fad56ac6aaa43c6bd8f962d7f2d84438664092,no,,testcase 测试新增函数,,,,,,
+CVE-2022-25184,https://github.com/jenkinsci/pipeline-build-step-plugin/commit/c06f65425fe9696d2237f591959dd4b5c6083fd9,no,,,,,,,,
+CVE-2019-17554,https://github.com/apache/olingo-odata4/commit/c3f982db3d97e395d313ae8f231202bb2139882c,no,,maven jar 缺失,,,,,,
+CVE-2022-24846,"https://github.com/GeoWebCache/geowebcache/commit/08673088cfe66c1a767936d0ce5a756b11ee51a6
+https://github.com/GeoWebCache/geowebcache/commit/271b2355b7cb7f4808e0cfce5062f4193a401a75",pass,,maven 中心仓 jar 缺失,,,,,,
+CVE-2002-1362,https://github.com/apache/hadoop/commit/5d1889a66d91608d34ca9411fb6e9161e637e9d3,no,,依赖复杂,,,,,,
+CVE-2018-1002200,"https://github.com/codehaus-plexus/plexus-archiver/pull/87
+https://github.com/codehaus-plexus/plexus-archiver/commit/58bc24e465c0842981692adbf6d75680298989de
+https://github.com/codehaus-plexus/plexus-archiver/commit/a1b58c0cccc4e9a2e4b06284254492b6ecf6033a
+https://github.com/codehaus-plexus/plexus-archiver/commit/f8f4233508193b70df33759ae9dc6154d69c2ea8",no,,,,,,,,
+CVE-2022-24827,"https://github.com/yahoo/elide/pull/2581
+https://github.com/yahoo/elide/commit/aec37097a746370ff66b4f61179b6e6934be4d32",yes,tagged,,,,,,,
+CVE-2018-21234,https://github.com/oblac/jodd/commit/9bffc3913aeb8472c11bb543243004b4b4376f16,no,,testcase 测试新增,,,,,,
+CVE-2022-22979,https://github.com/spring-cloud/spring-cloud-function/commit/0576b6c6ce736415cb3aa3bd85aaceb5b1320e2d,yes,tagged,,,,,,,
+CVE-2019-15477,"https://github.com/jooby-project/jooby/commit/34856a738829d8fedca4ed27bd6ff413af87186f
+https://github.com/jooby-project/jooby/commit/395dab7e80474ac0c2c32d81f61cda2c8331a46b
+https://github.com/jooby-project/jooby/pull/1368
+https://github.com/jooby-project/jooby/commit/27b4af283de1a2c2a6b0530039b46eef75ddf655",no,,依赖复杂,,,,,,
+CVE-2007-2319,https://github.com/spring-projects/spring-framework/commit/e431624e8472b3b53d1a0c4528bf736c612f1fd9,no,,patch 不正确,,,,,,
+CVE-2021-23792,https://github.com/haraldk/TwelveMonkeys/commit/da4efe98bf09e1cce91b7633cb251958a200fc80,pass,,,,,,,,
+CVE-2017-1000395,https://github.com/jenkinsci/jenkins/commit/7b1f8e96a8d97dd09e5e093fcdb010b3295acc77,no,,,,,,,,
+CVE-2020-1953,https://github.com/apache/commons-configuration/commit/add7375cf37fd316d4838c6c56b054fc293b4641,yes,tagged,,,,,,,
+CVE-2003-1497,https://github.com/pgjdbc/pgjdbc/commit/f6d47034a4ce292e1a659fa00963f6f713117064,no,,patch 修复方式是 Deprecated,,,,,,
+CVE-2016-4849,"https://github.com/netty/netty/commit/4581c441c99e1d5524870abca38d0ad2d553932a
+https://github.com/netty/netty/pull/3750/commits/9a7953b566cb3a5a5d2ffa14074cb7b0abecc4c6",pass,,,,,,,,
+CVE-2017-2609,https://github.com/jenkinsci/jenkins/commit/13905d8224899ba7332fe9af4e330ea96a2ae319,no,,,,,,,,
+CVE-2022-1782,https://github.com/erudika/para/commit/9d844f31333475a0394dd14b901ea50674b281f8,no,,testcase 测试新增函数,,,,,,
+CVE-2020-24621,https://github.com/openmrs/openmrs-module-uiframework/pull/59,pass,,,,,,,,
+CVE-2006-6602,https://github.com/vaadin/framework/pull/12415,no,,patch 不正确,,,,,,
+CVE-2019-18213,https://github.com/angelozerr/lsp4xml/pull/566,no,,maven 中心仓 jar 缺失,,,,,,
+CVE-2020-26882,https://github.com/playframework/playframework/pull/10495,pass,,,,,,,,
+CVE-2018-1000873,https://github.com/FasterXML/jackson-modules-java8/pull/87,no,,,,,,,,
+CVE-2021-25933,https://github.com/OpenNMS/opennms/commit/eb08b5ed4c5548f3e941a1f0d0363ae4439fa98c,no,,maven jar 缺失,,,,,,
+CVE-2022-24821,https://github.com/xwiki/xwiki-platform/commit/b95a1c3d1291e1d7f758ebfb524776def2e50cd0,no,,maven 中心仓 jar 缺失,,,,,,
+CVE-2020-5229,https://github.com/opencast/opencast/commit/32bfbe5f78e214e2d589f92050228b91d704758e,pass,,,,,,,,
+CVE-2018-1000130,https://github.com/rhuss/jolokia/commit/1b360b8889f0ed51165a8d1ac55dd8e0aa2dfd4a,pass,,,,,,,,
+CVE-2022-0265,"https://github.com/hazelcast/hazelcast/commit/4d6b666cd0291abd618c3b95cdbb51aa4208e748
+https://github.com/hazelcast/hazelcast/pull/20407",pass,,,,,,,,
+CVE-2021-25934,https://github.com/OpenNMS/opennms/commit/eb08b5ed4c5548f3e941a1f0d0363ae4439fa98c,no,,maven jar 缺失,,,,,,
+CVE-2020-26217,https://github.com/x-stream/xstream/commit/0fec095d534126931c99fd38e9c6d41f5c685c1a,yes,tagged,对于触发来说，受影响的版本是 1.4.12 1.4.13 1.4.14 1.4.15 1.4.16 1.4.17,,,,,,
+CVE-2020-36319,"https://github.com/vaadin/flow/pull/8051
+https://github.com/vaadin/flow/pull/8016",no,,依赖复杂,,,,,,
+CVE-2018-1000192,"https://github.com/jenkinsci/jenkins/commit/809916b59b7c7678dc3c1c76338452121fed1424
+https://github.com/jenkinsci/jenkins/commit/7c5b41bfd5d8004f82684a9168dd627e20ea5f35",no,,,,,,,,
+CVE-2022-1245,https://github.com/keycloak/keycloak/commit/76d83f46fad94ebcbedaa49e6daad458e2894e52,pass,,,,,,,,
+CVE-2021-39233,"https://github.com/apache/ozone/pull/2186
+https://github.com/apache/ozone/commit/842e6f6f1002a04eb3dd2c76ef108575f3a751af
+https://github.com/apache/ozone/pull/2254
+https://github.com/apache/ozone/commit/355096b9c218a90d01307b7b8782c469300b94bf",no,,maven jar 缺失,,,,,,
+CVE-2019-3794,https://github.com/cloudfoundry/uaa/commit/be6640dc07c14cd277dea463a9c339c0cac2ffae,pass,,,,,,,,
+CVE-2022-22971,"https://github.com/spring-projects/spring-framework/commit/dc2947c52df18d5e99cad03383f7d6ba13d031fd
+https://github.com/spring-projects/spring-framework/commit/159a99bbafdd6c01871228113d7042c3f83f360f",no,,依赖缺失,,,,,,
+CVE-2021-45890,"https://github.com/AuthGuard/AuthGuard/pull/181
+https://github.com/AuthGuard/AuthGuard/commit/9783b1143da6576028de23e15a1f198b1f937b82",no,,maven jar 缺失,,,,,,
+CVE-2018-11796,https://github.com/apache/tika/commit/4e67928412ad56333d400f3728ecdb59d07d9d63,no,,,,,,,,
+CVE-2014-0225,"https://github.com/spring-projects/spring-framework/commit/44ee51a6c9c3734b3fcf9a20817117e86047d753
+https://github.com/spring-projects/spring-framework/commit/8e096aeef55287dc829484996c9330cf755891a1
+https://github.com/spring-projects/spring-framework/commit/c6503ebbf7c9e21ff022c58706dbac5417b2b5eb",yes,tagged,,,,,,,
+CVE-2021-34797,"https://github.com/apache/geode/pull/6641/commits/3555453d88512e96358e7674b921920e104eaf0b
+https://github.com/apache/geode/pull/6641
+https://github.com/apache/geode/pull/6641/commits/7e9198e611a172e591483e22b3b8a4fe80c1590f
+https://github.com/apache/geode/pull/6641/commits/ede3dc2b67f118e28b1bc39647a959e61a06b08b",pass,,,,,,,,
+CVE-2022-25181,https://github.com/jenkinsci/workflow-cps-global-lib-plugin/commit/ace0de3c2d691662021ea10306eeb407da6b6365,no,,,,,,,,
+CVE-2018-1000615,https://github.com/opennetworkinglab/onos/commit/8166890edce25ceaaee7d3fcbfa7abedfa08c8a7,no,,maven jar 缺失,,,,,,
+CVE-2017-4973,"https://github.com/cloudfoundry/uaa/commit/0762cc768592abc4fb1c6afd9974ea6fb964f0f2
+https://github.com/cloudfoundry/uaa/commit/9d44cb0c7c25ccae95bfa1c2d59ce46200c643cb",pass,,,,,,,,
+CVE-2015-5349,https://github.com/apache/directory-studio/commit/ac57a26fcb98aa17fe9534575cf5fdad00a1c839,no,,依赖复杂,,,,,,
+CVE-2021-39234,"https://github.com/apache/ozone/commit/057f0a0e11a92c82ad4ba168e737fa5250188a7f
+https://github.com/apache/ozone/pull/2108",no,,maven jar 缺失,,,,,,
+CVE-2021-33609,https://github.com/vaadin/framework/pull/12415,yes,tagged,,,,,,,
+CVE-2014-9515,https://github.com/DozerMapper/dozer/pull/447/commits/ccd550696f3df8545319ffa9c6adafc8eca2334c,pass,,,,,,,,
+CVE-2017-12196,https://github.com/undertow-io/undertow/commit/facb33a5cedaf4b7b96d3840a08210370a806870,pass,,,,,,,,
+CVE-2020-10770,https://github.com/keycloak/keycloak/commit/55a064a978b0b7e0f0b93c33931f7dabe7d0d5e2,pass,,,,,,,,
+CVE-2019-17632,"https://github.com/eclipse/jetty.project/commit/cf0df6e3ffdcd64d607a35488edb5b0b75350d33
+https://github.com/eclipse/jetty.project/commit/ba1fe2826d49c52f82b49bb32737a361519c0479
+https://github.com/eclipse/jetty.project/pull/4335/commits/9e40fc9a6fbe93850233b7f03f048b1272530942",pass,,,,,,,,
+CVE-2019-17359,"https://github.com/bcgit/bc-java/commit/ea6777cb3c667361d72d9048ace24d126f0ac2bc
+https://github.com/bcgit/bc-java/commit/33a8e4aa07b21a8bcf5a582446664485f5f081b2
+https://github.com/bcgit/bc-java/commit/b1bc75254f5fea633a49a751a1a7339056f97856",yes,pending,fix那部分能测试成功，vulnerable的，因为有bug跑不通,,,,,,
+CVE-2019-10246,"https://github.com/eclipse/jetty.project/commit/3d028ab2ca76086a742bac7409a3620e81ec4791
+https://github.com/eclipse/jetty.project/commit/1565b5f160e600d08da9b00edf081fb353a443d9
+https://github.com/eclipse/jetty.project/commit/7b774d82e8234231e99b33c19acac3b6f83c0377",pass,,,,,,,,
+CVE-2019-10241,https://github.com/eclipse/jetty.project/commit/ca77bd384a2970cabbbdab25cf6251c6fb76cd21,yes,tagged,,,,,,,
+CVE-2019-10094,"https://github.com/apache/tika/commit/c4e63c9be8665cccea8b680c59a6f5cfbc03e0fc
+https://github.com/apache/tika/commit/81c21ab0aac6b3e4102a1a8906c8c7eab6f
+https://github.com/apache/tika/commit/1158d893dc952c573f7a12c7e4855cdce479fc2a
+https://github.com/apache/tika/commit/22ff7564f2641ba195f192d7c59e9df4a3a10747",pending,,似乎testcase无效,,,,,,
+CVE-2018-3258,https://github.com/mysql/mysql-connector-j/commit/8b59b9ebab61cc97bafe77ee05f79829b1376e47,pass,,,,,,,,
+CVE-2018-15758,"https://github.com/spring-projects/spring-security-oauth/commit/ddd65cd9417ae1e4a69e4193a622300db38e2ef1
+https://github.com/spring-projects/spring-security-oauth/commit/4082ec7ae3d39198a47b5c803ccb20dacefb0b09
+https://github.com/spring-projects/spring-security-oauth/commit/f92223afc71687bd3156298054903f50aa71fbf9",pass,,,,,,,,
+CVE-2018-14627,https://github.com/wildfly/wildfly/commit/883115ea2168343e870745f538a80b1ddc360914,pass,,,,,,,,
+CVE-2018-11799,https://github.com/apache/oozie/commit/d50df341432df1049c6c85bf2dcda9eb0be04d73,pass,,,,,,,,
+CVE-2018-10936,https://github.com/pgjdbc/pgjdbc/commit/cdeeaca47dc3bc6f727c79a582c9e4123099526e,pending,,,,,,,,
+CVE-2017-2617,https://github.com/hawtio/hawtio/commit/8cf6848f4d4d4917a4551c9aa49dc00f699eb569,pass,,,,,,,,
+CVE-2010-2245,https://github.com/apache/attic-wink/commit/531771e5b2bf2f470fe728efe25e471d3b23659f,pass,,,,,,,,
+CVE-2011-2732,https://github.com/spring-projects/spring-security/commit/5238ba0e2615ef733a906b264c6c06a4446a886b,yes,tagged,,,,,,,
+CVE-2012-0392,https://github.com/apache/struts/commit/b4265d369dc29d57a9f2846a85b26598e83f3892,no,,,,,,,,
+CVE-2012-0394,https://github.com/apache/struts/commit/b4265d369dc29d57a9f2846a85b26598e83f3892,no,,,,,,,,
+CVE-2012-2378,https://github.com/apache/cxf/commit/9bb4612d3352ef3e3292fdce25e3c70b43d63c6f,no,,,,,,,,
+CVE-2012-2379,https://github.com/apache/cxf/commit/4500bf901cb2a7312291b6663045f28a95d2a0c4,pass,,,,,,,,
+CVE-2012-3451,"https://github.com/apache/cxf/commit/878fe37f0b09888a42005fedc725ce497b5a694a
+https://github.com/apache/cxf/commit/9c70abe28fbf2b4c4df0b93ed12295ea5a012554",pass,,,,,,,,
+CVE-2012-4386,https://github.com/apache/struts/commit/a1ca307981b0930d1687ed89f0b7305af79da0f3,pass,,,,,,,,
+CVE-2012-4387,https://github.com/apache/struts/commit/80e03182d66d9e6ab18f9a9a9b3c42725a1c89e9,pass,,,,,,,,
+CVE-2012-5055,"https://github.com/spring-projects/spring-security/commit/f5fc94e1be40f3a62dd5a8687e4cfd5fe2130dea
+https://github.com/spring-projects/spring-security/commit/915b2acf73a75c4e51e67a3c7fd85f908df6259b
+https://github.com/spring-projects/spring-security/commit/c076f0f2e190c73a17379d05935c2c81657adee9",yes,tagged,,,,,,,
+CVE-2013-2134,https://github.com/apache/struts/commit/711cf0201cdd319a38cf29238913312355db29ba,pass,,,,,,,,
+CVE-2013-2135,https://github.com/apache/struts/commit/711cf0201cdd319a38cf29238913312355db29ba,pass,,,,,,,,
+CVE-2013-6235,https://github.com/stevensouza/jamonapi/commit/05e6be6849abade047056c25ece23d9553deb3f3,no,,,,,,,,
+CVE-2013-6429,"https://github.com/spring-projects/spring-framework/commit/2ae6a6a3415eebc57babcb9d3e5505887eda6d8a
+https://github.com/spring-projects/spring-framework/commit/7387cb990e35b0f1b573faf29d4f9ae183d7a5ef",pass,,,,,,,,
+CVE-2013-7397,"https://github.com/AsyncHttpClient/async-http-client/commit/df6ed70e86c8fc340ed75563e016c8baa94d7e72
+https://github.com/AsyncHttpClient/async-http-client/commit/dfacb8e05d0822c7b2024c452554bd8e1d6221d8",pass,,,,,,,,
+CVE-2014-0035,"https://github.com/apache/cxf/commit/5df3f72f1a26b7c9ac2888ab65e41f4105706580
+https://github.com/apache/cxf/commit/2d2fd1bf67dc2247b6aca31b83a571d865fad1c9",no,,依赖复杂,,,,,,
+CVE-2014-0050,https://github.com/apache/commons-fileupload/commit/c61ff05b3241cb14d989b67209e57aa71540417a,yes,tagged,,,,,,,
+CVE-2014-0116,https://github.com/apache/struts/commit/1a668af7f1ffccea4a3b46d8d8c1fe1c7331ff02,no,,maven jar 缺失,,,,,,
+CVE-2014-3120,"https://github.com/elastic/elasticsearch/commit/95bd04b2c7fd7387c7e3b3367361dcf9fe9f9d06
+https://github.com/elastic/elasticsearch/pull/5943/commits/81e83cca7470ffbe84faafc03d74c7117c4e6d05",pass,,,,,,,,
+CVE-2014-3578,"https://github.com/spring-projects/spring-framework/commit/8ee465103850a3dca018273fe5952e40d5c45a66
+https://github.com/spring-projects/spring-framework/commit/748167bfa33c3c69db2d8dbdc3a0e9da692da3a0
+https://github.com/spring-projects/spring-framework/commit/f6fddeb6eb7da625fd711ab371ff16512f431e8d",yes,tagged,,,,,,,
+CVE-2014-3584,https://github.com/apache/cxf/commit/0b3894f57388b9955f2c33b2295223f2835cd7b3,yes,tagged,,,,,,,
+CVE-2014-3612,https://github.com/apache/activemq/commit/22f2f3dde757d31307da772d579815c1d169bc39,pass,,,,,,,,
+CVE-2014-8152,https://github.com/apache/santuario-xml-security-java/commit/3d7086c603a4538933dfa98d697d0df4539a984f,pass,,,,,,,,
+CVE-2015-1772,https://github.com/apache/hive/commit/6929846a8120eaf094b914b4ca8af80b65f891c8,no,,依赖,,,,,,
+CVE-2015-1776,https://github.com/apache/hadoop/commit/6b710a42e00acca405e085724c89cda016cf7442,pass,,,,,,,,
+CVE-2015-3192,"https://github.com/spring-projects/spring-framework/commit/d79ec68db40c381b8e205af52748ebd3163ee33b
+https://github.com/spring-projects/spring-framework/commit/9c3580d04e84d25a90ef4c249baee1b4e02df15e
+https://github.com/spring-projects/spring-framework/commit/5a711c05ec750f069235597173084c2ee7962424",pass,,,,,,,,
+CVE-2015-5211,"https://github.com/spring-projects/spring-framework/commit/a95c3d820dbc4c3ae752f1b3ee22ee860b162402
+https://github.com/spring-projects/spring-framework/commit/03f547eb9868f48f44d59b56067d4ac4740672c3
+https://github.com/spring-projects/spring-framework/commit/2bd1daa75ee0b8ec33608ca6ab065ef3e1815543",pass,,,,,,,,
+CVE-2015-5253,"https://github.com/apache/cxf/commit/845eccb6484b43ba02875c71e824db23ae4f20c0
+https://github.com/apache/cxf/commit/a61db289f87e448292f7ff0d0a3d25792dd4d42d
+https://github.com/apache/cxf/commit/02245c656941f28b6b2be5e461e6db04a70d2436",pass,,,,,,,,
+CVE-2015-5254,"https://github.com/apache/activemq/commit/e7a4b53f799685e337972dd36ba0253c04bcc01f
+https://github.com/apache/activemq/commit/6f03921b31d9fefeddb0f4fa63150ed1f94a14b
+https://github.com/apache/activemq/commit/a7e2a44fe8d4435ae99532eb0ab852e6247f7b16
+https://github.com/apache/activemq/commit/e100638244c4ca5eb2a1f16bcdc671c9859c2694",pass,,,,,,,,
+CVE-2015-5258,https://github.com/spring-projects/spring-social/commit/5151e1158e1ed51369e7aba9e8092930d28c31d3,pass,,,,,,,,
+CVE-2015-5344,"https://github.com/apache/camel/commit/157c0b4a3c8017de432f1c99f83e374e97dc4d36
+https://github.com/apache/camel/commit/4cdc6b177ee7391eedc9f0b695c05d56f84b0812
+https://github.com/apache/camel/commit/b7afb3769a38b8e526f8046414d4a71430d77df0
+https://github.com/apache/camel/commit/369d0a6d605055cb843e7962b101e3bbcd113fec
+https://github.com/apache/camel/commit/8386d8f7260143802553bc6dbae2880d6c0bafda
+https://github.com/apache/camel/commit/4491c080cb6c8659fc05441e49307b7d4349aa56",pass,,,,,,,,
+CVE-2015-6524,https://github.com/apache/activemq/commit/22f2f3dde757d31307da772d579815c1d169bc39,pass,,,,,,,,
+CVE-2016-0785,https://github.com/apache/struts/commit/15857a69e7baf3675804495a5954cd0756ac8364,no,,testcase 测试新增,,,,,,
+CVE-2016-3081,https://github.com/apache/struts/commit/f238cf4f1091be19fbcfd086b042c86a1bcaa7fc,no,,依赖缺失,,,,,,
+CVE-2016-3084,https://github.com/cloudfoundry/uaa/commit/5c2377487bef9d716d5c8e5717df1fc00bc7b000,pass,,,,,,,,
+CVE-2016-4465,"https://github.com/apache/struts/commit/eccc31ebce5430f9e91b9684c63eaaf885e603f9
+https://github.com/apache/struts/commit/a0fdca138feec2c2e94eb75ca1f8b76678b4d152",yes,tagged,,,,,,,
+CVE-2016-4974,"https://github.com/apache/qpid-jms-amqp-0-x/commit/7e6843e2e1967bfdba477a683353dbf6287d6291
+https://github.com/apache/qpid-jms/commit/669cfff838d2798fa89b9db546823e6245433d4e",pass,,,,,,,,
+CVE-2016-4977,https://github.com/spring-attic/spring-security-oauth/commit/fff77d3fea477b566bcacfbfc95f85821a2bdc2d,yes,tagged,不是 public,,,,,,
+CVE-2016-5007,https://github.com/spring-projects/spring-security/commit/e4c13e3c0ee7f06f59d3b43ca6734215ad7d8974,pass,,,,,,,,
+CVE-2016-6801,"https://github.com/apache/jackrabbit/commit/0c00609a172b3af3b86a01abbf5ed473214702ba
+https://github.com/apache/jackrabbit/commit/4d21cc25649e547520963b0f87300d656050e68c
+https://github.com/apache/jackrabbit/commit/67f2cc1ac78cd7bb721d556e8be27559efbf4e12
+https://github.com/apache/jackrabbit/commit/ea75d7c2aeaafecd9ab97736bf81c5616f703244
+https://github.com/apache/jackrabbit/commit/7fb4ba4a385069378c916b4fac3f145db802acd8
+https://github.com/apache/jackrabbit/commit/fb4fe3601717201934bcbf6eb604d2e1ef2cb7ad
+https://github.com/apache/jackrabbit/commit/991cc31a6cc3a5f87fa7951afb939ff7859db789
+https://github.com/apache/jackrabbit/commit/9e08618c73a852710cfd9904b8558ceb5c1b754c
+https://github.com/apache/jackrabbit/commit/eae001a54aae9c243ac06b5c8f711b2cb2038700",no,,依赖复杂,,,,,,
+CVE-2016-7051,https://github.com/FasterXML/jackson-dataformat-xml/commit/eeff2c312e9d4caa8c9f27b8f740c7529d00524a,yes,tagged,,,,,,,
+CVE-2016-8629,"https://github.com/keycloak/keycloak/commit/a78cfa4b2ca979a1981fb371cfdf2c7212f7b6e2
+https://github.com/keycloak/keycloak/commit/3d46b4c425d39b004566cc78164e1ffbe37d647c",pass,,,,,,,,
+CVE-2016-8739,"https://github.com/apache/cxf/commit/8e4970d931ae72f92c54d170a844b37137b8fda6
+https://github.com/apache/cxf/commit/9deb2d179758d3da47ce3ea492c2606c0a6a8475
+https://github.com/apache/cxf/commit/d9e2a6e7",no,,依赖复杂,,,,,,
+CVE-2016-9878,"https://github.com/spring-projects/spring-framework/commit/e2d6e709c3c65a4951eb096843ee75d5200cfcad
+https://github.com/spring-projects/spring-framework/commit/43bf008fbcd0d7945e2fcd5e30039bc4d74c7a98",yes,tagged,,,,,,,
+CVE-2016-9879,"https://github.com/spring-projects/spring-security/commit/6d30da2e1f166ceac339899295e1b8a8ff2f08c4
+https://github.com/spring-projects/spring-security/commit/ed2ae21074b7850d386371b2ab9e29268ef2f0c0
+https://github.com/spring-projects/spring-security/commit/666e356ebc479194ba51e43bb99fc42f849b6175",yes,tagged,,,,,,,
+CVE-2017-12158,"https://github.com/keycloak/keycloak/commit/d9ffc4fa211bbf2aae49449cb58e02b6ea8cd299
+https://github.com/keycloak/keycloak/commit/6ea9ed9be8baa7c6971cfbdabecc91555dc561d7",pass,,,,,,,,
+CVE-2017-12159,https://github.com/keycloak/keycloak/commit/9b75b603e3a5f5ba6deff13cbb45b070bf2d2239,pass,,,,,,,,
+CVE-2017-12160,https://github.com/keycloak/keycloak/commit/fea4c54adc6a1fdafb725b89874c389d54b6d04a,pass,,,,,,,,
+CVE-2017-12631,"https://github.com/apache/cxf-fediz/commit/e7127129dbc0f4ee83985052085e185e750cebbf
+https://github.com/apache/cxf-fediz/commit/48dd9b68d67c6b729376c1ce8886f52a57df6c45",pass,,,,,,,,
+CVE-2017-14063,"https://github.com/AsyncHttpClient/async-http-client/commit/e9f12b29725c567cdb4de98b3302a61ca9d41280
+https://github.com/AsyncHttpClient/async-http-client/commit/eb9e3347e45319be494db24d285a2aee4396f5d3",no,,不是 public,,,,,,
+CVE-2017-17485,"https://github.com/FasterXML/jackson-databind/commit/f031f27a31625d07922bdd090664c69544200a5d
+https://github.com/FasterXML/jackson-databind/commit/bb45fb16709018842f858f1a6e1118676aaa34bd",no,,,,,,,,
+CVE-2017-2649,https://github.com/jenkinsci/active-directory-plugin/commit/a5e92137dc1f892ebfb3e371725b787860ddb539,no,,,,,,,,
+CVE-2017-3159,"https://github.com/apache/camel/commit/c98e48a7421b813bd47d5ae2717aea35a98d1876
+https://github.com/apache/camel/commit/2f19ce59cc4d89f21455f47604915fab6a22233b
+https://github.com/apache/camel/commit/20e26226107f3133c87d0f5c845e02f824823f69",pass,,,,,,,,
+CVE-2017-4995,"https://github.com/spring-projects/spring-security/commit/947d11f433b78294942cb5ea56e8aa5c3a0ca439
+https://github.com/spring-projects/spring-security/commit/5dee8534cd1b92952d10cc56335b5d5856f48f3b",yes,tagged,,,,,,,
+CVE-2017-5637,"https://github.com/apache/zookeeper/commit/5fe68506f217246c7ebd96803f9c78e13ec2f11a
+https://github.com/apache/zookeeper/commit/835377f0e1cd215e791ed29c0bcff95e625f299c
+https://github.com/apache/zookeeper/commit/6d9fc04c052adbc79bbbb1c63f3f00c816fb8e56",pass,,,,,,,,
+CVE-2017-5638,https://github.com/apache/struts/commit/6b8272ce47160036ed120a48345d9aa884477228,pass,,,,,,,,
+CVE-2017-5641,https://github.com/apache/flex-blazeds/commit/f861f0993c35e664906609cad275e45a71e2aaf1,pass,,,,,,,,
+CVE-2017-5643,"https://github.com/apache/camel/commit/8afc5d1757795fde715902067360af5d90f046da
+https://github.com/apache/camel/commit/2c6964ae94d8f9a9c9a32e5ae5a0b794e8b8d3be
+https://github.com/apache/camel/commit/9f7376abbff7434794f2c7c2909e02bac232fb5b",pass,,,,,,,,
+CVE-2017-7525,"https://github.com/FasterXML/jackson-databind/commit/60d459cedcf079c6106ae7da2ac562bc32dcabe1
+https://github.com/FasterXML/jackson-databind/commit/fd8dec2c7fab8b4b4bd60502a0f1d63ec23c24da",yes,tagged,,,,,,,
+CVE-2017-7656,https://github.com/eclipse/jetty.project/commit/a285deea42fcab60d9edcf994e458c238a348b55,pass,,,,,,,,
+CVE-2017-7657,"https://github.com/eclipse/jetty.project/commit/a285deea42fcab60d9edcf994e458c238a348b55
+https://github.com/eclipse/jetty.project/commit/be8ff431a4b9b2e51c4c847512dfbc70166b8089",pass,,,,,,,,
+CVE-2017-7662,"https://github.com/apache/cxf-fediz/commit/c68e4820816c19241568f4a8fe8600bffb0243cd
+https://github.com/apache/cxf-fediz/commit/71480c3f7e516cf0d535fdd5abec63ab455e4d06",no,,,,,,,,
+CVE-2017-8045,https://github.com/spring-projects/spring-amqp/commit/ed824637cc922356b44409827722c4628340b7c8,yes,tagged,,,,,,,
+CVE-2017-8046,"https://github.com/spring-projects/spring-data-rest/commit/f5bfe5358864de1a15566110de7ad7e5ffb48e99
+https://github.com/spring-projects/spring-data-rest/commit/8f269e28fe8038a6c60f31a1c36cfda04795ab45
+https://github.com/spring-projects/spring-data-rest/commit/824e51a1304bbc8334ac0b96ffaef588177e6ccd",yes,tagged,,,,,,,
+CVE-2017-9796,https://github.com/apache/geode/commit/02b9646618e074f80b3d5fed0e5b512a34b5897a,pass,,,,,,,,
+CVE-2018-1000531,https://github.com/FusionAuth/fusionauth-jwt/commit/abb0d479389a2509f939452a6767dc424bb5e6ba,pass,,,,,,,,
+CVE-2018-1000644,https://github.com/eclipse/rdf4j/commit/50f2f51950227a4ec595a2922d81da487aba5135,pass,,,,,,,,
+CVE-2018-1000820,"https://github.com/neo4j-contrib/neo4j-apoc-procedures/commit/e04325c48663994af0bab69a551ad64be2219708
+https://github.com/neo4j-contrib/neo4j-apoc-procedures/commit/45bc09c8bd7f17283e2a7e85ce3f02cb4be4fd1a",no,,依赖复杂,,,,,,
+CVE-2018-1000854,"https://github.com/esigate/esigate/commit/30cad23a8f282600c9b045e1af09f6f8a65357b1
+https://github.com/esigate/esigate/commit/b866acb1ebc661dbe475330e27e0d69693de1971",pass,,,,,,,,
+CVE-2018-10912,https://github.com/keycloak/keycloak/commit/40d129cf541e85e8d0d04a990be6e7954a0a5d2b,pass,,,,,,,,
+CVE-2018-11039,"https://github.com/spring-projects/spring-framework/commit/dac97f1b7dac3e70ff603fb6fc9f205b95dd6b01
+https://github.com/spring-projects/spring-framework/commit/f2694a8ed93f1f63f87ce45d0bb638478b426acd
+https://github.com/spring-projects/spring-framework/commit/323ccf99e575343f63d56e229c25c35c170b7ec1",yes,tagged,,,,,,,
+CVE-2018-11040,"https://github.com/spring-projects/spring-framework/commit/b80c13b722bb207ddf43f53a007ee3ddc1dd2e26
+https://github.com/spring-projects/spring-framework/commit/874859493bbda59739c38c7e52eb3625f247b93a",yes,tagged,,,,,,,
+CVE-2018-11248,"https://github.com/lingochamp/FileDownloader/commit/e8dd7724c9243b21181eb3d27a1715ed811ccfde
+https://github.com/lingochamp/FileDownloader/commit/b023cc081bbecdd2a9f3549a3ae5c12a9647ed7f",no,,依赖缺失,,,,,,
+CVE-2018-1131,https://github.com/infinispan/infinispan/commit/c630752604332c4cc84fc44dfbb9011a296ab966,no,过于复杂,,,,,,,
+CVE-2018-11761,https://github.com/apache/tika/commit/4e67928412ad56333d400f3728ecdb59d07d9d63,pass,,,,,,,,
+CVE-2018-11762,"https://github.com/apache/tika/commit/a09d853dbed712f644e274b497cce254f3189d57
+https://github.com/apache/tika/commit/c0fb57d9d20e8eb7cb77bce8742e4566a18f5db8",pass,,,,,,,,
+CVE-2018-11771,https://github.com/apache/commons-compress/commit/a41ce6892cb0590b2e658704434ac0dbcb6834c8,yes,tagged,,,,,,,
+CVE-2018-11775,"https://github.com/apache/activemq/commit/02971a40e281713a8397d3a1809c164b594abfbb
+https://github.com/apache/activemq/commit/1e31df9800fc2db258f2458628bd9863c11b2846
+https://github.com/apache/activemq/commit/69fad2a135689f6c31fbada1c397f2e0dfd90d3c
+https://github.com/apache/activemq/commit/bde7097fb8173cf871827df7811b3865679b963d",pass,,,,,,,,
+CVE-2018-11776,https://github.com/apache/struts/commit/918182344cc97515353cc3dcb09b9fce19c739c0,pass,,,,,,,,
+CVE-2018-1196,https://github.com/spring-projects/spring-boot/commit/9b8cb9a4639af3b47b5eeec4f5a04261dcd2a058,pass,,,,,,,,
+CVE-2018-1199,"https://github.com/spring-projects/spring-security/commit/65da28e4bf62f58fb130ba727cbbd621b44a36d1
+https://github.com/spring-projects/spring-security/commit/0eef5b4b425ab42b9fa0fde1a3f36a37b92558f2
+https://github.com/spring-projects/spring-security/commit/cb8041ba67635edafcc934498ef82707157fd22a",pass,,,,,,,,
+CVE-2018-12538,https://github.com/eclipse/jetty.project/commit/a0b8321ef452dddff9bc6c14e3ac0108239bfa2c,pass,,,,,,,,
+CVE-2018-12541,https://github.com/eclipse-vertx/vert.x/commit/269a583330695d1418a4f5578f7169350b2e1332,pass,,,,,,,,
+CVE-2018-12544,"https://github.com/vert-x3/vertx-web/commit/ea0b0930fbc122b7114935cafa379facc9611587
+https://github.com/vert-x3/vertx-web/commit/3fcb0036dc11f22ea232f61cfff31b29a6b6eca4
+https://github.com/vert-x3/vertx-web/commit/26db16c7b32e655b489d1a71605f9a785f788e41",no,,,,,,,,
+CVE-2018-1259,"https://github.com/spring-projects/spring-data-commons/commit/b8974a292ab463a304eda987632be4d9c145f5f8
+https://github.com/denis554/spring-data-commons/commit/1fbbcf7029d8443f50ac572b08e13aab43ddda03
+https://github.com/spring-projects/spring-data-commons/commit/11d0aa1b396d8819a5a0d4933c5cfc72fe9ad102
+https://github.com/spring-projects/spring-data-commons/commit/fd94d3145d6cd2c41b07cdc76d6aa84319c1ad4d",yes,tagged,,,,,,,
+CVE-2018-1260,https://github.com/spring-projects/spring-security-oauth/commit/70e5ba84ca98b7ab42c1900bdd9fa51b393d611f,yes,tagged,,,,,,,
+CVE-2018-1261,https://github.com/spring-projects/spring-integration-extensions/commit/a5573eb232ff85199ff9bb28993df715d9a19a25,yes,tagged,,,,,,,
+CVE-2018-1263,https://github.com/spring-projects/spring-integration-extensions/commit/d10f537283d90eabd28af57ac97f860a3913bf9b,yes,tagged,,,,,,,
+CVE-2018-1274,"https://github.com/spring-projects/spring-data-commons/commit/06b0dab536963da78dadf2ba407e5937d81c348a
+https://github.com/spring-projects/spring-data-commons/commit/371f6590c509c72f8e600f3d05e110941607fbad
+https://github.com/spring-projects/spring-data-commons/commit/3d8576fe4e4e71c23b9e6796b32fd56e51182ee0",yes,tagged,,,,,,,
+CVE-2018-1284,"https://github.com/apache/hive/commit/cbcd846b7dee541595ceebdfb8ae367c11b1e666
+https://github.com/apache/hive/commit/f80a38ae1174553022deae4f8774918401d9756d
+https://github.com/apache/hive/commit/b0a58d245875dc1b3ac58a7cf1a61d3b17805e96",no,,依赖复杂,,,,,,
+CVE-2018-15756,"https://github.com/spring-projects/spring-framework/commit/423aa28ed584b4ff6e5bad218c09beef5e91951e
+https://github.com/spring-projects/spring-framework/commit/044772641d12b9281185f6cf50f8485b8747132c
+https://github.com/spring-projects/spring-framework/commit/c8e320019ffe7298fc4cbeeb194b2bfd6389b6d9",yes,tagged,,,,,,,
+CVE-2018-17184,"https://github.com/apache/syncope/commit/73aed0a741b1255f45893e3cada650147335073
+https://github.com/apache/syncope/commit/36fb466afd64894170fa5e2e030ce6895120b1a
+https://github.com/apache/syncope/commit/b25a8834db2cc7ea45707a1218e85e047568427",pass,,,,,,,,
+CVE-2018-17187,https://github.com/apache/qpid-proton-j/commit/0cb8ca03cec42120dcfc434561592d89a89a805e,pass,,,,,,,,
+CVE-2018-18389,https://github.com/neo4j/neo4j/commit/46de5d01ae2741ffe04c36270fc62c6d490f65c9,pass,,,,,,,,
+CVE-2018-7489,"https://github.com/FasterXML/jackson-databind/commit/6799f8f10cc78e9af6d443ed6982d00a13f2e7d2
+https://github.com/FasterXML/jackson-databind/commit/e66c0a9d3c926ff1b63bf586c824ead1d02f2a3d",pass,,,,,,,,
+CVE-2018-8030,https://github.com/apache/qpid-broker-j/commit/025b48f3193e2b10b1c41d2bc3bcfc9cfc238a27,pass,,,,,,,,
+CVE-2019-0194,https://github.com/apache/camel/commit/5b64969d37cf2906efd4623cfd473041ce5132fd,pass,,,,,,,,
+CVE-2019-0201,"https://github.com/emperwang/zookeeper/commit/5ff19e3672987bdde2843a3f031e2bf0010e35f1
+https://github.com/emperwang/zookeeper/commit/af741cb319d4760cfab1cd3b560635adacd8deca",pass,,,,,,,,
+CVE-2019-0226,"https://github.com/apache/karaf/commit/fe3bc4108e5a8b3c804e5da91ec0d5695588eb25
+https://github.com/apache/karaf/commit/4155eac7dffa933f12c1e0cf18e9492ccc931093",no,,外部文件路径,,,,,,
+CVE-2019-10354,https://github.com/jenkinsci/jenkins/commit/279d8109eddb7a494428baf25af9756c2e33576b,no,,,,,,,,
+CVE-2019-11269,"https://github.com/spring-projects/spring-security-oauth/commit/cb714f4cee45ce2807320ded38ed0bee846f2397
+https://github.com/spring-projects/spring-security-oauth/commit/346bb74d28d7292afa30ce538c68cabc51d91777
+https://github.com/spring-projects/spring-security-oauth/commit/1434dcf0c731dd1ee50d52520b1e24c15eb1f009
+https://github.com/spring-projects/spring-security-oauth/commit/f769ff98c7b0c7aba42dd67538f6912c8e0d2ef7",yes,tagged,,,,,,,
+CVE-2019-11272,https://github.com/spring-projects/spring-security/commit/b2d4fec3617c497c5a8eb9c7e5270e0c7db293ee,yes,tagged,,,,,,,
+CVE-2019-12402,https://github.com/apache/commons-compress/commit/4ad5d80a6272e007f64a6ac66829ca189a8093b9,yes,tagged,漏洞的类是私有类,,,,,,
+CVE-2019-12415,https://github.com/apache/poi/commit/2b8200f7d701ea6ff9638f629f0bd81d2e48410c,pass,,,,,,,,
+CVE-2019-12419,"https://github.com/apache/cxf/commit/6bf89927d3e07197d49453b00d673eadce696cf9
+https://github.com/apache/cxf/commit/db6069667708a59c75a785f310d4a2df3698122c",pass,,,,,,,,
+CVE-2019-12422,https://github.com/apache/shiro/commit/44f6548b97610cdf661976969d5735c0be14a57b,no,依赖了spring框架，以及easymock，依赖太多,,,,,,,
+,https://github.com/apache/shiro/commit/a8018783373ff5e5210225069c9919e071597d5e,,,,,,,,,
+CVE-2019-12423,"https://github.com/apache/cxf/commit/8b40fdba289c62f4defae51c1f76860f0159c441
+https://github.com/apache/cxf/commit/2de7e14eb95626fffef6f61365186de9a1c9de3d",pass,,,,,,,,
+CVE-2019-14838,"https://github.com/wildfly/wildfly-core/commit/2d527803dc10add8806fa0dd66f409dc511f92ec
+https://github.com/wildfly/wildfly-core/commit/131fa6880ae1523fac9e96df54dc394b63b0eed3
+https://github.com/wildfly/wildfly-core/commit/80e18b46f73f9d061d4150c66e6dc2fc1fd0bc41",pass,,,,,,,,
+CVE-2019-16869,"https://github.com/netty/netty/commit/39cafcb05c99f2aa9fce7e6597664c9ed6a63a95
+https://github.com/netty/netty/commit/017a9658c97ff1a1355c31a6a1f8bd1ea6f21c8d",yes,tagged,assertTrue(request.decoderResult().isFailure()); 判断http是否被解码成功，如果断言通过，则说明有补丁，如果不通过说明有漏洞,"io.netty/netty-codec-http
+
+",,,,,
+CVE-2019-3772,https://github.com/spring-projects/spring-integration/commit/59c69ed40d3755ef59f80872e0ea711adbb13620,pass,,,,,,,,
+CVE-2019-3774,"https://github.com/spring-projects/spring-batch/commit/8dc3bb7d3c3d0b1487e3ef3dcbdebda865d2b20e
+https://github.com/spring-projects/spring-batch/commit/c7930184ee4513d548940550c4eb5eeef028cb64
+https://github.com/spring-projects/spring-batch/commit/a6d8ac1b44afeca1bb572718ceacac774a368422",pass,,,,,,,,
+CVE-2019-3799,"https://github.com/spring-cloud/spring-cloud-config/commit/3632fc6f64e567286c42c5a2f1b8142bfde505c2
+https://github.com/spring-cloud/spring-cloud-config/commit/9617f2922ee2ae27f08676716224933f0d869719
+https://github.com/spring-cloud/spring-cloud-config/commit/90e8a81f6fa921e034cecb79cd100f343f7714af
+https://github.com/spring-cloud/spring-cloud-config/commit/d3e21866a5f192fa2582349cb3732ad0e4b8850b",pass,,,,,,,,
+CVE-2020-1940,"https://github.com/apache/jackrabbit-oak/commit/9b78a60d5d0c3e199c006d92590dc29d39379679
+https://github.com/apache/jackrabbit-oak/commit/756d0387ef39dc3a7a84f6644a318e74535953e6
+https://github.com/apache/jackrabbit-oak/commit/b615992fc5202046e9479a29d6a7bd41d6258d09
+https://github.com/apache/jackrabbit-oak/commit/3e1c6e13b67331710a1747223d8e6ee22c5fae9c
+https://github.com/apache/jackrabbit-oak/commit/21a47b758bb24b1327c795cf421dc755f7959d2f
+https://github.com/apache/jackrabbit-oak/commit/e7180a8d9c4f14b2de1928861dd27287e5fb59bd
+https://github.com/apache/jackrabbit-oak/commit/138318257a57703ef6dd0f7430c115f41ffe8f85",pass,,,,,,,,
+CVE-2020-5398,"https://github.com/spring-projects/spring-framework/commit/6ce19ff86138a9dd284588fb62c73af5bc97ec66
+https://github.com/spring-projects/spring-framework/commit/0583b334b46cf2a591c72c2708ee3d2ac5d2b58c
+https://github.com/spring-projects/spring-framework/commit/41f40c6c229d3b4f768718f1ec229d8f0ad76d76
+https://github.com/spring-projects/spring-framework/commit/956ffe68587c8d5f21135b5ce4650af0c2dea933",yes,tagged,,,,,,,
+CVE-2020-5405,"https://github.com/spring-cloud/spring-cloud-config/commit/4c7b8dfc7edaacb76a77e0c6ef9a5cfc200e3d02
+https://github.com/spring-cloud/spring-cloud-config/commit/b991dc17c2772e5da33639d3c4bc98b13bc04734
+https://github.com/spring-cloud/spring-cloud-config/commit/651f458919c40ef9a5e93e7d76bf98575910fad0",pass,,,,,,,,
+CVE-2012-3536,https://github.com/apache/james-hupa/commit/aff28a8117a49969b0fc8cc9926c19fa90146d8d,no,,maven jar 缺失,,,,,,
+CVE-2016-1000031,https://github.com/apache/commons-fileupload/commit/388e824518697c2c8f9f83fd964621d9c2f8fc4c,yes,tagged,,,,,,,
+CVE-2021-29425,,yes,tagged,,,,,,,
+CVE-2020-13956,https://github.com/apache/httpcomponents-client/commit/e628b4c5c464c2fa346385596cc78e035a91a62e,yes,tagged,影响了两个组件,,,,,,
+HTTPCLIENT-1803,,yes,tagged,,,,,,,
+CVE-2022-45688,,yes,pending,,,,,,,
+CVE-2023-34454,https://github.com/xerial/snappy-java/commit/d0042551e4a3509a725038eb9b2ad1f683674d94,yes,tagged,,,,,,,
+CVE-2022-42004,https://github.com/FasterXML/jackson-databind/commit/063183589218fec19a9293ed2f17ec53ea80ba88,yes,tagged,,,,,,,
+CVE-2022-41966,https://github.com/x-stream/xstream/commit/ae25463743b00d05264b2b4970e593faa82f63ee,yes,tagged,,,,,,,
+CVE-2023-34453,https://github.com/xerial/snappy-java/commit/820e2e074c58748b41dbd547f4edba9e108ad905,yes,tagged,,,,,,,
+CVE-2020-5408,https://github.com/spring-projects/spring-security/commit/d1909ec9c8844cfa6b63bab5c2591f14d714ef6b,yes,tagged,,,,,,,
+CVE-2023-1370,https://github.com/netplex/json-smart-v2/commit/e2791ae506a57491bc856b439d706c81e45adcf8,yes,tagged,,,,,,,
+CVE-2023-43642,https://github.com/xerial/snappy-java/commit/9f8c3cf74223ed0a8a834134be9c917b9f10ceb5,yes,tagged,,,,,,,
+CVE-2022-24615,https://github.com/srikanth-lingala/zip4j/commit/35122fd19b3f1fae531d9e20d54e8dc894414dab,yes,tagged,,,,,,,
+CVE-2021-30468,https://github.com/apache/cxf/commit/5ac22a447d4d141b849e2b49f1a73db1576adc43,yes,tagged,,,,,,,
+CVE-2024-31860,https://github.com/apache/zeppelin/commit/f025a697c1d1d0264064d5adf6cb0b20d85041b6,yes,tagged,,,,,,,
+CVE-2016-6814,https://github.com/apache/groovy/commit/4df8b652aa018a5d5d1cda8fba938bf3422db31c,yes,tagged,,,,,,,
+CVE-2024-29131,https://github.com/apache/commons-configuration/commit/56b5c4dcdffbde27870df5a3105d6a5f9b22f554,yes,tagged,,,,,,,
+CVE-2024-22257,https://github.com/spring-projects/spring-security/commit/5a7f12f1a9fdb4edaab6f61495f1d781a7273b61,yes,tagged,,,,,,,
+CVE-2024-21742,https://github.com/apache/james-mime4j/commit/9dec5df2a588fed8027839815daefa79ee66efd1,yes,tagged,,,,,,,
+CVE-2023-49250,https://github.com/apache/dolphinscheduler/commit/a0bc778bafc29d2d65bc9ed66db0fa51e6860809,yes,tagged,,,,,,,
+CVE-2022-34662,https://github.com/apache/dolphinscheduler/commit/23fae510dfdde1753e0a161f747c30ae5171fba1,yes,tagged,,,,,,,
+CVE-2024-1597,https://github.com/pgjdbc/pgjdbc/commit/93b0fcb2711d9c1e3a2a03134369738a02a58b40,yes,tagged,,,,,,,
+CVE-2024-25125,https://github.com/treasure-data/digdag/commit/eae89b0daf6c62f12309d8c7194454dfb18cc5c3,yes,tagged,,,,,,,
+CVE-2024-23833,https://github.com/OpenRefine/OpenRefine/commit/41ccf574847d856e22488a7c0987ad8efa12a84a,yes,tagged,,,,,,,
+CVE-2024-24569,https://github.com/pixee/java-security-toolkit/commit/b885b03c9cfae53d62d239037f9654d973dd54d9,yes,tagged,,,,,,,
+CVE-2023-51074,https://github.com/json-path/JsonPath/commit/71a09c1193726c010917f1157ecbb069ad6c3e3b,yes,tagged,,,,,,,
+CVE-2023-51075,https://github.com/dromara/hutool/commit/32f2d0bd55defecb869fbf64d940bcc05642accc,yes,tagged,,,,,,,
+CVE-2023-51080,https://github.com/dromara/hutool/commit/f341b9ed7a83a54e2a08d4635540ab0a8b159c4f,yes,tagged,,,,,,,
+CVE-2023-42276,https://github.com/dromara/hutool/commit/9ba8f9ca5dd32441f2e0f150cb22fa178bb771d3,yes,tagged,,,,,,,
+CVE-2018-17297,https://github.com/dromara/hutool/commit/8d7d0b7fb5ea4f7447b40131bffc1ec506a6528e,yes,tagged,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,

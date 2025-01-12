@@ -1,0 +1,24 @@
+{
+  "title": "test",
+  "type": "object",
+  "properties": {
+    "street_address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "required": [
+    "street_address",
+    "city",
+    "state"
+  ]
+}

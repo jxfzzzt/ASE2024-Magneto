@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.goods.OrderGoodsFrontMapper">
+
+    <select id="queryOrderGoodsList" resultType="com.car.order.client.response.order.goods.OrderGoodsFrontListRes">
+        SELECT og.uuid,og.order_num,og.created_time,og.service_area,
+               og.service_num,og.actual_amount,og.contacts,og.mobile,
+               og.pay_type,og.order_sts,og.delivery_mode, og.receivable_amount as goodsPrice, og.amt_express,
+               og.contacts,og.mobile, og.amt_service, og.goods_uuid, og.goods_name, og.goods_num, og.goods_img_url
+        FROM order_goods og
+        WHERE og.sts = 0
+        <if test="orderGoodsDto.userUuid !=null and orderGoodsDto.userUuid != ''">
+            AND og.user_uuid = #{orderGoodsDto.userUuid}
+        </if>
+        <if test="orderGoodsDto.storeUuid !=null and orderGoodsDto.storeUuid != ''">
+            AND og.store_uuid = #{orderGoodsDto.storeUuid}
+        </if>
+        <if test="orderGoodsDto.orderStsList != null and orderGoodsDto.orderStsList.size > 0">
+            AND og.order_sts  in
+            <foreach collection="orderGoodsDto.orderStsList" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="orderGoodsDto.orderSts != null">
+            AND og.order_sts  = #{orderGoodsDto.orderSts}
+        </if>
+        <if test="orderGoodsDto.serviceSts != null">
+            AND og.service_sts  = #{orderGoodsDto.serviceSts}
+        </if>
+        order by og.created_time desc
+    </select>
+
+
+    <select id="queryOrderGoods" resultType="com.car.order.client.response.order.goods.OrderGoodsFrontRes">
+        SELECT
+            og.uuid,
+            og.order_num,
+            og.created_time,
+            og.store_uuid,
+            s.store_name,
+            s.company_name,
+            s.company_address_detail,
+            og.delivery_address,
+            og.contacts,
+            og.mobile,
+            og.actual_amount,
+            og.receivable_amount,
+            og.pay_type,
+            og.order_sts,
+            og.delivery_mode,
+            og.order_remark,
+            og.refund_type,
+            og.refund_amount,
+            og.after_sale_cause,
+            og.after_sale_sts,
+            og.refund_sts,
+            og.after_sale_remark,
+            og.amt_express,
+            og.amt_service,
+            og.service_sts,
+            og.goods_uuid,
+            og.goods_name,
+            og.goods_num,
+            og.goods_img_url
+        FROM order_goods og
+        LEFT JOIN store s ON og.store_uuid = s.uuid
+        where og.sts = 0 and og.uuid = #{uuid}
+    </select>
+
+    <select id="queryOrderStsNum" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM order_goods
+        WHERE sts = 0
+        <if test="userUuid != null and userUuid != ''">
+            AND user_uuid = #{userUuid}
+        </if>
+        <if test="storeUuid != null and storeUuid != ''">
+            AND store_uuid = #{storeUuid}
+        </if>
+        <if test="orderSts != null">
+            AND order_sts = #{orderSts}
+        </if>
+        <if test="serviceSts != null">
+            AND service_sts = #{serviceSts}
+        </if>
+    </select>
+</mapper>

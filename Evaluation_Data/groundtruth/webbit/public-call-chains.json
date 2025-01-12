@@ -1,0 +1,74 @@
+[
+  {
+    "chain": [
+      "<org.webbitserver.wrapper.HttpRequestWrapper: java.util.List cookies()>",
+      "<org.webbitserver.netty.NettyHttpRequest: java.util.List cookies()>",
+      "<org.webbitserver.helpers.InboundCookieParser: java.util.List parse(java.util.List)>",
+      "<org.jboss.netty.handler.codec.http.CookieDecoder: java.util.Set decode(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2015-2156"
+    ]
+  },
+  {
+    "chain": [
+      "<org.webbitserver.wrapper.HttpRequestWrapper: java.util.List cookies()>",
+      "<org.webbitserver.stub.StubHttpRequest: java.util.List cookies()>",
+      "<org.webbitserver.helpers.InboundCookieParser: java.util.List parse(java.util.List)>",
+      "<org.jboss.netty.handler.codec.http.CookieDecoder: java.util.Set decode(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2015-2156"
+    ]
+  },
+  {
+    "chain": [
+      "<org.webbitserver.wrapper.HttpRequestWrapper: java.net.HttpCookie cookie(java.lang.String)>",
+      "<org.webbitserver.netty.NettyHttpRequest: java.net.HttpCookie cookie(java.lang.String)>",
+      "<org.webbitserver.netty.NettyHttpRequest: java.util.List cookies()>",
+      "<org.webbitserver.helpers.InboundCookieParser: java.util.List parse(java.util.List)>",
+      "<org.jboss.netty.handler.codec.http.CookieDecoder: java.util.Set decode(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2015-2156"
+    ]
+  },
+  {
+    "chain": [
+      "<org.webbitserver.wrapper.HttpRequestWrapper: java.net.HttpCookie cookie(java.lang.String)>",
+      "<org.webbitserver.stub.StubHttpRequest: java.net.HttpCookie cookie(java.lang.String)>",
+      "<org.webbitserver.stub.StubHttpRequest: java.util.List cookies()>",
+      "<org.webbitserver.helpers.InboundCookieParser: java.util.List parse(java.util.List)>",
+      "<org.jboss.netty.handler.codec.http.CookieDecoder: java.util.Set decode(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2015-2156"
+    ]
+  },
+  {
+    "chain": [
+      "<org.webbitserver.wrapper.HttpRequestWrapper: java.lang.String cookieValue(java.lang.String)>",
+      "<org.webbitserver.netty.NettyHttpRequest: java.lang.String cookieValue(java.lang.String)>",
+      "<org.webbitserver.netty.NettyHttpRequest: java.net.HttpCookie cookie(java.lang.String)>",
+      "<org.webbitserver.netty.NettyHttpRequest: java.util.List cookies()>",
+      "<org.webbitserver.helpers.InboundCookieParser: java.util.List parse(java.util.List)>",
+      "<org.jboss.netty.handler.codec.http.CookieDecoder: java.util.Set decode(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2015-2156"
+    ]
+  },
+  {
+    "chain": [
+      "<org.webbitserver.wrapper.HttpRequestWrapper: java.lang.String cookieValue(java.lang.String)>",
+      "<org.webbitserver.stub.StubHttpRequest: java.lang.String cookieValue(java.lang.String)>",
+      "<org.webbitserver.stub.StubHttpRequest: java.net.HttpCookie cookie(java.lang.String)>",
+      "<org.webbitserver.stub.StubHttpRequest: java.util.List cookies()>",
+      "<org.webbitserver.helpers.InboundCookieParser: java.util.List parse(java.util.List)>",
+      "<org.jboss.netty.handler.codec.http.CookieDecoder: java.util.Set decode(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2015-2156"
+    ]
+  }
+]

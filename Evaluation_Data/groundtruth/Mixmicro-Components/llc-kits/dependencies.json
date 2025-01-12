@@ -1,0 +1,4 @@
+[
+  "<org.apache.commons:commons-compress:1.9:compile>",
+  "<com.github.junrar:junrar:7.4.0:compile>"
+]

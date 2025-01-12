@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.profit.ProfitStreamMapper">
+  <resultMap id="BaseResultMap" type="com.car.account.web.model.profit.ProfitStream">
+    <result column="user_uuid" jdbcType="VARCHAR" property="userUuid" />
+    <result column="user_type" jdbcType="SMALLINT" property="userType" />
+    <result column="order_uuid" jdbcType="VARCHAR" property="orderUuid" />
+    <result column="amt" jdbcType="DECIMAL" property="amt" />
+    <result column="stream_type" jdbcType="SMALLINT" property="streamType" />
+    <result column="classify" jdbcType="SMALLINT" property="classify" />
+    <result column="remarks" jdbcType="LONGVARCHAR" property="remarks" />
+  </resultMap>
+
+  <select id="staticsClassifyProfitAmt" resultType="com.car.account.web.dto.profit.ClassifyProfitDto">
+    SELECT s.`classify`,SUM(s.`amt`) AS totalAmt FROM `profit_stream` s WHERE s.sts = 0 and s.stream_type = #{streamType} and s.`user_uuid` = #{userUuid} AND s.`user_type` = #{userType} GROUP BY s.`classify`
+  </select>
+
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.maintain.MaintainMapper">
+
+
+    <select id="queryMaintainList" resultType="com.car.order.client.response.maintain.QueryMaintainRes">
+        SELECT
+            m.*,
+            vaf.config_name as carModelName,
+            vc.config_name as brandName,
+            sd.lable_desc as attachSysName
+        FROM
+            maintain m
+            LEFT JOIN vehicle_config vaf ON m.car_model_uuid = vaf.uuid
+            AND vaf.config_type = 3
+            LEFT JOIN vehicle_config vc ON m.brand_uuid = vc.uuid
+            AND vc.config_type = 2
+            LEFT JOIN sys_dict sd ON m.attach_sys = sd.uuid
+            AND sd.sts = 0
+        where m.sts = 0
+        <if test="req.maintainCheckSts != null and req.maintainCheckSts != ''">
+            AND m.maintain_check_sts = #{req.maintainCheckSts}
+        </if>
+        <if test="req.brandUuid != null and req.brandUuid != ''">
+            AND m.brand_uuid = #{req.brandUuid}
+        </if>
+        <if test="req.carModelUuid != null and req.carModelUuid != ''">
+            AND m.car_model_uuid = #{req.carModelUuid}
+        </if>
+        <if test="req.attachSys != null and req.attachSys != ''">
+            AND m.attach_sys = #{req.attachSys}
+        </if>
+        order by m.created_time desc
+    </select>
+
+    <select id="getById" resultType="com.car.order.client.response.maintain.QueryMaintainRes">
+         SELECT
+            m.*,
+            vaf.config_name as carModelName,
+            vc.config_name as brandName,
+            sd.lable_desc as attachSysName
+        FROM
+            maintain m
+            LEFT JOIN vehicle_config vaf ON m.car_model_uuid = vaf.uuid
+            AND vaf.config_type = 3
+            LEFT JOIN vehicle_config vc ON m.brand_uuid = vc.uuid
+            AND vc.config_type = 2
+            LEFT JOIN sys_dict sd ON m.attach_sys = sd.uuid
+            AND sd.sts = 0
+        where m.sts = 0
+          and m.uuid = #{uuid}
+    </select>
+
+    <update id="deleteMaintainInfo">
+        update maintain set sts = 1, last_updated_time = now(), last_updated_by = #{userName} where uuid = #{uuid}
+    </update>
+</mapper>

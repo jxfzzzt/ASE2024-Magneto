@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.system.web.mapper.SysMenuUrlMapper">
+
+    <select id="getMenuUrlByRoleId" parameterType="Object" resultType="com.car.system.web.model.SysMenuUrl">
+        SELECT
+        smu.*
+        FROM
+        sys_role sr,
+        sys_menu sm,
+        sys_role_menu_rel srmr,
+        sys_menu_url smu
+        WHERE
+        sr.uuid = srmr.role_uuid
+        AND sm.uuid = srmr.menu_uuid
+        AND sm.uuid = smu.menu_uuid
+        AND sr.`status` = 0
+        AND sr.sts = 0
+        AND sm.`status` = 0
+        AND sm.sts = 0
+        AND smu.sts = 0
+        AND sr.uuid = #{roleUuid}
+    </select>
+
+    <select id="queryMenuUrl" resultType="com.car.system.web.model.SysMenuUrl">
+      SELECT
+            smu.*
+        FROM
+            sys_menu_url smu
+        WHERE
+          smu.sts = 0
+    </select>
+
+</mapper>

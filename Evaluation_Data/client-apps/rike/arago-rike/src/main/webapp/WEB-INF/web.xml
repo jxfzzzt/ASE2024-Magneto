@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<servlet>
+		<servlet-name>SvgDataServlet</servlet-name>
+		<servlet-class>de.arago.rike.svg.SVGDataServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SvgDataServlet</servlet-name>
+		<url-pattern>/svg</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ReportDataServlet</servlet-name>
+		<servlet-class>de.arago.rike.report.ReportDataServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ReportDataServlet</servlet-name>
+		<url-pattern>/report/json</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LeaderBoardImagesServlet</servlet-name>
+		<servlet-class>de.arago.rike.leaderboard.LeaderBoardImagesServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LeaderBoardImagesServlet</servlet-name>
+		<url-pattern>/avatar/*</url-pattern>
+	</servlet-mapping>
+
+</web-app>

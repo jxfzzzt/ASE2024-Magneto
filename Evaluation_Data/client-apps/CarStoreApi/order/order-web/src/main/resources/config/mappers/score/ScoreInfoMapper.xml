@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.score.ScoreInfoMapper">
+
+    <select id="queryScoreList" resultType="com.car.order.client.response.order.score.QueryScoreInfoListRes">
+        SELECT
+            si.uuid,
+            si.order_uuid,
+            si.score_type,
+            si.score_star,
+            si.user_uuid,
+            si.created_time,
+            si.relation_uuid
+        FROM
+            score_info si
+        WHERE
+            sts = 0
+
+            <if test="req.orderUuid != null and req.orderUuid != ''">
+                AND order_uuid = #{req.orderUuid}
+            </if>
+
+            <if test="req.scoreType != null">
+                AND score_type = #{req.scoreType}
+            </if>
+
+            <if test="userUuid != null and userUuid != ''">
+                AND user_uuid = #{userUuid}
+            </if>
+
+            <if test="req.relationUuid != null and req.relationUuid != ''">
+                AND relation_uuid = #{req.relationUuid}
+            </if>
+        order by created_time desc
+    </select>
+
+    <select id="queryScore" resultType="java.math.BigDecimal">
+        SELECT
+        si.score_star
+        FROM
+        score_info si
+        WHERE
+        order_uuid = #{orderUuid}
+        AND score_type = #{scoreType}
+    </select>
+
+    <select id="queryGoodsScore" resultType="java.lang.String">
+        select ifnull(convert(AVG(score_star),DECIMAL(10,2)),0.0) as avgScore from score_info where sts = 0 and relation_uuid = #{uuid}
+    </select>
+</mapper>

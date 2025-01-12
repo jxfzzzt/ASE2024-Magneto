@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.account.web.mapper.vehicle.VehicleConfigMapper">
+
+    <select id="selectConfigByExample" resultType="com.car.account.web.model.vehicle.VehicleConfig" parameterType="com.car.account.web.model.vehicle.VehicleConfig">
+        select * from vehicle_config where sts = #{sts}
+        <if test="parentCode !=null and parentCode !=''">
+            and parent_code = #{parentCode}
+        </if>
+        order by sort_num asc
+    </select>
+
+    <select id="selectMaxSortByVehicleConfigBrand" resultType="java.lang.Integer">
+        select IFNULL(max(sort_num),0) from vehicle_config where sts = 0 and config_type = 2
+    </select>
+
+    <select id="selectMaxSortByVehicleConfigModel" resultType="java.lang.Integer">
+        select IFNULL(max(sort_num),0) from vehicle_config where sts = 0 and config_type = 3 and parent_code = #{brandUuid}
+    </select>
+
+
+	<select id="queryListByUuid"  resultType="com.car.account.web.model.vehicle.VehicleConfig">
+		select * from vehicle_config c
+		<where>
+			<if test="uuidList !=null and uuidList.size()>0">
+				<foreach collection="uuidList" item="uuid" open="c.uuid in (" separator=","  close=")">
+					#{uuid}
+				</foreach>
+			</if>
+		</where>
+	</select>
+
+</mapper>

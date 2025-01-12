@@ -1,0 +1,88 @@
+<skin xmlns="http://weblookandfeel.com/XmlSkin">
+
+    <!-- com.alee.laf.menu.WebRadioButtonMenuItem -->
+
+    <!-- Radio button menu item -->
+    <style type="radiobuttonmenuitem">
+        <component>
+            <opaque>false</opaque>
+            <foreground>black</foreground>
+        </component>
+        <painter>
+            <decorations>
+                <decoration>
+                    <WebShape round="0" />
+                    <MenuItemLayout padding="4,10,5,8" stateIconGap="8" iconTextGap="6" textAcceleratorGap="20">
+                        <MenuItemStateIcon constraints="state-icon" />
+                        <SimpleButtonIcon constraints="icon" />
+                        <ButtonText constraints="text" />
+                        <RoundRectangle constraints="accelerator" round="4" opacity="0">
+                            <ColorBackground color="240,240,240" />
+                        </RoundRectangle>
+                        <AcceleratorText constraints="accelerator" padding="0,4,0,4" color="90,90,90" />
+                    </MenuItemLayout>
+                </decoration>
+                <decoration states="selected">
+                    <GradientBackground>
+                        <color>208,208,198</color>
+                        <color>196,196,186</color>
+                    </GradientBackground>
+                    <MenuItemLayout>
+                        <RoundRectangle opacity="1" />
+                    </MenuItemLayout>
+                </decoration>
+                <decoration states="disabled">
+                    <MenuItemLayout>
+                        <ButtonText color="120,120,120" ignoreCustomColor="true" />
+                        <AcceleratorText color="120,120,120" />
+                    </MenuItemLayout>
+                </decoration>
+            </decorations>
+
+            <!-- State icon painter -->
+            <stateIconPainter>
+                <decorations>
+                    <decoration size="15,15">
+                        <EllipseShape />
+                        <WebShadow type="outer" width="1" />
+                        <LineBorder color="170,170,170" />
+                        <GradientBackground type="radial" from="0.5,0.5" to="2,0.5">
+                            <color>white</color>
+                            <color>210,210,210</color>
+                        </GradientBackground>
+                    </decoration>
+                    <decoration states="checked">
+                        <RadioIcon padding="2" leftColor="41,75,104" rightColor="117,127,145" />
+                    </decoration>
+                    <decoration states="disabled">
+                        <WebShadow type="outer" opacity="0" />
+                        <LineBorder color="lightGray" />
+                    </decoration>
+                    <decoration states="disabled,checked">
+                        <RadioIcon padding="2" leftColor="gray" rightColor="lightGray" />
+                    </decoration>
+                </decorations>
+            </stateIconPainter>
+
+        </painter>
+    </style>
+
+    <!-- Radio button menu item supporting styled text -->
+    <style type="radiobuttonmenuitem" id="styled">
+        <painter>
+            <decorations>
+                <decoration>
+                    <MenuItemLayout>
+                        <StyledButtonText constraints="text" />
+                    </MenuItemLayout>
+                </decoration>
+                <decoration states="disabled">
+                    <MenuItemLayout>
+                        <StyledButtonText color="120,120,120" ignoreCustomColor="true" ignoreStyleColors="true" />
+                    </MenuItemLayout>
+                </decoration>
+            </decorations>
+        </painter>
+    </style>
+
+</skin>

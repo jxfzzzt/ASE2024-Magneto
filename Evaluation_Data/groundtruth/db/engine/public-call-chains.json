@@ -1,0 +1,41 @@
+[
+  {
+    "chain": [
+      "<com.blobcity.db.master.executors.data.InsertMaster: void lambda$call$0(com.blobcity.lib.query.RecordType,java.util.List,com.blobcity.db.schema.Schema,java.lang.Object)>",
+      "<com.blobcity.db.memory.records.RecordInterpreter: com.blobcity.lib.query.RecordType getBestMatchedType(java.lang.Object)>",
+      "<org.json.XML: org.json.JSONObject toJSONObject(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2022-45688"
+    ]
+  },
+  {
+    "chain": [
+      "<com.blobcity.db.memory.records.RecordPassivation: com.blobcity.lib.data.Record getRecordFromPassivatedString(java.lang.String,com.blobcity.db.schema.Schema)>",
+      "<com.blobcity.db.memory.records.XmlRecord: void <init>(java.lang.String)>",
+      "<org.json.XML: org.json.JSONObject toJSONObject(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2022-45688"
+    ]
+  },
+  {
+    "chain": [
+      "<com.blobcity.db.master.executors.data.InsertMaster: void lambda$call$0(com.blobcity.lib.query.RecordType,java.util.List,com.blobcity.db.schema.Schema,java.lang.Object)>",
+      "<com.blobcity.db.memory.records.XmlRecord: void <init>(java.lang.String)>",
+      "<org.json.XML: org.json.JSONObject toJSONObject(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2022-45688"
+    ]
+  },
+  {
+    "chain": [
+      "<com.blobcity.db.memory.records.RecordInterpreter: com.blobcity.lib.query.RecordType getBestMatchedType(java.lang.Object)>",
+      "<org.json.XML: org.json.JSONObject toJSONObject(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2022-45688"
+    ]
+  }
+]

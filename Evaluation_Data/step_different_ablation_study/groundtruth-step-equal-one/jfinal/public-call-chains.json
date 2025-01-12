@@ -1,0 +1,20 @@
+[
+    {
+        "chain": [
+            "<com.jfinal.core.paragetter.JsonRequest: void <init>(java.lang.String,javax.servlet.http.HttpServletRequest)>",
+            "<com.alibaba.fastjson.JSON: java.lang.Object parse(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2022-25845"
+        ]
+    },
+    {
+        "chain": [
+            "<com.jfinal.json.Jackson: java.lang.Object parse(java.lang.String,java.lang.Class)>",
+            "<com.fasterxml.jackson.databind.ObjectMapper: java.lang.Object readValue(java.lang.String,java.lang.Class)>"
+        ],
+        "vuls": [
+            "CVE-2022-42004"
+        ]
+    }
+]

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:java.awt="java.awt"
+           elementFormDefault="qualified">
+
+    <xs:include schemaLocation="../AbstractIconSource.xsd" />
+    <xs:include schemaLocation="SvgFill.xsd" />
+    <xs:include schemaLocation="SvgOpacity.xsd" />
+    <xs:include schemaLocation="SvgStroke.xsd" />
+    <xs:include schemaLocation="SvgTransform.xsd" />
+    <xs:include schemaLocation="SvgGrayscale.xsd" />
+    <xs:include schemaLocation="SvgColorOpacity.xsd" />
+
+    <!-- com.alee.extended.svg.SvgIconSource -->
+    <xs:complexType name="SvgIconSource">
+        <xs:complexContent>
+            <xs:extension base="AbstractIconSource">
+
+                <!-- Adjustments -->
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+
+                    <!-- Basic supported adjustments -->
+                    <xs:element name="SvgFill" type="SvgFill" />
+                    <xs:element name="SvgOpacity" type="SvgOpacity" />
+                    <xs:element name="SvgStroke" type="SvgStroke" />
+                    <xs:element name="SvgTransform" type="SvgTransform" />
+                    <xs:element name="SvgGrayscale" type="SvgGrayscale" />
+                    <xs:element name="SvgColorOpacity" type="SvgColorOpacity" />
+
+                </xs:choice>
+
+                <!-- Preferred icon size -->
+                <xs:attribute name="size" type="java.awt:Dimension" use="optional" />
+
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

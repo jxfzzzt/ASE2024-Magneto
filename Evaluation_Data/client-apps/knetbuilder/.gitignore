@@ -1,0 +1,16 @@
+target
+.settings
+.classpath
+.project
+.idea
+*.iml
+.DS_Store
+nb-configuration.xml
+nbactions.xml
+ondex.log
+# These are auto-downloaded by the CI
+/ci-build/build.sh
+/ci-build/install.sh
+/ci-build/maven-settings.xml
+# Created by GH Actions
+/settings.xml 

@@ -1,0 +1,78 @@
+prefix: "&7[&eUltraPlaytime&7] &8»"
+TimeFormat:
+  years: years
+  year: year
+  months: months
+  month: month
+  days: days
+  day: day
+  hours: hours
+  hour: hour
+  minutes: minutes
+  minute: minute
+  seconds: seconds
+  second: second
+playerMessages:
+  invalidCommand: "{prefix} &fPlease check the command syntax!"
+  noPermission: "{prefix} &fYou do not have permission to do this action!"
+  playtime:
+    - "{prefix}"
+    - "&fYour playtime is: &e{playtime}"
+    - "&fYour achieved rewards: &e{rewards}"
+    - "&fYour rank &e{rank_name}"
+    - ""
+  targetPlaytime:
+    - "{prefix}"
+    - "&f{player} playtime is: &e{playtime}"
+    - "&f{player} achieved rewards: &e{rewards}"
+    - "&fYour rank &e{rank_name}"
+    - ""
+  topPlayers:
+    next-page: "&8[&e»&8]"
+    prev-page: "&8[&e«&8]"
+    1:
+      - "&71° &e%ultraplaytime_top_name_1% &7- &e%ultraplaytime_top_time_1%"
+      - "&72° &e%ultraplaytime_top_name_2% &7- &e%ultraplaytime_top_time_2%"
+      - "&73° &e%ultraplaytime_top_name_3% &7- &e%ultraplaytime_top_time_3%"
+      - "&74° &e%ultraplaytime_top_name_4% &7- &e%ultraplaytime_top_time_4%"
+      - "{next-page}"
+      - ""
+    2:
+      - "&75° &e%ultraplaytime_top_name_5% &7- &e%ultraplaytime_top_time_5%"
+      - "&76° &e%ultraplaytime_top_name_6% &7- &e%ultraplaytime_top_time_6%"
+      - "&77° &e%ultraplaytime_top_name_7% &7- &e%ultraplaytime_top_time_7%"
+      - "{prev-page} {next-page}"
+      - ""
+    3:
+      - "&78° &e%ultraplaytime_top_name_8% &7- &e%ultraplaytime_top_time_8%"
+      - "&79° &e%ultraplaytime_top_name_9% &7- &e%ultraplaytime_top_time_9%"
+      - "&710° &e%ultraplaytime_top_name_10% &7- &e%ultraplaytime_top_time_10%"
+      - "{prev-page}"
+  timeToNextReward:
+    - "{prefix}"
+    - "&fYou will receive reward: &e{reward} {rank_name}"
+    - "&fin &e{time}"
+  noRewardAvailable: "{prefix} &fYou have already achieved the last reward...congratulations!"
+  targetNotFound: "{prefix} &fPlayer {player} was not found!"
+adminMessages:
+  notANumber: "{prefix} &fYou have not specified a correct number!"
+  setTime: "{prefix} &f{player} playtime has been updated!"
+  setReward: "{prefix} &f{player} rewards have been updated!"
+  error: "{prefix} &cAn error occurred while executing this command. Check console for more information!"
+  fileReloaded: "{prefix} &fCorrectly reloaded file &e{file}"
+  leaderboard:
+    addedIgnoredUser: "{prefix} &f{player} is now ignored from the leaderboard!"
+    removedIgnoredUser: "{prefix} &f{player} is no longer ignored from the leaderboard!"
+  migration:
+    pluginNotFound: "{prefix} &fPlugin not found!"
+    started: "{prefix} &fMigration process has started..."
+    failed: "{prefix} &fMigration process has failed... try again!"
+    finished: "{prefix} &fMigration process is completed... please restart the server!"
+    alreadyRunning: "{prefix} &fMigration process is already running..."
+  help:
+    - "{prefix}"
+    - "&e/ptimeadmin reload &7- &fReload lang and rewards files"
+    - "&e/ptimeadmin migrate <plugin> &7- &fImport data from <plugin>"
+    - "&e/ptimeadmin ignore <player> &7- &fIgnore a specific player from the leaderboard"
+    - "&e/ptimeadmin settime <player> &7- &fSet playtime for that player"
+    - "&e/ptimeadmin setreward <player> &7- &fSet the number of rewards for that player"

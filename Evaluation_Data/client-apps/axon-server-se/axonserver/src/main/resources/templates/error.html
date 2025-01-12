@@ -1,0 +1,47 @@
+<!--
+  ~ Copyright (c) 2017-2019 AxonIQ B.V. and/or licensed to AxonIQ B.V.
+  ~ under one or more contributor license agreements.
+  ~
+  ~  Licensed under the AxonIQ Open Source License Agreement v1.0;
+  ~  you may not use this file except in compliance with the license.
+  ~
+  -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AxonDashboard: Error</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico"/>
+</head>
+<body>
+<article>
+    <header>
+        <h1>AxonDashboard</h1>
+    </header>
+    <div>
+    <div class="column configuration">
+        <section>
+            <ul>
+                <li>
+                    <span>error</span>
+                    <span th:text="${error}"></span>
+                </li>
+                <li>
+                    <span>status</span>
+                    <span th:text="${status}"></span>
+                </li>
+                <li>
+                    <span>message</span>
+                    <span th:text="${message}"></span>
+                </li>
+            </ul>
+        </section>
+    </div>
+    </div>
+</article>
+<footer>
+    <p><span th:text="${product}"></span> <span th:text="${asVersion}"></span> by <span class="logo">AxonIQ</span></p>
+</footer>
+</body>
+</html>

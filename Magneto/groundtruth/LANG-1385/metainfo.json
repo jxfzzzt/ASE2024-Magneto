@@ -1,0 +1,53 @@
+{
+  "groupId": "org.apache.commons",
+  "artifactId": "commons-lang3",
+  "complete_version": [
+    "3.14.0",
+    "3.13.0",
+    "3.12.0",
+    "3.11",
+    "3.10",
+    "3.9",
+    "3.8.1",
+    "3.8",
+    "3.7",
+    "3.6",
+    "3.5",
+    "3.4",
+    "3.3.2",
+    "3.3.1",
+    "3.3",
+    "3.2.1",
+    "3.2",
+    "3.1",
+    "3.0.1",
+    "3.0"
+  ],
+  "testcases": [
+    {
+      "className": "com.magneto.LANG_1385_Testcase1",
+      "methodName": "testCreateNumber",
+      "vulMethodSignature": "<org.apache.commons.lang3.math.NumberUtils: java.lang.Number createNumber(java.lang.String)>",
+      "exceptedThrowable": "java.lang.NumberFormatException",
+      "needValidateReturnValue": false,
+      "validateReturnValueMethodName": null,
+      "needValidateThrow": true,
+      "validateThrowMethodName": "validateThrow"
+    }
+  ],
+  "vulName": "LANG-1385",
+  "affectedVersion": [
+    "3.0",
+    "3.0.1",
+    "3.1",
+    "3.2",
+    "3.2.1",
+    "3.3",
+    "3.3.1",
+    "3.3.2",
+    "3.4",
+    "3.5",
+    "3.6",
+    "3.7"
+  ]
+}

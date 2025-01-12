@@ -1,0 +1,11 @@
+[
+    {
+        "chain": [
+            "<com.xiaoleilu.ucloud.util.HttpRequestUtil: jodd.http.HttpRequest prepareGet(java.lang.String)>",
+            "<jodd.http.HttpRequest: jodd.http.HttpRequest get(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2022-29631"
+        ]
+    }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "chain": [
+      "<com.project.controller.MainRestController: org.springframework.web.servlet.ModelAndView login(javax.servlet.http.HttpServletResponse,java.lang.String)>",
+      "<net.minidev.json.parser.JSONParser: java.lang.Object parse(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2023-1370",
+      "CVE-2021-27568"
+    ]
+  },
+  {
+    "chain": [
+      "<com.project.controller.MainRestController: org.springframework.web.servlet.ModelAndView register(javax.servlet.http.HttpServletResponse,java.lang.String)>",
+      "<net.minidev.json.parser.JSONParser: java.lang.Object parse(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2023-1370",
+      "CVE-2021-27568"
+    ]
+  }
+]

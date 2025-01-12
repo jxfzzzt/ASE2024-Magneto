@@ -1,0 +1,4 @@
+[
+  "<org.jodd:jodd-http:5.2.0:provided>",
+  "<com.thoughtworks.xstream:xstream:1.4.17:compile>"
+]

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.course.CourseParentMapper">
+
+    <select id="getById" resultType="com.car.order.client.response.course.QueryCourseParentInfoRes">
+        select * from course_parent where uuid = #{uuid} and sts = 0
+    </select>
+
+    <select id="list" resultType="com.car.order.client.response.course.QueryCourseParentListRes">
+        select * from course_parent where sts = 0
+        <if test="req.courseTitle != null and req.courseTitle != ''">
+            and course_title LIKE CONCAT('%',#{req.courseTitle},'%')
+        </if>
+        order by created_time desc
+    </select>
+    
+    <select id="listNewest" resultType="com.car.order.client.response.course.QueryCourseParentListRes">
+       SELECT DISTINCT * FROM ( 
+			select  p.* from course_parent p ,course c 
+	        where p.sts = 0 
+		        and c.sts=0
+		        and c.latest_course = 1
+		        and p.uuid=c.course_parent_uuid 
+	        <if test="req.courseTitle != null and req.courseTitle != ''">
+	            and  p.course_title LIKE CONCAT('%',#{req.courseTitle},'%')
+	        </if>
+	        order by c.created_time desc
+        )t
+    </select>
+    
+    <select id="listGeneral" resultType="com.car.order.client.response.course.QueryCourseParentListRes">
+       SELECT DISTINCT * FROM ( 
+			select  p.* from course_parent p ,course c 
+	        where p.sts = 0 
+		        and c.sts=0
+		        and c.latest_course = 0
+		        and p.uuid=c.course_parent_uuid 
+	        <if test="req.courseTitle != null and req.courseTitle != ''">
+	            and p.course_title LIKE CONCAT('%',#{req.courseTitle},'%')
+	        </if>
+        order by c.created_time desc
+        ) t 
+    </select>
+
+    <select id="queryCourseParentLimit" resultType="com.car.order.client.response.course.QueryCourseParentListRes">
+        select * from course_parent where sts = 0  order by created_time desc limit #{newCourseParenNum}
+    </select>
+
+</mapper>

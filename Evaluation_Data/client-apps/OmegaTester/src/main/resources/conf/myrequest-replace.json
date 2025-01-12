@@ -1,0 +1,9 @@
+{
+  "delete": "DELETE",
+  "post": "POST",
+  "put": "PUT",
+  "get": "GET",
+  "requestHeader": "headers",
+  "a": "api_Key",
+  "requestData": "body"
+}

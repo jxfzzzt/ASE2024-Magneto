@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.account.web.mapper.technician.TechnicianMapper">
+
+    <!--  查询技师统计数据（注册/订单/案例/回答/支持）  -->
+    <select id="queryTechnicianCount" parameterType="com.car.account.client.request.technician.TechnicianListReq"
+            resultType="com.car.account.client.response.technician.TechnicianCountRes">
+        SELECT
+            count( 1 ) AS registerCount,
+            IFNULL( sum( order_count ), 0 ) AS orderCount,
+            IFNULL( sum( case_count ), 0 ) AS caseCount,
+            IFNULL( sum( qa_count ), 0 ) AS qaCount,
+            IFNULL( sum( support_count ), 0 ) AS supportCount
+        FROM
+            technician
+        WHERE
+            sts = 0
+        <if test="userName != null and userName != ''">
+            user_name LIKE CONCAT('%',#{userName},'%')
+        </if>
+        <if test="mobile != null and mobile != ''">
+            mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
+        <if test="provinceUuid != null and provinceUuid != ''">
+            address_province = #{provinceUuid}
+        </if>
+        <if test="cityUuid != null and cityUuid != ''">
+            address_city = #{cityUuid}
+        </if>
+    </select>
+
+
+    <select id="queryTechnicianList" parameterType="com.car.account.client.request.technician.TechnicianListReq"
+            resultType="com.car.account.client.response.technician.TechnicianListRes">
+        SELECT
+            tech2.uuid,
+            tech2.user_name AS userName,
+            tech2.mobile,
+            tech2.address_province AS addressProvince,
+            ( SELECT area_name FROM sys_area WHERE uuid = tech2.address_province ) AS addressProvinceName,
+            tech2.address_city AS addressCity,
+            ( SELECT area_name FROM sys_area WHERE uuid = tech2.address_city ) AS addressCityName,
+            tech2.address_detail AS addressDetail,
+            tech2.technology_type AS technologyType,
+            ( SELECT lable_desc FROM sys_dict WHERE uuid = tech2.technology_type ) AS technologyTypeName,
+            tech2.order_count AS orderCount,
+            tech2.qa_count AS qaCount,
+            tech2.support_count AS supportCount,
+            tech2.case_count AS caseCount,
+            tech2.score,
+            tech2.check_sts AS checkSts,
+            tech1.technicianBrandName,
+            tech2.working_year,
+            tech2.created_time as createdTime,
+            ( SELECT lable_desc FROM sys_dict WHERE uuid = tech2.state_verification ) AS stateVerification,
+            ( SELECT lable_desc FROM sys_dict WHERE uuid = tech2.host_authentication ) AS hostAuthentication
+        FROM
+            (
+            SELECT
+                tech.uuid,
+                GROUP_CONCAT( ( SELECT config_name FROM vehicle_config WHERE uuid = tb.brand_uuid ) SEPARATOR '/' ) AS technicianBrandName
+            FROM
+                technician tech
+                LEFT JOIN technician_brand tb ON tech.uuid = tb.technician_uuid
+            WHERE
+                tech.sts = 0
+            GROUP BY
+                tech.uuid
+            ) tech1
+            LEFT JOIN technician tech2 ON tech1.uuid = tech2.uuid
+        WHERE
+            tech2.sts = 0
+            <if test="userName != null and userName != ''">
+                and tech2.user_name LIKE CONCAT('%',#{userName},'%')
+            </if>
+            <if test="mobile != null and mobile != ''">
+                and tech2.mobile LIKE CONCAT('%',#{mobile},'%')
+            </if>
+            <if test="provinceUuid != null and provinceUuid != ''">
+                and tech2.address_province = #{provinceUuid}
+            </if>
+            <if test="cityUuid != null and cityUuid != ''">
+                and tech2.address_city = #{cityUuid}
+            </if>
+        ORDER BY
+            tech2.check_sts ASC,
+            tech2.created_time DESC
+    </select>
+
+    <select id="queryTechnicianAnswerList" resultType="com.car.account.web.model.technician.Technician">
+        SELECT
+          s.*
+        FROM
+          technician s
+        WHERE s.`sts` = 0
+        and check_sts = 1
+        and cyb_auth = 1
+        ORDER BY IFNULL(s.answer_sort_weight, 1000000) asc,IFNULL(s.qa_count, 0) desc,created_time desc
+    </select>
+    <select id="queryTechnicianLocationList" resultType="com.car.account.web.model.technician.Technician">
+        SELECT * FROM technician t
+        <where>
+            t.sts=0 AND lat_lng_distance(#{latitude},#{longitude},t.address_latitude,t.address_longitude) <![CDATA[ <= ]]> #{zoomNum}
+            <if test="brandUuid !=null and brandUuid !=''">
+            AND EXISTS
+				(SELECT 1  FROM technician_brand b WHERE b.brand_uuid=#{brandUuid} and b.sts=0 and b.technician_uuid=t.uuid)
+            </if>
+            <if test="technologyType !=null and technologyType !=''">
+            	and technology_type = #{technologyType}
+            </if>
+        </where>
+    </select>
+</mapper>

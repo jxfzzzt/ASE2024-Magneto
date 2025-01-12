@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.instance.OrderCaseFrontMapper">
+
+
+    <select id="queryOrderCaseInfoList" resultType="com.car.order.client.response.order.instance.OrderCaseFrontListRes">
+        select oc.uuid,oc.order_num,oc.created_time,oc.order_amount,oc.pay_type,oc.order_sts,
+               ocd.case_name,ocd.case_img_url,ocd.case_num,
+               CONCAT(left(tc.fault_desc, 50),"...") as faultDesc,CONCAT(left(tc.idea_process, 50),"...") as ideaProcess,CONCAT(left(tc.summary, 50),"...") as summary
+        from order_case oc
+        left join order_case_detail ocd on oc.uuid = ocd.order_uuid
+        left join technician_case tc on tc.uuid = ocd.case_uuid
+        where oc.sts = 0
+
+        <if test="orderCaseDto.technicianUuid != null and orderCaseDto.technicianUuid != ''">
+            AND oc.technician_uuid  = #{orderCaseDto.technicianUuid}
+        </if>
+
+        <if test="orderCaseDto.carOwnerUuid != null and orderCaseDto.carOwnerUuid != ''">
+            AND oc.car_owner_uuid  = #{orderCaseDto.carOwnerUuid}
+        </if>
+
+        <if test="orderCaseDto.orderStsList != null and orderCaseDto.orderStsList.size > 0">
+            AND oc.order_sts  in
+            <foreach collection="orderCaseDto.orderStsList" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+
+        <if test="orderCaseDto.orderSts != null">
+            AND oc.order_sts  = #{orderCaseDto.orderSts}
+        </if>
+
+        <if test="orderCaseDto.evaluateSts != null">
+            AND oc.evaluate_sts  = #{orderCaseDto.evaluateSts}
+        </if>
+        order by oc.created_time desc
+    </select>
+
+    <select id="queryOrderCaseDetail" resultType="com.car.order.client.response.order.instance.OrderCaseFrontRes">
+        SELECT
+            oc.uuid,
+            oc.order_num,
+            tc.uuid as caseUuid,
+            tc.title,
+            tc.made_time,
+            tc.fault_desc,
+            tc.idea_process,
+            tc.summary,
+            tc.amt as materialsExpenses,
+            oc.order_sts
+        FROM
+            order_case oc
+            LEFT JOIN order_case_detail ocd ON oc.uuid = ocd.order_uuid
+            LEFT JOIN technician_case tc ON tc.uuid = ocd.case_uuid
+        WHERE
+            oc.sts = 0
+            AND oc.uuid = #{uuid}
+    </select>
+
+    <select id="queryOrderStsNum" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM order_case
+        WHERE sts = 0
+        <if test="orderSts != null">
+            AND order_sts = #{orderSts}
+        </if>
+        <if test="technicianUuid != null and technicianUuid != ''">
+            AND technician_uuid = #{technicianUuid}
+        </if>
+        <if test="carOwnerUuid != null and carOwnerUuid != ''">
+            AND car_owner_uuid = #{carOwnerUuid}
+        </if>
+    </select>
+
+    <select id="queryOrderCaseInfo" resultType="com.car.order.web.model.instance.OrderCase">
+        select * from order_case
+        where
+        case_uuid = #{caseUuid}
+        and car_owner_uuid = #{userUuid}
+        and sts = 0
+        and order_sts = 0
+    </select>
+
+</mapper>

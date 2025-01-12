@@ -1,0 +1,24 @@
+Failed to register client services
+java.rmi.ConnectIOException: error during JRMP connection establishment; nested exception is: 
+	java.net.SocketTimeoutException: Read timed out
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:307)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:343)
+	at sun.rmi.registry.RegistryImpl_Stub.rebind(RegistryImpl_Stub.java:150)
+	at org.evosuite.rmi.ClientServices.registerServices(ClientServices.java:67)
+	at org.evosuite.ClientProcess.run(ClientProcess.java:88)
+	at org.evosuite.ClientProcess.main(ClientProcess.java:229)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:171)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at java.io.DataInputStream.readByte(DataInputStream.java:265)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:246)
+	... 6 common frames omitted
+Error when generating tests for: com.car.account.web.dto.profit.ClassifyProfitDto with seed 1711621711886. Configuration id : null
+java.lang.RuntimeException: Could not connect to master process on port 17152
+	at org.evosuite.ClientProcess.run(ClientProcess.java:93)
+	at org.evosuite.ClientProcess.main(ClientProcess.java:229)

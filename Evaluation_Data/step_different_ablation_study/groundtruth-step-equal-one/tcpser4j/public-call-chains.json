@@ -1,0 +1,65 @@
+[
+    {
+        "chain": [
+            "<org.jbrain.tcpser4j.binding.ModemInfo: org.dom4j.Element writeXML(java.lang.String)>",
+            "<org.dom4j.DocumentHelper: org.dom4j.Element createElement(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2018-1000632"
+        ]
+    },
+    {
+        "chain": [
+            "<org.jbrain.tcpser4j.binding.Entry: org.dom4j.Element writeXML(java.lang.String)>",
+            "<org.dom4j.DocumentHelper: org.dom4j.Element createElement(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2018-1000632"
+        ]
+    },
+    {
+        "chain": [
+            "<org.jbrain.tcpser4j.binding.Settings: org.dom4j.Element writeXML(java.lang.String)>",
+            "<org.dom4j.DocumentHelper: org.dom4j.Element createElement(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2018-1000632"
+        ]
+    },
+    {
+        "chain": [
+            "<org.jbrain.tcpser4j.binding.EventActionInfo: org.dom4j.Element writeXML(java.lang.String)>",
+            "<org.dom4j.DocumentHelper: org.dom4j.Element createElement(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2018-1000632"
+        ]
+    },
+    {
+        "chain": [
+            "<org.jbrain.tcpser4j.binding.Line: org.dom4j.Element writeXML(java.lang.String)>",
+            "<org.dom4j.DocumentHelper: org.dom4j.Element createElement(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2018-1000632"
+        ]
+    },
+    {
+        "chain": [
+            "<org.jbrain.tcpser4j.binding.PhoneBook: org.dom4j.Element writeXML(java.lang.String)>",
+            "<org.dom4j.DocumentHelper: org.dom4j.Element createElement(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2018-1000632"
+        ]
+    },
+    {
+        "chain": [
+            "<org.jbrain.tcpser4j.binding.ModemPool: org.dom4j.Element writeXML(java.lang.String)>",
+            "<org.dom4j.DocumentHelper: org.dom4j.Element createElement(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2018-1000632"
+        ]
+    }
+]

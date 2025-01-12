@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.account.web.mapper.technician.TechnicianAccountMapper">
+
+    <select id="queryTechnicianAccountInfo" resultType="com.car.account.client.response.technician.TechnicianAccountRes">
+        SELECT * FROM technician_account WHERE sts = 0 AND technician_uuid = #{userUuid}
+    </select>
+
+    <update id="updateTechnicianAccount">
+        update
+            technician_account
+        set
+            account_amount = #{technicianAccount.accountAmount},
+            total_amount = #{technicianAccount.totalAmount},
+            wait_amount = #{technicianAccount.waitAmount},
+            last_updated_time = #{technicianAccount.lastUpdatedTime},
+            last_updated_by = #{technicianAccount.lastUpdatedBy}
+        where
+            technician_uuid = #{technicianAccount.technicianUuid}
+    </update>
+</mapper>

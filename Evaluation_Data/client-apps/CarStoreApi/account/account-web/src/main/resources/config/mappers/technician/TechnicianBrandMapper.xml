@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.account.web.mapper.technician.TechnicianBrandMapper">
+    <select id="selectBrandByTechnicianUuid" resultType="com.car.account.client.response.technician.TechnicianBrandRes">
+      SELECT
+        tb.uuid,
+        tb.technician_uuid as technicianUuid,
+        tb.brand_uuid as brandUuid,
+        vc.config_name as brandName
+    FROM
+        technician_brand tb
+        LEFT JOIN vehicle_config vc ON tb.brand_uuid = vc.uuid
+    WHERE
+        tb.sts = 0
+        AND technician_uuid = #{technicianUuid}
+    </select>
+    <select id="queryShareNum" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM share_technician_order WHERE sts=0 AND technician_uuid=#{uuid}
+    </select>
+
+</mapper>

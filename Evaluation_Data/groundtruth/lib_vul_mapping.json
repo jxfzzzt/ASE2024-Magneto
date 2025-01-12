@@ -1,0 +1,76 @@
+{
+  "dom4j:dom4j": [
+    "CVE-2018-1000632"
+  ],
+  "com.thoughtworks.xstream:xstream": [
+    "CVE-2017-7957",
+    "CVE-2020-26217",
+    "CVE-2021-43859",
+    "CVE-2022-41966"
+  ],
+  "org.springframework.security:spring-security-core": [
+    "CVE-2020-5408",
+    "CVE-2022-22976"
+  ],
+  "com.mikesamuel:json-sanitizer": [
+    "CVE-2020-13973",
+    "CVE-2021-23899",
+    "CVE-2021-23900"
+  ],
+  "com.github.junrar:junrar": [
+    "CVE-2022-23596"
+  ],
+  "org.jodd:jodd-http": [
+    "CVE-2022-29631"
+  ],
+  "org.apache.httpcomponents:httpclient": [
+    "CVE-2020-13956"
+  ],
+  "com.alibaba:fastjson": [
+    "CVE-2022-25845"
+  ],
+  "org.xerial.snappy:snappy-java": [
+    "CVE-2023-34453",
+    "CVE-2023-43642"
+  ],
+  "org.apache.commons:commons-compress": [
+    "CVE-2018-1324",
+    "CVE-2021-35516"
+  ],
+  "org.zeroturnaround:zt-zip": [
+    "CVE-2018-1002201"
+  ],
+  "io.netty:netty": [
+    "CVE-2015-2156"
+  ],
+  "org.json:json": [
+    "CVE-2022-45688"
+  ],
+  "com.fasterxml.jackson.core:jackson-databind": [
+    "CVE-2022-42004"
+  ],
+  "commons-io:commons-io": [
+    "CVE-2021-29425",
+    "IO-611"
+  ],
+  "org.springframework:spring-web": [
+    "CVE-2018-15756"
+  ],
+  "org.apache.commons:commons-lang3": [
+    "LANG-1385",
+    "LANG-1645"
+  ],
+  "org.apache.pdfbox:pdfbox": [
+    "CVE-2021-31812"
+  ],
+  "net.lingala.zip4j:zip4j": [
+    "Zip4j-263"
+  ],
+  "commons-beanutils:commons-beanutils": [
+    "CVE-2019-10086"
+  ],
+  "net.minidev:json-smart": [
+    "CVE-2021-27568",
+    "CVE-2023-1370"
+  ]
+}

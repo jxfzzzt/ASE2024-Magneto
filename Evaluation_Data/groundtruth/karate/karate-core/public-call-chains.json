@@ -1,0 +1,11 @@
+[
+  {
+    "chain": [
+      "<com.intuit.karate.JsonUtils: java.lang.String toStrictJson(java.lang.String)>",
+      "<net.minidev.json.parser.JSONParser: java.lang.Object parse(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2023-1370"
+    ]
+  }
+]

@@ -1,0 +1,126 @@
+###################  项目启动端口  ###################
+server:
+  port: 10030
+###################  spring配置  ###################
+database:
+  host: 172.21.62.35
+  port: 13306
+  name: car
+  username: root
+  password: duling@2021!
+regist-center:
+  ip: 172.21.62.35
+  port: 18761
+spring:
+  #  profiles: product
+  datasource:
+    url: jdbc:mysql://${database.host}:${database.port}/${database.name}?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=Asia/Shanghai&useSSL=false
+    username: ${database.username}
+    password: ${database.password}
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      initial-size: 10 #初始化连接大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 1000 #最大连接数
+      query-timeout: 6000 #查询超时时间
+      transaction-query-timeout: 6000 #事务查询超时时间
+      remove-abandoned-timeout: 1800 #关闭空闲连接超时时间
+      filter-class-names: stat
+      filters: stat,config
+  application:
+    name: manager
+  main:
+    allow-bean-definition-overriding: true
+  sleuth:
+    baggage-keys:
+      - Token
+  servlet:
+    multipart:
+      max-file-size: 10MB # 单个文件大小
+      max-request-size: 10MB # 设置总上传的数据大小
+      enabled: true #开启
+  redis:
+    host: 172.21.62.35
+    port: 16379
+    password: duling@2021!
+
+###################  eureka的配置  ###################
+eureka:
+  instance:
+    prefer-ip-address: false
+    ##续约更新时间间隔设置5秒，m默认30s
+    lease-renewal-interval-in-seconds: 5
+    ##续约到期时间10秒，默认是90秒
+    lease-expiration-duration-in-seconds: 10
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${regist-center.ip}:${regist-center.port}/eureka/
+
+##################### mybatis ###############################
+mybatis:
+  typeAliasesPackage: com.car.system.web.model
+  mapperLocations: classpath*:config/**/mappers/**/*.xml
+  configuration.map-underscore-to-camel-case: true
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: true
+  params: count=countSql
+
+tx-lcn:
+  #是否启动LCN负载均衡策略(优化选项，开启与否，功能不受影响)
+  ribbon:
+    loadbalancer:
+      dtx:
+        enabled: true
+  client:
+    manager-address: 172.21.62.35:10021
+  #TX-LCN记录入库
+  logger:
+    enabled: true
+    driver-class-name: ${spring.datasource.driver-class-name}
+    jdbc-url: jdbc:mysql://${database.host}:${database.port}/tx-manage?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=Asia/Shanghai&useSSL=false
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+
+#所有配置文件相关代码块
+config:
+  #默认新增用户密码
+  defaultUserPwd: asdf1234?
+  #默认超级用户ID（该用户不受权限控制）
+  defaultSupperUserUuid: 0
+  #swagger配置的前缀访问路径
+  swagger-api: /
+  #接口请求日志开关(open/close)
+  requestLogSwitch: open
+  #文件存储路径
+  filePath: /data/logistics/static/
+  #图片最大限制（5M）
+  imageMaxSize: 5242880
+  #照片前缀
+  imageUrlPrefix: /images
+  #人员照片存储目录
+  personImage: /person/
+  #地图文件存储路径
+  mapImage: /map/
+  #企业Logo
+  enterPriseLogo: /logo/
+ribbon:
+  #请求处理的超时时间
+  ReadTimeout: 120000
+  #请求连接的超时时间
+  ConnectTimeout: 30000
+swagger:
+  basePackage: com.car.system.web.controller
+  pathMapping: /
+  title: system项目开发SWAGGER_2接口文档
+  description: system项目开发SWAGGER_2接口文档
+system:
+  singleLogin: true
+

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.content.ContentMapper">
+
+    <select id="queryContentList" resultType="com.car.order.client.response.content.QueryContentListRes">
+        SELECT ct.uuid,ct.order_name,ct.order_type,ct.content_detail,ct.check_sts
+        FROM content ct
+        where ct.sts = 0
+        <if test="orderName != null and orderName !=''">
+            AND ct.order_name LIKE CONCAT('%',#{orderName},'%')
+        </if>
+        <if test="mobile != null and mobile !=''">
+            AND ct.mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
+        <if test="orderType != null">
+            AND ct.order_type = #{orderType}
+        </if>
+        order by ct.created_time desc
+    </select>
+
+    <select id="queryContentDetail" resultMap="queryRelResources" >
+        SELECT c.uuid,c.order_uuid,c.order_name,c.order_type,c.user_uuid,
+               c.mobile,c.content_detail,c.check_sts
+        FROM content c
+        where c.sts = 0 and c.uuid = #{uuid}
+    </select>
+
+    <resultMap id="queryRelResources" type="com.car.order.client.response.content.ContentDetailRes">
+        <id column="uuid" property="uuid"/>
+        <collection property="resourcesList" column="uuid" select="contentResourcesList" />
+    </resultMap>
+
+    <select id="contentResourcesList" resultType="java.lang.String">
+        select cr.resources_url from content_resources cr
+        where cr.content_uuid = #{uuid} and cr.sts = 0
+        order by cr.created_time desc
+    </select>
+
+    <select id="queryImgUrl" resultType="java.lang.String">
+        select img_url from consult_images where sts = 0 and consult_uuid = #{consultUuid} and img_type = #{imgType}
+    </select>
+
+    <select id="getCaseDetails" resultType="com.car.order.client.response.order.consult.CaseDetails">
+        SELECT
+            c.uuid,
+            c.order_name,
+            c.order_type,
+            c.created_time,
+            c.content_detail,
+            b.working_year,
+            b.user_name ,
+            e.title,
+            f.lable_desc,
+            e.model,
+            e.mileage,
+            e.made_time,
+            e.vin,
+            e.fault_desc,
+            e.summary,
+            e.idea_process,
+            e.amt
+        FROM
+            content c
+            LEFT JOIN technician b ON c.user_uuid = b.uuid
+            LEFT JOIN order_case a ON c.order_uuid = a.uuid
+            LEFT JOIN technician_case e on e.uuid=a.case_uuid
+            LEFT JOIN sys_dict f ON e.brand_uuid=f.uuid
+        WHERE
+            c.sts = 0
+            AND c.uuid = #{uuid}
+    </select>
+    <select id="getMyCaseList" resultType="com.car.order.client.response.order.consult.CaseDetails">
+        SELECT
+            b.user_name,
+            e.title,
+            e.amt,
+            a.evaluate_sts,
+            g.lable_desc
+        FROM
+            content c
+            LEFT JOIN technician b ON c.user_uuid = b.uuid
+            LEFT JOIN order_case a ON c.order_uuid = a.uuid
+            LEFT JOIN technician_case e ON e.uuid = a.case_uuid
+            LEFT JOIN technician f ON f.uuid = e.technician_uuid
+            LEFT JOIN sys_dict g ON f.state_verification = g.uuid
+        WHERE
+            c.sts = 0
+            AND c.user_uuid = #{uuid}
+    </select>
+    <select id="getPurchaseCase" resultType="com.car.order.client.response.order.consult.CaseDetails">
+        SELECT
+            case_uuid
+        FROM
+            order_case
+        WHERE
+            car_owner_uuid = #{uuid}
+        AND
+            sts=0
+    </select>
+</mapper>

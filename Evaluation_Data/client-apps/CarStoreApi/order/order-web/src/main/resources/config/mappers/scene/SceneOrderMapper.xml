@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.scene.SceneOrderMapper">
+
+    <select id="querySceneOrderList" resultType="com.car.order.client.response.scene.QuerySceneOrderListRes">
+        select
+        *,
+        lat_lng_distance(so.latitude,so.longitude,#{laAndLoDto.latitude},#{laAndLoDto.longitude}) as distance
+        from scene_order so
+        where
+        so.sts = 0
+        <if test="userUuid != null and userUuid != ''">
+            and so.issuer_uuid = #{userUuid}
+        </if>
+        <if test="buyerUuid != null and buyerUuid != ''">
+            and so.buyer_uuid = #{buyerUuid}
+        </if>
+
+        <if test="grabOrderSts != null">
+            and so.grabbing_orders_sts = #{grabOrderSts}
+        </if>
+        <if test="orderSts != null">
+            and so.order_sts = #{orderSts}
+        </if>
+        order by so.created_time desc
+    </select>
+
+    <select id="querySceneOrderInfo" resultType="com.car.order.web.dto.scene.SceneOrderDto">
+        select
+        so.*,
+        sot.uuid as sceneOrderTechnicianUuid,
+        sot.fault_desc as technicianFaultDesc,
+        sot.already_inspect as technicianAlreadyInspect,
+        sot.dtc_code as technicianDtcCode,
+        sot.repair_summary as repairSummary,
+        sot.fault_solve as faultSolve
+        from scene_order so
+        left join scene_order_technician sot on so.uuid = sot.order_uuid
+        where
+        so.uuid = #{sceneOrderUuid}
+    </select>
+
+</mapper>

@@ -1,0 +1,11 @@
+[
+  {
+    "chain": [
+      "<com.roubsite.utils.JsonUtils: java.lang.Object readToObject(java.lang.String,java.lang.Class)>",
+      "<com.fasterxml.jackson.databind.ObjectMapper: java.lang.Object readValue(java.lang.String,java.lang.Class)>"
+    ],
+    "vuls": [
+      "CVE-2022-42004"
+    ]
+  }
+]

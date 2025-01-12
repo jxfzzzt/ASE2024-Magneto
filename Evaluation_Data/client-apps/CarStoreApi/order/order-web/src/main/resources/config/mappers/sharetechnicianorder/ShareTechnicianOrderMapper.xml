@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.sharetechnicianorder.ShareTechnicianOrderMapper">
+    <select id="queryShareTechnicianOrderList"
+            resultType="com.car.order.web.model.sharetechnicianorder.ShareTechnicianOrder">
+        SELECT * FROM share_technician_order
+        <where>
+            sts=0
+            <if test="userType != null and userType == 1">
+                AND owner_uuid =#{userUuid}
+            </if>
+            <if test="userType != null and userType == 2">
+                AND technician_uuid =#{userUuid}
+            </if>
+            <if test="orderStatus != null and orderStatus.size() >0">
+                AND order_status IN
+                <foreach collection="orderStatus" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        ORDER BY appointment_time DESC
+    </select>
+
+    <select id="queryOrderShareTechnicianOrderInfo" resultType="com.car.order.web.model.sharetechnicianorder.ShareTechnicianOrder">
+        select * from share_technician_order where uuid = #{orderUuid}
+    </select>
+
+    <select id="queryOrderStsNum" resultType="java.lang.Integer">
+        select count(1) from share_technician_order
+        where sts = 0
+        <if test="orderStatus != null">
+            AND order_status IN
+            <foreach collection="orderStatus" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="userUuid != null and userUuid != ''">
+            AND owner_uuid =#{userUuid}
+        </if>
+        <if test="technicianUuid != null and technicianUuid != ''">
+            AND technician_uuid = #{technicianUuid}
+        </if>
+    </select>
+</mapper>

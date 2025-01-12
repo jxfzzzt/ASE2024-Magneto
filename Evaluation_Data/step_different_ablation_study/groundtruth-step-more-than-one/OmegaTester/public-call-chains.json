@@ -1,0 +1,15 @@
+[
+    {
+        "chain": [
+            "<com.haleywang.monitor.common.req.HarConverter: com.haleywang.monitor.dto.MyRequest toMyRequest(java.lang.String)>",
+            "<com.haleywang.monitor.utils.JsonUtils: java.lang.Object fromJson(java.lang.String,java.lang.Class)>",
+            "<com.haleywang.monitor.utils.JsonUtils: java.lang.Object fromJson(java.lang.String,java.lang.Class,java.lang.String)>",
+            "<com.google.json.JsonSanitizer: java.lang.String sanitize(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2020-13973",
+            "CVE-2021-23899",
+            "CVE-2021-23900"
+        ]
+    }
+]

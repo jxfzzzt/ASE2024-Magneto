@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Geek-Framework后台管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
+    <link rel="stylesheet" href="/assets/adminlte-2.3.7/css/AdminLTE.min.css"  />
+    <link rel="stylesheet" href="/assets/adminlte-2.3.7/css/skins/_all-skins.min.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition skin-blue fixed sidebar-mini">
+<div class="wapper">
+    <header class="main-header">
+        <a href="/console/index" class="logo">
+            <span class="logo-mini"><b>GF</b></span>
+            <span class="logo-lg"><b>Geek</b>Framework</span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a target="_blank" href="/">前台首页</a>
+                    </li>
+                    <li><a href="/console/main" target="mainFrame">
+                        后台首页
+                    </a></li>
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="/assets/adminlte-2.3.7/img/user2-160x160.jpg" class="user-image" />
+                            <span class="hidden-xs" th:text="${admin.username}"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="user-header">
+                                <img src="/assets/adminlte-2.3.7/img/user2-160x160.jpg" class="img-circle" />
+                                <p th:text="${admin.username}"></p>
+                                <small th:text="${admin.updatedAt}"></small>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="/user" class="btn btn-default btn-flat">修改</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="/console/logout" class="btn btn-default btn-flat">退出</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="/assets/adminlte-2.3.7/img/user2-160x160.jpg" class="img-circle" />
+                </div>
+                <div class="pull-left info">
+                    <p th:text="${admin.username}"></p>
+                    <small th:text="${admin.updatedAt}"></small>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="header">控制面板</li>
+                <li class="treeview" th:each="menuList:${menuLists}">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i>
+                        <b th:text="${menuList.menuName}"></b>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li th:each="menuChild:${menuList.children}">
+                            <a th:href="${menuChild.menuUrl}" target="mainFrame"><i class="fa fa-cicle-o"></i><b th:text="${menuChild.menuName}"></b></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </aside>
+    <div class="content-wrapper">
+        <iframe name="mainFrame" id="mainFrame" src="/console/main" frameborder="false" scrolling="auto" style="border:none;" width="100%" height="auto" allowtransparency="true"></iframe>
+    </div>
+    <footer class="main-footer navbar-fixed-bottom">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.0.0
+        </div>
+        <strong>Copyright &copy; 2016-2018 <a href="http://www.geekcattle.com">放牛极客</a>.</strong> All rights reserved.
+    </footer>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.4.1/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/adminlte-2.3.7/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="/assets/adminlte-2.3.7/js/app.min.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+</body>
+</html>

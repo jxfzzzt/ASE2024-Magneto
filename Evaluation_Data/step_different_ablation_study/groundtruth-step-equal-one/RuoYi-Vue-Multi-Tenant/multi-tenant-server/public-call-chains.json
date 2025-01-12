@@ -1,0 +1,21 @@
+[
+    {
+        "chain": [
+            "<com.ruoyi.common.utils.SecurityUtils: boolean matchesPassword(java.lang.String,java.lang.String)>",
+            "<org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder: boolean matches(java.lang.CharSequence,java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2022-22976",
+            "CVE-2020-5408"
+        ]
+    },
+    {
+        "chain": [
+            "<com.ruoyi.common.utils.SecurityUtils: java.lang.String encryptPassword(java.lang.String)>",
+            "<org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder: java.lang.String encode(java.lang.CharSequence)>"
+        ],
+        "vuls": [
+            "CVE-2020-5408"
+        ]
+    }
+]

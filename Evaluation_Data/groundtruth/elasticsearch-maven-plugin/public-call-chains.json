@@ -1,0 +1,13 @@
+[
+  {
+    "chain": [
+      "<com.github.alexcojocaru.mojo.elasticsearch.v2.step.ResolveElasticsearchStep: java.io.File unpackToElasticsearchDirectory(java.io.File,com.github.alexcojocaru.mojo.elasticsearch.v2.InstanceConfiguration)>",
+      "<com.github.alexcojocaru.mojo.elasticsearch.v2.util.ArchiveUtil: void autodetectAndExtract(java.io.File,java.io.File)>",
+      "<com.github.alexcojocaru.mojo.elasticsearch.v2.util.ArchiveUtil: void extractZip(java.io.File,java.io.File)>",
+      "<org.zeroturnaround.zip.ZipUtil: void unpack(java.io.File,java.io.File)>"
+    ],
+    "vuls": [
+      "CVE-2018-1002201"
+    ]
+  }
+]

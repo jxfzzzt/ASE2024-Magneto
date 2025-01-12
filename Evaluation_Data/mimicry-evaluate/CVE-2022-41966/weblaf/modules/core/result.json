@@ -1,0 +1,6 @@
+[
+    [
+        "<com.alee.utils.XmlUtils: java.lang.Object fromXML(java.lang.String)>",
+        "<com.thoughtworks.xstream.XStream: java.lang.Object fromXML(java.lang.String)>"
+    ]
+]

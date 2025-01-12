@@ -1,0 +1,92 @@
+<skin xmlns="http://weblookandfeel.com/XmlSkin">
+
+    <!-- com.alee.laf.menu.WebCheckBoxMenuItem -->
+
+    <!-- Check box menu item -->
+    <style type="checkboxmenuitem">
+        <component>
+            <opaque>false</opaque>
+            <foreground>245,245,245</foreground>
+        </component>
+        <painter>
+            <decorations>
+                <decoration>
+                    <WebShape round="0" />
+                    <MenuItemLayout padding="4,10,5,8" stateIconGap="8" iconTextGap="6" textAcceleratorGap="20">
+                        <MenuItemStateIcon constraints="state-icon" />
+                        <SimpleButtonIcon constraints="icon" />
+                        <ButtonText constraints="text" />
+                        <RoundRectangle constraints="accelerator" round="4" opacity="0">
+                            <ColorBackground color="80,80,80" />
+                        </RoundRectangle>
+                        <AcceleratorText constraints="accelerator" padding="0,4,0,4" color="225,225,225" />
+                    </MenuItemLayout>
+                </decoration>
+                <decoration states="selected">
+                    <GradientBackground>
+                        <color>72,72,72</color>
+                        <color>60,60,60</color>
+                    </GradientBackground>
+                    <MenuItemLayout>
+                        <RoundRectangle opacity="1" />
+                    </MenuItemLayout>
+                </decoration>
+                <decoration states="disabled">
+                    <MenuItemLayout>
+                        <ButtonText color="180,180,180" ignoreCustomColor="true" />
+                        <AcceleratorText color="180,180,180" />
+                    </MenuItemLayout>
+                </decoration>
+            </decorations>
+
+            <!-- State icon painter -->
+            <stateIconPainter>
+                <decorations>
+                    <decoration size="15,15">
+                        <WebShape round="2" />
+                        <WebShadow type="outer" width="1" />
+                        <LineBorder color="20,20,20" />
+                        <GradientBackground type="radial" from="0.5,0.5" to="2,0.5">
+                            <color>77,81,83</color>
+                            <color>black</color>
+                        </GradientBackground>
+                    </decoration>
+                    <decoration states="checked">
+                        <CheckIcon bounds="margin" stroke="basic;2" color="255,255,255,235" />
+                    </decoration>
+                    <decoration states="disabled">
+                        <WebShadow type="outer" opacity="0" />
+                        <LineBorder color="68,72,74" />
+                        <GradientBackground type="radial" from="0.5,0.5" to="2,0.5">
+                            <color>111,115,117</color>
+                            <color>77,81,83</color>
+                        </GradientBackground>
+                    </decoration>
+                    <decoration states="disabled,checked">
+                        <CheckIcon bounds="margin" color="130,130,130" />
+                    </decoration>
+                </decorations>
+            </stateIconPainter>
+
+        </painter>
+    </style>
+
+    <!-- Check box menu item supporting styled text -->
+    <style type="checkboxmenuitem" id="styled">
+        <painter>
+            <decorations>
+                <decoration>
+                    <MenuItemLayout>
+                        <StyledButtonText constraints="text" />
+                    </MenuItemLayout>
+                </decoration>
+                <decoration states="disabled">
+                    <MenuItemLayout>
+                        <StyledButtonText color="180,180,180" ignoreCustomColor="true" ignoreStyleColors="true" />
+                    </MenuItemLayout>
+                </decoration>
+            </decorations>
+        </painter>
+    </style>
+
+</skin>

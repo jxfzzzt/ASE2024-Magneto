@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.goods.OrderGoodsMapper">
+
+    <select id="queryOrderGoodsList" resultType="com.car.order.client.response.order.goods.OrderGoodsListRes">
+        SELECT og.uuid,og.order_num,og.created_time,og.service_area,
+               og.service_num,og.actual_amount,og.contacts,og.mobile,
+               og.pay_type,og.order_sts,ogd.goods_name,ogd.goods_num,
+               ogd.goods_img_url,ogd.man_hour_cost,ogd.materials_expenses
+        FROM order_goods og
+        LEFT JOIN order_goods_detail ogd on og.uuid = ogd.order_uuid
+        WHERE og.sts = 0
+        <if test="goodsName != null and goodsName !=''">
+            AND ogd.goods_name LIKE CONCAT('%',#{goodsName},'%')
+        </if>
+
+        <if test="startDate != null and startDate != ''">
+            <![CDATA[ AND og.created_time  >= #{startDate} ]]>
+        </if>
+
+        <if test="endDate != null and endDate != ''">
+            <![CDATA[ AND og.created_time  <= #{endDate} ]]>
+        </if>
+
+        <if test="orderSts != null">
+            AND og.order_sts  = #{orderSts}
+        </if>
+
+        <if test="afterSaleSts != null">
+            AND og.after_sale_sts  = #{afterSaleSts}
+        </if>
+
+        <if test="evaluateSts != null">
+            AND og.evaluate_sts  = #{evaluateSts}
+        </if>
+
+        <if test="orderNum != null and orderNum !=''">
+            AND og.order_num LIKE CONCAT('%',#{orderNum},'%')
+        </if>
+
+        <if test="contacts != null and contacts !=''">
+            AND og.contacts LIKE CONCAT('%',#{contacts},'%')
+        </if>
+
+        <if test="mobile != null and mobile !=''">
+            AND og.mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
+        order by og.created_time desc
+    </select>
+
+
+    <select id="queryOrderGoods" resultMap="queryOrderGoodsDetail">
+        SELECT og.uuid,og.store_uuid,og.order_num,og.created_time,og.service_area,og.service_num,
+               og.actual_amount,og.receivable_amount,og.contacts,og.mobile,og.pay_type,
+               og.order_sts,og.delivery_mode,og.delivery_address,og.order_remark,og.refund_type,
+               og.refund_amount,og.after_sale_cause,og.after_sale_sts,og.refund_sts,og.after_sale_remark,
+               og.evaluate_sts,og.store_score,og.technician_score
+        FROM order_goods og
+        where og.sts = 0 and og.uuid = #{uuid}
+    </select>
+
+    <resultMap id="queryOrderGoodsDetail" type="com.car.order.client.response.order.goods.OrderGoodsRes">
+        <id column="uuid" property="uuid"/>
+        <collection property="orderGoodsDetailListRes" column="uuid" select="queryOrderGoodsDetailList" />
+    </resultMap>
+
+    <select id="queryOrderGoodsDetailList" resultType="com.car.order.client.response.order.goods.OrderGoodsDetailRes">
+        select ogd.uuid,ogd.order_uuid,ogd.goods_uuid,
+               ogd.goods_name,ogd.goods_num,ogd.goods_img_url,
+               ogd.man_hour_cost,ogd.materials_expenses
+               from order_goods_detail ogd
+        where ogd.order_uuid = #{uuid} and ogd.sts = 0
+        order by ogd.created_time desc
+    </select>
+    <update id="updateGoodsOrder">
+        update order_goods
+        <set>
+            <if test="req.technicianUuid != null and req.technicianUuid != ''">
+                technician_uuid = #{req.technicianUuid},
+            </if>
+
+            <if test="req.technicianName != null and req.technicianName != ''">
+                technician_name = #{req.technicianName},
+            </if>
+
+            <if test="req.technicianMobile != null and req.technicianMobile != ''">
+                technician_mobile = #{req.technicianMobile},
+            </if>
+
+            <if test="req.carInMileage != null and req.carInMileage != ''">
+                car_in_mileage = #{req.carInMileage},
+            </if>
+
+            <if test="req.carOutMileage != null and req.carOutMileage != ''">
+                car_out_mileage = #{req.carOutMileage},
+            </if>
+
+            <if test="req.orderRemark != null and req.orderRemark != ''">
+                order_remark = #{req.orderRemark},
+            </if>
+            last_updated_time = now(),
+            last_updated_by = #{userName}
+        </set>
+        WHERE uuid = #{req.orderUuid}
+    </update>
+
+    <update id="updateGoodsDeliveryOrder">
+        update order_goods
+        <set>
+            <if test="req.contacts != null and req.contacts != ''">
+                contacts = #{req.contacts},
+            </if>
+
+            <if test="req.mobile != null and req.mobile != ''">
+                mobile = #{req.mobile},
+            </if>
+
+            <if test="req.deliveryAddress != null and req.deliveryAddress != ''">
+                delivery_address = #{req.deliveryAddress},
+            </if>
+
+            <if test="req.orderRemark != null and req.orderRemark != ''">
+                order_remark = #{req.orderRemark},
+            </if>
+
+            last_updated_time = now(),
+            last_updated_by = #{userName}
+        </set>
+        WHERE uuid = #{req.orderUuid}
+    </update>
+</mapper>

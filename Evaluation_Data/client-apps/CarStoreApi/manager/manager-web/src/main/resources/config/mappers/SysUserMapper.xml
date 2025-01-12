@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.system.web.mapper.SysUserMapper">
+
+    <select id="queryUserList" parameterType="Object" resultType="com.car.system.web.model.SysUser">
+        SELECT
+        *
+        FROM
+        sys_user
+        WHERE
+        sts = 0
+        <if test="searchValue != null and searchValue !='' ">
+            AND (
+            username LIKE CONCAT('%',#{searchValue},'%')
+            OR `name` LIKE CONCAT('%',#{searchValue},'%')
+            OR `email` LIKE CONCAT('%',#{searchValue},'%')
+            OR `phone` LIKE CONCAT('%',#{searchValue},'%')
+            )
+        </if>
+        <if test="beginTime != null and beginTime !='' ">
+            <![CDATA[ AND created_time >= #{beginTime} ]]>
+        </if>
+        <if test="endTime != null and endTime != '' ">
+            <![CDATA[ AND created_time <= #{endTime} ]]>
+        </if>
+        <if test="status != null and status != '' ">
+            <![CDATA[ AND status <= #{status} ]]>
+        </if>
+        order by created_time desc
+    </select>
+
+    <!--通过用户名获取用户信息列表（人员管理）-->
+    <select id="qryUserListByName" parameterType="java.lang.String" resultType="com.car.system.web.model.dto.SysUserDto">
+        SELECT
+        t1.id AS id,
+        t1.username AS userName,
+        t1.`name` AS NAME,
+        t2.role_id AS roleId,
+        t3.role_name AS roleName,
+        t1.created_time AS createdTime,
+        t2.created_by AS createdBy
+        FROM
+        sys_user t1
+        LEFT JOIN sys_user_role t2 ON t1.id = t2.user_id
+        LEFT JOIN sys_role t3 ON t2.role_id = t3.id
+        <if test="userName != null and userName != ''">
+            WHERE
+            t1.username LIKE CONCAT('%',#{userName},'%')
+            OR t1.`name` LIKE CONCAT('%',#{userName},'%')
+        </if>
+    </select>
+
+    <!--用户停用/启用-->
+    <update id="stopUser">
+        UPDATE sys_user SET `status` = #{status} WHERE id = #{userId}
+    </update>
+
+    <!--修改用户信息-->
+    <update id="updateUser">
+        UPDATE sys_user SET `status` = #{status},`password` = #{passWord} WHERE id = #{userId}
+    </update>
+
+    <!--删除用户-->
+    <update id="delUserById">
+        UPDATE sys_user SET sts = #{sts} WHERE id = #{userId}
+    </update>
+</mapper>

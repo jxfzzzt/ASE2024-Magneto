@@ -1,0 +1,16 @@
+#----------------------------------------------------------------
+# Ucloud API 配置文件
+# 作者：Looly
+#----------------------------------------------------------------
+
+#全局的字符集编码
+charset = utf8
+
+##公钥和私钥，获取地址：https://account.ucloud.cn/account/user#api_key
+#公钥
+public_key = 
+#私钥
+private_key = 
+
+#API的URL
+base_url = https://api.ucloud.cn

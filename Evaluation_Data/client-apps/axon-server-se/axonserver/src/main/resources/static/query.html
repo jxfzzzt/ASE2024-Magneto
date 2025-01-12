@@ -1,0 +1,458 @@
+<!--
+  ~  Copyright (c) 2017-2022 AxonIQ B.V. and/or licensed to AxonIQ B.V.
+  ~  under one or more contributor license agreements.
+  ~
+  ~  Licensed under the AxonIQ Open Source License Agreement v1.0;
+  ~  you may not use this file except in compliance with the license.
+  ~
+  -->
+
+<script language="JavaScript">
+    //# sourceURL=query.js
+
+    $.fn.setCursorPosition = function (pos) {
+        this.each(function (index, elem) {
+            if (elem.setSelectionRange) {
+                elem.setSelectionRange(pos, pos);
+            } else if (elem.createTextRange) {
+                var range = elem.createTextRange();
+                range.collapse(true);
+                range.moveEnd('character', pos);
+                range.moveStart('character', pos);
+                range.select();
+            }
+        });
+        return this;
+    };
+
+    $.fn.getCursorPosition = function () {
+        var input = this.get(0);
+        if (!input) {
+            return;
+        } // No (input) element found
+        if ('selectionStart' in input) {
+            // Standard-compliant browsers
+            return input.selectionStart;
+        } else if (document.selection) {
+            // IE
+            input.focus();
+            var sel = document.selection.createRange();
+            var selLen = document.selection.createRange().text.length;
+            sel.moveStart('character', -input.value.length);
+            return sel.text.length - selLen;
+        }
+    };
+
+    var source;
+    var identifiers = ["token", "aggregateIdentifier", "aggregateSequenceNumber", "aggregateType", "payloadType",
+        "payloadRevision", "payloadData", "timestamp", "count", "groupby", "select", "avg", "sortby", "min", "max",
+        "substring", "concat", "contains", "match", "formatDate"];
+
+    function formatString(item) {
+        if (typeof item === 'number') {
+            var v = '' + item;
+            var num = v.indexOf(".");
+            if (num < 0) {
+                num = v.length;
+            }
+            for (f = 0; f < 20 - num; f++) {
+                v = "0" + v;
+            }
+            return v;
+        }
+        return item;
+
+    }
+
+    function commonSubstring(candidatesArr, knownLength) {
+        for (var i = knownLength + 1; i < candidatesArr[0].length; i++) {
+            var candidates = candidatesArr.filter(function (a) {
+                return a.startsWith(candidatesArr[0].substring(0, i))
+            });
+            if (candidates.length < candidatesArr.length) {
+                return candidatesArr[0].substring(0, i - 1);
+            }
+        }
+        return candidatesArr[0].substring(0, knownLength);
+    }
+
+    function onKeyPress(e) {
+        if (e.ctrlKey && e.keyCode === 32) {
+            e.preventDefault();
+            var q = $("#query");
+            var position = q.getCursorPosition();
+            var content = q.val().substring(0, position);
+
+            var parts = content.split("|");
+            var word = parts[parts.length - 1].split(/([\s()\[\]*-/%*])\s*/g);
+            var lastWord = word[word.length - 1].trim();
+            if (lastWord.length === 0) {
+                return;
+            }
+
+            var candidates = identifiers.filter(function (a) {
+                return a.startsWith(lastWord)
+            });
+
+            if (candidates.length === 0) {
+                return;
+            }
+
+            var after = q.val().substring(position);
+
+            if (candidates.length === 1) {
+                q.val(content + candidates[0].substring(lastWord.length) + after);
+                q.setCursorPosition(content.length + candidates[0].length - lastWord.length);
+                return;
+            }
+
+            var common = commonSubstring(candidates, lastWord.length);
+            q.val(content + common.substring(lastWord.length) + after);
+            q.setCursorPosition(content.length + common.length - lastWord.length);
+
+
+            return false;
+        }
+        return true;
+    }
+
+
+    function findById(arr, id) {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].id === id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    function concatKey(arr) {
+        var key = "/";
+        if (arr.length) {
+            $.each(arr, function (idx, item) {
+                key += formatString(item) + "/";
+            })
+        } else {
+            key += formatString(arr) + "/"
+        }
+        return key;
+    }
+
+    var clientToken;
+
+    $(document).ready(function () {
+        clientToken = Math.random().toString(36).substring(2)
+                + (new Date()).getTime().toString(36);
+
+        new Vue({
+                    el: "#queryWrapper",
+                    data: {
+                        query: "",
+                        columns: ["token", "aggregateIdentifier", "aggregateSequenceNumber",
+                            "aggregateType", "payloadType", "payloadRevision", "payloadData", "timestamp"],
+                        rows: [],
+                        working: false,
+                        contexts: [],
+                        activeContext: "default",
+                        timeConstraint: "last hour",
+                        liveUpdates: false,
+                        forceReadFromLeader: false,
+                        querySnapshots: false,
+                        activeRow: {value: []},
+                        info: null,
+                        help: false
+                    }, mounted() {
+                if (globals.isEnterprise()) {
+                    axios.get("v1/public/visiblecontexts?includeAdmin=false").then(response => {
+                        this.contexts = response.data;
+                        this.activeContext = this.contexts.length === 0 ? "" : this.contexts[0];
+                    });
+                }
+                    },
+                    methods: {
+                        toggleHelp() {
+                            this.help = !this.help;
+                        },
+                        select(row) {
+                            this.activeRow.style = "";
+                            this.activeRow = row;
+                            this.activeRow.style = "selected";
+                            this.$modal.show('result-details');
+                        },
+                        closeDetails(event) {
+                            this.activeRow.style = "";
+                            this.$forceUpdate();
+                        },
+                        executeQuery() {
+                            if (typeof EventSource === "undefined") {
+                                alert("No Server Emitter support in browser");
+                                return;
+
+                            }
+                            this.working = true;
+                            this.query = $("#query").val();
+                            let effectiveQuery = this.query;
+                            this.rows = [];
+                            let target = this;
+                            if (source) {
+                                source.close();
+                            }
+                            this.info = null;
+                            source = new EventSource("v1/search?query=" + encodeURIComponent(this.query)
+                                                             + "&context=" + encodeURIComponent(this.activeContext)
+                                                             + "&timewindow=" + encodeURIComponent(this.timeConstraint)
+                                                             + "&liveupdates=" + this.liveUpdates
+                                                             + "&querySnapshots=" + this.querySnapshots
+                                                             + "&forceleader=" + this.forceReadFromLeader
+                                                             + "&clientToken="
+                                                             + encodeURIComponent(clientToken));
+                            source.addEventListener('metadata', function (event) {
+                                target.columns = JSON.parse(event.data);
+
+                            });
+
+                            source.addEventListener('done', function (event) {
+                                target.working = false;
+                                if (target.rows.length === 0 && !target.liveUpdates) {
+                                    target.info = "No query results found, extend the query time window to search for older events";
+                                }
+                            });
+
+
+                            source.addEventListener('row', function (event) {
+                                var d = JSON.parse(event.data);
+                                let rows = target.rows;
+                                if (d.idValues) {
+                                    d.id = concatKey(d.idValues);
+                                    var row = findById(rows, d.id);
+                                    if (row >= 0) {
+                                        if( d.sortValues || d.deleted) {
+                                            rows.splice(row, 1)
+                                            target.rows = rows;
+                                        } else {
+                                            rows.splice(row, 1, d)
+                                            target.rows = rows;
+                                            return;
+                                        }
+                                        //Vue.set(target.rows, row, d);
+                                        //return;
+                                    }
+                                }
+
+                                if( d.deleted) {
+                                    console.info("Deleted");
+                                    return;
+                                }
+
+                                var rowIdx = 0;
+                                if (d.sortValues) {
+                                    d.sortId = concatKey(d.sortValues);
+                                    while (rowIdx < rows.length && d.sortId < rows[rowIdx].sortId) {
+                                        rowIdx++;
+                                    }
+
+                                }
+
+                                rows.splice(rowIdx, 0, d);
+                                target.rows = rows;
+                            });
+
+                            source.addEventListener('error', function (e) {
+                                target.working = false;
+                                if (e.readyState === EventSource.CLOSED) {
+                                    // Connection was closed.
+                                } else {
+                                    console.log(e);
+                                    if (e.data) {
+                                        alert(e.data);
+                                    }
+                                }
+                                source.close();
+                            }, false);
+
+                        }
+                    }
+                }
+        );
+
+        $("#query").on("keydown", function (e) {
+            return onKeyPress(e);
+        });
+
+    });
+
+    function contains(arr1, arr2) {
+        var r = false;
+        $.each(arr1, function (idx, a) {
+            $.each(arr2, function (idx2, a2) {
+                if (a == a2) {
+                    r = true;
+                }
+            })
+        });
+        return r;
+    }
+</script>
+<div id="queryWrapper">
+
+    <div class="typeSelector">
+        <span>Search:</span>
+
+        <input type="radio" id="events" value="false" v-model="querySnapshots" checked>
+        <label for="events">Events</label>
+
+        <input type="radio" id="snapshots" value="true" v-model="querySnapshots">
+        <label for="snapshots">Snapshots</label>
+    </div>
+
+    <div class="contextSelector">
+        Query time window:
+        <select v-model="timeConstraint">
+            <option>last hour</option>
+            <option>last 2 hours</option>
+            <option>last day</option>
+            <option>last week</option>
+            <option>custom</option>
+        </select>
+
+        <input type="checkbox" v-model="liveUpdates">Live Updates</input>
+
+        <span v-if="isEnterprise()" style="margin-left: 15px;">
+
+
+        <input type="checkbox" v-model="forceReadFromLeader">Read from leader</input>
+            Active context:
+        <select v-model="activeContext">
+            <option v-for="n in contexts">{{n}}</option>
+        </select>
+        </span>
+    </div>
+    <br/>
+
+    <form class="search-bar">
+        <input v-model="query" id="query" type="search" placeholder="Enter your query here">
+        <button @click.prevent="executeQuery()" type="submit" class="button" id="queryButton">Search</button>
+    </form>
+
+    <section class="help">
+        <span @click.prevent="toggleHelp(query)" id="helpToggle">About the query language</span>
+        <div class="helpcontent" v-if="help">
+            <p>
+                You can query the event store through this page. The query operates on a stream of events, where you can
+                define
+                filters and projections to obtain the results that you want.
+            </p>
+            <p>
+                When you perform a search without any query it returns 1000 events.
+            </p>
+            <p>
+                The event stream contains the following fields:
+            </p>
+            <dl>
+                <dt>token</dt>
+                <dt>aggregateIdentifier</dt>
+                <dt>aggregateSequenceNumber</dt>
+                <dt>aggregateType</dt>
+                <dt>payloadType</dt>
+                <dt>payloadRevision</dt>
+                <dt>payloadData</dt>
+                <dt>timestamp</dt>
+            </dl>
+
+            <h3>Filtering</h3>
+
+            <p>
+                Filtering lets you reduce the events you see, so you get only those events that you want.
+                A simple filter is to find all the events for a specific aggregate:
+            </p>
+
+            <pre>aggregateIdentifier = "beff70ef-3160-499b-8409-5bd5646f52f3"</pre>
+
+            <p>
+                You can also filter based on a partial value, for instance a string within the payloadData:
+            </p>
+            <pre>payloadData contains "ACME"</pre>
+
+            <p>
+                And, of course, you can combine these filters with AND or OR:
+            </p>
+            <pre>aggregateIdentifier = "beff70ef-3160-499b-8409-5bd5646f52f3" and payloadData contains "ACME"</pre>
+
+            <h3>Projections</h3>
+
+            <p>
+                You can select the fields, perform operations on the fields and perform grouping functions. For instance
+                you
+                can
+                perform a query that returns the number of events grouped by the payloadType:
+            </p>
+            <pre>groupby(payloadType, count())</pre>
+
+            <p>
+                You can also select a number of fields and perform operations on them:
+            </p>
+            <pre>select(aggregateType, payloadType, formatDate(timestamp, "yyyy/MM/dd HH:mm") as time)</pre>
+
+            <p>
+                Combining filters and projections is also possible, by creating a pipeline of conditions, e.g.:
+            </p>
+            <pre>aggregateSequenceNumber &gt; 50 | groupby(payloadType, count())</pre>
+
+            <h3>Limiting results</h3>
+
+            <p>
+                Filtering on recent events is done by adding a time constraint to the query chain. An example:
+            </p>
+            <pre>aggregateSequenceNumber &gt; 50 | last 4 hours</pre>
+
+            <h3>Functions</h3>
+            <p>
+                For more information on all supported functions check the reference guide.
+            </p>
+        </div>
+    </section>
+
+    <img id="working" v-if="working" src="img/loading.gif" height="25px"/>
+    <paginated-table :rows="rows" selectable="true" page="10">
+        <template #header>
+            <th v-for="column in columns" :class="column">
+                <div>{{ column }}</div>
+            </th>
+        </template>
+        <template #row="row">
+            <td v-for="column in columns" @click="select(row)">
+                <div>{{ row.value[column] }}</div>
+            </td>
+        </template>
+    </paginated-table>
+
+    <div v-if="info" class="msg info">
+        {{ info }}
+    </div>
+
+    <modal name="result-details" width="900px" height="400px" :draggable="true" :resizable="true" :reset="true"
+           @before-close="closeDetails">
+        <div style="overflow-x: hidden; overflow-y: auto; height: 100%">
+            <table style="width: 95%">
+                <thead>
+                <tr>
+                    <th width="30%">Name</th>
+                    <th width="65%">Value</th>
+                    <th width="5%">Copy</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="column in columns">
+                    <td>{{column}}</td>
+                    <td>{{activeRow.value[column]}}</td>
+                    <td>
+                            <span v-clipboard:copy="activeRow.value[column]" title="Copy to clipboard">
+                                        <i class="far fa-copy"></i>
+                            </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </modal>
+</div>

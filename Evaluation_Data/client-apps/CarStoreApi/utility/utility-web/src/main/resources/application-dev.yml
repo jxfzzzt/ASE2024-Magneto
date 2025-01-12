@@ -1,0 +1,156 @@
+###################  项目启动端口  ###################
+server:
+  port: 10040
+###################  spring配置  ###################
+database:
+  host: 172.21.62.34
+  port: 13306
+  name: car
+  username: root
+  password: duling@2021!
+regist-center:
+  ip: 172.21.62.34
+  port: 18761
+spring:
+  #  profiles: product
+  datasource:
+    url: jdbc:mysql://${database.host}:${database.port}/${database.name}?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=Asia/Shanghai&useSSL=false
+    username: ${database.username}
+    password: ${database.password}
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      initial-size: 10 #初始化连接大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 1000 #最大连接数
+      query-timeout: 6000 #查询超时时间
+      transaction-query-timeout: 6000 #事务查询超时时间
+      remove-abandoned-timeout: 1800 #关闭空闲连接超时时间
+      filter-class-names: stat
+      filters: stat,config
+  application:
+    name: utility
+  main:
+    allow-bean-definition-overriding: true
+  sleuth:
+    baggage-keys:
+      - Token
+  servlet:
+    multipart:
+      max-file-size: 1024MB # 单个文件大小
+      max-request-size: 1024MB # 设置总上传的数据大小
+      enabled: true #开启
+  redis:
+    host: 172.21.62.34
+    port: 16379
+    password: duling@2021!
+
+###################  eureka的配置  ###################
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: 8.136.105.20
+    ##续约更新时间间隔设置5秒，m默认30s
+    lease-renewal-interval-in-seconds: 5
+    ##续约到期时间10秒，默认是90秒
+    lease-expiration-duration-in-seconds: 10
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${regist-center.ip}:${regist-center.port}/eureka/
+
+##################### mybatis ###############################
+mybatis:
+  typeAliasesPackage: com.car.utility.web.model
+  mapperLocations: classpath*:config/**/mappers/**/*.xml
+  configuration.map-underscore-to-camel-case: true
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: true
+  params: count=countSql
+
+tx-lcn:
+  #是否启动LCN负载均衡策略(优化选项，开启与否，功能不受影响)
+  ribbon:
+    loadbalancer:
+      dtx:
+        enabled: true
+  client:
+    manager-address: 172.21.62.34:10021
+
+#所有配置文件相关代码块
+email:
+  host: smtp.exmail.qq.com
+  username: 待定
+  password: 待定
+  port: 465
+  personel: 熵趣（上海）智能科技
+  #登陆确认验证码
+  sendLoginSubject: 【熵趣智能科技】登陆验证码
+  sendLoginSendHtml: 待定
+sms:
+  accessKeyID: LTAI4GFHPzKLWfYkKXSxThhk
+  accessKeySecret: CanAsyVLmkkWe84DW7cGVarKjpyTt3
+  regionId: cn-hangzhou
+  domain: dysmsapi.aliyuncs.com
+  version: 2017-05-25
+  action: SendSms
+  signName: 嘟一家
+config:
+  #上传文件默认最大值10M
+  uploadFileSizeLimit: 10485760
+  #文件上传渠道  oss:阿里云   obs: 华为云  local: 本地
+  fileChannel: oss
+  #文件访问路径，根据上传渠道动态指定资源访问路径
+  fileUrlPrefix: https://car2021.oss-cn-beijing.aliyuncs.com/
+  #华为obs配置参数
+  obs:
+    accessKey: II7AH5PPQTJIKFRG20PL
+    secretKey: EViAg06BE0DNx3flx79R5HOEBe3nt08w99xo4QCf
+    endPoint: obs.cn-east-3.myhuaweicloud.com
+    bucketName: car2020
+  #阿里云配置参数
+  oss:
+    accessKey: LTAI4G7Yfd21g6bwd4EHbRko
+    secretKey: gzWKXRIXBUdyXP1GwkOiyowjCpZY3U
+    endpoint: oss-cn-beijing.aliyuncs.com
+    bucketName: car2021
+  local:
+    #本地保存文件根目录
+    filePathPrefix: /images/
+  #微信支付相关参数
+  #weixin_gzh_appid只有为jsapi支付才需要，传入公众号的appid
+  weixin_gzh_appid: dDnQhThqxVnxtdxMctqxXHGMrr1aiSoitz4uLbc8oBM=
+  weixin_appid: abj71X7xXxm+Fgw/XpjuVGbvNB5B0lROoEnE0I9HoBQ=
+  weixin_mch_id: DSkbdSiOM5rWiKVp/mQP4g==
+  weixin_weixinCert: GD8+5ZFFhlE01MGW7SUdKQi+aF+88X0KlTWAAu1asUCeVeMBVLmpKqWiz/kt9/isVEmmmRfPOFcrSltBdFI1Obmb4uTqDn8OR/QoQh5Ui1H1OYe1YqmcPY3I5LXXytQdNwgWb1flv6Ds4OzI4hZGzGtlKUdQ4KtJDk3NTyA4ZrpB5SU/EK20d/+TmO0EZGZVI9pu+sDDXFdzi6EJE/EHuZ0SU4fZnrsM38QWHrFVLbHr83FtKML6c4Wott6wOR8z9qsS8XLwRau5kZZmZw2mJu3m7MGClJzCrBe2lq3VykLxaSZBOvifxmmYVfmHf+b127ZSAj6kQ3Ix1RyS67U4/wMWJwIOjbCkKMs3yGUs9sL6Uqh+t/VaTvPF8WN/qgZn2H5C9JOX7VBaG5y7RM/wCLvQFxuTfh1CrA3xbXFdvmG5yBAtCqv42rG1ONRqRUQmi6eGAfnWbOkLEmQLYbohs/R1P0vMy0QHPlgdDYzFSWOhMlaAcu5OsWxT93fu5aflx5noP66dolIABzUoqNqWzXxIvxdS0g02v7ovnWh8wRQxQryEN8czoC9B0Tchs/YRN1aob+IENVf1xOLZ0dD5nRHSSS6xMjT/4C1Iw6OPD9CXJaFs0dlsqx5TRlJUt1DxsSvWG+va77cngm9vdaDODYTLPzJd/iEzH6UWIyilUrdJ2G4uIDcvWuMjjZsGdBRLfDMDvEoakp/O2Neap1q3XikKftXdte9NK+JSwSpZaTdp6pcM7lU8XwKJqUvNrNOK5Mk4mqZ3spcdeqky866q+ToClR0Rah/g+ZAglPZpblyoTmJhX9XzyY52uyEPVddwvS44eBS+EdGut87Ogk+8YhXxCUOZN5nxJ6k39a4EenugTkRNUOFHBnJhViU1HU0AuvVOatbu/1w1Y+/M+XmrZRaEhY34RMcuDaujODnwJ8UDwZ5rFRgLzRJI9uClptkAtmyR/vUgFIUPdM5QIAZ0VfV5kZ30jnPocgbRHSw0ORB+2ZkmRBo0K1Qsxry/loFapItomPWU81RCBklu2OccvJWW4DTpdbASRHZ7dg6LORGEtcLwD3dXfhQt+eX9kA/UoOoj4v8nLZPgZCEA3QaZTJgBAP1mrWm7kzbBhZNBi9vLEiULLWk5LOqK5PdMnE4DtWF2c+AEFzwMpkUU8n436bXDXj7eMSRFMNwWBvXbGwEpjxZIAzXfYG16eWpsWTI798zB9pwuj6NKjoqwfak9Vr2/TGPWiR8zQ1eD33kYKpp/ipeGiPsLaKZboxAbrhaHLENVcxrog8wMYkRFYrgZI5Abs5apEv6bTXyAopmD9OGSi4PDkbg+axJ0BtSeTM4ySN34W5tiCCBTlTJpe64zD8Yr8TAFW8vRAIS6YZK6QJliy1T69sNGDEkcaaaTcKDYedc5O5YD9NcBhK695IkoXvCc5yMDj48cZAI09bui5l8nH+cf0aY5tLyHvzKsVRXkUBbTDhdvIhKAsGC0jZtcmjkA7hfIjj8B2XGKbd6Z2ELZ9jDtLx3gkntT/sDXH4PjgJlA7GSkKwPML5BDh5+WN2ZN2+lGxwwLumID3AjMXHX0VIyYVXBl3ko9Jz4xfXm9boXao00NQrUROcqV0hvnRfZwDaZHIkSYglkjtY9Y7n8wwnb1dqXAx5Hug1VmdrpQvQNuUzOrmwuomWiG5RpiHcVLym7T76ccRfpnxEKZnuIfZZVuILGlFpqsqaSrH9heCg7qW1h5z58VDYbmD1H78HW0WO2UizPl1vvT2MCHr9kMn/+IEK4+KIhgAU8c9EtPP1W34aTc7x2eDOZ0SBCRAj9HZwC3w/rCznu98AwsN94=
+  weixin_signKey: wolQkXQyk3kWqgqulgOQo96tFHcN7g7Ifbagqt0SbHC37b+81wG4+FER2MBEe5r+
+  weixin_aeskey: 61QEg436u1qjigJF
+  #微信支付回调地址
+  weixin_payNotifyUrl: https://dev.api.dlvehicle.com/utility/pay/weChartBack
+  #微信支付统一下单接口
+  weixin_unifiedUrl: https://api.mch.weixin.qq.com/pay/unifiedorder
+  #微信支付退款接口
+  weixin_orderRefundUrl: https://api.mch.weixin.qq.com/secapi/pay/refund
+  #支付宝支付回调地址
+  alipay_payNotifyUrl: https://dev.api.dlvehicle.com/utility/pay/aliPayBack
+ribbon:
+  #请求处理的超时时间
+  ReadTimeout: 120000
+  #请求连接的超时时间
+  ConnectTimeout: 30000
+swagger:
+  basePackage: com.car.utility.web.controller
+  pathMapping: /
+  title: utility项目开发SWAGGER_2接口文档
+  description: system项目开发SWAGGER_2接口文档
+
+baidu:
+  api: http://api.map.baidu.com/geocoding/v3/
+  positionApi: http://api.map.baidu.com/geoconv/v1/
+  AK: uda80hknhokVvMa6gHt5xOaRx1sTbcL9

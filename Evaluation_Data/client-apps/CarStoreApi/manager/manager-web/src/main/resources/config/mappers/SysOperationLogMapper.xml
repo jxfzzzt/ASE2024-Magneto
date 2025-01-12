@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.system.web.mapper.SysOperationLogMapper">
+
+    <select id="queryLogList" parameterType="com.car.system.client.request.log.QueryLogListReq"
+            resultType="com.car.common.datasource.model.SysOperationLog">
+        SELECT
+          uuid, sts
+        FROM
+            sys_operation_log
+        WHERE
+            sts = 0
+        <if test="beginTime != null and beginTime !='' ">
+            <![CDATA[ AND created_time >= #{beginTime} ]]>
+        </if>
+        <if test="endTime != null and endTime != '' ">
+            <![CDATA[ AND created_time <= #{endTime} ]]>
+        </if>
+        <if test="searchValue != null and searchValue !='' ">
+            AND (
+            oper_modul LIKE CONCAT('%',#{searchValue},'%')
+            OR oper_type LIKE CONCAT('%',#{searchValue},'%')
+            OR oper_desc LIKE CONCAT('%',#{searchValue},'%')
+            OR oper_method LIKE CONCAT('%',#{searchValue},'%')
+            OR oper_uri LIKE CONCAT('%',#{searchValue},'%')
+            )
+        </if>
+        order by created_time desc
+    </select>
+
+
+    <select id="queryLogDetailListByUuidList" resultType="com.car.common.datasource.model.SysOperationLog">
+        SELECT
+            *
+        FROM
+            sys_operation_log
+        WHERE
+            uuid IN
+            <foreach collection="logList" index="index" item="item" open="(" separator="," close=")">
+                #{item.uuid}
+            </foreach>
+        ORDER BY
+            created_time DESC
+    </select>
+</mapper>

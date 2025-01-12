@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.comment.CommentInfoMapper">
+    <resultMap id="BaseResultMap" type="com.car.order.web.model.comment.CommentInfo">
+    </resultMap>
+
+
+    <select id="queryCommentList" resultType="com.car.order.client.response.comment.CommentInfoListRes">
+        SELECT
+            uuid as uuid,
+            comment_desc as commentDesc,
+            user_uuid as userUuid,
+            user_name as userName,
+	        created_time AS createdTime,
+	        score_type AS scoreType
+        FROM comment_info
+        WHERE sts = 0 AND check_sts = 1 AND relation_uuid = #{req.relationUuid}
+        <if test="req.scoreType != null">
+            AND score_type = #{req.scoreType}
+        </if>
+        order by created_time desc
+    </select>
+
+    <select id="queryGoodsCommentCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM comment_info WHERE sts = 0 AND check_sts = 1 AND relation_uuid = #{uuid}
+    </select>
+</mapper>

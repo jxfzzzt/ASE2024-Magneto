@@ -1,0 +1,4 @@
+[
+  "<com.alibaba:fastjson:1.2.49:compile>",
+  "<org.springframework.security:spring-security-core:5.1.3.RELEASE:compile>"
+]

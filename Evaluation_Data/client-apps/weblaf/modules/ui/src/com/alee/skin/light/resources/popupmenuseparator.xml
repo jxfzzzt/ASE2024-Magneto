@@ -1,0 +1,23 @@
+<skin xmlns="http://weblookandfeel.com/XmlSkin">
+
+    <!-- com.alee.laf.menu.WebPopupMenuSeparator -->
+
+    <!-- Popup menu separator -->
+    <style type="popupmenuseparator">
+        <component>
+            <foreground>black</foreground>
+        </component>
+        <painter>
+            <decorations>
+                <decoration>
+                    <SeparatorStripes padding="4,5,4,5">
+                        <Stripe>
+                            <color>220,220,220</color>
+                        </Stripe>
+                    </SeparatorStripes>
+                </decoration>
+            </decorations>
+        </painter>
+    </style>
+
+</skin>

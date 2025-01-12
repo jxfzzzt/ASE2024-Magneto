@@ -1,0 +1,20 @@
+[
+  [
+    "<com.sangupta.neo.commands.InstallTemplate: void run()>",
+    "<com.sangupta.neo.commands.InstallTemplate: void execute()>",
+    "<com.sangupta.jerry.util.FileUtils: java.io.File resolveToFile(java.lang.String)>",
+    "<org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>"
+  ],
+  [
+    "<com.sangupta.neo.commands.DownloadTemplate: void run()>",
+    "<com.sangupta.neo.cache.CacheUtils: com.sangupta.neo.cache.ProjectTemplate resovleTemplatePath(java.lang.String)>",
+    "<com.sangupta.jerry.util.FileUtils: java.io.File resolveToFile(java.lang.String)>",
+    "<org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>"
+  ],
+  [
+    "<com.sangupta.neo.commands.CreateProject: void run()>",
+    "<com.sangupta.neo.cache.CacheUtils: com.sangupta.neo.cache.ProjectTemplate resovleTemplatePath(java.lang.String)>",
+    "<com.sangupta.jerry.util.FileUtils: java.io.File resolveToFile(java.lang.String)>",
+    "<org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>"
+  ]
+]

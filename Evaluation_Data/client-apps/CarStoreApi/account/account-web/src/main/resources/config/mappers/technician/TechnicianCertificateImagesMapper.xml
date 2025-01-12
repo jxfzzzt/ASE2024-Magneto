@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.technician.TechnicianCertificateImagesMapper">
+    <insert id="batchInsertCertificateImages">
+        insert into technician_certificate_images(uuid,technician_uuid,img_type,img_url,sts,created_by,created_time)
+        values
+        <foreach collection="insertList" item="item" index="index" separator=",">
+            (
+            #{item.uuid},
+            #{item.technicianUuid},
+            #{item.imgType},
+            #{item.imgUrl},
+            #{item.sts},
+            #{item.createdBy},
+            #{item.createdTime}
+            )
+        </foreach>
+    </insert>
+
+</mapper>

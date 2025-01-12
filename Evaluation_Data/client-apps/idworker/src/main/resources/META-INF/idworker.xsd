@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://code.imadcn.com/schema/idworker" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	targetNamespace="http://code.imadcn.com/schema/idworker"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	
+	<xsd:import namespace="http://www.springframework.org/schema/beans" />
+    
+    <xsd:element name="registry">
+    	<xsd:complexType>
+    		<xsd:complexContent>
+    			<xsd:extension base="beans:identifiedType">
+                    <xsd:attribute name="server-lists" type="xsd:string" use="required" />
+    				<xsd:attribute name="namespace" type="xsd:string" default="idworker" />
+    				<xsd:attribute name="base-sleep-time-milliseconds" type="xsd:string" default="1000" />
+    				<xsd:attribute name="max-sleep-time-milliseconds" type="xsd:string" default="3000" />
+    				<xsd:attribute name="max-retries" type="xsd:string" default="3" />
+    				<xsd:attribute name="session-timeout-milliseconds" type="xsd:string" default="60000" />
+    				<xsd:attribute name="connection-timeout-milliseconds" type="xsd:string" default="15000" />
+    				<xsd:attribute name="digest" type="xsd:string" />
+    			</xsd:extension>
+    		</xsd:complexContent>
+    	</xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="generator" >
+    	<xsd:complexType>
+    		<xsd:complexContent>
+    			<xsd:extension base="beans:identifiedType">
+    				<xsd:attribute name="group" type="xsd:string" default="default" />
+    				<xsd:attribute name="strategy" type="xsd:string" default="snowflake" />
+    				<xsd:attribute name="registry-center-ref" type="xsd:string" />
+    				<xsd:attribute name="registry-file" type="xsd:string" />
+    				<xsd:attribute name="durable" type="xsd:boolean" default="false" />
+                    <xsd:attribute name="serialize" type="xsd:string" default="fastjson" />
+                    <xsd:attribute name="cachable" type="xsd:string" default="false" />
+    			</xsd:extension>
+    		</xsd:complexContent>
+    	</xsd:complexType>
+    </xsd:element>
+</xsd:schema>

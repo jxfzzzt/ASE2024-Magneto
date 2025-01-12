@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.technician.TechnicianCaseMapper">
+  <resultMap id="BaseResultMap" type="com.car.order.web.model.technician.cases.TechnicianCase">
+    <result column="mileage" jdbcType="INTEGER" property="mileage" />
+    <result column="made_time" jdbcType="VARCHAR" property="madeTime" />
+    <result column="vin" jdbcType="VARCHAR" property="vin" />
+    <result column="attach_sys" jdbcType="VARCHAR" property="attachSys" />
+    <result column="amt" jdbcType="DECIMAL" property="amt" />
+    <result column="brand_uuid" jdbcType="VARCHAR" property="brandUuid" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="title" jdbcType="LONGVARCHAR" property="title" />
+    <result column="power_info" jdbcType="LONGVARCHAR" property="powerInfo" />
+    <result column="fault_desc" jdbcType="LONGVARCHAR" property="faultDesc" />
+    <result column="idea_process" jdbcType="LONGVARCHAR" property="ideaProcess" />
+    <result column="summary" jdbcType="LONGVARCHAR" property="summary" />
+  </resultMap>
+
+  <select id="queryTechnicianCaseDetail" resultMap="queryTechnicianCase">
+    select * from technician_case where sts = 0 and uuid = #{uuid}
+  </select>
+
+  <resultMap id="queryTechnicianCase" type="com.car.order.client.response.technician.TechnicianCaseRes">
+    <id column="uuid" property="uuid"/>
+    <collection property="caseImgList" column="uuid" select="queryCaseImgList" />
+  </resultMap>
+
+  <select id="queryCaseImgList" resultType="java.lang.String">
+    select tc.url from technician_case_img tc
+    where tc.case_uuid = #{uuid} and tc.sts = 0
+    order by tc.created_time desc
+  </select>
+
+  <select id="queryCaseForTechnicianList" resultType="com.car.order.client.response.technician.CaseForTechnicianItemRes">
+    select tc.uuid as caseUuid,tc.title,tc.fault_desc,tp.profit_type,tp.uuid,tp.amt,tp.num from technician_case tc
+     left join technician_profit tp on tc.uuid = tp.case_uuid and tp.sts = 0
+    where tc.technician_uuid = #{technicianUuid} and tc.sts = 0
+    order by tc.created_time desc
+  </select>
+
+  <!-- tech.check_sts = 1 审核通过 -->
+  <select id="queryCaseForVehicleList" resultType="com.car.order.client.response.technician.CaseForVehicleItemRes">
+    select tc.uuid ,tc.title,tc.amt,tech.user_name as technicianName,tech.working_year,tci.url as imgUrl
+    from technician_case tc
+    left join technician tech on tc.technician_uuid = tech.uuid
+    left join technician_case_img tci on tci.case_uuid = tc.uuid
+    where tc.sts = 0 and tech.sts = 0
+    and tech.check_sts = 1 and tc.check_status = 1
+    <if test="brandUuid != null and brandUuid !=''">
+      AND tc.brand_uuid = #{brandUuid}
+    </if>
+    <if test="model != null and model !=''">
+      AND tc.model = #{model}
+    </if>
+    <if test="attachSys != null and attachSys !=''">
+      AND tc.attach_sys = #{attachSys}
+    </if>
+    order by tc.created_time desc
+  </select>
+</mapper>

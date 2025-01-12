@@ -1,0 +1,6 @@
+target/
+*.log
+evosuite-report/
+evosuite-tests/
+time_log.txt
+test.transfer_evosuite_output

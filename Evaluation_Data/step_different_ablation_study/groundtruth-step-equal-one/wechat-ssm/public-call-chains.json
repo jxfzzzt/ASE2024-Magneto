@@ -1,0 +1,22 @@
+[
+    {
+        "chain": [
+            "<cn.qs.utils.format.MyNumberUtils: java.lang.String toFixedDecimalWithPercent(java.lang.String,int)>",
+            "<org.apache.commons.lang3.math.NumberUtils: java.lang.Number createNumber(java.lang.String)>"
+        ],
+        "vuls": [
+            "LANG-1385",
+            "LANG-1645"
+        ]
+    },
+    {
+        "chain": [
+            "<cn.qs.utils.format.MyNumberUtils: java.lang.String toFixedDecimal(java.lang.String,int)>",
+            "<org.apache.commons.lang3.math.NumberUtils: java.lang.Number createNumber(java.lang.String)>"
+        ],
+        "vuls": [
+            "LANG-1385",
+            "LANG-1645"
+        ]
+    }
+]

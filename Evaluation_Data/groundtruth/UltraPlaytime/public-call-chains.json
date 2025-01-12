@@ -1,0 +1,11 @@
+[
+  {
+    "chain": [
+      "<net.pinodev.ultraplaytime.utils.RewardsUtils: byte[] compressed(int[])>",
+      "<org.xerial.snappy.BitShuffle: byte[] shuffle(int[])>"
+    ],
+    "vuls": [
+      "CVE-2023-34453"
+    ]
+  }
+]

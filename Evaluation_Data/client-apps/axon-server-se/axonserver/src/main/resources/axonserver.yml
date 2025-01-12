@@ -1,0 +1,77 @@
+server:
+  port: 8024
+
+spring:
+  application:
+    name: Axon Server
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+      use-new-id-generator-mappings: false
+
+  datasource:
+    url: jdbc:h2:retry:${axoniq.axonserver.controldb-path:./data}/axonserver-controldb
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: false
+      path: /h2-console
+
+  security:
+    user:
+      password: axoniq
+
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 25MB
+
+logging:
+  level:
+    root: WARN
+    AUDIT: INFO
+    io.axoniq.axonserver.AxonServer: INFO
+    io.axoniq.axonserver.grpc.Gateway: INFO
+    io.axoniq.axonserver.logging: INFO
+    io.axoniq.axonserver.grpc.internal.MessagingClusterServer: INFO
+    org.springframework.boot.web.embedded.tomcat.TomcatWebServer: INFO
+    org.springframework.http.converter.json.Jackson2ObjectMapperBuilder: ERROR
+    org.hibernate.orm.deprecation: ERROR
+
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: metrics,info,health,loggers,prometheus,env
+  endpoint:
+    health:
+      show-details: always
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+    diskspace:
+      threshold: 256MB
+  info:
+    env:
+      enabled: true
+
+springdoc:
+  swagger-ui:
+    operationsSorter: alpha
+    tagsSorter: alpha
+
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: AxonIQ
+    version: @project.version@

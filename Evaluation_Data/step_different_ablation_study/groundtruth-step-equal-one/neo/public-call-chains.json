@@ -1,0 +1,11 @@
+[
+    {
+        "chain": [
+            "<com.sangupta.neo.NeoUtils: java.io.File extractToFolderIfNeeded(java.io.File)>",
+            "<org.zeroturnaround.zip.ZipUtil: void unpack(java.io.File,java.io.File)>"
+        ],
+        "vuls": [
+            "CVE-2018-1002201"
+        ]
+    }
+]

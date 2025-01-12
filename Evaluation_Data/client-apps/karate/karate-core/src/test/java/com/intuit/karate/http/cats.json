@@ -1,0 +1,13 @@
+{
+    "rawPath": "/api/cats",
+    "isBase64Encoded": false,
+    "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "requestContext": {
+        "http": {
+            "method": "POST"
+        }
+    },
+    "body": "{\"name\":\"Billie\"}"
+}

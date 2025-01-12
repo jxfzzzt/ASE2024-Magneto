@@ -1,0 +1,124 @@
+<skin xmlns="http://weblookandfeel.com/XmlSkin">
+
+    <!-- com.alee.extended.dock.WebDockablePane -->
+
+    <!-- Dockable pane -->
+    <style type="dockablepane" padding="2">
+        <component>
+            <opaque>true</opaque>
+            <foreground>245,245,245</foreground>
+            <groupElements>false</groupElements>
+            <sidebarSpacing>0</sidebarSpacing>
+        </component>
+        <painter>
+            <decorations>
+                <decoration>
+                    <BoundsShape />
+                    <ColorBackground color="68,68,68" />
+                </decoration>
+            </decorations>
+        </painter>
+
+        <!-- Empty content filler -->
+        <style type="panel" id="empty" extends="transparent" />
+
+        <!-- Floating frames dialog style -->
+        <style type="rootpane" id="floating" extends="dialog">
+            <painter>
+                <decorations>
+                    <decoration>
+                        <WebShape round="0" />
+                        <WebShadow type="outer" opacity="0.3" width="20" />
+                    </decoration>
+                    <decoration states="focused">
+                        <WebShadow type="outer" opacity="0.5" />
+                    </decoration>
+                    <decoration states="maximized">
+                        <WebShape round="0" />
+                        <WebShadow type="outer" width="0" />
+                    </decoration>
+                    <decoration states="unix">
+                        <WebShape round="0" />
+                        <WebShadow type="outer" width="0" />
+                    </decoration>
+                </decorations>
+            </painter>
+        </style>
+
+    </style>
+
+    <!-- Compact dockable pane -->
+    <style type="dockablepane" id="compact" padding="0">
+        <component>
+            <groupElements>true</groupElements>
+            <sidebarSpacing>1</sidebarSpacing>
+        </component>
+        <painter>
+
+            <!-- Sidebar borders -->
+            <!-- todo This is a temporary solution until sidebar containers are added -->
+            <areaPainter>
+                <decorations>
+                    <decoration states="northWest">
+                        <Stripes orientation="horizontal" align="bottom">
+                            <Stripe>
+                                <color>20,20,20</color>
+                            </Stripe>
+                        </Stripes>
+                    </decoration>
+                    <decoration states="north">
+                        <Stripes orientation="horizontal" align="bottom">
+                            <Stripe>
+                                <color>20,20,20</color>
+                            </Stripe>
+                        </Stripes>
+                    </decoration>
+                    <decoration states="northEast">
+                        <Stripes orientation="horizontal" align="bottom">
+                            <Stripe>
+                                <color>20,20,20</color>
+                            </Stripe>
+                        </Stripes>
+                    </decoration>
+                    <decoration states="west">
+                        <Stripes orientation="vertical" align="right">
+                            <Stripe>
+                                <color>20,20,20</color>
+                            </Stripe>
+                        </Stripes>
+                    </decoration>
+                    <decoration states="east">
+                        <Stripes orientation="vertical" align="left">
+                            <Stripe>
+                                <color>20,20,20</color>
+                            </Stripe>
+                        </Stripes>
+                    </decoration>
+                    <decoration states="southWest">
+                        <Stripes orientation="horizontal" align="top">
+                            <Stripe>
+                                <color>20,20,20</color>
+                            </Stripe>
+                        </Stripes>
+                    </decoration>
+                    <decoration states="south">
+                        <Stripes orientation="horizontal" align="top">
+                            <Stripe>
+                                <color>20,20,20</color>
+                            </Stripe>
+                        </Stripes>
+                    </decoration>
+                    <decoration states="southEast">
+                        <Stripes orientation="horizontal" align="top">
+                            <Stripe>
+                                <color>20,20,20</color>
+                            </Stripe>
+                        </Stripes>
+                    </decoration>
+                </decorations>
+            </areaPainter>
+
+        </painter>
+    </style>
+
+</skin>

@@ -1,0 +1,13 @@
+[
+    {
+        "chain": [
+            "<eu.sonata.nfv.nec.convert.internal.DefaultConverter: java.lang.String convertToYaml(java.lang.String)>",
+            "<com.google.json.JsonSanitizer: java.lang.String sanitize(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2020-13973",
+            "CVE-2021-23899",
+            "CVE-2021-23900"
+        ]
+    }
+]

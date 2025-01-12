@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.goods.GoodsDetailMapper">
+  <resultMap id="BaseResultMap" type="com.car.account.web.model.goods.GoodsDetail">
+    <result column="goods_uuid" jdbcType="VARCHAR" property="goodsUuid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="amt" jdbcType="DECIMAL" property="amt" />
+    <result column="act_amt" jdbcType="DECIMAL" property="actAmt" />
+    <result column="bak1" jdbcType="VARCHAR" property="bak1" />
+    <result column="bak2" jdbcType="VARCHAR" property="bak2" />
+    <result column="desc" jdbcType="LONGVARCHAR" property="desc" />
+  </resultMap>
+  <update id="disableGoodsDetailByGoodsId">
+      UPDATE goods_detail SET sts = 1 ,last_updated_by = #{userId},last_updated_time = NOW()
+      WHERE goods_uuid = #{goodsId} AND sts = 0
+  </update>
+</mapper>

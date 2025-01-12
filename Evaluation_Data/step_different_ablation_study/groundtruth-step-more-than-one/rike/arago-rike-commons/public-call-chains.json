@@ -1,0 +1,13 @@
+[
+    {
+        "chain": [
+            "<de.arago.rike.commons.data.TaskUser: void addFlag(java.lang.String,java.lang.String)>",
+            "<de.arago.rike.commons.data.TaskUser: java.util.Map getFlagsAsMap()>",
+            "<net.minidev.json.parser.JSONParser: java.lang.Object parse(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2023-1370",
+            "CVE-2021-27568"
+        ]
+    }
+]

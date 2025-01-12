@@ -1,0 +1,13 @@
+[
+  {
+    "chain": [
+      "<io.github.zlika.reproducible.StripJarMojo: void execute()>",
+      "<io.github.zlika.reproducible.StripJarMojo: void strip()>",
+      "<io.github.zlika.reproducible.ZipStripper: void strip(java.io.File,java.io.File)>",
+      "<org.apache.commons.compress.archivers.zip.ZipFile: void <init>(java.io.File)>"
+    ],
+    "vuls": [
+      "CVE-2018-1324"
+    ]
+  }
+]

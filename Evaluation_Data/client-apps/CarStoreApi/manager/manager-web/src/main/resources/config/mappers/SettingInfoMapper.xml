@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.system.web.mapper.SettingInfoMapper">
+
+	<!-- 根据id查询 -->
+	<select id="getById" resultType="com.car.system.web.model.SettingInfo">
+		SELECT * FROM info_setting where sts = 0 and uuid = #{uuid}
+	</select>
+	
+	<!-- 根据code查询 -->
+	<select id="getByCode" resultType="com.car.system.web.model.SettingInfo">
+		SELECT * FROM info_setting where sts = 0 and code = #{code} order by created_time desc 
+	</select>
+	
+	<select id="getList" resultType="com.car.system.web.model.SettingInfo">
+		SELECT * FROM info_setting where sts = 0 order by created_time desc 
+	</select>
+
+</mapper>

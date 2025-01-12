@@ -1,0 +1,150 @@
+{
+  "LANG-1645": [
+    "adu-test",
+    "wechat-ssm"
+  ],
+  "CVE-2020-13956": [
+    "adu-test",
+    "adyen-api",
+    "kafka-keyvalue",
+    "wechat-ssm"
+  ],
+  "LANG-1385": [
+    "adu-test",
+    "wechat-ssm"
+  ],
+  "CVE-2021-35516": [
+    "archivefs",
+    "huntfiles",
+    "Mixmicro-Components"
+  ],
+  "CVE-2023-1370": [
+    "axon-server-se",
+    "JsonConfiguration",
+    "karate",
+    "Online_Train_Ticket_Reservation_System",
+    "rike"
+  ],
+  "CVE-2019-10086": [
+    "bean-query",
+    "commons-validator",
+    "QLExpress"
+  ],
+  "Zip4j-263": [
+    "CarStoreApi",
+    "ZingClient"
+  ],
+  "CVE-2022-45688": [
+    "db",
+    "base-starter"
+  ],
+  "CVE-2018-1002201": [
+    "elasticsearch-maven-plugin",
+    "neo"
+  ],
+  "CVE-2023-43642": [
+    "flow"
+  ],
+  "CVE-2022-25845": [
+    "geek-framework",
+    "jfinal",
+    "base-starter"
+  ],
+  "CVE-2020-5408": [
+    "geek-framework",
+    "gerenciador-viagens",
+    "RuoYi-Vue-Multi-Tenant"
+  ],
+  "CVE-2022-22976": [
+    "gerenciador-viagens",
+    "RuoYi-Vue-Multi-Tenant"
+  ],
+  "CVE-2022-42004": [
+    "idworker",
+    "jfinal",
+    "roubsite",
+    "serritor"
+  ],
+  "IO-611": [
+    "jerry-core",
+    "neo",
+    "ninja"
+  ],
+  "CVE-2021-29425": [
+    "jerry-core",
+    "neo",
+    "ninja"
+  ],
+  "CVE-2021-27568": [
+    "JsonConfiguration",
+    "Online_Train_Ticket_Reservation_System",
+    "rike"
+  ],
+  "CVE-2021-43859": [
+    "knetbuilder",
+    "PLMCodeTemplate",
+    "rpki-commons",
+    "twirl",
+    "weblaf",
+    "WxJava"
+  ],
+  "CVE-2022-41966": [
+    "knetbuilder",
+    "PLMCodeTemplate",
+    "rpki-commons",
+    "twirl",
+    "weblaf",
+    "WxJava"
+  ],
+  "CVE-2018-15756": [
+    "mirage"
+  ],
+  "CVE-2022-23596": [
+    "Mixmicro-Components"
+  ],
+  "CVE-2021-23900": [
+    "OmegaTester",
+    "son-editor"
+  ],
+  "CVE-2021-23899": [
+    "OmegaTester",
+    "son-editor"
+  ],
+  "CVE-2020-13973": [
+    "OmegaTester",
+    "son-editor"
+  ],
+  "CVE-2018-1324": [
+    "PatentPublicData",
+    "reproducible-build-maven-plugin"
+  ],
+  "CVE-2021-31812": [
+    "pdf-converter",
+    "pdf-util"
+  ],
+  "CVE-2020-26217": [
+    "PLMCodeTemplate",
+    "rpki-commons",
+    "twirl",
+    "weblaf",
+    "WxJava"
+  ],
+  "CVE-2017-7957": [
+    "rpki-commons",
+    "twirl"
+  ],
+  "CVE-2018-1000632": [
+    "tcpser4j"
+  ],
+  "CVE-2022-29631": [
+    "ucloud-java-sdk",
+    "wakatime-sync",
+    "WxJava"
+  ],
+  "CVE-2023-34453": [
+    "UltraPlaytime"
+  ],
+  "CVE-2015-2156": [
+    "webbit"
+  ]
+}

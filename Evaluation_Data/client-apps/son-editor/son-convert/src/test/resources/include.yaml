@@ -1,0 +1,18 @@
+---
+ key1: "value1"
+ key2: !include "src/test/resources/test.yaml"
+ key3: !include "src/test/resources/test.yaml"
+ email:
+   welcome:
+     subject: Subject
+     message: >
+       dies ist ein test test
+       über mehrere zeilen
+     html_message:
+       !include "src/test/resources/email.html"
+   admin:
+     subject: Admin Subject
+     message: |
+       Dies ist ein test
+
+       über drei zeilen

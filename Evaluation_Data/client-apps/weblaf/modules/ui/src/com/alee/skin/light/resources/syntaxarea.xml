@@ -1,0 +1,42 @@
+<skin xmlns="http://weblookandfeel.com/XmlSkin">
+
+    <!-- com.alee.extended.syntax.WebSyntaxArea -->
+    <!-- com.alee.extended.syntax.WebSyntaxScrollPane -->
+
+    <!-- Syntax area scrollpane -->
+    <style type="scrollpane" id="syntaxarea-scroll">
+
+        <!-- Gutter -->
+        <style type="panel" id="gutter">
+            <component>
+                <background>245,245,245</background>
+            </component>
+        </style>
+
+    </style>
+
+    <!-- Undecorated syntax area scrollpane -->
+    <style type="scrollpane" id="syntaxarea-scroll-undecorated" extends="undecorated">
+
+        <!-- Gutter -->
+        <style type="panel" id="gutter">
+            <component>
+                <background>245,245,245</background>
+            </component>
+        </style>
+
+    </style>
+
+    <!-- Transparent hovering syntax area scrollpane -->
+    <style type="scrollpane" id="syntaxarea-scroll-transparent-hovering" extends="transparent-hovering">
+
+        <!-- Gutter -->
+        <style type="panel" id="gutter">
+            <component>
+                <background>245,245,245</background>
+            </component>
+        </style>
+
+    </style>
+
+</skin>

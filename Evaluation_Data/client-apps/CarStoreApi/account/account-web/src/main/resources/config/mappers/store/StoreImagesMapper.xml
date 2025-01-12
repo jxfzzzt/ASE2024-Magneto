@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.store.StoreImagesMapper">
+    <insert id="batchInsertStoreImages">
+        insert into store_images(uuid,store_uuid,image_type,image_url,sts,created_by,created_time)
+        values
+        <foreach collection="insertList" item="item" index="index" separator=",">
+            (
+            #{item.uuid},
+            #{item.storeUuid},
+            #{item.imageType},
+            #{item.imageUrl},
+            #{item.sts},
+            #{item.createdBy},
+            #{item.createdTime}
+            )
+        </foreach>
+    </insert>
+
+    <delete id="deleteStoreImagesByParam">
+        delete from store_images  where store_uuid = #{storeUuid} and  image_type = #{imageType}
+    </delete>
+
+    <update id="deleteStoreImagesByStoreUuid" parameterType="java.lang.String">
+        update store_images set sts = 1 where store_uuid = #{storeUuid}
+    </update>
+</mapper>

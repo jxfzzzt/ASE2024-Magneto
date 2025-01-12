@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.system.web.mapper.SysAreaMapper">
+    <select id="queryListByParent" parameterType="com.car.system.web.model.SysArea" resultType="com.car.system.web.model.SysArea">
+        select * from sys_area where sts = #{sts}
+        <if test="parentUuid != null and parentUuid !=''">
+            and parent_uuid = #{parentUuid}
+        </if>
+        order by order_num asc
+    </select>
+    <select id="queryAreaNameAreaType" resultType="com.car.system.web.model.SysArea">
+        SELECT * FROM sys_area
+        <where>
+            sts=0 AND area_type=#{areaType} AND area_name LIKE CONCAT('%',#{name},'%')
+        </where>
+    </select>
+
+    <select id="queryAreaList" parameterType="com.car.system.client.request.area.AreaReq" resultType="com.car.system.client.response.area.AreaRes">
+        select * from sys_area where sts = 0
+        <if test="null != uuid and uuid != ''">
+            and uuid = #{uuid}
+        </if>
+        <if test="null != areaCode and areaCode != ''">
+            and area_code = #{areaCode}
+        </if>
+        <if test="null != areaName and areaName != ''">
+            and area_name like concat('%',#{areaName},'%')
+        </if>
+        <if test="null != areaNameEn and areaNameEn != ''">
+            and area_name_en like concat('%',#{areaNameEn},'%')
+        </if>
+        <if test="null != parentCode and parentCode != ''">
+            and parent_code = #{parentCode}
+        </if>
+        <if test="null != parentUuid and parentUuid != ''">
+            and parent_uuid = #{parentUuid}
+        </if>
+        <if test="null != letter and letter != ''">
+            and letter = #{letter}
+        </if>
+        <if test="null != keyWords and keyWords != ''">
+            and
+            (
+               letter = #{keyWords}
+              or area_code like concat('%',#{keyWords},'%')
+              or area_name like concat('%',#{keyWords},'%')
+              or area_name_en like concat('%',#{keyWords},'%')
+            )
+        </if>
+    </select>
+</mapper>

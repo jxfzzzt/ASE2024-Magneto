@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.course.CourseMapper">
+
+    <select id="getById" resultType="com.car.order.client.response.course.QueryCourseInfoRes">
+        select
+            c.uuid,
+            c.created_time,
+            c.course_title,
+            c.course_parent_uuid,
+            c.course_lecturer,
+            c.course_type,
+            cc.course_time,
+            cc.course_intro,
+            cc.course_content,
+            cc.course_url,
+            c.course_amount,
+            c.course_cover,
+            c.latest_course
+        from
+            course c
+            left join course_content cc on c.uuid = cc.course_uuid
+        where
+            c.sts = 0
+            and c.uuid = #{uuid}
+    </select>
+
+    <select id="list" resultType="com.car.order.client.response.course.QueryCourseListRes">
+        select
+        c.*,
+        cp.course_title as courseParentUuidName
+        from
+            course c
+            left join course_parent cp on c.course_parent_uuid = cp.uuid
+        where c.sts = 0
+
+        <if test="req.courseLecturer != null and req.courseLecturer != ''">
+            and c.course_lecturer LIKE CONCAT('%',#{req.courseLecturer},'%')
+        </if>
+
+        <if test="req.courseTitle != null and req.courseTitle != ''">
+            and c.course_title LIKE CONCAT('%',#{req.courseTitle},'%')
+        </if>
+        <if test="req.courseParentUuid != null and req.courseParentUuid != ''">
+            and c.course_parent_uuid = #{req.courseParentUuid}
+        </if>
+        <if test="req.latestCourse !=null">
+        	and c.latest_course = #{req.latestCourse}
+        </if>
+        order by c.created_time desc
+    </select>
+
+</mapper>

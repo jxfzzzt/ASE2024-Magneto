@@ -1,0 +1,241 @@
+<!--
+  ~  Copyright (c) 2017-2022 AxonIQ B.V. and/or licensed to AxonIQ B.V.
+  ~  under one or more contributor license agreements.
+  ~
+  ~  Licensed under the AxonIQ Open Source License Agreement v1.0;
+  ~  you may not use this file except in compliance with the license.
+  ~
+  -->
+
+<script src="js/overview.js"></script>
+
+<defs>
+    <style type="text/css">
+        rect.background {
+            fill: white;
+        }
+
+        rect.client {
+            stroke: rgba(19, 116, 207, 1);
+            stroke-width: 1;
+            fill: #F9F9F9;
+            filter: url(#f1);
+            cursor: pointer;
+        }
+
+        rect.axonserver {
+            stroke: rgba(19, 116, 207, 1);
+            stroke-width: 1;
+            fill: #F9F9F9;
+            filter: url(#f1);
+            cursor: pointer;
+        }
+
+        rect.axondb {
+            stroke: rgba(19, 116, 207, 1);
+            stroke-width: 1;
+            fill: #F9F9F9;
+            filter: url(#f1);
+        }
+
+        path.axondb {
+            fill: #CCCCCC;
+        }
+
+        path.master {
+            fill: rgba(19, 116, 207, 1);
+        }
+
+        rect.down {
+            fill-opacity: 0.1;
+            stroke-dasharray: 1 3;
+        }
+
+        text.client {
+            font-family: 'Lato', 'sans-serif';
+            font-weight: bold;
+            font-style: normal;
+            font-size: 9px;
+            cursor: pointer;
+        }
+
+        text.instance {
+            font-family: 'Lato', 'sans-serif';
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: underline;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        text.component {
+            font-family: 'Lato', 'sans-serif';
+            font-weight: bold;
+            font-style: normal;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        text.type {
+            font-family: 'Montserrat', 'sans-serif';
+            font-style: italic;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        text.axonserver {
+            font-family: 'Lato', 'sans-serif';
+            font-weight: bold;
+            font-style: normal;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        text.axondb {
+            font-family: 'Lato', 'sans-serif';
+            font-weight: bold;
+            font-style: normal;
+            font-size: 12px;
+        }
+
+        text.popup {
+            font-family: 'Montserrat', 'sans-serif';
+            font-size: 10px;
+            font-weight: normal;
+            font-style: normal;
+
+        }
+
+        text.current {
+            text-decoration: underline;
+        }
+
+
+        rect.popup {
+            fill: #8c7a73;
+            filter: url(#f1);
+            stroke: #888;
+            stroke-width: 1;
+            opacity: 0.90;
+        }
+
+        rect.axonserverNodes {
+            fill: none;
+            stroke: #8c7a73;
+            stroke-width: 2;
+        }
+
+        line.down {
+            stroke-dasharray: 1 3;
+        }
+
+        line.applicationToHub {
+            stroke: #888;
+        }
+
+        line.hubToHub {
+            stroke: #888;
+        }
+
+        line.hubToDB {
+            stroke: #888;
+        }
+
+        text.admin {
+            fill: rgba(19, 116, 207, 1);
+        }
+    </style>
+</defs>
+
+<div id="overview">
+    <div>
+        <span v-if="isEnterprise()">
+            Active context:
+        <select v-model="activeContext" @change="initOverview" :disabled="disableOptions">
+            <option value="_all">All</option>
+            <option v-for="n in contexts">{{ n }}</option>
+        </select>
+            Display:
+        <select v-model="displayStyle" :disabled="disableOptions">
+            <option value="diagram">Diagram</option>
+            <option value="list">List</option>
+        </select>
+        </span>
+    </div>
+    <br/>
+
+    <svg v-show="showDiagram()" width="900" height="600">
+
+        <filter id="f1" width="150%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+            <feOffset dx="5" dy="5"/>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+            <!--
+            <feOffset result="offOut" in="SourceAlpha" dx="5" dy="5" />
+            <feGaussianBlur result="blurOut" in="offOut" stdDeviation="3" />
+            <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+            -->
+        </filter>
+
+        <g onclick="hidePopup()"/>
+    </svg>
+
+    <div v-if="showList()">
+
+        <h3>Connected Applications</h3>
+        <paginated-table :rows="applications" name="connected-applications" selectable="true">
+            <template #header>
+                <th class="applicationName">Name</th>
+                <th class="instanceCount"># Instances</th>
+                <th class="contexts">Context(s)</th>
+                <th class="connectedTo">Connected to</th>
+            </template>
+            <template #row="app">
+                <td @click="selectComponent(app.name, app.contexts, app.name)">{{ app.name }}</td>
+                <td @click="selectComponent(app.name, app.contexts, app.name)">{{ app.instances }}</td>
+                <td @click="selectComponent(app.name, app.contexts, app.name)">
+                    <span v-for="ctx in app.contexts">{{ ctx }}<br></span>
+                </td>
+                <td @click="selectComponent(app.name, app.contexts, app.name)">
+                    <span v-for="node in app.connectedTo">{{ node }}<br></span>
+                </td>
+
+            </template>
+        </paginated-table>
+
+        <div v-if="isEnterprise()">
+            <h3>Context overview</h3>
+            <paginated-table :rows="allContexts" name="all-contexts">
+                <template #header>
+                    <th class="applicationName">Name</th>
+                    <th class="nodeName">Nodes</th>
+                    <th class="leader">Leader</th>
+                </template>
+                <template #row="ctx">
+                    <td>{{ ctx.context }}</td>
+                    <td>
+                        <span v-for="node in ctx.roles">{{ node.node }}<br></span>
+                    </td>
+                    <td>{{ ctx.leader }}</td>
+                </template>
+            </paginated-table>
+        </div>
+    </div>
+
+
+    <div v-if="component">
+        <h2>
+            <span @click="deselectComponent()" class="icon"><i class="fas fa-arrow-circle-left"></i></span> Application
+            details for {{ title }}
+        </h2>
+
+        <component-subscription-metrics :component="component" :context="context"></component-subscription-metrics>
+        <component-instances :component="component" :context="context"></component-instances>
+        <component-commands :component="component" :context="context"></component-commands>
+        <component-queries :component="component" :context="context"></component-queries>
+        <component-processors :component="component" :context="context"></component-processors>
+    </div>
+</div>

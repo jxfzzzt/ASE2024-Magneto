@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.groupbuy.GroupbuyMapper">
+    <select id="queryGroupbuyList" parameterType="com.car.account.client.request.groupbuy.QueryGroupbuyListReq" resultType="com.car.account.client.response.groupbuy.GroupbuyRes">
+      	select * 
+      	from  groupbuy g
+        where g.sts = 0
+        <if test="groupSts != null and groupSts.size()>0">
+        	<foreach collection="groupSts" open=" and g.group_sts in(" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+        <if test="receiveMethod != null and receiveMethod.size()>0">
+        	<foreach collection="receiveMethod" open=" and g.receive_Method in(" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+        <if test="userUuid !=null and userUuid !=''">and user_Uuid = #{userUuid}</if>
+        order by g.group_sts,g.start_time,g.id desc
+    </select>
+
+
+	 <update id="updateStartGroup">
+	  	update groupbuy 
+	  		set group_sts=1 
+	  	where group_sts=0 
+	  		and now()>=start_time
+	 </update>
+</mapper>

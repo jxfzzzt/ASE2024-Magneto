@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.scene.SceneOrderDtcImagesMapper">
+
+    <select id="queryList" resultType="java.lang.String">
+        select dtc_image_url from scene_order_dtc_images
+        where
+        sts = 0 and relation_uuid = #{relationUuid}
+    </select>
+
+</mapper>

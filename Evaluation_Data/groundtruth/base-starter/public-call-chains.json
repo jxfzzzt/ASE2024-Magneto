@@ -1,0 +1,21 @@
+[
+  {
+    "chain": [
+      "<live.lumia.utils.XMLUtil: java.lang.String xml2json(java.lang.String)>",
+      "<org.json.XML: org.json.JSONObject toJSONObject(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2022-45688"
+    ]
+  },
+  {
+    "chain": [
+      "<live.lumia.utils.RequestUtils: com.alibaba.fastjson.JSONObject readData(javax.servlet.ServletInputStream)>",
+      "<com.alibaba.fastjson.JSON: com.alibaba.fastjson.JSONObject parseObject(java.lang.String)>",
+      "<com.alibaba.fastjson.JSON: java.lang.Object parse(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2022-25845"
+    ]
+  }
+]

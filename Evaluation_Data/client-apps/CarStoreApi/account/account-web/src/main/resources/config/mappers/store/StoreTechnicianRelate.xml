@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.store.StoreTechnicianRelateMapper">
+
+    <select id="queryStoreTechnicianRelateList" resultType="com.car.account.client.response.store.StoreTechnicianRelateListRes">
+        select str.uuid,str.check_sts,t.user_name,t.mobile,t.certificate_type,t.certificate_num
+        from store_technician_relate str
+        left join technician t on str.technician_uuid = t.uuid and t.sts = 0
+        where str.sts = 0 and t.check_sts = 1 and str.store_uuid = #{storeUuid}
+        order by str.created_time desc ,str.check_sts asc
+    </select>
+
+    <select id="queryStoreListByArea" parameterType="java.lang.String" resultType="com.car.account.client.response.store.QueryAreaStoreListRes">
+        SELECT s.uuid,
+        s.store_name,
+        s.store_type,
+        s.company_address_city,
+        s.company_address_province,
+        s.company_address_county,
+        s.company_address_detail,
+        ( SELECT lable_desc FROM sys_dict WHERE uuid = s.store_type ) AS storeTypeName,
+        ( SELECT area_name FROM sys_area WHERE uuid = s.company_address_province ) AS addressProvinceName,
+        ( SELECT area_name FROM sys_area WHERE uuid = s.company_address_county ) AS addressCountyName,
+        ( SELECT area_name FROM sys_area WHERE uuid = s.company_address_city ) AS addressCityName
+        FROM
+        store s
+        WHERE
+        s.sts = 0 and s.check_sts = 1
+        <if test="areaId != null and areaId !=''">
+            AND s.company_address_province = #{areaId}
+        </if>
+        order by s.created_time desc
+    </select>
+
+    <select id="queryStoreTechnicianRelateDetailRes" resultType="com.car.account.client.response.store.StoreRelateDetailRes">
+        select str.uuid,str.store_uuid,s.store_name ,
+               s.store_type,
+               s.company_address_city,
+               s.company_address_province,
+               s.company_address_detail,
+               ( SELECT lable_desc FROM sys_dict WHERE uuid = s.store_type ) AS storeTypeName,
+               ( SELECT area_name FROM sys_area WHERE uuid = s.company_address_province ) AS addressProvinceName,
+               ( SELECT area_name FROM sys_area WHERE uuid = s.company_address_city ) AS addressCityName
+        FROM store_technician_relate str
+                 LEFT JOIN store s on s.uuid = str.store_uuid  and str.sts = 0
+        where  s.sts = 0 and str.technician_uuid = #{technicianUuid}
+    </select>
+</mapper>

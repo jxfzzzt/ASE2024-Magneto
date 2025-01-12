@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.addr.ReceiveAddrMapper">
+  <resultMap id="BaseResultMap" type="com.car.account.web.model.addr.ReceiveAddr">
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="province_name" jdbcType="VARCHAR" property="provinceName" />
+    <result column="city_name" jdbcType="VARCHAR" property="cityName" />
+    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="sign" jdbcType="VARCHAR" property="sign" />
+    <result column="contactor" jdbcType="VARCHAR" property="contactor" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="default_flag" jdbcType="TINYINT" property="defaultFlag" />
+    <result column="addr" jdbcType="LONGVARCHAR" property="addr" />
+  </resultMap>
+
+  <select id="queryAddrList" parameterType="com.car.account.web.model.addr.ReceiveAddr" resultType="com.car.account.web.model.addr.ReceiveAddr">
+    SELECT * FROM receive_addr a WHERE a.sts = 0
+    <if test="null != uuid and uuid != ''">
+      AND uuid = #{uuid}
+    </if>
+    <if test="null != userId and userId != ''">
+      AND user_id = #{userId}
+    </if>
+    <if test="null != province and province != ''">
+      AND province = #{province}
+    </if>
+    <if test="null != city and city != ''">
+      AND city = #{city}
+    </if>
+    <if test="null != area and area != ''">
+      AND area = #{area}
+    </if>
+    <if test="null != areaName and areaName != ''">
+      AND area_name like concat(#{areaName},'%')
+    </if>
+    <if test="null != provinceName and provinceName != ''">
+      AND province_name like concat(#{provinceName},'%')
+    </if>
+    <if test="null != cityName and cityName != ''">
+      AND city_name like concat(#{cityName},'%')
+    </if>
+    <if test="null != contactor and contactor != ''">
+      AND contactor = #{contactor}
+    </if>
+    <if test="null != phone and phone != ''">
+      AND phone = #{phone}
+    </if>
+  </select>
+  
+  <select id="selectAreaNameByAreaCode" resultType="java.lang.String" parameterType="java.lang.String">
+    select s.area_name as areaName from sys_area s where s.sts = 0 and s.area_code = #{areaCode}
+  </select>
+</mapper>

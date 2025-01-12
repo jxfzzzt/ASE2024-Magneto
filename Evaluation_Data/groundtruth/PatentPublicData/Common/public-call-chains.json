@@ -1,0 +1,11 @@
+[
+  {
+    "chain": [
+      "<gov.uspto.common.file.archive.ZipReader: gov.uspto.common.file.archive.ZipReader open()>",
+      "<org.apache.commons.compress.archivers.zip.ZipFile: void <init>(java.io.File)>"
+    ],
+    "vuls": [
+      "CVE-2018-1324"
+    ]
+  }
+]

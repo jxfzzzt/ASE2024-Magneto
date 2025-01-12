@@ -1,0 +1,20 @@
+[
+  {
+    "chain": [
+      "<com.geekcattle.util.JsonUtil: java.lang.Object parse(java.lang.String)>",
+      "<com.alibaba.fastjson.JSON: java.lang.Object parse(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2022-25845"
+    ]
+  },
+  {
+    "chain": [
+      "<com.geekcattle.controller.member.MemberController: org.springframework.ui.ModelMap doReg(com.geekcattle.model.member.Member,org.springframework.validation.BindingResult)>",
+      "<org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder: java.lang.String encode(java.lang.CharSequence)>"
+    ],
+    "vuls": [
+      "CVE-2020-5408"
+    ]
+  }
+]

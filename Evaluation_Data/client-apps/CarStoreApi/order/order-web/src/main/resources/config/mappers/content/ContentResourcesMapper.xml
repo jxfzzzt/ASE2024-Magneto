@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.content.ContentResourcesMapper">
+
+    <insert id="batchInsertContentResources">
+        insert into content_resources(uuid,content_uuid,resources_url,sts,created_by,created_time)
+        values
+        <foreach collection="insertList" item="item" index="index" separator=",">
+            (
+            #{item.uuid},
+            #{item.contentUuid},
+            #{item.resourcesUrl},
+            #{item.sts},
+            #{item.createdBy},
+            #{item.createdTime}
+            )
+        </foreach>
+    </insert>
+
+    <update id="deleteResourcesByContentUuid" parameterType="java.lang.String">
+        update content_resources set sts = 1 where content_uuid = #{contentUuid} and sts = 0
+    </update>
+</mapper>

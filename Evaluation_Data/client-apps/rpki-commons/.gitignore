@@ -1,0 +1,16 @@
+# Maven
+target/
+ 
+# Intellij
+*.iml
+*.ipr
+*.iws
+.idea/
+ 
+# Eclipse
+*.settings/
+*.classpath
+*.project
+
+# Caches, etc.
+.pregenerated-test-key-pairs.keystore

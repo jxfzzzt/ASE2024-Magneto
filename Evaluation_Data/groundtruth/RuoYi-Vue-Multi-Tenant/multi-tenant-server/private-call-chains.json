@@ -1,0 +1,12 @@
+[
+  {
+    "chain": [
+      "<com.ruoyi.project.system.service.impl.SysCompanyServiceImpl: java.lang.Integer addDefaultUser(com.ruoyi.project.system.domain.SysCompany)>",
+      "<com.ruoyi.common.utils.SecurityUtils: java.lang.String encryptPassword(java.lang.String)>",
+      "<org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder: java.lang.String encode(java.lang.CharSequence)>"
+    ],
+    "vuls": [
+      "CVE-2020-5408"
+    ]
+  }
+]

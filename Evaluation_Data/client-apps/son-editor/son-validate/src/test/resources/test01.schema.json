@@ -1,0 +1,21 @@
+{
+  "type" : "object",
+  "properties" : {
+    "rectangle" : {
+      "$ref" : "#/definitions/rectangle"
+    }
+  },
+  "definitions" : {
+    "size" : {
+      "type" : "number",
+      "minimum" : 0
+    },
+    "rectangle" : {
+      "type" : "object",
+      "properties" : {
+        "a" : {"$ref" : "#/definitions/size"},
+        "b" : {"$ref" : "#/definitions/size"}
+      }
+    }
+  }
+}

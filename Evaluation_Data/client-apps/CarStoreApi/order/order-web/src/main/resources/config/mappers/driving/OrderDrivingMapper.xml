@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.driving.OrderDrivingMapper">
+
+    <select id="queryOrderDrivingList" resultType="com.car.order.client.response.order.driving.OrderDrivingInfoListRes">
+        SELECT od.uuid,od.order_num,od.service_type,od.technician_name,od.technician_mobile,
+               od.created_time,od.end_time,od.order_amount,od.car_owner_mobile,od.pay_type,
+               od.order_sts
+        FROM order_driving od
+        WHERE od.sts = 0
+        <if test="orderNum != null and orderNum !=''">
+            AND od.order_num LIKE CONCAT('%',#{orderNum},'%')
+        </if>
+
+        <if test="startDate != null and startDate != ''">
+            <![CDATA[ AND od.created_time  >= #{startDate} ]]>
+        </if>
+
+        <if test="endDate != null and endDate != ''">
+            <![CDATA[ AND od.created_time  <= #{endDate} ]]>
+        </if>
+
+        <if test="orderSts != null">
+            AND od.order_sts  = #{orderSts}
+        </if>
+
+        <if test="evaluateSts != null">
+            AND od.evaluate_sts  = #{evaluateSts}
+        </if>
+
+        <if test="carOwnerName != null and carOwnerName !=''">
+            AND od.car_owner_name LIKE CONCAT('%',#{carOwnerName},'%')
+        </if>
+
+        <if test="carOwnerMobile != null and carOwnerMobile !=''">
+            AND od.car_owner_mobile LIKE CONCAT('%',#{carOwnerMobile},'%')
+        </if>
+
+        <if test="serviceType != null">
+            AND od.service_type  = #{serviceType}
+        </if>
+
+        <if test="startPlace != null and startPlace !=''">
+            AND od.start_place LIKE CONCAT('%',#{startPlace},'%')
+        </if>
+
+        <if test="endPlace != null and endPlace !=''">
+            AND od.end_place LIKE CONCAT('%',#{endPlace},'%')
+        </if>
+
+        <if test="technicianName != null and technicianName !=''">
+            AND od.technician_name LIKE CONCAT('%',#{technicianName},'%')
+        </if>
+
+        <if test="technicianMobile != null and technicianMobile !=''">
+            AND od.technician_mobile LIKE CONCAT('%',#{technicianMobile},'%')
+        </if>
+        order by od.created_time desc
+    </select>
+
+    <select id="queryOrderDrivingDetail" resultMap="queryOrderDriving">
+        select * from order_driving where sts = 0 and uuid = #{uuid}
+    </select>
+
+    <resultMap id="queryOrderDriving" type="com.car.order.web.dto.OrderDrivingDto">
+        <id column="uuid" property="uuid"/>
+        <collection property="afterSaleImgList" column="uuid" select="queryAfterSaleImgList" />
+    </resultMap>
+
+    <select id="queryAfterSaleImgList" resultType="java.lang.String">
+        select asi.img_url from after_sale_images asi
+        where asi.order_uuid = #{uuid} and asi.sts = 0
+        order by asi.created_time desc
+    </select>
+</mapper>

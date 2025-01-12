@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.order.OrderInfoMapper">
+
+    <update id="updateRefund">
+        UPDATE order_info
+        SET
+        pay_sts = #{orderInfo.paySts},
+        last_updated_by = #{orderInfo.lastUpdatedBy},
+        last_updated_time = #{orderInfo.lastUpdatedTime}
+      WHERE order_uuid = #{orderInfo.orderUuid} AND sts = 0
+    </update>
+
+    <select id="queryOrderInfo" resultType="com.car.order.web.model.order.OrderInfo">
+        select * from order_info where order_uuid = #{orderUuid} and sts = 0
+    </select>
+
+    <select id="orderGoodsBySts" resultType="com.car.order.web.model.order.OrderInfo">
+        select * from order_info where sts = 0
+
+          <![CDATA[ AND ADDDATE(last_updated_time, INTERVAL 7 DAY)  <= now() ]]>
+
+        <if test="orderSts != null and orderSts != ''">
+            and   pay_sts = #{orderSts}
+        </if>
+    </select>
+</mapper>

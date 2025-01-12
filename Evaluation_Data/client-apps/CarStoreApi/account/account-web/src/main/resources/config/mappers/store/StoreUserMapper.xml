@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.store.StoreUserMapper">
+
+    <insert id="batchInsertStoreUser">
+        insert into store_user(uuid,store_uuid,user_name,mobile,person_type,email,sts,created_by,created_time,id_type,id_num)
+        values
+        <foreach collection="insertList" item="item" index="index" separator=",">
+            (
+            #{item.uuid},
+            #{item.storeUuid},
+            #{item.userName},
+            #{item.mobile},
+            #{item.personType},
+            #{item.email},
+            #{item.sts},
+            #{item.createdBy},
+            #{item.createdTime},
+            #{item.idType},
+            #{item.idNum}
+            )
+        </foreach>
+    </insert>
+
+    <update id="deleteStoreUser" parameterType="java.lang.String">
+        update store_user set sts = 1 where store_uuid = #{storeUuid} and sts = 0
+    </update>
+
+    <delete id="deleteStoreUserByStoreUuid" parameterType="java.lang.String">
+        delete from store_user where store_uuid = #{storeUuid}
+    </delete>
+
+    <delete id="batchDeleteStoreUser">
+        update store_user
+        set sts= 1
+        where uuid IN
+        <foreach collection="storeUserUuidList" item="storeUserUuid" open="(" separator="," close=")">
+            #{storeUserUuid}
+        </foreach>
+    </delete>
+
+    <update id="batchUpdateStoreUser">
+        update store_user
+        <set>
+            <if test="storeUser.userName != null and storeUser.userName != ''">
+                user_name = #{storeUser.userName},
+            </if>
+
+            <if test="storeUser.mobile != null and storeUser.mobile != ''">
+                mobile = #{storeUser.mobile},
+            </if>
+
+            <if test="storeUser.personType != null and storeUser.personType != ''">
+                person_type = #{storeUser.personType},
+            </if>
+
+            <if test="storeUser.email != null and storeUser.email != ''">
+                email = #{storeUser.email},
+            </if>
+
+            <if test="storeUser.idType != null">
+                id_type = #{storeUser.idType},
+            </if>
+
+            <if test="storeUser.idNum != null and storeUser.idNum != ''">
+                id_num = #{storeUser.idNum},
+            </if>
+            last_updated_time = now(),
+            last_updated_by = #{userName}
+        </set>
+        WHERE uuid = #{storeUser.uuid}
+    </update>
+
+
+    <select id="getById" resultType="com.car.account.client.response.store.StoreUserRes">
+        select * from store_user where uuid = #{storeUserUuid}
+    </select>
+
+    <select id="queryStoreUserUuid" resultType="java.lang.String">
+        select uuid from store_user where store_uuid = #{storeUuid}
+    </select>
+</mapper>

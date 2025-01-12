@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.dtc.DtcOrderMapper">
+    <select id="list" resultType="com.car.order.client.response.dtc.QueryDtcOrderListRes">
+        select do.uuid,do.order_num,do.order_amount,do.pay_type,do.order_sts,do.read_count,dod.dtc_explain,
+               do.buyer_uuid,do.buyer_name,do.buyer_mobile,do.created_time,do.dtc_issuer_type,dod.dtc_code
+        from dtc_order do
+        left join dtc_order_detail dod on do.uuid = dod.order_uuid
+        where do.sts = 0
+        <if test="userUuid != null and userUuid != ''">
+            AND do.buyer_uuid = #{userUuid}
+        </if>
+        <if test="req.consultantName != null and req.consultantName != ''">
+            AND do.buyer_name LIKE CONCAT('%',#{req.consultantName},'%')
+        </if>
+
+        <if test="req.consultantMobile != null and req.consultantMobile != ''">
+            AND do.buyer_mobile LIKE CONCAT('%',#{req.consultantMobile},'%')
+        </if>
+
+        <if test="req.startDate != null and req.startDate != ''">
+            <![CDATA[ AND do.created_time  >= #{req.startDate} ]]>
+        </if>
+
+        <if test="req.endDate != null and req.endDate != ''">
+            <![CDATA[ AND do.created_time  <= #{req.endDate} ]]>
+        </if>
+
+        <if test="req.orderSts != null">
+            AND do.order_sts  = #{req.orderSts}
+        </if>
+
+        <if test="req.releaseName != null and req.releaseName != ''">
+            AND do.issuer_name LIKE CONCAT('%',#{req.releaseName},'%')
+        </if>
+        <if test="req.releaseMobile != null and req.releaseMobile != ''">
+            AND do.issuer_mobile LIKE CONCAT('%',#{req.releaseMobile},'%')
+        </if>
+        order by do.created_time desc
+
+    </select>
+
+    <select id="myList" resultType="com.car.order.client.response.dtc.QueryDtcOrderListRes">
+        select do.uuid,do.order_num,do.order_amount,do.pay_type,do.order_sts,do.read_count,dod.dtc_explain,
+        do.buyer_uuid,do.buyer_name,do.buyer_mobile,do.created_time,do.dtc_issuer_type,dod.dtc_code
+        from dtc_order do
+        left join dtc_order_detail dod on do.uuid = dod.order_uuid
+        where do.sts = 0
+        and do.read_count &lt; 3
+        <if test="userUuid != null and userUuid != ''">
+            AND do.buyer_uuid = #{userUuid}
+        </if>
+        <if test="req.consultantName != null and req.consultantName != ''">
+            AND do.buyer_name LIKE CONCAT('%',#{req.consultantName},'%')
+        </if>
+
+        <if test="req.consultantMobile != null and req.consultantMobile != ''">
+            AND do.buyer_mobile LIKE CONCAT('%',#{req.consultantMobile},'%')
+        </if>
+
+        <if test="req.startDate != null and req.startDate != ''">
+            <![CDATA[ AND do.created_time  >= #{req.startDate} ]]>
+        </if>
+
+        <if test="req.endDate != null and req.endDate != ''">
+            <![CDATA[ AND do.created_time  <= #{req.endDate} ]]>
+        </if>
+
+        <if test="req.orderSts != null">
+            AND do.order_sts  = #{req.orderSts}
+        </if>
+
+        <if test="req.releaseName != null and req.releaseName != ''">
+            AND do.issuer_name LIKE CONCAT('%',#{req.releaseName},'%')
+        </if>
+        <if test="req.releaseMobile != null and req.releaseMobile != ''">
+            AND do.issuer_mobile LIKE CONCAT('%',#{req.releaseMobile},'%')
+        </if>
+        order by do.created_time desc
+
+    </select>
+
+    <select id="getById" resultType="com.car.order.client.response.dtc.QueryDtcOrderInfoRes">
+        select
+        do.*,
+        dod.*,
+        d.dtc_type
+        from
+        dtc_order do
+        left join dtc_order_detail dod on do.uuid = dod.order_uuid
+        left join dtc d on d.uuid = do.dtc_uuid
+        where do.uuid = #{orderUuid}
+    </select>
+
+    <select id="queryPurchaseOrder" resultType="com.car.order.web.model.dtc.DtcOrder">
+        select * from dtc_order where buyer_uuid = #{userUuid} and dtc_uuid = #{dtcUuid} and sts = 0 and read_count &lt; 3
+    </select>
+
+</mapper>

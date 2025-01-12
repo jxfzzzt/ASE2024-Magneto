@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.car.system.web.mapper.SysRoleMapper">
+
+
+    <select id="queryRoleList" parameterType="Object" resultType="com.car.system.web.model.dto.SysRoleDto">
+        SELECT
+        sr.*
+        FROM
+        sys_role sr
+        WHERE
+        sr.sts = 0
+        <if test="roleName != null and roleName !='' ">
+            AND sr.role_name LIKE CONCAT('%',#{roleName},'%')
+        </if>
+        order by sr.created_time desc
+    </select>
+
+    <select id="queryUserRoleCount" parameterType="Object" resultType="java.lang.Integer">
+        SELECT
+        count(1) userCount
+        FROM
+        sys_role sr,
+        sys_user su
+        WHERE
+        sr.uuid = su.role_uuid
+        AND su.sts = 0
+        AND sr.sts = 0
+        AND sr.uuid = #{roleUuid}
+    </select>
+    <select id="queryRoleByRoleName" resultType="com.car.system.web.model.SysRole">
+        SELECT * FROM `sys_role`
+        <where>
+            sts=0
+            <if test="roleName != null and roleName != '' ">
+                AND role_name=#{roleName}
+            </if>
+            <if test="uuid != null and uuid != '' ">
+                AND `uuid` != #{uuid}
+            </if>
+        </where>
+        LIMIT 0,1
+    </select>
+
+
+    <select id="queryRepeatNumRole" resultType="com.car.system.web.model.SysRole">
+        SELECT
+        srole.*
+        FROM
+        (
+        SELECT
+        sr.*,
+        ( SELECT count( 1 ) FROM sys_role_menu_rel WHERE sts = 0 AND role_uuid = sr.uuid ) menuCount
+        FROM
+        sys_role sr
+        WHERE
+        sts = 0
+        ) temp,
+        sys_role srole
+        WHERE
+        temp.uuid = srole.uuid
+        AND temp.menuCount = #{menuCount}
+    </select>
+
+</mapper>

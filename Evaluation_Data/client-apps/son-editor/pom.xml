@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>eu.sonata.nfv.nec</groupId>
+    <artifactId>son-editor</artifactId>
+    <version>0.2-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>son-editor</name>
+    <url>http://www.sonata-nfv.eu</url>
+
+    <properties>
+        <!-- The versions of ALL the libraries used by the son-tools. -->
+        <commons.beanutils.version>1.9.2</commons.beanutils.version>
+        <commons.cli.version>1.3.1</commons.cli.version>
+        <commons.io.version>2.4</commons.io.version>
+        <guice.version>4.0</guice.version>
+        <guice.junit.testrunner.version>1.1</guice.junit.testrunner.version>
+        <jackson.version>2.7.1</jackson.version>
+        <json.sanitizer.version>1.1</json.sanitizer.version>
+        <json.schema.version>1.1.1</json.schema.version>
+        <junit.version>4.12</junit.version>
+        <logback.classic.version>1.1.3</logback.classic.version>
+        <org.json.version>20160212</org.json.version>
+        <snakeyaml.version>1.16</snakeyaml.version>
+        <spark.version>2.3</spark.version>
+        <validation-api.version>1.1.0.Final</validation-api.version>
+        <!-- The versions of ALL the plugins used by the son-tools. -->
+        <plugin.shade.version>2.4.3</plugin.shade.version>
+        <plugin.jsonschema2pojo.version>0.4.21</plugin.jsonschema2pojo.version>
+    </properties>
+
+    <build>
+        <!-- Plugins that can be inherited by sub-projects. -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <modules>
+        <module>son-convert</module>
+        <!--
+        <module>son-convert-cli</module>
+        <module>son-convert-web</module>
+        <module>son-convert-thrift</module>
+        -->
+        <module>son-validate</module>
+        <module>son-validate-cli</module>
+        <module>son-validate-web</module>
+        <!--
+        <module>son-bundle</module>
+        -->
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.classic.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

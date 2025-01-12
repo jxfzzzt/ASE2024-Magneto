@@ -1,0 +1,12 @@
+[
+  {
+    "chain": [
+      "<com.dumptruckman.bukkit.configuration.json.JsonConfiguration: void loadFromString(java.lang.String)>",
+      "<net.minidev.json.parser.JSONParser: java.lang.Object parse(java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2023-1370",
+      "CVE-2021-27568"
+    ]
+  }
+]

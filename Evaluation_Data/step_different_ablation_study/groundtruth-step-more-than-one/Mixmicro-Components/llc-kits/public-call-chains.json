@@ -1,0 +1,22 @@
+[
+    {
+        "chain": [
+            "<xyz.vopen.mixmicro.kits.llc.impls.LlcSevenZCompress: boolean decompress(java.io.File,java.lang.String)>",
+            "<xyz.vopen.mixmicro.kits.llc.impls.LlcSevenZCompress: boolean decompress(java.io.File,java.io.File)>",
+            "<org.apache.commons.compress.archivers.sevenz.SevenZFile: void <init>(java.io.File)>"
+        ],
+        "vuls": [
+            "CVE-2021-35516"
+        ]
+    },
+    {
+        "chain": [
+            "<xyz.vopen.mixmicro.kits.llc.impls.LlcRarCompress: boolean decompress(java.io.File,java.lang.String)>",
+            "<xyz.vopen.mixmicro.kits.llc.impls.LlcRarCompress: boolean decompress(java.io.File,java.io.File)>",
+            "<com.github.junrar.Junrar: java.util.List extract(java.io.File,java.io.File)>"
+        ],
+        "vuls": [
+            "CVE-2022-23596"
+        ]
+    }
+]

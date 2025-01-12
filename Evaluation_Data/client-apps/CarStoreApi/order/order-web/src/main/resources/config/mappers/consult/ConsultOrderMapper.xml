@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.consult.ConsultOrderMapper">
+
+    <select id="queryOrderConsultList" resultType="com.car.order.client.response.order.consult.OrderConsultInfoListRes">
+        select co.uuid,co.car_owner_name,co.car_owner_mobile,co.created_time,co.order_type,co.order_amount,
+               co.pay_type,co.order_sts,ct.answer_sts,ct.technician_name,ct.technician_mobile,ct.title,
+               ct.vehicle_brand,ct.vehicle_model
+        from consult_order co
+        left join consult ct on co.consult_uuid = ct.uuid
+        where co.sts = 0
+
+        <if test="carOwnerName != null and carOwnerName !=''">
+            AND co.car_owner_name LIKE CONCAT('%',#{carOwnerName},'%')
+        </if>
+
+        <if test="carOwnerMobile != null and carOwnerMobile !=''">
+            AND co.car_owner_mobile LIKE CONCAT('%',#{carOwnerMobile},'%')
+        </if>
+
+        <if test="orderNum != null and orderNum !=''">
+            AND co.order_num LIKE CONCAT('%',#{orderNum},'%')
+        </if>
+
+        <if test="startDate != null and startDate != ''">
+            <![CDATA[ AND co.created_time  >= #{startDate} ]]>
+        </if>
+
+        <if test="endDate != null and endDate != ''">
+            <![CDATA[ AND co.created_time  <= #{endDate} ]]>
+        </if>
+
+        <if test="orderSts != null">
+            AND co.order_sts  = #{orderSts}
+        </if>
+
+        <if test="answerSts != null">
+            AND ct.answer_sts  = #{answerSts}
+        </if>
+
+        <if test="technicianName != null and technicianName !=''">
+            AND ct.technician_name LIKE CONCAT('%',#{technicianName},'%')
+        </if>
+
+        <if test="technicianMobile != null and technicianMobile !=''">
+            AND ct.technician_mobile LIKE CONCAT('%',#{technicianMobile},'%')
+        </if>
+        order by co.created_time desc
+    </select>
+
+    <select id="queryConsultList" resultType="com.car.order.client.response.order.consult.ConsultInfoListRes">
+        select co.uuid,co.order_sts,ct.technician_name,ct.technician_img_url,ct.title,
+               ct.answer_sts,ct.vehicle_brand,ct.vehicle_model
+        from consult_order co
+        left join consult ct on co.consult_uuid = ct.uuid
+        where co.sts = 0
+        <choose>
+            <when test="consultType == 0">
+                /* consultType == 0 查询可旁听列表 */
+               /* order_type = 1 咨询订单*/
+                and co.order_type = 1 and co.car_owner_uuid != #{carOwnerUuid}
+                /* ct.consult_check_sts = 1 and ct.answer_check_sts = 1 咨询内容与答复内容都通过审核*/
+                and ct.consult_check_sts = 1 and ct.answer_check_sts = 1
+            </when>
+            <otherwise>
+                /* consultType == 1 查询当前用户发起的咨询 consultType == 4 查询当前用户旁听的咨询 */
+                and co.order_type = #{consultType} and co.car_owner_uuid = #{carOwnerUuid}
+            </otherwise>
+        </choose>
+
+        order by co.created_time desc
+    </select>
+
+    <select id="queryOrderConsultDetail" resultMap="queryOrderConsult">
+        select * from consult_order where sts = 0 and uuid = #{uuid}
+    </select>
+
+    <resultMap id="queryOrderConsult" type="com.car.order.client.response.order.consult.ConsultOrderDetailRes">
+        <id column="uuid" property="uuid"/>
+        <collection property="consultRes" column="consult_uuid" select="queryConsultRes" />
+    </resultMap>
+
+    <select id="queryConsultRes" resultType="com.car.order.client.response.order.consult.ConsultRes">
+        select * from consult where sts = 0 and uuid = #{consult_uuid}
+    </select>
+
+
+    <select id="queryQuizCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM consult_order WHERE sts = 0 and (order_type = 1 or order_type = 4) AND car_owner_uuid = #{userUuid}
+    </select>
+
+</mapper>

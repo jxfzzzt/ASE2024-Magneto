@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.store.StoreMapper">
+
+    <select id="queryStoreList" parameterType="com.car.account.client.request.store.QueryStoreListReq" resultType="com.car.account.client.response.store.QueryStoreListRes">
+        SELECT s.uuid,
+               s.store_name,
+               s.store_type,
+               s.company_address_city,
+               s.company_address_province,
+               s.on_time_arr,
+               s.check_sts,
+               su.user_name,
+               su.mobile,
+               s.created_time,
+        (select ifnull(convert(AVG(score_star),DECIMAL(10,2)),0.0) as avgScore from score_info where sts = 0 and relation_uuid = s.uuid) as commentScore,
+        (SELECT COUNT(1) FROM comment_info WHERE sts = 0 AND check_sts = 1 AND relation_uuid = s.uuid) as commentNum,
+        ( SELECT lable_desc FROM sys_dict WHERE uuid = s.store_type ) AS storeTypeName,
+        ( SELECT area_name FROM sys_area WHERE uuid = s.company_address_province ) AS addressProvinceName,
+        ( SELECT area_name FROM sys_area WHERE uuid = s.company_address_city ) AS addressCityName,
+        (select GROUP_CONCAT(gp.group_name) from goods g left join goods_parent gp on g.parent_type = gp.uuid where store_uuid = s.uuid) as parentTypeName
+        FROM
+        (select DISTINCT st.uuid from store st left join store_brand sb on st.uuid = sb.store_uuid where st.sts = 0 and sb.sts = 0
+        <if test="null != param.brandUuid and param.brandUuid != ''">
+            and sb.uuid = #{param.brandUuid}
+        </if>
+        ) as temp
+        LEFT JOIN  store s
+        ON temp.uuid = s.uuid
+        LEFT JOIN
+        store_user su
+        ON s.uuid = su.store_uuid and su.person_type = '501' and su.sts = 0
+        WHERE
+        s.sts = 0
+        <if test="param.storeName != null and param.storeName !=''">
+            AND s.store_name LIKE CONCAT('%',#{param.storeName},'%')
+        </if>
+
+        <if test="param.storeTypeList != null and param.storeTypeList.size() > 0">
+            AND s.store_type in
+            <foreach collection="param.storeTypeList" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        </if>
+        <if test="param.storeType != null and param.storeType != ''">
+            AND s.store_type = #{param.storeType}
+        </if>
+        <if test="param.contactsName != null and param.contactsName !=''">
+            AND su.user_name LIKE CONCAT('%',#{param.contactsName},'%')
+        </if>
+        <if test="param.mobile != null and param.mobile != '' ">
+            AND su.mobile LIKE CONCAT('%',#{param.mobile},'%')
+        </if>
+
+        <if test="null != param.areaUuid and param.areaUuid != ''">
+            AND s.company_address_county = #{param.areaUuid}
+        </if>
+
+        <if test="null != checkSts">
+            AND s.check_sts = #{checkSts}
+        </if>
+        <if test="null != param.levelOne and param.levelOne != ''">
+            AND s.uuid in
+            (
+              SELECT g.`store_uuid` FROM `goods` g WHERE g.sts = 0 AND  g.`parent_type` = #{param.levelOne}
+            )
+        </if>
+        <if test="null != param.levelTwo and param.levelTwo != ''">
+            AND s.uuid in
+            (
+              SELECT g.`store_uuid` FROM `goods` g WHERE g.sts = 0 AND  g.`sub_type` = #{param.levelTwo}
+            )
+        </if>
+
+        order by s.created_time desc
+    </select>
+
+    <select id="queryStoreDetail" parameterType="java.lang.String"
+            resultType="com.car.account.client.response.store.StoreDetailRes">
+        SELECT s.uuid,
+               s.store_name,
+               s.store_type,
+               s.company_name,
+               s.company_address_province,
+               s.company_address_city,
+               s.company_address_county,
+               s.company_address_detail,
+               s.on_time_arr,
+               s.check_sts,
+               s.reject_detail,
+               s.latitude,
+               s.longitude,
+               s.platform_fee,
+               ( SELECT area_name FROM sys_area WHERE uuid = s.company_address_province ) AS addressProvinceName,
+               ( SELECT area_name FROM sys_area WHERE uuid = s.company_address_city ) AS addressCityName,
+               ( SELECT area_name FROM sys_area WHERE uuid = s.company_address_county ) AS addressCountyName
+        FROM
+            store s
+        WHERE
+            s.sts = 0 and s.uuid = #{uuid}
+
+    </select>
+    <select id="queryStoreUuidByUserUuid" resultType="java.lang.String">
+
+    </select>
+
+    <select id="queryShareStoreList" resultType="com.car.account.client.response.store.QueryShareStoreListRes">
+        SELECT
+            st.uuid,
+            st.store_name,
+            ( SELECT count( 1 ) FROM goods WHERE parent_type = 1006 AND sts = 0 AND store_uuid = st.uuid ) AS share_count,
+            ( SELECT image_url FROM store_images WHERE store_uuid = st.uuid AND sts = 0 AND image_type = 2 LIMIT 0, 1 ) AS image_url,
+            (
+            SELECT
+            GROUP_CONCAT( vc.config_name )
+            FROM
+            store_brand sb
+            LEFT JOIN vehicle_config vc ON sb.brand_uuid = vc.uuid
+            WHERE
+            store_uuid = st.uuid
+            ) brand_name,
+            st.latitude,
+            st.longitude
+            FROM
+            store st
+            WHERE
+            sts = 0
+            AND check_sts = 1
+            AND #{distance} > lat_lng_distance ( latitude, longitude, #{latitude}, #{longitude} )
+            <if test="storeType !=null and storeType != ''">and st.store_type = #{storeType}</if>
+            <if test="brandUuid !=null and brandUuid != ''">and EXISTS(select 1 from store_brand b where b.brand_uuid=#{brandUuid} and b.sts = 0 and b.store_uuid = st.uuid)</if>
+            <if test="shareStationTypeName !=null and shareStationTypeName != ''">
+                and st.uuid in (SELECT g.store_uuid from goods_detail gd ,goods g where g.uuid = gd.goods_uuid and gd.name = #{shareStationTypeName} )
+            </if>
+
+    </select>
+
+    <!--<select id="queryStoreDetail" parameterType="java.lang.String"
+            resultMap="storeRelData">
+        SELECT s.uuid,
+               s.store_name,
+               s.store_type,
+               s.company_name,
+               s.company_address_province,
+               s.company_address_city,
+               s.company_address_county,
+               s.company_address_detail,
+               s.withdrawal_way,
+               s.account_type,
+               s.account_name,
+               s.deposit_bank,
+               s.sub_branch_name,
+               s.card_numbers,
+               s.check_sts,
+               s.reject_detail
+        FROM
+          store s
+        WHERE
+          s.sts = 0 and s.uuid = uuid
+
+    </select>
+
+    <resultMap id="storeRelData" type="com.car.store.client.response.store.QueryStoreListRes">
+        <id column="uuid" property="uuid"/>
+        <collection property="personGroupList" column="uuid" select="businessImgList" />
+        <collection property="deviceList" column="uuid" select="shopImgList" />
+        <collection property="deviceList" column="uuid" select="storeUserList" />
+    </resultMap>
+
+    &lt;!&ndash;营业执照图片&ndash;&gt;
+    <select id="businessImgList" resultType="java.util.List">
+        select simg.image_url from store_images simg
+        where simg.store_uuid = #{uuid} and mrapr.image_type = 1 and mrapr.sts = 0
+        order by simg.created_time desc
+    </select>
+
+    &lt;!&ndash;门店图片&ndash;&gt;
+    <select id="shopImgList" resultType="java.util.List">
+        select simg.image_url from store_images simg
+        where simg.store_uuid = #{uuid} and mrapr.image_type = 2 and mrapr.sts = 0
+        order by simg.created_time desc
+    </select>
+
+    &lt;!&ndash;门店联系人&ndash;&gt;
+    <select id="storeUserList" resultType="com.car.store.client.response.store.StoreUserRes">
+        select
+               su.uuid,
+               su.store_uuid,
+               su.user_name,
+               su.mobile,
+               su.person_type,
+               su.email
+        from store_user su
+        where su.store_uuid = #{uuid} and su.sts = 0
+        order by su.created_time desc
+    </select>-->
+</mapper>

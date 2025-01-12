@@ -1,0 +1,12 @@
+[
+  {
+    "chain": [
+      "<com.montanha.utils.SenhaUtils: boolean senhaValida(java.lang.String,java.lang.String)>",
+      "<org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder: boolean matches(java.lang.CharSequence,java.lang.String)>"
+    ],
+    "vuls": [
+      "CVE-2022-22976",
+      "CVE-2020-5408"
+    ]
+  }
+]

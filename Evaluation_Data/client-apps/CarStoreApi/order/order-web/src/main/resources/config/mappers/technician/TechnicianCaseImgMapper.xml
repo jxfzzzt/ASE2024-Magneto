@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.technician.TechnicianCaseImgMapper">
+  <resultMap id="BaseResultMap" type="com.car.order.web.model.technician.cases.TechnicianCaseImg">
+    <result column="case_uuid" jdbcType="VARCHAR" property="caseUuid" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+  </resultMap>
+
+  <insert id="batchInsertTechnicianCaseImages">
+    insert into technician_case_img(uuid,case_uuid,url,sts,created_by,created_time)
+    values
+    <foreach collection="insertList" item="item" index="index" separator=",">
+      (
+      #{item.uuid},
+      #{item.caseUuid},
+      #{item.url},
+      #{item.sts},
+      #{item.createdBy},
+      #{item.createdTime}
+      )
+    </foreach>
+  </insert>
+
+  <select id="queryCaseImages" resultType="java.lang.String">
+    select url from technician_case_img where sts = 0 and case_uuid = #{caseUuid}
+  </select>
+  
+</mapper>

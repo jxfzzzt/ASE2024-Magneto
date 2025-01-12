@@ -1,0 +1,11 @@
+[
+    {
+        "chain": [
+            "<com.blobcity.db.memory.records.RecordInterpreter: com.blobcity.lib.query.RecordType getBestMatchedType(java.lang.Object)>",
+            "<org.json.XML: org.json.JSONObject toJSONObject(java.lang.String)>"
+        ],
+        "vuls": [
+            "CVE-2022-45688"
+        ]
+    }
+]
